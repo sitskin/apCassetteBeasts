@@ -1,0 +1,18 @@
+[gd_resource type="Resource" load_steps=2 format=2]
+
+[ext_resource path="res://mods/archipelago_companion/mod.gd" type="Script" id=1]
+
+[resource]
+script = ExtResource( 1 )
+id = "archipelago_companion"
+name = "Archipelago Companion"
+version_code = 1
+version_string = "0.0.1"
+author = "sitskin"
+save_file_format_tag = "archipelago_companion"
+save_file_format_tag_version = 1
+network_protocol_tag = "archipelago_companion"
+disable_network_multiplayer = true
+modified_files = [ "res://menus/ranger_stamp_card/StampSlot.gd", "res://data/quests/story/ArchangelQuest.gd" ]
+modified_dirs = [  ]
+translations = [  ]
