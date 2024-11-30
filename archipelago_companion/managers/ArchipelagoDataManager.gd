@@ -6,34 +6,30 @@ const AP_ENABLED_KEY = "archipelago_enabled"
 const _AP_SERVER_KEY = "serverUrl"
 const _AP_PLAYER_KEY = "player"
 
-var enabled setget _setEnabled, _getEnabled
-var server setget _setServer, _getServer
-var player setget _setPlayer, _getPlayer
+var configFile
+const _CFG_FILE_PATH = "user://archipelago_mod_settings.cfg"
 
 func _init():
-	SaveSystem.connect("file_loaded", self, "_onFileLoaded")
+	configFile = ConfigFile.new()
+	configFile.load(_CFG_FILE_PATH)
 
-func _setEnabled(enabled):
-	SaveState.flags[AP_ENABLED_KEY] = enabled
+func setEnabled(enabled):
+	configFile.set_value(_AP_BASE_KEY, AP_ENABLED_KEY, enabled)
+	configFile.save(_CFG_FILE_PATH)
 
-func _getEnabled():
-	return SaveState.flags[AP_ENABLED_KEY]
+func getEnabled():
+	return configFile.get_value(_AP_BASE_KEY, AP_ENABLED_KEY, false)
 
-func _setServer(server):
-	SaveState.other_data[_AP_BASE_KEY][_AP_SERVER_KEY] = server
+func setServer(server):
+	configFile.set_value(_AP_BASE_KEY, _AP_SERVER_KEY, server)
+	configFile.save(_CFG_FILE_PATH)
 
-func _getServer():
-	return SaveState.other_data[_AP_BASE_KEY][_AP_SERVER_KEY]
+func getServer():
+	return configFile.get_value(_AP_BASE_KEY, _AP_SERVER_KEY, "")
 
-func _setPlayer(player):
-	SaveState.other_data[_AP_BASE_KEY][_AP_PLAYER_KEY] = player
+func setPlayer(player):
+	configFile.set_value(_AP_BASE_KEY, _AP_PLAYER_KEY, player)
+	configFile.save(_CFG_FILE_PATH)
 
-func _getPlayer():
-	return SaveState.other_data[_AP_BASE_KEY][_AP_PLAYER_KEY]
-
-func _onFileLoaded():
-	# in theory this should never be false but just in case
-	if !SceneManager.in_game:
-		return
-	if !SaveState.other_data.has(_AP_BASE_KEY):
-		SaveState.other_data[_AP_BASE_KEY] = _AP_EMPTY_DICT
+func getPlayer():
+	return configFile.get_value(_AP_BASE_KEY, _AP_PLAYER_KEY, "")
