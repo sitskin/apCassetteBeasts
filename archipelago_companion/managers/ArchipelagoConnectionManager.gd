@@ -22,8 +22,10 @@ func _init():
 	self.add_child(_apWebSocketConnection)
 	self.add_child(_archipelagoClient)
 	_archipelagoClient.game = "Cassette Beasts"
+	_archipelagoClient.connect("_received_connect_response", self, "_receivedConnectPacket")
 	_archipelagoClient.connect("connection_state_changed", self, "_onConnectionChanged")
 	_archipelagoClient.connect("item_received", self, "_onApItemReceived")
+	_apWebSocketConnection.connect("on_location_info", self, "_locationInfoReceived")
 	SceneManager.connect("scene_changed", self, "_onSceneChanged")
 	SaveSystem.connect("file_loaded", self, "_onFileLoaded")
 	SaveState.connect("flag_changed", self, "_onFlagChanged")
@@ -54,6 +56,9 @@ func startDisconnection():
 func getConnectionState() -> int:
 	return _archipelagoClient.connect_state
 
+func _locationInfoReceived(locationInfo: Dictionary):
+	pass
+
 func _onConnectionChanged(newState: int, error: int = 0):
 	emit_signal("connectionStateChanged", newState, error)
 
@@ -65,6 +70,16 @@ func _onSceneChanged():
 
 func _onFileLoaded():
 	SaveState.set_flag(ArchipelagoDataManager.AP_ENABLED_KEY, archipelagoDataManager.getEnabled())
+	# if it doesn't exist create it
+	if !SaveState.other_data.has("archipelago") or !SaveState.other_data["archipelago"].has("receivedItems"):
+		SaveState.other_data["archipelago"] = {"receivedItems": []}
+	# if we are connected then (following is probably in a method as it will
+	# also need to happen if the user starts the game and then connects to server)
+	# call sync await the packet 
+	
+	# we now have the full list of items this game has received
+	# cross reference that with the list of items in other_data
+	# add all missing items to _itemsReceivedWhileNotInWorld
 
 func _getApItemConsole(itemName: String):
 	_onApItemReceived(itemName, {item = 1, location = 2, player = 3, flags = 0})
@@ -73,14 +88,17 @@ func _getApItemConsole(itemName: String):
 # item is {item: int, location: int, player: int, flags: int}
 # flags are 0b001: logic, 0b010: important, 0b100: trap
 func _onApItemReceived(itemName: String, item: Dictionary):
+	# assuming that I cannot get an item via item_received more than once
+	SaveState.other_data.archipelago.receivedItems.push_back(item)
 	if !WorldSystem.is_in_world():
 		_itemsReceivedWhileNotInWorld.append({"itemName": itemName, "item": item})
 		return
 	_givePlayerItem(itemName, item)
 
 func _givePlayerItem(itemName: String, item: Dictionary):
-	if _isItemResourceName(itemName):
-		return _onItemReceived(itemName)
+	# "wood*100"
+	if _tryGiveItem(itemName):
+		return
 	if SaveState.abilities.has(itemName):
 		return _onAbilityReceived(itemName)
 	if "aa" in itemName:
@@ -100,11 +118,17 @@ func _isItemResourceName(itemName: String):
 			fileName = dir.get_next()
 	return false
 
-func _onItemReceived(itemName: String):
-	var itemPath = _ITEM_DIR_PATH + itemName + ".tres"
-	var itemResource = load(itemPath)
-	MenuHelper.give_item(itemResource, 1, false)
+func _tryGiveItem(apItemName: String):
+	# "wood*100"
+	var parts = apItemName.split("*")
+	var itemName = parts[0]
+	var itemAmount = int(parts[1]) if parts.size() > 1 else 1
+	var item = ItemFactory.create_from_id(itemName)
+	if item == null:
+		return false
+	MenuHelper.give_item(item, itemAmount, false)
 	print("Item %s given to player" % itemName)
+	return true
 
 func _onAbilityReceived(abilityName: String):
 	SaveState.set_ability(abilityName, true)

@@ -255,6 +255,17 @@ func check_locations(location_strings: PoolStringArray):
 		print("Sending location check for " + location + " with id " + location_id)
 		websocket_client.send_location_checks([location_id])
 
+func scout_locations(location_strings: PoolStringArray):
+	if not self.data_package:
+		return
+	for location in location_strings:
+		var location_id = data_package.location_name_to_id[location]
+		if not location_id:
+			print("Location id could not be found for: " + location)
+			continue
+		print("Sending location scout for " + location + " with id " + location_id)
+		websocket_client.send_location_scouts([location_id], false)
+
 func get_value(keys: Array):
 	## Send a `Get` packet to query the server's data storage.
 	##
