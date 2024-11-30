@@ -133,11 +133,11 @@ func send_location_checks(locations: Array):
 	)
 
 # TODO: create_as_hint Enum
-func send_location_scouts(locations: Array, create_as_int: int):
+func send_location_scouts(locations: Array, create_as_hint: int):
 	_send_command({
 		"cmd": "LocationScouts",
 		"locations": locations,
-		"create_as_int": create_as_int
+		"create_as_hint": create_as_hint
 	})
 
 func status_update(status: int):
