@@ -12,35 +12,27 @@ onready var _connectionLabel: Label = find_node("ConnectionStatusLabel")
 onready var _errorLabel: Label = find_node("ErrorLabel")
 onready var _isDebug: bool = OS.has_feature("editor")
 
+onready var archipelagoConnectionManager = DLC.mods_by_id.archipelago_companion.archipelagoConnectionManager
+onready var archipelagoDataManager = preload("res://mods/archipelago_companion/managers/ArchipelagoDataManager.gd").new()
+
 func _ready():
 	_errorLabel.visible = false
-	ArchipelagoConnectionManager.connect("connectionStateChanged", self, "_onConnectionStateChanged")
+	archipelagoConnectionManager.connect("connectionStateChanged", self, "_onConnectionStateChanged")
 	_enabledCheckButton.connect("toggled", self, "_onEnabledToggled")
 	_connectButton.connect("pressed", self, "_onConnectButtonPressed")
 	_disconnectButton.connect("pressed", self, "_onDisconnectButtonPressed")
-	SaveSystem.connect("file_loaded", self, "_onFileLoaded")
 
 # this is called when this tab is switched to
 func grab_focus():
+	_enabledCheckButton.pressed = archipelagoDataManager.getEnabled()
+	_hostField.text = archipelagoDataManager.getServer()
+	_playerField.text = archipelagoDataManager.getPlayer()
 	_hostField.grab_focus()
-	_onConnectionStateChanged(ArchipelagoConnectionManager.getConnectionState())
-
-func _onFileLoaded():
-	# in theory this should never be false but just in case
-	if !SceneManager.in_game:
-		return
-	
-	_hostField.text = ArchipelagoDataManager.server
-	_playerField.text = ArchipelagoDataManager.player
-	_enabledCheckButton.pressed = ArchipelagoDataManager.enabled
+	_onConnectionStateChanged(archipelagoConnectionManager.getConnectionState())
+	_onEnabledToggled(archipelagoDataManager.getEnabled())
 
 func _onConnectionStateChanged(new_state: int, error: int = 0):
 	_errorLabel.visible = false
-	
-	# only allow AP connection when in a game
-	if !SceneManager.in_game:
-		_disableAll()
-		return
 	
 	_updateFieldsState(new_state == BaseArchipelagoClient.ConnectState.DISCONNECTED)
 	match new_state:
@@ -115,26 +107,26 @@ func _onConnectButtonPressed():
 		_errorLabel.text = "Please fill out both host and player fields"
 		_errorLabel.visible = true
 		return
-	ArchipelagoConnectionManager.setHost(_hostField.text)
-	ArchipelagoConnectionManager.setPlayer(_playerField.text)
+	archipelagoConnectionManager.setHost(_hostField.text)
+	archipelagoConnectionManager.setPlayer(_playerField.text)
 	# NOTE: Do not save the password in the save state, I know it technically doesn't
 	# matter but the security part of my brain would break if we saved this
-	ArchipelagoDataManager.server = _hostField.text
-	ArchipelagoDataManager.player = _playerField.text
-	ArchipelagoConnectionManager.startConnection(_passwordField.text)
+	archipelagoDataManager.setServer(_hostField.text)
+	archipelagoDataManager.setPlayer(_playerField.text) 
+	archipelagoConnectionManager.startConnection(_passwordField.text)
 
 func _onDisconnectButtonPressed():
 	if _isDebug:
 		print("Disconnect button pressed")
-	ArchipelagoConnectionManager.startDisconnection()
+	archipelagoConnectionManager.startDisconnection()
 
 func _onEnabledToggled(enabled: bool):
 	if _isDebug:
 		var enDis = "en" if enabled else "dis"
 		print("Archipelago Client " + enDis + "abled")
 	if !enabled:
-		ArchipelagoConnectionManager.startDisconnection()
-	ArchipelagoDataManager.enabled = enabled
+		archipelagoConnectionManager.startDisconnection()
+	archipelagoDataManager.setEnabled(enabled)
 	_hostField.editable = enabled
 	_playerField.editable = enabled
 	_passwordField.editable = enabled

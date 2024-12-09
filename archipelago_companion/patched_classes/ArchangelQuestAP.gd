@@ -65,9 +65,7 @@ func update_clue_count():
 	for id in archangel_ids:
 		var flag = "encounter_" + id
 		# PATCH: ADD LINES HERE
-		if ArchipelagoConnectionManager.isEnabled:
-			print("This is where the game checks to see how many song parts")
-			print("you have. Change the flag id to be ap_" + flag)
+		flag = "ap_" + flag
 		# PATCH: STOP
 		if SaveState.has_flag(flag):
 			archangels_defeated += 1

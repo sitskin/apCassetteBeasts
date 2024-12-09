@@ -3,9 +3,7 @@ extends WiredChest
 var apItem = preload("res://mods/archipelago_companion/items/ap_item.tres")
 
 func get_loot()->Array:
-	if !ArchipelagoConnectionManager.isEnabled:
-		return .get_loot()
-	ArchipelagoConnectionManager.sendChestOpened(opened_flag)
+	DLC.mods_by_id.archipelago_companion.archipelagoConnectionManager.sendChestOpened(opened_flag)
 	return _getApItem()
 
 func _getApItem():

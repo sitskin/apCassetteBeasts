@@ -1,5 +1,5 @@
 extends UnlockAbilityAction
 
 func _run():
-	ArchipelagoConnectionManager.sendAbilityUnlocked(ability)
+	DLC.mods_by_id.archipelago_companion.archipelagoConnectionManager.sendAbilityUnlocked(ability)
 	return true

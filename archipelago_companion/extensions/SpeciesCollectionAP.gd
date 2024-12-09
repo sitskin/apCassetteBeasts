@@ -27,17 +27,8 @@ func register(tape:MonsterTape):
 		if get_parent().stats.get_stat("registered_bootleg_types").get_count(bootleg_type) == 0:
 			get_parent().stats.get_stat("registered_bootleg_types").report_event(bootleg_type)
 	
-	# NEW CODE: only run if enabled
-	if tape.form.unlock_ability != "" and ArchipelagoConnectionManager.isEnabled:
-		print("This is where the game gives you an ablility after you have")
-		print("caught a mon. Send the check to the AP manager instead.")
-		# TODO: connect to AP manager got check
-		ArchipelagoConnectionManager.sendAbilityUnlocked(tape.form.unlock_ability)
-		return
-	# return so the vanila code does not run
-	
-	if tape.form.unlock_ability != "" and get_parent().has_flag("encounter_aa_oldgante"):
-		emit_signal("ability_unlocked", tape.form.unlock_ability)
+	if tape.form.unlock_ability != "":
+		DLC.mods_by_id.archipelago_companion.archipelagoConnectionManager.sendAbilityUnlocked(tape.form.unlock_ability)
 
 # return value is only used in UnlockDeferredAbilitiesAction, which is only used in the 
 # tutorial, I guess if you happened to somehow record a mon that gives you 
@@ -45,7 +36,7 @@ func register(tape:MonsterTape):
 # oldgante flag blocker this is no longer needed
 func unlock_abilities()->Array:
 	# return if AP is enabled since we don't need this code
-	if not get_parent().has_flag("encounter_aa_oldgante") or ArchipelagoConnectionManager.isEnabled:
+	if not get_parent().has_flag("encounter_aa_oldgante") or preload("res://mods/archipelago_companion/managers/ArchipelagoDataManager.gd").new().getEnabled():
 		return []
 	var unlocked = []
 	for id in obtained.keys():

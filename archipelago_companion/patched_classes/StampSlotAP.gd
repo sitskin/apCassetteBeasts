@@ -39,9 +39,7 @@ func is_met()->bool:
 func is_defeated()->bool:
 	var flag_name = "encounter_" + captain_id
 	# PATCH: ADD LINES HERE
-	if ArchipelagoConnectionManager.isEnabled:
-		print("This is where the game checks to see if you have defeated this")
-		print("stamp's captain. Change the flag id to be ap_" + flag_name)
+	flag_name = "ap_" + flag_name
 	# PATCH: STOP
 	return captain_id != "" and SaveState.has_flag(flag_name)
 
