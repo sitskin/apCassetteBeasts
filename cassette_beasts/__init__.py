@@ -10,7 +10,7 @@ from .Locations import CassetteBeastsLocation, location_table, location_data_tab
 from .Options import CassetteBeastsOptions
 from .Regions import region_data
 
-from .Data.tape_data import monsterCount
+from .Data.tape_data import monsterCount, monsters
 
 class CassetteBeastsWebWorld(WebWorld):
 	theme = "grass"
@@ -48,8 +48,10 @@ class CassetteBeastsWorld(World):
 
 		# Tapesanity
 		if self.options.tapesanity != "none":
-			# TODO add dlc option to monsterCount
-			count = monsterCount() if self.options.tapesanity == "specific" else self.options.tapesanity_percentage_item_count
+			count = monsterCount(self.options) if self.options.tapesanity == "specific" else self.options.tapesanity_percentage_item_count
+			count -= 9 # remaster stickers and 2 skelly jelly
+			item_pool += [CassetteBeastsItem("Skelly Jelly", IC.progression, item_data_table["Skelly Jelly"].code, self.player)
+							for i in range(2)]
 			#print(f"Tapesanity count: {count}")
 			if count >= 14:
 				for name in cb_tape_items.keys():
@@ -60,8 +62,7 @@ class CassetteBeastsWorld(World):
 
 		# Bootlegsanity
 		if self.options.bootlegsanity != "none":
-			# TODO add dlc option to monsterCount
-			count = monsterCount()*14 if self.options.bootlegsanity == "specific" else self.options.bootlegsanity_percentage_item_count
+			count = monsterCount(self.options)*14 if self.options.bootlegsanity == "specific" else self.options.bootlegsanity_percentage_item_count
 			#print(f"Bootlegsanity count: {count}")
 			items = ["Ritual Candle", "Cyber Material x20", "Black Shuck's Tape"]
 			item_pool += [self.create_item(c) for c in choices(items, weights=[1,3,2], k=count)]
@@ -112,6 +113,15 @@ class CassetteBeastsWorld(World):
 			event.place_locked_item(CassetteBeastsItem(data.item, IC.progression_skip_balancing, None, self.player))
 			region.locations += [event]
 
+		# For tapesanity percentage, bootlegsanity, and fusionsanity we need Recorded of each monster
+		if self.options.tapesanity != "specific" and\
+		(self.options.tapesanity == "percentage" or self.options.bootlegsanity != "none" or self.options.fusionsanity):
+			for monster in monsters(self.options).keys():
+				region = self.multiworld.get_region("Menu", self.player)
+				event = CassetteBeastsLocation(self.player, f"Recorded {monster}", None, region)
+				event.place_locked_item(CassetteBeastsItem(f"Recorded {monster}", IC.progression_skip_balancing, None, self.player))
+				region.locations += [event]
+
 		self.multiworld.completion_condition[self.player] = lambda state: state.has("Victory", self.player)
 
 
@@ -123,6 +133,7 @@ class CassetteBeastsWorld(World):
 		set_rules(self)
 
 	def generate_early(self):
+		print(self.fill_slot_data())
 		# Check if Tapesanity Percentage has too many items and fix
 		if self.options.tapesanity == "percentage":
 			count = self.options.tapesanity_percentage_item_count
@@ -151,21 +162,22 @@ class CassetteBeastsWorld(World):
 		
 		return {
 			"item_id_to_name": {value.code: (value.cb_name, value.amount) for value in item_data_table.values()},
-			"location_name_to_id": {value.cb_name: value.address for value in location_data_table.values()},
+			"location_name_to_id": {value.cb_name: value.address for name, value in location_data_table.items() if isLocation(self.options, name)},
 			"settings": {
-			"death_link": self.options.death_link.value,
-			"shuffle_chest_loot_tables": self.options.shuffle_chest_loot_tables.value,
-			"traps": self.options.traps != "none",
-			"shopsanity": self.options.shopsanity.value,
-			"trainersanity": self.options.trainersanity.value,
-			"tapesanity": self.options.tapesanity.value,
-			"tapesanity_percentage": self.options.tapesanity_percentage.value,
-			"tapesanity_percentage_item_count": self.options.tapesanity_percentage_item_count.value,
-			"bootlegsanity": self.options.bootlegsanity.value,
-			"bootlegsanity_percentage": self.options.bootlegsanity_percentage.value,
-			"bootlegsanity_percentage_item_count": self.options.bootlegsanity_percentage_item_count.value,
-			"fusionsanity": self.options.fusionsanity.value,
-			"fusionsanity_amount": self.options.fusionsanity_amount.value,
-			"fusionsanity__item_count": self.options.fusionsanity_item_count.value,
+				"death_link": self.options.death_link.value,
+				"use_pier": self.options.use_pier.value,
+				"shuffle_chest_loot_tables": self.options.shuffle_chest_loot_tables.value,
+				"traps": self.options.traps != "none",
+				"shopsanity": self.options.shopsanity.value,
+				"trainersanity": self.options.trainersanity.value,
+				"tapesanity": self.options.tapesanity.value,
+				"tapesanity_percentage": self.options.tapesanity_percentage.value,
+				"tapesanity_percentage_item_count": self.options.tapesanity_percentage_item_count.value,
+				"bootlegsanity": self.options.bootlegsanity.value,
+				"bootlegsanity_percentage": self.options.bootlegsanity_percentage.value,
+				"bootlegsanity_percentage_item_count": self.options.bootlegsanity_percentage_item_count.value,
+				"fusionsanity": self.options.fusionsanity.value,
+				"fusionsanity_amount": self.options.fusionsanity_amount.value,
+				"fusionsanity__item_count": self.options.fusionsanity_item_count.value,
 			},
 		}
