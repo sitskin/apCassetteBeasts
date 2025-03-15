@@ -1,5 +1,8 @@
 from worlds.generic.Rules import set_rule, add_rule
 
+from .Locations import location_data_table, event_data_table, isTPL
+from .Regions import region_data
+from .Data.tape_data import monsters, monsterCount, types
 
 def canGlide(state, player):
 	return state.has("Progressive Glide", player)
@@ -39,6 +42,54 @@ def clearedLandkeeperOffices(state, player):
 		state.can_reach_location("Landkeeper Office 3 Cabinet (7,-7)",    player) and\
 		state.can_reach_location("Landkeeper Office 4 Cabinet (1,-7)",    player) and\
 		state.can_reach_location("Landkeeper Office 5 Cabinet (-6,-3)",   player)
+
+def getCanReachMonsters(options=None):
+	return {monster: getCanReachMonster(monster, data) for monster, data in monsters(options).items()}
+
+
+def getCanReachMonster(_monster, data):
+	monster = _monster[:]
+	#print(f"Creating check: {monster} {data['locations']}")
+	def canReachMonster(state, player):
+		res = []
+		#print(monster, data["locations"])
+		for loc in data["locations"]:
+			#print(loc)
+			if loc in region_data.keys():
+				#print(f"{loc}   region")
+				res.append(state.can_reach_region(loc, player))
+			elif loc in location_data_table.keys():
+				#print(f"{loc}   location {monster}")
+				res.append(state.can_reach_location(loc, player))
+			elif loc in event_data_table.keys():
+				#print(f"{loc}   event {monster}")
+				res.append(state.has(loc, player))
+			elif loc[:8] == "remaster":
+				#print(f"{loc}   remaster")
+				s = loc.split("_")
+				if len(s[0].split("-")) == 1:
+					# regular remaster
+					res.append(state.can_reach_location(f"Recorded {s[1]}", player))
+				elif s[0].split("-")[1] in types:
+					# bootleg remaster
+					res.append(state.can_reach_location(f"Recorded {s[0].split('-')[1].capitalize()} {s[1]}", player))
+				elif len(s[0].split("-")) == 2:
+					# required move
+					#print(f"{loc}   remaster with move {monster}")
+					#print(s[0].split("-")[1])
+					res.append(
+						state.can_reach_location(f"Recorded {s[1]}", player) and\
+						state.has(s[0].split("-")[1]+" Sticker", player)
+						)
+		return any(res)
+	return canReachMonster
+
+def reachableMonsterCount(state, player):
+	res = 0
+	for monster in monsters(None).keys():
+		if state.has(f"Recorded {monster}", player):
+			res += 1
+	return res
 
 
 def set_rules(cbworld):
@@ -83,6 +134,11 @@ def set_rules(cbworld):
 
 	#Deadlands Coast
 
+	#Dino Quarry
+	for e in multiworld.get_region("Dino Quarry", player).entrances:
+		if e.name == "Autumn Hill":
+			set_rule(e, lambda state: canDash(state, player))
+
 	#New London
 	for e in multiworld.get_region("New London", player).entrances:
 		set_rule(e, lambda state: canMagnetism(state, player))
@@ -104,6 +160,8 @@ def set_rules(cbworld):
 	#Ham
 
 	#The Marshes
+
+	#Spider Cave
 
 	#Piper Farm
 
@@ -161,11 +219,27 @@ def set_rules(cbworld):
 
 	#Night's Bridge Station
 	for e in multiworld.get_region("Night's Bridge Station", player).entrances:
-		set_rule(e, lambda state: state.has("Song Fragment", player, 8))
+		set_rule(e, lambda state: state.has("Song Fragment", player, 8) and canGlide(state, player))
 
 	#Postgame
 	for e in multiworld.get_region("Postgame", player).entrances:
 		set_rule(e, lambda state: state.has("Azure Keystone", player, 2))
+
+	#Brightside Pier
+	for e in multiworld.get_region("Brightside Pier", player).entrances:
+		set_rule(e, lambda state: False)# dlc, also needs half of archangels defeated
+
+	#The Witch House
+	for e in multiworld.get_region("The Witch House", player).entrances:
+		set_rule(e, lambda state: False)# dlc
+
+	#Funworld
+	for e in multiworld.get_region("Funworld", player).entrances:
+		set_rule(e, lambda state: False)# dlc
+
+	#Cosmic Zone
+	for e in multiworld.get_region("Cosmic Zone", player).entrances:
+		set_rule(e, lambda state: False)# dlc
 
 
 	#---Location Rules---
@@ -177,11 +251,13 @@ def set_rules(cbworld):
 		lambda state: state.has("White Rabbit Key", player))
 	set_rule(multiworld.get_location("Defeat Lamento Mori", player),
 		lambda state: state.has("Train Ticket (Aldgrave Tomb)", player))
+	set_rule(multiworld.get_location("Beat Skip", player),
+		lambda state: canGlide(state, player) or canSwim(state, player))
 	set_rule(multiworld.get_location("Beat Clee-o", player),
 		lambda state: state.has("Coin", player))
 	set_rule(multiworld.get_location("Beat Buffy", player),
 		lambda state: canDash(state, player))
-	set_rule(multiworld.get_location("Beat Iantha", player),
+	set_rule(multiworld.get_location("Beat Ianthe", player),
 		lambda state: hasAllStamps(state, player))
 	set_rule(multiworld.get_location("Harbourtown Chest under Crate on Flour Mill (0,-1)", player),
 		lambda state: canDash(state, player))
@@ -282,7 +358,19 @@ def set_rules(cbworld):
 	set_rule(multiworld.get_location("Landkeeper Office 5 Cabinet (-6,-3)", player),
 		lambda state: canGlide(state, player) and state.has("Landkeeper Window Key", player))
 
-	#--Trainersanity---
+	#---Events---
+	set_rule(multiworld.get_location("Recruited Kayleigh", player),
+		lambda state: state.has("Defeated Oldgante", player))
+	set_rule(multiworld.get_location("Recruited Eugene", player),
+		lambda state: state.has("Defeated Oldgante", player))
+	set_rule(multiworld.get_location("Recruited Meredith", player),
+		lambda state: state.has("Envelope for Meredith", player))
+	set_rule(multiworld.get_location("Recruited Barkley", player),
+		lambda state: state.has("Progressive Climb", player))
+	set_rule(multiworld.get_location("Cleared Landkeeper Offices", player),
+		lambda state: clearedLandkeeperOffices(state, player))
+
+	#---Trainersanity---
 	if cbworld.options.trainersanity:
 		set_rule(multiworld.get_location("Cherry Meadow Ranger Trainee Battle Near Buffy (-4,-4)", player),
 			lambda state: canDash(state, player))
@@ -297,14 +385,30 @@ def set_rules(cbworld):
 		set_rule(multiworld.get_location("Landkeeper Office 5 Battle (-6,-3)", player),
 			lambda state: canGlide(state, player) and state.has("Landkeeper Window Key", player))
 
-	#---Events---
-	set_rule(multiworld.get_location("Recruited Kayleigh", player),
-		lambda state: state.has("Defeated Oldgante", player))
-	set_rule(multiworld.get_location("Recruited Eugene", player),
-		lambda state: state.has("Defeated Oldgante", player))
-	set_rule(multiworld.get_location("Recruited Meredith", player),
-		lambda state: state.has("Envelope for Meredith", player))
-	set_rule(multiworld.get_location("Recruited Barkley", player),
-		lambda state: state.has("Progressive Climb", player))
-	set_rule(multiworld.get_location("Cleared Landkeeper Offices", player),
-		lambda state: clearedLandkeeperOffices(state, player))
+	# Monster access rules for Tapesanity, Bootlegsanity, and Fusionsanity
+	for monster, access in getCanReachMonsters(cbworld.options).items():
+		set_rule(multiworld.get_location(f"Recorded {monster}", player),
+			lambda state, a=access: a(state, player))
+
+	if cbworld.options.tapesanity == "percentage":
+		for i in range(monsterCount(cbworld.options)):
+			if isTPL(cbworld.options, f"Recorded {i+1} Monsters"):
+				set_rule(multiworld.get_location(f"Recorded {i+1} Monsters", player),
+					lambda state: reachableMonsterCount(state, player) >= i+1)
+
+	if cbworld.options.bootlegsanity in ["per_tape", "specific"]:
+		for monster, access in getCanReachMonsters(cbworld.options).items():
+			if cbworld.options.bootlegsanity == "specific":
+				for _type in types:
+					set_rule(multiworld.get_location(f"Recorded {_type.capitalize()} Bootleg {monster}", player),
+						lambda state, a=access: a(state, player))
+			else:
+				set_rule(multiworld.get_location(f"Recorded Bootleg {monster}", player),
+					lambda state, a=access: a(state, player))
+
+	if cbworld.options.bootlegsanity in ["percentage_tape", "percentage_all"]:
+		mult = 1 if cbworld.options.bootlegsanity == "percentage_tape" else 14
+		for i in range(monsterCount(cbworld.options)):
+			if isBPL(cbworld.options, f"Recorded {i+1} Bootleg Monsters"):
+				set_rule(multiworld.get_location(f"Recorded {i+1} Bootleg Monsters", player),
+					lambda state: reachableMonsterCount(state, player)*mult >= i+1)

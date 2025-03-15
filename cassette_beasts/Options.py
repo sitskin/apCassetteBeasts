@@ -2,6 +2,12 @@ from dataclasses import dataclass
 from datetime import datetime
 from Options import DeathLink, Choice, Range, Toggle, PerGameCommonOptions, Visibility
 
+class UsePier(Toggle):#UNIMPLEMENTED
+    """
+    Adds the Pier of the Unknown locations and items
+    """
+    display_name = "Use Pier of the Unknown"
+    #visibility = Visibility.none
 
 class ShuffleChestLootTables(Toggle):#UNIMPLEMENTED
     """
@@ -13,7 +19,7 @@ class ShuffleChestLootTables(Toggle):#UNIMPLEMENTED
     """
     display_name = "Shuffle Chest Loot Tables"
 
-class Traps(Choice):
+class Traps(Choice):#UNIMPLEMENTED
     """
     Adds trap items to the item pool before filler items
     
@@ -183,17 +189,18 @@ class FusionsanityItemCount(Range):#UNIMPLEMENTED
 
 @dataclass
 class CassetteBeastsOptions(PerGameCommonOptions):
-	death_link: DeathLink
-	shuffle_chest_loot_tables: ShuffleChestLootTables
-	traps: Traps
-	shopsanity: Shopsanity
-	trainersanity: Trainersanity
-	tapesanity: Tapesanity
-	tapesanity_percentage: TapesanityPercentage
-	tapesanity_percentage_item_count: TapesanityPercentageItemCount
-	bootlegsanity: Bootlegsanity
-	bootlegsanity_percentage: BootlegsanityPercentage
-	bootlegsanity_percentage_item_count: BootlegsanityPercentageItemCount
-	fusionsanity: Fusionsanity
-	fusionsanity_amount: FusionsanityAmount
-	fusionsanity_item_count: FusionsanityItemCount
+    death_link: DeathLink
+    use_pier: UsePier
+    shuffle_chest_loot_tables: ShuffleChestLootTables
+    traps: Traps
+    shopsanity: Shopsanity
+    trainersanity: Trainersanity
+    tapesanity: Tapesanity
+    tapesanity_percentage: TapesanityPercentage
+    tapesanity_percentage_item_count: TapesanityPercentageItemCount
+    bootlegsanity: Bootlegsanity
+    bootlegsanity_percentage: BootlegsanityPercentage
+    bootlegsanity_percentage_item_count: BootlegsanityPercentageItemCount
+    fusionsanity: Fusionsanity
+    fusionsanity_amount: FusionsanityAmount
+    fusionsanity_item_count: FusionsanityItemCount

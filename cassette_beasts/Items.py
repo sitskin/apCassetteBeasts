@@ -138,6 +138,17 @@ cb_tape_items = {
 }
 
 id_off += len(cb_tape_items)
+cb_remaster_sticker_items = {
+	"Close Encounter Sticker": CassetteBeastsItemData("AP_sticker_close-encounter", id_off+0, IC.progression, 1, 1),
+	"Gear Shear Sticker": CassetteBeastsItemData("AP_sticker_gear-shear", id_off+1, IC.progression, 1, 1),
+	"Ice Coating Sticker": CassetteBeastsItemData("AP_sticker_ice-coating", id_off+2, IC.progression, 1, 1),
+	"Magic Tome Sticker": CassetteBeastsItemData("AP_sticker_magic-tome", id_off+3, IC.progression, 1, 1),
+	"Toy Hammer Sticker": CassetteBeastsItemData("AP_sticker_toy-hammer", id_off+4, IC.progression, 1, 1),
+	"Zephyr Sticker": CassetteBeastsItemData("AP_sticker_zephyr", id_off+5, IC.progression, 1, 1),
+	"Carnivore Sticker": CassetteBeastsItemData("AP_sticker_carnivore", id_off+6, IC.progression, 1, 1),
+}
+
+id_off += len(cb_remaster_sticker_items)
 cb_upgrade_items = {
 	"Miniature Refrigerator": CassetteBeastsItemData("carry_more_coffee", id_off+0, IC.useful, 1, 7),
 	"First Aid Pouch": CassetteBeastsItemData("carry_more_cures", id_off+1, IC.useful, 1, 17),
@@ -184,14 +195,19 @@ cb_trap_items = {
 	"Miss Mimic Trap": CassetteBeastsItemData("AP_trap_mimic", id_off+3, IC.trap, 1, 0),
 }
 
-item_data_table = cb_abilities|cb_key_items|cb_regular_items|cb_resource_items|cb_tape_items|cb_upgrade_items|cb_loot_table_items|cb_trap_items
-item_table = {name: data.code for name, data in item_data_table.items() if data.code is not None}
+item_data_table = cb_abilities|cb_key_items|cb_regular_items|cb_resource_items|\
+				  cb_tape_items|cb_remaster_sticker_items|cb_upgrade_items|\
+				  cb_loot_table_items|cb_trap_items
+item_table = {name: data.code
+	for name, data in item_data_table.items()
+	if data.code is not None}
 
 def shouldAddItem(options, name):
 	return  (name in cb_abilities.keys()) or\
 			(name in cb_key_items.keys()) or\
 			(name in cb_regular_items.keys()) or\
 			(name in cb_tape_items.keys()) or\
+			(name in cb_remaster_sticker_items.keys() and (options.tapesanity != "none" or options.bootlegsanity != "none")) or\
 			(name in cb_upgrade_items.keys() and options.shopsanity == True) or\
 			(name in cb_loot_table_items.keys() and options.shuffle_chest_loot_tables == True)
 
