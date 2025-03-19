@@ -49,7 +49,17 @@ cb_key_items = {
 	"Captain Buffy Stamp": CassetteBeastsItemData("AP_buffy_stamp", id_off+22, IC.progression),
 	"Captain Cybil Stamp": CassetteBeastsItemData("AP_cybil_stamp", id_off+23, IC.progression),
 	"Captain Codey Stamp": CassetteBeastsItemData("AP_codey_stamp", id_off+24, IC.progression),
-	"Song Fragment": CassetteBeastsItemData("AP_song_fragment", id_off+25, IC.progression, 1, 8),
+	"Song Fragment (Oldgante)": CassetteBeastsItemData("aa_oldgante", id_off+25, IC.progression, 1, 1),
+	"Song Fragment (Puppetox)": CassetteBeastsItemData("aa_puppet", id_off+26, IC.progression, 1, 1),
+	"Song Fragment (Mourningstar)": CassetteBeastsItemData("aa_mourningstar", id_off+27, IC.progression, 1, 1),
+	"Song Fragment (Nowhere Monarch)": CassetteBeastsItemData("aa_monarch", id_off+28, IC.progression, 1, 1),
+	"Song Fragment (Heckahedron)": CassetteBeastsItemData("aa_cube", id_off+29, IC.progression, 1, 1),
+	"Song Fragment (Alice)": CassetteBeastsItemData("aa_alice", id_off+30, IC.progression, 1, 1),
+	"Song Fragment (Robin Goodfellow)": CassetteBeastsItemData("aa_robin", id_off+31, IC.progression, 1, 1),
+	"Song Fragment (Mammon)": CassetteBeastsItemData("aa_mammon", id_off+32, IC.progression, 1, 1),
+	"Song Fragment (Lamento Mori)": CassetteBeastsItemData("aa_lamento_mori", id_off+33, IC.progression, 1, 1),
+	"Song Fragment (Babelith)": CassetteBeastsItemData("aa_tower", id_off+34, IC.progression, 1, 1),
+	"Song Fragment (Kuneko)": CassetteBeastsItemData("aa_kuneko", id_off+35, IC.progression, 1, 1),
 }
 
 id_off += len(cb_key_items)
@@ -139,13 +149,13 @@ cb_tape_items = {
 
 id_off += len(cb_tape_items)
 cb_remaster_sticker_items = {
-	"Close Encounter Sticker": CassetteBeastsItemData("AP_sticker_close-encounter", id_off+0, IC.progression, 1, 1),
+	"Close Encounter Sticker": CassetteBeastsItemData("AP_sticker_close-encounter", id_off+0, IC.progression, 1, 0),
 	"Gear Shear Sticker": CassetteBeastsItemData("AP_sticker_gear-shear", id_off+1, IC.progression, 1, 1),
-	"Ice Coating Sticker": CassetteBeastsItemData("AP_sticker_ice-coating", id_off+2, IC.progression, 1, 1),
-	"Magic Tome Sticker": CassetteBeastsItemData("AP_sticker_magic-tome", id_off+3, IC.progression, 1, 1),
-	"Toy Hammer Sticker": CassetteBeastsItemData("AP_sticker_toy-hammer", id_off+4, IC.progression, 1, 1),
-	"Zephyr Sticker": CassetteBeastsItemData("AP_sticker_zephyr", id_off+5, IC.progression, 1, 1),
-	"Carnivore Sticker": CassetteBeastsItemData("AP_sticker_carnivore", id_off+6, IC.progression, 1, 1),
+	"Ice Coating Sticker": CassetteBeastsItemData("AP_sticker_ice-coating", id_off+2, IC.progression, 1, 0),
+	"Magic Tome Sticker": CassetteBeastsItemData("AP_sticker_magic-tome", id_off+3, IC.progression, 1, 0),
+	"Toy Hammer Sticker": CassetteBeastsItemData("AP_sticker_toy-hammer", id_off+4, IC.progression, 1, 0),
+	"Zephyr Sticker": CassetteBeastsItemData("AP_sticker_zephyr", id_off+5, IC.progression, 1, 0),
+	"Carnivore Sticker": CassetteBeastsItemData("AP_sticker_carnivore", id_off+6, IC.progression, 1, 0),
 }
 
 id_off += len(cb_remaster_sticker_items)
@@ -207,7 +217,7 @@ def shouldAddItem(options, name):
 			(name in cb_key_items.keys()) or\
 			(name in cb_regular_items.keys()) or\
 			(name in cb_tape_items.keys()) or\
-			(name in cb_remaster_sticker_items.keys() and (options.tapesanity != "none" or options.bootlegsanity != "none")) or\
+			(name in cb_remaster_sticker_items.keys() and (options.tapesanity != "none" or options.bootlegsanity != "none" or options.fusionsanity)) or\
 			(name in cb_upgrade_items.keys() and options.shopsanity == True) or\
 			(name in cb_loot_table_items.keys() and options.shuffle_chest_loot_tables == True)
 

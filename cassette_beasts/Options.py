@@ -164,10 +164,12 @@ class FusionsanityAmount(Range):#UNIMPLEMENTED
     """
     The number of fusions that must be seen or fused
       into to obtain all items
+    Without the Pier of the Unknown dlc, the max
+      amount is 16384
     """
     display_name = "Fusionsanity Amount"
     range_start = 1
-    range_end = 128**2
+    range_end = 139**2
     default = 32
     if datetime.today().month != 3:
         visibility = Visibility.none
@@ -182,7 +184,7 @@ class FusionsanityItemCount(Range):#UNIMPLEMENTED
     """
     display_name = "Fusionsanity Item Count"
     range_start = 1
-    range_end = 1024
+    range_end = 2048
     default = 16
     if datetime.today().month != 3:
         visibility = Visibility.none

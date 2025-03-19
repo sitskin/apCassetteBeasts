@@ -1,6 +1,8 @@
+from math import ceil
+
 from worlds.generic.Rules import set_rule, add_rule
 
-from .Locations import location_data_table, event_data_table, isTPL
+from .Locations import location_data_table, event_data_table, isTPL, isBPL
 from .Regions import region_data
 from .Data.tape_data import monsters, monsterCount, types
 
@@ -47,25 +49,17 @@ def getCanReachMonsters(options=None):
 	return {monster: getCanReachMonster(monster, data) for monster, data in monsters(options).items()}
 
 
-def getCanReachMonster(_monster, data):
-	monster = _monster[:]
-	#print(f"Creating check: {monster} {data['locations']}")
+def getCanReachMonster(monster, data):
 	def canReachMonster(state, player):
 		res = []
-		#print(monster, data["locations"])
 		for loc in data["locations"]:
-			#print(loc)
 			if loc in region_data.keys():
-				#print(f"{loc}   region")
 				res.append(state.can_reach_region(loc, player))
 			elif loc in location_data_table.keys():
-				#print(f"{loc}   location {monster}")
 				res.append(state.can_reach_location(loc, player))
 			elif loc in event_data_table.keys():
-				#print(f"{loc}   event {monster}")
 				res.append(state.has(loc, player))
 			elif loc[:8] == "remaster":
-				#print(f"{loc}   remaster")
 				s = loc.split("_")
 				if len(s[0].split("-")) == 1:
 					# regular remaster
@@ -75,8 +69,6 @@ def getCanReachMonster(_monster, data):
 					res.append(state.can_reach_location(f"Recorded {s[0].split('-')[1].capitalize()} {s[1]}", player))
 				elif len(s[0].split("-")) == 2:
 					# required move
-					#print(f"{loc}   remaster with move {monster}")
-					#print(s[0].split("-")[1])
 					res.append(
 						state.can_reach_location(f"Recorded {s[1]}", player) and\
 						state.has(s[0].split("-")[1]+" Sticker", player)
@@ -84,11 +76,15 @@ def getCanReachMonster(_monster, data):
 		return any(res)
 	return canReachMonster
 
-def reachableMonsterCount(state, player):
+def reachableMonsterCount(options, state, player):
 	res = 0
-	for monster in monsters(None).keys():
-		if state.has(f"Recorded {monster}", player):
-			res += 1
+	for monster in monsters(options).keys():
+		if options.tapesanity == "specific":
+			if state.can_reach_location(f"Recorded {monster}", player):
+				res += 1
+		else:
+			if state.has(f"Recorded {monster}", player):
+				res += 1
 	return res
 
 
@@ -219,7 +215,7 @@ def set_rules(cbworld):
 
 	#Night's Bridge Station
 	for e in multiworld.get_region("Night's Bridge Station", player).entrances:
-		set_rule(e, lambda state: state.has("Song Fragment", player, 8) and canGlide(state, player))
+		set_rule(e, lambda state: state.has_group("song fragments", player, 8) and canGlide(state, player))
 
 	#Postgame
 	for e in multiworld.get_region("Postgame", player).entrances:
@@ -369,6 +365,8 @@ def set_rules(cbworld):
 		lambda state: state.has("Progressive Climb", player))
 	set_rule(multiworld.get_location("Cleared Landkeeper Offices", player),
 		lambda state: clearedLandkeeperOffices(state, player))
+	set_rule(multiworld.get_location("Victory", player),
+		lambda state: state.has("Azure Keystone", player, 2))
 
 	#---Trainersanity---
 	if cbworld.options.trainersanity:
@@ -386,15 +384,16 @@ def set_rules(cbworld):
 			lambda state: canGlide(state, player) and state.has("Landkeeper Window Key", player))
 
 	# Monster access rules for Tapesanity, Bootlegsanity, and Fusionsanity
-	for monster, access in getCanReachMonsters(cbworld.options).items():
-		set_rule(multiworld.get_location(f"Recorded {monster}", player),
-			lambda state, a=access: a(state, player))
+	if cbworld.options.tapesanity or cbworld.options.bootlegsanity or cbworld.options.fusionsanity:
+		for monster, access in getCanReachMonsters(cbworld.options).items():
+			set_rule(multiworld.get_location(f"Recorded {monster}", player),
+				lambda state, a=access: a(state, player))
 
 	if cbworld.options.tapesanity == "percentage":
 		for i in range(monsterCount(cbworld.options)):
 			if isTPL(cbworld.options, f"Recorded {i+1} Monsters"):
 				set_rule(multiworld.get_location(f"Recorded {i+1} Monsters", player),
-					lambda state: reachableMonsterCount(state, player) >= i+1)
+					lambda state: reachableMonsterCount(cbworld.options, state, player) >= i+1)
 
 	if cbworld.options.bootlegsanity in ["per_tape", "specific"]:
 		for monster, access in getCanReachMonsters(cbworld.options).items():
@@ -411,4 +410,11 @@ def set_rules(cbworld):
 		for i in range(monsterCount(cbworld.options)):
 			if isBPL(cbworld.options, f"Recorded {i+1} Bootleg Monsters"):
 				set_rule(multiworld.get_location(f"Recorded {i+1} Bootleg Monsters", player),
-					lambda state: reachableMonsterCount(state, player)*mult >= i+1)
+					lambda state: reachableMonsterCount(cbworld.options, state, player)*mult >= i+1)
+
+	if cbworld.options.fusionsanity:
+		count = cbworld.options.fusionsanity_item_count
+		fuses_per_item = cbworld.options.fusionsanity_amount // count
+		for i in range(count-1):
+			set_rule(multiworld.get_location(f"Seen Some Fusions {i+1}", player),
+				lambda state: reachableMonsterCount(cbworld.options, state, player)**2 >= (i+1)*fuses_per_item)

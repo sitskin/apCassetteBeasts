@@ -591,6 +591,8 @@ def isFL(options, name):# is Fusionsanity Location
 			(int(name[18:]) <= options.fusionsanity_item_count)
 
 def isLocation(options, name):
+	if not hasDLC(options, name):
+		return False
 	return  (name in base_locations.keys()) or\
 			(name in chest_loot_locations.keys() and options.shuffle_chest_loot_tables == True) or\
 			(name in shopsanity_locations.keys() and options.shopsanity == True) or\
@@ -601,6 +603,13 @@ def isLocation(options, name):
 			(name in bootlegsanity_specific_locations.keys() and options.bootlegsanity == "specific") or\
 			(name in bootlegsanity_percentage_locations.keys() and isBPL(options, name)) or\
 			(name in fusionsanity_locations.keys() and isFL(options, name))
+
+def hasDLC(options, name):
+	for mon, data in monsters(None).items():
+		if mon in name:
+			if data['dlc'] == "pier":
+				return options.use_pier
+	return True
 
 def getLocationCount(options):
 	count = len(base_locations)
@@ -614,7 +623,7 @@ def getLocationCount(options):
 		count += len(trainersanity_locations)
 
 	if options.tapesanity == "specific":
-		count += len(tapesanity_locations)
+		count += monsterCount(options)
 	elif options.tapesanity == "percentage":
 		percent = options.tapesanity_percentage/100
 		if options.tapesanity_percentage_item_count > ceil(monsterCount(options)*percent):
@@ -623,13 +632,14 @@ def getLocationCount(options):
 			count += options.tapesanity_percentage_item_count
 
 	if options.bootlegsanity == "per_tape":
-		count += len(bootlegsanity_per_tape_locations)
+		count += monsterCount(options)
 	elif options.bootlegsanity == "specific":
-		count += len(bootlegsanity_specific_locations)
+		count += monsterCount(options)*14
 	elif options.bootlegsanity in ["percentage_tape", "percentage_all"]:
 		percent = (options.bootlegsanity_percentage/100)
-		if options.bootlegsanity_percentage_item_count > ceil(monsterCount(options)*14*percent):
-			count += ceil(monsterCount(options)*14*percent)
+		_max = ceil(monsterCount(options)*14*percent) if options.bootlegsanity == "percentage_all" else ceil(monsterCount(options)*percent)
+		if options.bootlegsanity_percentage_item_count > _max:
+			count += _max
 		else:
 			count += options.bootlegsanity_percentage_item_count
 
