@@ -1075,6 +1075,8 @@ base_monsters = {
 		'stats': [130,130,130,130,130,150],
 		},
 }
+for data in base_monsters.values():
+	data['dlc'] = None
 
 other_monsters = {
 	"Magikrab": {
@@ -1082,6 +1084,7 @@ other_monsters = {
 		'locations': ["remaster-astral_Traffikrab"],
 		'type': "astral",
 		'stats': [105,160,105,160,150,120],
+		'dlc': None,
 		},
 }
 
@@ -1163,6 +1166,8 @@ pier_monsters = {
 		'stats': [150,120,140,170,200,60],
 		},
 }
+for data in pier_monsters.values():
+	data['dlc'] = "pier"
 
 types = [
 	"air",

@@ -5,7 +5,8 @@ from random import choices
 from BaseClasses import Location, Region, ItemClassification as IC
 from worlds.AutoWorld import WebWorld, World
 
-from .Items import CassetteBeastsItem, item_table, item_data_table, cb_regular_items, cb_resource_items, cb_tape_items, cb_trap_items, shouldAddItem
+from .Groups import item_groups, location_groups
+from .Items import CassetteBeastsItem, item_table, item_data_table, cb_regular_items, cb_resource_items, cb_tape_items, cb_trap_items, cb_remaster_sticker_items, shouldAddItem
 from .Locations import CassetteBeastsLocation, location_table, location_data_table, event_data_table, getLocationCount, isLocation
 from .Options import CassetteBeastsOptions
 from .Regions import region_data
@@ -27,6 +28,8 @@ class CassetteBeastsWorld(World):
 	options: CassetteBeastsOptions
 	item_name_to_id = item_table
 	location_name_to_id = location_table
+	item_name_groups = item_groups
+	location_name_groups = location_groups
 
 	def create_item(self, name):
 		
@@ -49,10 +52,10 @@ class CassetteBeastsWorld(World):
 		# Tapesanity
 		if self.options.tapesanity != "none":
 			count = monsterCount(self.options) if self.options.tapesanity == "specific" else self.options.tapesanity_percentage_item_count
-			count -= 9 # remaster stickers and 2 skelly jelly
+			count -= 8 # remaster stickers except gear shear and 2 skelly jelly
 			item_pool += [CassetteBeastsItem("Skelly Jelly", IC.progression, item_data_table["Skelly Jelly"].code, self.player)
 							for i in range(2)]
-			#print(f"Tapesanity count: {count}")
+			item_pool += [self.create_item(item_name) for item_name, item_data in cb_remaster_sticker_items.items() if item_data.count == 0]
 			if count >= 14:
 				for name in cb_tape_items.keys():
 					if name in ["Basic Tape x5", "Chrome Tape x5", "Optical Laser Tape", "Black Shuck's Tape"]:
@@ -63,26 +66,28 @@ class CassetteBeastsWorld(World):
 		# Bootlegsanity
 		if self.options.bootlegsanity != "none":
 			count = monsterCount(self.options)*14 if self.options.bootlegsanity == "specific" else self.options.bootlegsanity_percentage_item_count
-			#print(f"Bootlegsanity count: {count}")
 			items = ["Ritual Candle", "Cyber Material x20", "Black Shuck's Tape"]
 			item_pool += [self.create_item(c) for c in choices(items, weights=[1,3,2], k=count)]
 
 		# Fusionsanity
 		if self.options.fusionsanity:
 			for i in range(self.options.fusionsanity_item_count):
-				#print(i)
 				item_pool += [CassetteBeastsItem("Pear Fusilli", IC.filler, item_data_table["Pear Fusilli"].code, self.player)]
+
+		if self.options.tapesanity == "none" and (self.options.bootlegsanity != "none" or self.options.fusionsanity):
+			# Add remaster stickers except gear shear if not using tapesanity caused them to be skipped
+			item_pool += [self.create_item(item_name) for item_name, item_data in cb_remaster_sticker_items.items() if item_data.count == 0]
 
 		# Add Traps
 		if self.options.traps != "none":
 			remaining = getLocationCount(self.options)-len(item_pool)
-			if self.options.traps.value == "few":
+			if self.options.traps == "few":
 				count = min(max(4, remaining//20), remaining)
-			elif self.options.traps.value == "some":
+			elif self.options.traps == "some":
 				count = min(max(5, remaining//5), remaining)
-			elif self.options.traps.value == "many":
+			elif self.options.traps == "many":
 				count = min(max(6, remaining//2), remaining)
-			item_pool += [self.create_item(c) for c in choices([*cb_trap_items.keys()], [5,2,3,1], k=remaining)]
+			item_pool += [self.create_item(c) for c in choices([*cb_trap_items.keys()], [5,2,3,1], k=count)]
 
 		# Randomized Filler
 		item_pool += [self.create_item(c)
@@ -153,7 +158,9 @@ class CassetteBeastsWorld(World):
 		# Check if Fusionsanity has too many items
 		if self.options.fusionsanity:
 			count = self.options.fusionsanity_item_count
-			locs = int(self.options.fusionsanity_amount)
+			locs = self.options.fusionsanity_amount
+			if locs > 16384 and not self.options.use_pier:
+				locs = 16384
 			if count > locs:
 				print(f"Too many items for Fusionsanity: reducing from {count} to {locs}")
 				self.options.fusionsanity_item_count.value = locs
