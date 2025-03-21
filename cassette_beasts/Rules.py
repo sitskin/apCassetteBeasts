@@ -248,7 +248,7 @@ def set_rules(cbworld):
 	set_rule(multiworld.get_location("Defeat Lamento Mori", player),
 		lambda state: state.has("Train Ticket (Aldgrave Tomb)", player))
 	set_rule(multiworld.get_location("Beat Skip", player),
-		lambda state: canGlide(state, player) or canSwim(state, player))
+		lambda state: canFly(state, player) or canSwim(state, player))
 	set_rule(multiworld.get_location("Beat Clee-o", player),
 		lambda state: state.has("Coin", player))
 	set_rule(multiworld.get_location("Beat Buffy", player),
