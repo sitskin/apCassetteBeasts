@@ -82,22 +82,23 @@ func _onFileLoaded():
 	# add all missing items to _itemsReceivedWhileNotInWorld
 
 func _getApItemConsole(itemName: String):
-	_onApItemReceived(itemName, {item = 1, location = 2, player = 3, flags = 0})
+	pass
+	#_onApItemReceived(itemName, {item = 1, location = 2, player = 3, flags = 0})
 
 # recieving items from server
 # item is {item: int, location: int, player: int, flags: int}
 # flags are 0b001: logic, 0b010: important, 0b100: trap
-func _onApItemReceived(itemName: String, item: Dictionary):
+func _onApItemReceived(item_data: Array, network_item: Dictionary):
 	# assuming that I cannot get an item via item_received more than once
-	SaveState.other_data.archipelago.receivedItems.push_back(item)
+	SaveState.other_data.archipelago.receivedItems.push_back(network_item)
 	if !WorldSystem.is_in_world():
-		_itemsReceivedWhileNotInWorld.append({"itemName": itemName, "item": item})
+		_itemsReceivedWhileNotInWorld.append({"itemName": item_data[0], "itemAmount": item_data[1]})
 		return
-	_givePlayerItem(itemName, item)
+	_givePlayerItem(item_data[0], item_data[1])
 
-func _givePlayerItem(itemName: String, item: Dictionary):
+func _givePlayerItem(itemName: String, itemAmount: int):
 	# "wood*100"
-	if _tryGiveItem(itemName):
+	if _tryGiveItem(itemName, itemAmount):
 		return
 	if SaveState.abilities.has(itemName):
 		return _onAbilityReceived(itemName)
@@ -118,11 +119,7 @@ func _isItemResourceName(itemName: String):
 			fileName = dir.get_next()
 	return false
 
-func _tryGiveItem(apItemName: String):
-	# "wood*100"
-	var parts = apItemName.split("*")
-	var itemName = parts[0]
-	var itemAmount = int(parts[1]) if parts.size() > 1 else 1
+func _tryGiveItem(itemName: String, itemAmount: int):
 	var item = ItemFactory.create_from_id(itemName)
 	if item == null:
 		return false
@@ -142,7 +139,7 @@ func _onStampReceived(captainName: String):
 	SaveState.set_flag("ap_encounter_" + captainName, true)
 	print("Stamp for captain %s given to player" % captainName)
 
-func _onFlagChanged(flag: String, value: String):
+func _onFlagChanged(flag: String, value: bool):
 	if "captain" in flag and value:
 		return sendCaptainDefeated(flag)
 	if "aa" in flag and value:

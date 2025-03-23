@@ -45,6 +45,17 @@ func connect_to_server(server: String) -> bool:
 	if connection_state == State.STATE_OPEN:
 		return true
 	_set_connection_state(State.STATE_CONNECTING)
+	
+	
+	#var nws = NakamaSocketAdapter.new()
+	#add_child(nws)
+	#nws.connect("closed", self, "_on_connection_closed")
+	#nws.connect("received", self, "_on_data_received")
+	#nws.connect("connected", self, "_on_connection_established")
+	#nws.connect("received_error", self, "_on_connection_error")
+	#nws.connect_to_host(server, 5)
+	#yield(self, "_stop_waiting_to_connect")
+	#return false
 
 	# TODO: It would be nice to move a lot of this into a separate factory class so we
 	# didn't have to duplicate code for the WSS and WS cases, and so we don't have
@@ -72,7 +83,7 @@ func connect_to_server(server: String) -> bool:
 	_waiting_to_connect_to_server = null
 
 	var ws_success = false
-	if not wss_success:
+	if true:#not wss_success:
 		# We don't have any info on why the connection failed (thanks Godot), so we
 		# assume it was because the server doesn't support SSL. So, try connecting using
 		# "ws://" instead.
@@ -82,8 +93,11 @@ func connect_to_server(server: String) -> bool:
 		_waiting_to_connect_to_server = ws_url
 		_make_connection_timeout(ws_url)
 		_result = _client.connect_to_url(ws_url)
+		print(ws_url)
+		print(_result)
 
 		ws_success = yield (self, "_stop_waiting_to_connect")
+		print(ws_success)
 		_waiting_to_connect_to_server = null
 		if ws_success:
 			_url = ws_url
@@ -235,6 +249,7 @@ func _init_client():
 		self._client.disconnect("connection_established", self, "_on_connection_established")
 		self._client.disconnect("connection_error", self, "_on_connection_error")
 	self._client = WebSocketClient.new()
+	print(self._client)
 	
 	# Connect base signals to get notified of connection open, close, and errors.
 	var _result = self._client.connect("connection_closed", self, "_on_connection_closed")
@@ -248,11 +263,16 @@ func _init_client():
 	# We increase the in buffer to 256 KB because some messages we receive are too large
 	# for 64. The other defaults are fine though.
 	_result = _client.set_buffers(256, 1024, 64, 1024)
-
+	
 	self._peer = null
 
 func _make_connection_timeout(for_url: String):
-	yield (get_tree().create_timer(_CONNECT_TIMEOUT_SECONDS), "timeout")
+	#var timer := Timer.new()
+	#add_child(timer)
+	#timer.one_shot = true
+	#timer.autostart = true
+	#timer.start(_CONNECT_TIMEOUT_SECONDS)
+	yield(GlobalMenuDialog.get_tree().create_timer(_CONNECT_TIMEOUT_SECONDS), "timeout")
 	if _waiting_to_connect_to_server == for_url:
 		# We took to long, stop waiting and tell the called we failed.
 		_waiting_to_connect_to_server = false
@@ -294,6 +314,7 @@ func _handle_command(command: Dictionary):
 			print("Received Unknown Command %s" % command["cmd"])
 
 func _process(_delta):
+	#print("process")
 	# Only run when the connection the the server is not closed.
 	if _client != null:
 		_client.poll()

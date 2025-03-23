@@ -84,7 +84,7 @@ signal _received_connect_response(message)
 ## Includes the new server state (one of `GodotApClient.ConnectResult`), and an error
 ## code if the connection encountered an error.
 signal connection_state_changed(state, error)
-signal item_received(item_name, item)
+signal item_received(item_data, network_item)
 ## Sent when a `SetReply` packet is received. Contains the key and new and old values.
 signal data_storage_updated(key, new_value, original_value)
 ## Emitted when a `RoomUpdate` packet is received. Contains the new room information.
@@ -245,21 +245,23 @@ func check_locations(location_strings: PoolStringArray):
 	## locations will be converted to ids prior to being sent
 	## if an id is not found that location will not be sent
 	## A single integer/location ID will be wrapped in an array berfore sending.
-	if not self.data_package:
+	if not self.slot_data:
 		return
 	for location in location_strings:
-		var location_id = data_package.location_name_to_id[location]
+		var apLocationName = self.slot_data["location_cbName_to_apName"][location]
+		var location_id = self.data_package.location_name_to_id[apLocationName]
 		if not location_id:
 			print("Location id could not be found for: " + location)
 			continue
-		print("Sending location check for " + location + " with id " + location_id)
+		print("Sending location check for " + location + " with id " + str(location_id))
 		websocket_client.send_location_checks([location_id])
 
 func scout_locations(location_strings: PoolStringArray):
 	if not self.data_package:
 		return
 	for location in location_strings:
-		var location_id = data_package.location_name_to_id[location]
+		var apLocationName = self.slot_data["location_cbName_to_apName"][location]
+		var location_id = data_package.location_name_to_id[apLocationName]
 		if not location_id:
 			print("Location id could not be found for: " + location)
 			continue
@@ -296,12 +298,13 @@ func set_value(key: String, operations, values, default=null, want_reply: bool=f
 func _on_received_items(command):
 	# TODO: update missing and checked locations?
 	# TODO: Since we have a manager we can send the full array
-	var items = command["items"]
-	for item in items:
-		var item_name = null
-		if self.data_package:
-			item_name = data_package.item_id_to_name[item["item"]]
-		emit_signal("item_received", item_name, item)
+	var network_items = command["items"]
+	for network_item in network_items:
+		var item_data = null
+		if self.slot_data:
+			var ap_item_name = self.data_package.item_id_to_name[network_item["item"]]
+			item_data = self.slot_data["item_apName_to_cbItemData"][ap_item_name]
+		emit_signal("item_received", item_data, network_item)
 
 func _on_retrieved(command):
 	# TODO: Custom additional args
