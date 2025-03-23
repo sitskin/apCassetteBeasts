@@ -21,6 +21,7 @@ var archipelagoConnectionManager: ArchipelagoConnectionManager
 
 func init_content() -> void:
 	archipelagoConnectionManager = ArchipelagoConnectionManager.new()
+	SaveSystem.add_child(archipelagoConnectionManager)
 	var apWiredChest = preload("extensions/WiredChestAP.gd")
 	apWiredChest.take_over_path("res://world/objects/chests/WiredChest.gd")
 	var apUnlockAblilityAction = preload("extensions/UnlockAbilityActionAP.gd")
