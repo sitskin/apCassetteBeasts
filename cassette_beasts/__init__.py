@@ -168,8 +168,8 @@ class CassetteBeastsWorld(World):
 	def fill_slot_data(self):
 		
 		return {
-			"item_id_to_name": {value.code: (value.cb_name, value.amount) for value in item_data_table.values()},
-			"location_name_to_id": {value.cb_name: value.address for name, value in location_data_table.items() if isLocation(self.options, name)},
+			"item_apName_to_cbItemData": {key: (value.cb_name, value.amount) for key, value in item_data_table.items()},
+			"location_cbName_to_apName": {value.cb_name: name for name, value in location_data_table.items() if isLocation(self.options, name)},
 			"settings": {
 				"death_link": self.options.death_link.value,
 				"use_pier": self.options.use_pier.value,
