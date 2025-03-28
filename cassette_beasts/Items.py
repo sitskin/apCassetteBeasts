@@ -60,6 +60,8 @@ cb_key_items = {
 	"Song Fragment (Lamento Mori)": CassetteBeastsItemData("aa_lamento_mori", id_off+33, IC.progression, 1, 1),
 	"Song Fragment (Babelith)": CassetteBeastsItemData("aa_tower", id_off+34, IC.progression, 1, 1),
 	"Song Fragment (Kuneko)": CassetteBeastsItemData("aa_kuneko", id_off+35, IC.progression, 1, 1),
+	"Ranger Handbook": CassetteBeastsItemData("tutorial", id_off+36, IC.progression, 1, 1),
+	"Type Chart": CassetteBeastsItemData("type_chart", id_off+37, IC.filler, 1, 1),
 }
 
 id_off += len(cb_key_items)

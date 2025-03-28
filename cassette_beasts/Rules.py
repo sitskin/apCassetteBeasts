@@ -223,7 +223,7 @@ def set_rules(cbworld):
 
 	#Brightside Pier
 	for e in multiworld.get_region("Brightside Pier", player).entrances:
-		set_rule(e, lambda state: False)# dlc, also needs half of archangels defeated
+		set_rule(e, lambda state: False)# dlc, also needs half? of archangels defeated
 
 	#The Witch House
 	for e in multiworld.get_region("The Witch House", player).entrances:
@@ -353,6 +353,12 @@ def set_rules(cbworld):
 		lambda state: canGlide(state, player) and canMagnetism(state, player) and state.has("Landkeeper Window Key", player))
 	set_rule(multiworld.get_location("Landkeeper Office 5 Cabinet (-6,-3)", player),
 		lambda state: canGlide(state, player) and state.has("Landkeeper Window Key", player))
+	set_rule(multiworld.get_location("Type Chart", player),
+		lambda state: state.has("Ranger Handbook", player))
+	set_rule(multiworld.get_location("Envelope for Meredith", player),
+		lambda state: state.has("Met Meredith", player))
+	set_rule(multiworld.get_location("Landkeeper Key", player),
+		lambda state: canGlide(state, player))
 
 	#---Events---
 	set_rule(multiworld.get_location("Recruited Kayleigh", player),
@@ -360,7 +366,7 @@ def set_rules(cbworld):
 	set_rule(multiworld.get_location("Recruited Eugene", player),
 		lambda state: state.has("Defeated Oldgante", player))
 	set_rule(multiworld.get_location("Recruited Meredith", player),
-		lambda state: state.has("Envelope for Meredith", player))
+		lambda state: state.has("Envelope for Meredith", player) and state.has("Met Meredith", player))
 	set_rule(multiworld.get_location("Recruited Barkley", player),
 		lambda state: state.has("Progressive Climb", player))
 	set_rule(multiworld.get_location("Cleared Landkeeper Offices", player),

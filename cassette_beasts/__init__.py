@@ -170,6 +170,13 @@ class CassetteBeastsWorld(World):
 		return {
 			"item_apName_to_cbItemData": {key: (value.cb_name, value.amount) for key, value in item_data_table.items()},
 			"location_cbName_to_apName": {value.cb_name: name for name, value in location_data_table.items() if isLocation(self.options, name)},
+			"giveActionItem_to_location": {
+				"tutorial": "Ranger Handbook",
+				"type_chart": "Type Chart",
+				"key_harbourtown": "Harbourtown Gate Key",
+				"meredith_envelope": "Envelope for Meredith",
+				"key_landkeeper": "Landkeeper Key",
+			},
 			"settings": {
 				"death_link": self.options.death_link.value,
 				"use_pier": self.options.use_pier.value,
