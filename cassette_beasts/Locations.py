@@ -313,6 +313,16 @@ base_locations = {
 		CassetteBeastsLocationData("room_1A_chest_2", "Night's Bridge Station", CB_BASE_ID+144),
 	"Night's Bridge Station Left Azure Keystone Chest (?/?)": 
 		CassetteBeastsLocationData("room_2A_chest_1", "Night's Bridge Station", CB_BASE_ID+145),
+	"Ranger Handbook":
+		CassetteBeastsLocationData("AP_loc_get_tutorial", "Harbourtown East", CB_BASE_ID+146),
+	"Type Chart":
+		CassetteBeastsLocationData("AP_loc_get_type_chart", "Menu", CB_BASE_ID+147),
+	"Harbourtown Gate Key":
+		CassetteBeastsLocationData("AP_loc_get_gate_key", "Harbourtown Beach", CB_BASE_ID+148),
+	"Envelope for Meredith":
+		CassetteBeastsLocationData("AP_loc_get_envelope", "Harbourtown East", CB_BASE_ID+149),
+	"Landkeeper Key":
+		CassetteBeastsLocationData("AP_loc_landkeeper_key", "Harbourtown Outskirts", CB_BASE_ID+150),
 }
 
 id_off = len(base_locations)
@@ -554,11 +564,12 @@ fusionsanity_locations = {
 event_data_table = {
 	"Recruited Kayleigh": CassetteBeastsEventData("Harbourtown Station", "Recruited Kayleigh"),
 	"Recruited Eugene": CassetteBeastsEventData("Harbourtown East", "Recruited Eugene"),
-	"Recruited Meredith": CassetteBeastsEventData("New Wirral Park", "Recruited Meredith"),
+	"Recruited Meredith": CassetteBeastsEventData("Harbourtown East", "Recruited Meredith"),
 	"Recruited Felix": CassetteBeastsEventData("Lakeside", "Recruited Felix"),
 	"Recruited Viola": CassetteBeastsEventData("The Marshes", "Recruited Viola"),
 	"Recruited Barkley": CassetteBeastsEventData("Mt Wirral", "Recruited Barkley"),
 	"Defeated Oldgante": CassetteBeastsEventData("Harbourtown Station", "Defeated Oldgante"),
+	"Met Meredith": CassetteBeastsEventData("New Wirral Park", "Met Meredith"),
 	"Cleared Landkeeper Offices": CassetteBeastsEventData("The Marshes", "Cleared Landkeeper Offices"),
 	"Victory": CassetteBeastsEventData("Night's Bridge Station", "Victory"),
 }
