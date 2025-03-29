@@ -151,13 +151,13 @@ cb_tape_items = {
 
 id_off += len(cb_tape_items)
 cb_remaster_sticker_items = {
-	"Close Encounter Sticker": CassetteBeastsItemData("AP_sticker_close-encounter", id_off+0, IC.progression, 1, 0),
-	"Gear Shear Sticker": CassetteBeastsItemData("AP_sticker_gear-shear", id_off+1, IC.progression, 1, 1),
-	"Ice Coating Sticker": CassetteBeastsItemData("AP_sticker_ice-coating", id_off+2, IC.progression, 1, 0),
-	"Magic Tome Sticker": CassetteBeastsItemData("AP_sticker_magic-tome", id_off+3, IC.progression, 1, 0),
-	"Toy Hammer Sticker": CassetteBeastsItemData("AP_sticker_toy-hammer", id_off+4, IC.progression, 1, 0),
-	"Zephyr Sticker": CassetteBeastsItemData("AP_sticker_zephyr", id_off+5, IC.progression, 1, 0),
-	"Carnivore Sticker": CassetteBeastsItemData("AP_sticker_carnivore", id_off+6, IC.progression, 1, 0),
+	"Close Encounter Sticker": CassetteBeastsItemData("sticker:close_encounter", id_off+0, IC.progression, 1, 0),
+	"Gear Shear Sticker": CassetteBeastsItemData("sticker:gear_shear", id_off+1, IC.progression, 1, 1),
+	"Ice Coating Sticker": CassetteBeastsItemData("sticker:ice_coating", id_off+2, IC.progression, 1, 0),
+	"Magic Tome Sticker": CassetteBeastsItemData("sticker:magic_tome", id_off+3, IC.progression, 1, 0),
+	"Toy Hammer Sticker": CassetteBeastsItemData("sticker:toy_hammer", id_off+4, IC.progression, 1, 0),
+	"Zephyr Sticker": CassetteBeastsItemData("sticker:zephyr", id_off+5, IC.progression, 1, 0),
+	"Carnivore Sticker": CassetteBeastsItemData("sticker:carnivore", id_off+6, IC.progression, 1, 0),
 }
 
 id_off += len(cb_remaster_sticker_items)
