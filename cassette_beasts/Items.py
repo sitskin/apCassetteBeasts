@@ -189,7 +189,7 @@ cb_loot_table_items = {
 	"Farm Loot": CassetteBeastsItemData("chest_farm", id_off+2, IC.filler, 1, 2),
 	"Mt Wirral Loot": CassetteBeastsItemData("chest_mt_wirral", id_off+3, IC.filler, 1, 4),
 	"In Graveyard Loot": CassetteBeastsItemData("chest_in_graveyard", id_off+4, IC.filler, 1, 1),
-	"Cast Iron Shore Loot": CassetteBeastsItemData("chest_cast_iron_shore", id_off+5, IC.filler, 1, 2),
+	"Cast Iron Shore Loot": CassetteBeastsItemData("chest_cast_iron_shore", id_off+5, IC.filler, 1, 3),
 	"At Sea Loot": CassetteBeastsItemData("chest_at_sea", id_off+6, IC.filler, 1, 0),
 	"Spider Cave Loot": CassetteBeastsItemData("chest_spider_cave", id_off+7, IC.filler, 1, 1),
 	"Cherry Cross Station Loot": CassetteBeastsItemData("chest_dugeon_meadow", id_off+8, IC.filler, 1, 2),
