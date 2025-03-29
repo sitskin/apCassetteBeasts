@@ -176,6 +176,7 @@ class CassetteBeastsWorld(World):
 				"key_harbourtown": "Harbourtown Gate Key",
 				"meredith_envelope": "Envelope for Meredith",
 				"key_landkeeper": "Landkeeper Key",
+				"captain_badge": "Beat Ianthe",
 			},
 			"settings": {
 				"death_link": self.options.death_link.value,
