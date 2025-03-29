@@ -201,7 +201,7 @@ def set_rules(cbworld):
 
 	#Titania Shipwreck
 	for e in multiworld.get_region("Titania Shipwreck", player).entrances:
-		set_rule(e, lambda state: state.has("Recruited Viola"))
+		set_rule(e, lambda state: state.has("Recruited Viola", player))
 
 	#Bard Street Station
 	for e in multiworld.get_region("Bard Street Station", player).entrances:
@@ -217,7 +217,9 @@ def set_rules(cbworld):
 
 	#Night's Bridge Station
 	for e in multiworld.get_region("Night's Bridge Station", player).entrances:
-		set_rule(e, lambda state: state.has_group("song fragments", player, 8) and canGlide(state, player))
+		set_rule(e, lambda state: state.has_group("song fragments", player, 8) and \
+			canGlide(state, player) and canSwim(state, player) and \
+			canMagnetism(state, player) and canDash(state, player))
 
 	#Postgame
 	for e in multiworld.get_region("Postgame", player).entrances:
@@ -273,8 +275,8 @@ def set_rules(cbworld):
 		lambda state: canMagnetism(state, player))
 	set_rule(multiworld.get_location("Eastham Woods Chest on Cliff Below Mall (3,-7)", player),
 		lambda state: canMagnetism(state, player) or canClimb(state, player))
-	#set_rule(multiworld.get_location("Eastham Woods Chest on Mall Roof (3,-7)", player),
-	#	lambda state: canGlide(state, player))
+	set_rule(multiworld.get_location("Eastham Woods Chest on Mall Roof (3,-7)", player),
+		lambda state: canMagnetism(state, player))
 	set_rule(multiworld.get_location("New Wirral Park Break Rock Chest in Wall (4,-5)", player),
 		lambda state: canDash(state, player))
 	set_rule(multiworld.get_location("Eastham Woods Levitator Magnet Chest (4,-6)", player),
