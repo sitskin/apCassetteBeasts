@@ -353,6 +353,8 @@ def set_rules(cbworld):
 		lambda state: canGlide(state, player) and canMagnetism(state, player) and state.has("Landkeeper Window Key", player))
 	set_rule(multiworld.get_location("Landkeeper Office 5 Cabinet (-6,-3)", player),
 		lambda state: canGlide(state, player) and state.has("Landkeeper Window Key", player))
+	set_rule(multiworld.get_location("Titania Shipwreck Chest on Chimney (-6,-6)", player),
+		lambda state: canGlide(state, player) and canClimb(state, player))
 	set_rule(multiworld.get_location("Type Chart", player),
 		lambda state: state.has("Ranger Handbook", player))
 	set_rule(multiworld.get_location("Envelope for Meredith", player),

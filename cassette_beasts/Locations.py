@@ -313,16 +313,18 @@ base_locations = {
 		CassetteBeastsLocationData("room_1A_chest_2", "Night's Bridge Station", CB_BASE_ID+144),
 	"Night's Bridge Station Left Azure Keystone Chest (?/?)": 
 		CassetteBeastsLocationData("room_2A_chest_1", "Night's Bridge Station", CB_BASE_ID+145),
+	"Titania Shipwreck Chest on Chimney (-6,-6)":
+		CassetteBeastsLocationData("chest_shipyard_ship_chimney", "Cast Iron Shore", CB_BASE_ID+146),
 	"Ranger Handbook":
-		CassetteBeastsLocationData("Ranger Handbook", "Harbourtown East", CB_BASE_ID+146),
+		CassetteBeastsLocationData("Ranger Handbook", "Harbourtown East", CB_BASE_ID+147),
 	"Type Chart":
-		CassetteBeastsLocationData("Type Chart", "Menu", CB_BASE_ID+147),
+		CassetteBeastsLocationData("Type Chart", "Menu", CB_BASE_ID+148),
 	"Harbourtown Gate Key":
-		CassetteBeastsLocationData("Harbourtown Gate Key", "Harbourtown Beach", CB_BASE_ID+148),
+		CassetteBeastsLocationData("Harbourtown Gate Key", "Harbourtown Beach", CB_BASE_ID+149),
 	"Envelope for Meredith":
-		CassetteBeastsLocationData("Envelope for Meredith", "Harbourtown East", CB_BASE_ID+149),
+		CassetteBeastsLocationData("Envelope for Meredith", "Harbourtown East", CB_BASE_ID+150),
 	"Landkeeper Key":
-		CassetteBeastsLocationData("Landkeeper Key", "Harbourtown Outskirts", CB_BASE_ID+150),
+		CassetteBeastsLocationData("Landkeeper Key", "Harbourtown Outskirts", CB_BASE_ID+151),
 }
 
 id_off = len(base_locations)
