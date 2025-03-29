@@ -200,10 +200,12 @@ def set_rules(cbworld):
 		set_rule(e, lambda state: canDash(state, player) or canClimb(state, player))
 
 	#Titania Shipwreck
+	for e in multiworld.get_region("Titania Shipwreck", player).entrances:
+		set_rule(e, lambda state: state.has("Recruited Viola"))
 
 	#Bard Street Station
 	for e in multiworld.get_region("Bard Street Station", player).entrances:
-		set_rule(e, lambda state: state.has("Recruited Viola", player) and state.has("Valve Handel", player, 2))
+		set_rule(e, lambda state: state.has("Valve Handel", player, 2))
 
 	#Landkeeper HQ
 	for e in multiworld.get_region("Landkeeper HQ", player).entrances:
