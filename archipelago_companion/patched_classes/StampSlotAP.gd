@@ -39,7 +39,7 @@ func is_met()->bool:
 func is_defeated()->bool:
 	var flag_name = "encounter_" + captain_id
 	# PATCH: ADD LINES HERE
-	flag_name = "ap_" + flag_name
+	flag_name = "AP_" + captain_id + "_stamp"
 	# PATCH: STOP
 	return captain_id != "" and SaveState.has_flag(flag_name)
 

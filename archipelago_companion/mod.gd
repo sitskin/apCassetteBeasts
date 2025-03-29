@@ -28,6 +28,10 @@ func init_content() -> void:
 	apUnlockAblilityAction.take_over_path("res://nodes/actions/UnlockAbilityAction.gd")
 	var apSpeciesCollection = preload("extensions/SpeciesCollectionAP.gd")
 	apSpeciesCollection.take_over_path("res://global/save_state/SpeciesCollection.gd")
+	var apGiveItemAction = preload("extensions/GiveItemActionAP.gd")
+	apGiveItemAction.take_over_path("res://nodes/actions/GiveItemAction.gd")
+	var apShowStampCardAction = preload("extensions/ShowStampCardActionAP.gd")
+	apShowStampCardAction.take_over_path("res://nodes/actions/ShowStampCardAction.gd")
 	# connect to any scenes that we need modified
 	DLC.mods_by_id.cat_modutils.callbacks.connect_scene_ready("res://menus/settings/SettingsMenu.tscn", self, "_onSettingsMenuReady")
 	DLC.mods_by_id.cat_modutils.callbacks.connect_scene_ready("res://cutscenes/intro/OutskirtsWrongWay.tscn", self, "_onOutskirtsWrongWay")

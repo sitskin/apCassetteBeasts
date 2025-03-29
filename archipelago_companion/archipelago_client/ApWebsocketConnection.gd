@@ -267,12 +267,7 @@ func _init_client():
 	self._peer = null
 
 func _make_connection_timeout(for_url: String):
-	#var timer := Timer.new()
-	#add_child(timer)
-	#timer.one_shot = true
-	#timer.autostart = true
-	#timer.start(_CONNECT_TIMEOUT_SECONDS)
-	yield(GlobalMenuDialog.get_tree().create_timer(_CONNECT_TIMEOUT_SECONDS), "timeout")
+	yield (GlobalMenuDialog.get_tree().create_timer(_CONNECT_TIMEOUT_SECONDS), "timeout")
 	if _waiting_to_connect_to_server == for_url:
 		# We took to long, stop waiting and tell the called we failed.
 		_waiting_to_connect_to_server = false
