@@ -4,14 +4,21 @@ const ApWebSocketConnection = preload("res://mods/archipelago_companion/archipel
 const BaseArchipelagoClient = preload("res://mods/archipelago_companion/archipelago_client/BaseArchipelagoClient.gd")
 const ArchipelagoDataManager = preload("res://mods/archipelago_companion/managers/ArchipelagoDataManager.gd")
 
+class GivenApItem:
+	var itemName: String
+	var itemAmount: int
+	func _init(apItemObject: Array):
+		itemName = apItemObject[0]
+		itemAmount = apItemObject[1]
+
 var archipelagoDataManager: ArchipelagoDataManager
 
 var _apWebSocketConnection: ApWebSocketConnection
 var _archipelagoClient: BaseArchipelagoClient
 
-var _itemsReceivedWhileNotInWorld = []
-
-const _ITEM_DIR_PATH = "res://data/items/"
+var _itemsReceivedFromServer = []
+var _itemGiveTimer = 0.0
+const _ITEM_GIVE_DELAY = 1.0
 
 signal connectionStateChanged(state, error)
 
@@ -31,7 +38,7 @@ func _init():
 	SaveState.connect("flag_changed", self, "_onFlagChanged")
 	Console.register("getApItem", {
 		"description":"Triggers the receive AP item method", 
-		"args":[TYPE_STRING], 
+		"args":[TYPE_STRING, TYPE_INT], 
 		"target":[self, "_getApItemConsole"],
 	})
 
@@ -62,11 +69,12 @@ func _locationInfoReceived(locationInfo: Dictionary):
 func _onConnectionChanged(newState: int, error: int = 0):
 	emit_signal("connectionStateChanged", newState, error)
 
-func _onSceneChanged():
-	if WorldSystem.is_in_world():
-		while _itemsReceivedWhileNotInWorld.size() > 0:
-			var dict = _itemsReceivedWhileNotInWorld.pop_back()
-			_givePlayerItem(dict.itemName, dict.item)
+func _process(delta):
+	if WorldSystem.is_in_world() and WorldSystem.is_player_control_enabled():
+		_itemGiveTimer -= delta
+		if _itemGiveTimer < 0.0:
+			_itemGiveTimer = _ITEM_GIVE_DELAY
+			_giveReceivedItems(_itemsReceivedFromServer)
 
 func _onFileLoaded():
 	SaveState.set_flag(ArchipelagoDataManager.AP_ENABLED_KEY, archipelagoDataManager.getEnabled())
@@ -79,45 +87,40 @@ func _onFileLoaded():
 	
 	# we now have the full list of items this game has received
 	# cross reference that with the list of items in other_data
-	# add all missing items to _itemsReceivedWhileNotInWorld
+	# add all missing items to _itemsReceivedFromServer
 
-func _getApItemConsole(itemName: String):
-	pass
-	#_onApItemReceived(itemName, {item = 1, location = 2, player = 3, flags = 0})
+func _getApItemConsole(itemName: String, itemAmount: int):
+	_giveReceivedItems([GivenApItem.new([itemName, itemAmount])])
 
 # recieving items from server
-# item is {item: int, location: int, player: int, flags: int}
-# flags are 0b001: logic, 0b010: important, 0b100: trap
-func _onApItemReceived(item_data: Array, network_item: Dictionary):
-	# assuming that I cannot get an item via item_received more than once
-	SaveState.other_data.archipelago.receivedItems.push_back(network_item)
-	if !WorldSystem.is_in_world():
-		_itemsReceivedWhileNotInWorld.append({"itemName": item_data[0], "itemAmount": item_data[1]})
+# itemData is [itemName, itemAmount]
+# networkItem is {item: int, location: int, ...}
+func _onApItemReceived(itemData: Array, networkItem: Dictionary):
+	if networkItem.location in SaveState.other_data.archipelago.receivedItems:
+		print("The location %d already exists" % networkItem.location)
 		return
-	_givePlayerItem(item_data[0], item_data[1])
+	SaveState.other_data.archipelago.receivedItems.push_back(networkItem.location)
+	_itemsReceivedFromServer.append(GivenApItem.new(itemData))
 
-func _givePlayerItem(itemName: String, itemAmount: int):
-	# "wood*100"
-	if _tryGiveItem(itemName, itemAmount):
-		return
-	if SaveState.abilities.has(itemName):
-		return _onAbilityReceived(itemName)
-	if "aa" in itemName:
-		return _onSongReceived(itemName)
-	if "captain" in itemName:
-		return _onStampReceived(itemName)
-	print("Unknown AP item received, name: %s" % itemName)
-
-func _isItemResourceName(itemName: String):
-	var dir = Directory.new()
-	if dir.open(_ITEM_DIR_PATH) == OK:
-		dir.list_dir_begin()
-		var fileName = dir.get_next()
-		while fileName != "":
-			if itemName in fileName:
-				return true
-			fileName = dir.get_next()
-	return false
+func _giveReceivedItems(givenItems: Array):
+	var cbItemsToGive = []
+	for givenItem in givenItems:
+		var itemName: String = givenItem.itemName
+		var itemAmount: int = givenItem.itemAmount
+		var cbItem = ItemFactory.create_from_id(itemName)
+		if cbItem != null:
+			cbItemsToGive.append({"item": cbItem, "amount": itemAmount})
+			continue
+		if SaveState.abilities.has(itemName):
+			_onAbilityReceived(itemName)
+		if itemName.matchn("progressive*glide"):
+			_onAbilityReceived("flight" if SaveState.abilities.has("glide") else "glide")
+		if "aa_" in itemName:
+			_onSongReceived(itemName)
+		if "_stamp" in itemName:
+			_onStampReceived(itemName)
+	if !cbItemsToGive.empty():
+		MenuHelper.give_items(cbItemsToGive)
 
 func _tryGiveItem(itemName: String, itemAmount: int):
 	var item = ItemFactory.create_from_id(itemName)
@@ -135,9 +138,9 @@ func _onSongReceived(aaName: String):
 	SaveState.set_flag("ap_encounter_" + aaName, true)
 	print("Song for archangel %s given to player" % aaName)
 
-func _onStampReceived(captainName: String):
-	SaveState.set_flag("ap_encounter_" + captainName, true)
-	print("Stamp for captain %s given to player" % captainName)
+func _onStampReceived(stampFlag: String):
+	SaveState.set_flag(stampFlag, true)
+	print("Stamp for captain %s given to player" % stampFlag)
 
 func _onFlagChanged(flag: String, value: bool):
 	if "captain" in flag and value:
@@ -168,3 +171,10 @@ func sendCaptainDefeated(captainFlag: String):
 	print("Captain Defeated: %s" % captainFlag)
 	# there may be some additional information added
 	_sendCheckLocation(captainFlag)
+
+func handleGiveItemAction(itemName: String):
+	var location = _archipelagoClient.slot_data["giveItemAction_to_location"]
+	if location == null:
+		return false
+	_archipelagoClient.check_locations([location])
+	return true
