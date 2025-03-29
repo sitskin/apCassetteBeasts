@@ -20,6 +20,8 @@ var _itemsReceivedFromServer = []
 var _itemGiveTimer = 0.0
 const _ITEM_GIVE_DELAY = 1.0
 
+var _tempReceivedItems = []
+
 signal connectionStateChanged(state, error)
 
 func _init():
@@ -33,7 +35,6 @@ func _init():
 	_archipelagoClient.connect("connection_state_changed", self, "_onConnectionChanged")
 	_archipelagoClient.connect("item_received", self, "_onApItemReceived")
 	_apWebSocketConnection.connect("on_location_info", self, "_locationInfoReceived")
-	SceneManager.connect("scene_changed", self, "_onSceneChanged")
 	SaveSystem.connect("file_loaded", self, "_onFileLoaded")
 	SaveState.connect("flag_changed", self, "_onFlagChanged")
 	Console.register("getApItem", {
@@ -75,15 +76,15 @@ func _process(delta):
 		if _itemGiveTimer < 0.0:
 			_itemGiveTimer = _ITEM_GIVE_DELAY
 			_giveReceivedItems(_itemsReceivedFromServer)
+			_itemsReceivedFromServer.clear()
 
 func _onFileLoaded():
 	SaveState.set_flag(ArchipelagoDataManager.AP_ENABLED_KEY, archipelagoDataManager.getEnabled())
 	# if it doesn't exist create it
 	if !SaveState.other_data.has("archipelago") or !SaveState.other_data["archipelago"].has("receivedItems"):
 		SaveState.other_data["archipelago"] = {"receivedItems": []}
-	# if we are connected then (following is probably in a method as it will
-	# also need to happen if the user starts the game and then connects to server)
-	# call sync await the packet 
+	for data in _tempReceivedItems:
+		_onApItemReceived(data.itemData, data.networkItem)
 	
 	# we now have the full list of items this game has received
 	# cross reference that with the list of items in other_data
@@ -96,6 +97,9 @@ func _getApItemConsole(itemName: String, itemAmount: int):
 # itemData is [itemName, itemAmount]
 # networkItem is {item: int, location: int, ...}
 func _onApItemReceived(itemData: Array, networkItem: Dictionary):
+	if !SaveState.other_data.has("archipelago"):
+		_tempReceivedItems.append({"itemData": itemData, "networkItem": networkItem})
+		return
 	if networkItem.location in SaveState.other_data.archipelago.receivedItems:
 		print("The location %d already exists" % networkItem.location)
 		return
@@ -173,7 +177,7 @@ func sendCaptainDefeated(captainFlag: String):
 	_sendCheckLocation(captainFlag)
 
 func handleGiveItemAction(itemName: String):
-	var location = _archipelagoClient.slot_data["giveItemAction_to_location"]
+	var location = _archipelagoClient.slot_data["giveItemAction_to_location"][itemName]
 	if location == null:
 		return false
 	_archipelagoClient.check_locations([location])
