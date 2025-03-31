@@ -91,7 +91,9 @@ class CassetteBeastsWorld(World):
 
 		# Randomized Filler
 		item_pool += [self.create_item(c)
-			for c in choices([*cb_regular_items.keys()|cb_resource_items.keys()|cb_tape_items.keys()], k=getLocationCount(self.options)-len(item_pool))
+			for c in choices(
+				[*cb_regular_items.keys()|cb_resource_items.keys()|cb_tape_items.keys()],
+				k=getLocationCount(self.options)-len(item_pool)-len(self.get_pre_fill_items()))
 			]
 
 		self.multiworld.itempool += item_pool
@@ -164,6 +166,18 @@ class CassetteBeastsWorld(World):
 			if count > locs:
 				print(f"Too many items for Fusionsanity: reducing from {count} to {locs}")
 				self.options.fusionsanity_item_count.value = locs
+
+	def pre_fill(self):
+		# Harbourtown Gate Key pre_filled into its original location
+		# It's a BK point with only 3 checks available and moving past the
+		#   gate early breaks the tutorial in a way that might softlock the game
+		item = self.create_item("Harbourtown Gate Key")
+		self.multiworld.get_location("Harbourtown Gate Key", self.player).place_locked_item(item)
+
+	def get_pre_fill_items(self):
+		return [
+			self.create_item("Harbourtown Gate Key"),
+		]
 
 	def fill_slot_data(self):
 		

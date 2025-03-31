@@ -2,7 +2,7 @@
 region_data = {
 	"Menu": ["Harbourtown East", "Harbourtown Beach", "Night's Bridge Station"],
 	"Harbourtown Beach": ["Harbourtown East", "Harbourtown Outskirts", "Brightside Pier"],
-	"Harbourtown East": ["Harbourtown Beach", "Upper Path"],
+	"Harbourtown East": ["Harbourtown Beach"],
 	"Harbourtown Outskirts": ["Upper Path", "New Wirral Park", "Harbourtown Station"],
 	"Upper Path": ["Harbourtown West", "Thirstaton Lake"],
 	"Harbourtown West": [],

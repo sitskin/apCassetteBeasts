@@ -2,7 +2,7 @@ from typing import NamedTuple, Optional
 
 from BaseClasses import Item, ItemClassification as IC
 
-CB_BASE_ID = 0
+CB_BASE_ID = 1
 
 class CassetteBeastsItem(Item):
 	game = "Cassette Beasts"
@@ -29,7 +29,7 @@ cb_key_items = {
 	"Azure Keystone": CassetteBeastsItemData("keystone", id_off+2, IC.progression, 1, 2),
 	"Mourningtown Key": CassetteBeastsItemData("key_commune", id_off+3, IC.progression),
 	"White Rabbit Key": CassetteBeastsItemData("key_dungeon_meadow", id_off+4, IC.progression),
-	"Harbourtown Gate Key": CassetteBeastsItemData("key_harbourtown", id_off+5, IC.progression),
+	"Harbourtown Gate Key": CassetteBeastsItemData("key_harbourtown", id_off+5, IC.progression, 1, 0),#pre_filled
 	"Landkeeper Window Key": CassetteBeastsItemData("key_landkeeper", id_off+6, IC.progression),
 	"Waterloop Key": CassetteBeastsItemData("key_waterloop", id_off+7, IC.progression),
 	"Machine Part": CassetteBeastsItemData("machinepart", id_off+8, IC.progression),

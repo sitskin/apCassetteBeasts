@@ -260,13 +260,13 @@ def set_rules(cbworld):
 	set_rule(multiworld.get_location("Beat Ianthe", player),
 		lambda state: hasAllStamps(state, player))
 	set_rule(multiworld.get_location("Harbourtown Chest under Crate on Flour Mill (0,-1)", player),
-		lambda state: canDash(state, player))
+		lambda state: canDash(state, player) and state.has("Defeated Oldgante", player))
 	set_rule(multiworld.get_location("Upper Path Magnet Platform Chest (0,-2)", player),
 		lambda state: canMagnetism(state, player))
 	set_rule(multiworld.get_location("Thirstaton Lake Underwater Chest (0,-3)", player),
 		lambda state: canDash(state, player))
 	set_rule(multiworld.get_location("Harbourtown Chest on Top of House (1,-1)", player),
-		lambda state: canGlide(state, player))
+		lambda state: canGlide(state, player) and state.has("Defeated Oldgante", player))
 	set_rule(multiworld.get_location("Eastham Woods Three Lights Chest (1,-6)", player),
 		lambda state: canMagnetism(state, player))
 	set_rule(multiworld.get_location("Harbourtown Outskirts Break Rock Chest (2,-2)", player),
@@ -347,6 +347,10 @@ def set_rules(cbworld):
 		lambda state: canDash(state, player))
 	set_rule(multiworld.get_location("Waterloop Station Break Polyhedron Chest (1,-4)", player),
 		lambda state: canDash(state, player))
+	set_rule(multiworld.get_location("Harbourtown Kayliegh's Home Chest (1,0)", player),
+		lambda state: state.has("Defeated Oldgante", player))
+	set_rule(multiworld.get_location("Harbourtown Town Hall Cabinet (0,0)", player),
+		lambda state: state.has("Met Ianthe", player))
 	set_rule(multiworld.get_location("Landkeeper Office 1 Cabinet (4,-1)", player),
 		lambda state: canGlide(state, player) and state.has("Landkeeper Window Key", player))
 	set_rule(multiworld.get_location("Landkeeper Office 2 Cabinet (7,-3)", player),
@@ -367,6 +371,8 @@ def set_rules(cbworld):
 		lambda state: canGlide(state, player))
 
 	#---Events---
+	set_rule(multiworld.get_location("Defeat Oldgante", player),
+		lambda state: canGlide(state, player))
 	set_rule(multiworld.get_location("Recruited Kayleigh", player),
 		lambda state: state.has("Defeated Oldgante", player))
 	set_rule(multiworld.get_location("Recruited Eugene", player),
