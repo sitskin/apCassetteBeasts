@@ -5,7 +5,7 @@ from BaseClasses import Location
 
 from .Data.tape_data import types, monsters, monsterCount
 
-CB_BASE_ID = 0
+CB_BASE_ID = 1
 
 class CassetteBeastsLocation(Location):
 	game = "Cassette Beasts"
@@ -293,7 +293,7 @@ base_locations = {
 		CassetteBeastsLocationData("HouseWest3_fridge", "Harbourtown West", CB_BASE_ID+134),
 	"Harbourtown Kayliegh's Home Chest (1,0)": 
 		CassetteBeastsLocationData("chest_kayleigh_home", "Harbourtown East", CB_BASE_ID+135),
-	"Harbourtown Town Hall Fridge (0,0)": 
+	"Harbourtown Town Hall Cabinet (0,0)": 
 		CassetteBeastsLocationData("cabinet_town_hall", "Harbourtown East", CB_BASE_ID+136),
 	"Landkeeper Office 1 Cabinet (4,-1)": 
 		CassetteBeastsLocationData("chest_office1", "Harbourtown Outskirts", CB_BASE_ID+137),
@@ -571,6 +571,7 @@ event_data_table = {
 	"Recruited Viola": CassetteBeastsEventData("The Marshes", "Recruited Viola"),
 	"Recruited Barkley": CassetteBeastsEventData("Mt Wirral", "Recruited Barkley"),
 	"Defeated Oldgante": CassetteBeastsEventData("Harbourtown Station", "Defeated Oldgante"),
+	"Met Ianthe": CassetteBeastsEventData("New Wirral Park", "Met Ianthe"),
 	"Met Meredith": CassetteBeastsEventData("New Wirral Park", "Met Meredith"),
 	"Cleared Landkeeper Offices": CassetteBeastsEventData("The Marshes", "Cleared Landkeeper Offices"),
 	"Victory": CassetteBeastsEventData("Night's Bridge Station", "Victory"),
