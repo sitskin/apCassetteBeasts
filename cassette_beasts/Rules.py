@@ -104,15 +104,17 @@ def set_rules(cbworld):
 
 	#Upper Path
 	for e in multiworld.get_region("Upper Path", player).entrances:
-		if e.name == "Harbourtown Outskirts":
-			set_rule(e, lambda state: canGlide(state, player))
-		elif e.name == "Harbourtown East":
-			set_rule(e, lambda state: state.has("Defeated Oldgante", player))
+		set_rule(e, lambda state: canGlide(state, player))
+		#if e.name == "Harbourtown Outskirts":
+		#	set_rule(e, lambda state: canGlide(state, player))
+		# elif e.name == "Harbourtown East":
+		# 	set_rule(e, lambda state: state.has("Defeated Oldgante", player))
 
 	#Harbourtown West
 	for e in multiworld.get_region("Harbourtown West", player).entrances:
 		if e.name == "Upper Path":
-			set_rule(e, lambda state: canMagnetism(state, player) or canDash(state, player))
+			set_rule(e, lambda state: state.has("Defeated Oldgante", player) and \
+				(canMagnetism(state, player) or canDash(state, player)))
 
 	#New Wirral Park
 	for e in multiworld.get_region("New Wirral Park", player).entrances:
@@ -149,7 +151,7 @@ def set_rules(cbworld):
 
 	#Thirstaton Lake
 	for e in multiworld.get_region("Thirstaton Lake", player).entrances:
-		set_rule(e, lambda state: canSwim(state, player))
+		set_rule(e, lambda state: state.has("Defeated Oldgante", player) and canSwim(state, player))
 
 	#Cherry Meadow
 
@@ -371,8 +373,8 @@ def set_rules(cbworld):
 		lambda state: canGlide(state, player))
 
 	#---Events---
-	set_rule(multiworld.get_location("Defeat Oldgante", player),
-		lambda state: canGlide(state, player))
+	set_rule(multiworld.get_location("Defeated Oldgante", player),
+		lambda state: state.can_reach_location("Defeat Oldgante", player))
 	set_rule(multiworld.get_location("Recruited Kayleigh", player),
 		lambda state: state.has("Defeated Oldgante", player))
 	set_rule(multiworld.get_location("Recruited Eugene", player),

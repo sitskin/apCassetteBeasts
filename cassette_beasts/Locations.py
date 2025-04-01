@@ -22,27 +22,27 @@ class CassetteBeastsEventData(NamedTuple):
 
 base_locations = {
 	"Defeat Oldgante": 
-		CassetteBeastsLocationData("encounter_aa_oldgante", "Harbourtown Station", CB_BASE_ID+0),
+		CassetteBeastsLocationData("ap_encounter_aa_oldgante", "Harbourtown Station", CB_BASE_ID+0),
 	"Defeat Poppetox": 
-		CassetteBeastsLocationData("encounter_aa_puppet", "Glowcester Road Station", CB_BASE_ID+1),
+		CassetteBeastsLocationData("ap_encounter_aa_puppet", "Glowcester Road Station", CB_BASE_ID+1),
 	"Defeat Mourningstar": 
-		CassetteBeastsLocationData("encounter_aa_mourningstar", "Mourningstar Crescent Station", CB_BASE_ID+2),
+		CassetteBeastsLocationData("ap_encounter_aa_mourningstar", "Mourningstar Crescent Station", CB_BASE_ID+2),
 	"Defeat Nowhere Monarch": 
-		CassetteBeastsLocationData("encounter_aa_monarch", "Falldown Mall", CB_BASE_ID+3),
+		CassetteBeastsLocationData("ap_encounter_aa_monarch", "Falldown Mall", CB_BASE_ID+3),
 	"Defeat Heckahedron": 
-		CassetteBeastsLocationData("encounter_aa_cube", "Waterloop Station", CB_BASE_ID+4),
+		CassetteBeastsLocationData("ap_encounter_aa_cube", "Waterloop Station", CB_BASE_ID+4),
 	"Defeat Alice": 
-		CassetteBeastsLocationData("encounter_aa_alice", "Cherry Cross Station", CB_BASE_ID+5),
+		CassetteBeastsLocationData("ap_encounter_aa_alice", "Cherry Cross Station", CB_BASE_ID+5),
 	"Defeat Robin Goodfellow": 
-		CassetteBeastsLocationData("encounter_aa_robin", "Bard Street Station", CB_BASE_ID+6),
+		CassetteBeastsLocationData("ap_encounter_aa_robin", "Bard Street Station", CB_BASE_ID+6),
 	"Defeat Mammon": 
-		CassetteBeastsLocationData("encounter_aa_mammon", "Landkeeper HQ", CB_BASE_ID+7),
+		CassetteBeastsLocationData("ap_encounter_aa_mammon", "Landkeeper HQ", CB_BASE_ID+7),
 	"Defeat Lamento Mori": 
-		CassetteBeastsLocationData("encounter_aa_lamento_mori", "Aldgrave Tomb Station", CB_BASE_ID+8),
+		CassetteBeastsLocationData("ap_encounter_aa_lamento_mori", "Aldgrave Tomb Station", CB_BASE_ID+8),
 	"Defeat Babelith": 
-		CassetteBeastsLocationData("encounter_aa_tower", "Icelington Station", CB_BASE_ID+9),
+		CassetteBeastsLocationData("ap_encounter_aa_tower", "Icelington Station", CB_BASE_ID+9),
 	"Defeat Shining Kuneko": 
-		CassetteBeastsLocationData("encounter_aa_kuneko", "Cherry Meadow", CB_BASE_ID+10),
+		CassetteBeastsLocationData("ap_encounter_aa_kuneko", "Cherry Meadow", CB_BASE_ID+10),
 	"Beat Wallace": 
 		CassetteBeastsLocationData("encounter_captain_wallace", "New Wirral Park", CB_BASE_ID+11),
 	"Beat Skip": 
