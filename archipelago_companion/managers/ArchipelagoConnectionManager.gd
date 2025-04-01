@@ -115,14 +115,35 @@ func _giveReceivedItems(givenItems: Array):
 		if cbItem != null:
 			cbItemsToGive.append({"item": cbItem, "amount": itemAmount})
 			continue
+		
 		if SaveState.abilities.has(itemName):
 			_onAbilityReceived(itemName)
-		if itemName.matchn("progressive*glide"):
-			_onAbilityReceived("flight" if SaveState.abilities.has("glide") else "glide")
+		
+		if "progressive" in itemName:
+			if "glide" in itemName:
+				_onAbilityReceived("flight" if SaveState.has_ability("glide") else "glide")
+			if "magnetism" in itemName:
+				if SaveState.has_ability("magnetism"):
+					pass #TODO ability advantage
+				else:
+					_onAbilityReceived("magnetism")
+			if "dash" in itemName:
+				if SaveState.has_ability("dash"):
+					pass #TODO ability advantage
+				else:
+					_onAbilityReceived("dash")
+			if "climb" in itemName:
+				if SaveState.has_ability("climb"):
+					pass #TODO ability advantage
+				else:
+					_onAbilityReceived("climb")
+		
 		if "aa_" in itemName:
 			_onSongReceived(itemName)
+		
 		if "_stamp" in itemName:
 			_onStampReceived(itemName)
+		
 	if !cbItemsToGive.empty():
 		MenuHelper.give_items(cbItemsToGive)
 
@@ -149,7 +170,7 @@ func _onStampReceived(stampFlag: String):
 func _onFlagChanged(flag: String, value: bool):
 	if "captain" in flag and value:
 		return sendCaptainDefeated(flag)
-	if "aa" in flag and value:
+	if "aa" in flag and !("encounter" in flag) and value:
 		return sendArchAngelDefeated(flag)
 
 # sending checks to server
@@ -169,7 +190,7 @@ func sendArchAngelDefeated(aaFlag: String):
 func sendAbilityUnlocked(abilityName: String):
 	print("Ability Unlocked: %s" % abilityName)
 	# there may be some additional information added
-	_sendCheckLocation(abilityName)
+	#_sendCheckLocation(abilityName)
 
 func sendCaptainDefeated(captainFlag: String):
 	print("Captain Defeated: %s" % captainFlag)
@@ -177,8 +198,8 @@ func sendCaptainDefeated(captainFlag: String):
 	_sendCheckLocation(captainFlag)
 
 func handleGiveItemAction(itemName: String):
-	var location = _archipelagoClient.slot_data["giveItemAction_to_location"][itemName]
-	if location == null:
+	if !(itemName in _archipelagoClient.slot_data["giveItemAction_to_location"]):
 		return false
+	var location = _archipelagoClient.slot_data["giveItemAction_to_location"][itemName]
 	_archipelagoClient.check_locations([location])
 	return true
