@@ -2,6 +2,22 @@ from dataclasses import dataclass
 from datetime import datetime
 from Options import DeathLink, Choice, Range, Toggle, PerGameCommonOptions, Visibility
 
+class HarbourtownStationAccess(Choice):
+    """
+    Modifies how Harbourtown Station is reached
+    
+    Bridge - A bridge is placed after the recording tutorial
+
+    Elevator - The Harbourtown elevator is fixed after the recording tutorial
+
+    Glide - The normal way of reaching the station is used
+    """
+    display_name = "Harbourtown Station Access"
+    option_bridge = 0
+    option_elevator = 1
+    option_glide = 2
+    default = 0
+
 class UsePier(Toggle):#UNIMPLEMENTED
     """
     Adds the Pier of the Unknown locations and items
@@ -120,7 +136,7 @@ class Bootlegsanity(Choice):#UNIMPLEMENTED
     option_percentage_tape = 3
     option_percentage_all = 4
     default = 0
-    if datetime.today().month != 3:
+    if datetime.today().month != 4:
         visibility = Visibility.none
 
 class BootlegsanityPercentage(Range):#UNIMPLEMENTED
@@ -132,7 +148,7 @@ class BootlegsanityPercentage(Range):#UNIMPLEMENTED
     range_start = 1
     range_end = 100
     default = 1
-    if datetime.today().month != 3:
+    if datetime.today().month != 4:
         visibility = Visibility.none
 
 class BootlegsanityPercentageItemCount(Range):#UNIMPLEMENTED
@@ -147,7 +163,7 @@ class BootlegsanityPercentageItemCount(Range):#UNIMPLEMENTED
     range_start = 1
     range_end = 512
     default = 4
-    if datetime.today().month != 3:
+    if datetime.today().month != 4:
         visibility = Visibility.none
 
 class Fusionsanity(Toggle):#UNIMPLEMENTED
@@ -157,7 +173,7 @@ class Fusionsanity(Toggle):#UNIMPLEMENTED
     Many Pear Fusilli will be added to the item pool
     """
     display_name = "Fusionsanity"
-    if datetime.today().month != 3:
+    if datetime.today().month != 4:
         visibility = Visibility.none
 
 class FusionsanityAmount(Range):#UNIMPLEMENTED
@@ -171,7 +187,7 @@ class FusionsanityAmount(Range):#UNIMPLEMENTED
     range_start = 1
     range_end = 139**2
     default = 32
-    if datetime.today().month != 3:
+    if datetime.today().month != 4:
         visibility = Visibility.none
 
 class FusionsanityItemCount(Range):#UNIMPLEMENTED
@@ -186,12 +202,13 @@ class FusionsanityItemCount(Range):#UNIMPLEMENTED
     range_start = 1
     range_end = 2048
     default = 16
-    if datetime.today().month != 3:
+    if datetime.today().month != 4:
         visibility = Visibility.none
 
 @dataclass
 class CassetteBeastsOptions(PerGameCommonOptions):
     death_link: DeathLink
+    harbourtown_station_access: HarbourtownStationAccess
     use_pier: UsePier
     shuffle_chest_loot_tables: ShuffleChestLootTables
     traps: Traps
