@@ -22,6 +22,8 @@ const _ITEM_GIVE_DELAY = 1.0
 
 var _tempReceivedItems = []
 
+var locationId_ItemDescription: Dictionary
+
 signal connectionStateChanged(state, error)
 
 func _init():
@@ -203,3 +205,11 @@ func handleGiveItemAction(itemName: String):
 	var location = _archipelagoClient.slot_data["giveItemAction_to_location"][itemName]
 	_archipelagoClient.check_locations([location])
 	return true
+
+func getItemString(locationString: String):
+	var apName = _archipelagoClient.slot_data["location_cbName_to_apName"][locationString]
+	var locationId = _archipelagoClient.data_package.location_name_to_id[apName]
+	if !_archipelagoClient.locationId_itemInfo.has(locationId):
+		return "Self Item"
+	var itemInfo = _archipelagoClient.locationId_itemInfo[locationId]
+	return "Sent %s to %s" % [itemInfo.itemName, itemInfo.playerName]

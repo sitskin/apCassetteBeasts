@@ -1,20 +1,20 @@
 [gd_resource type="Resource" load_steps=3 format=2]
 
-[ext_resource path="res://data/BaseItem.gd" type="Script" id=1]
+[ext_resource path="res://mods/archipelago_companion/items/ApItem.gd" type="Script" id=1]
 [ext_resource path="res://mods/archipelago_companion/sprites/ap_logo_80_outline.png" type="Texture" id=2]
 
 [resource]
 script = ExtResource( 1 )
-name = "AP Item"
-aux_name = "Ap Item"
+name = "ap_item"
+aux_name = "ap_item"
 icon = ExtResource( 2 )
-description = "An Archipelago Item"
+description = ""
 category = "misc"
 base_stack_limit = 0
 stack_limit_category = ""
 consume_on_use = false
 discardable = false
-value = 0
+value = 1
 usable_contexts = 0
 battle_usage = 0
 sort_order = 0

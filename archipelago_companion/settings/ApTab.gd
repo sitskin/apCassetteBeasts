@@ -27,13 +27,13 @@ func grab_focus():
 	_enabledCheckButton.pressed = archipelagoDataManager.getEnabled()
 	_hostField.text = archipelagoDataManager.getServer()
 	_playerField.text = archipelagoDataManager.getPlayer()
-	_hostField.grab_focus()
 	_onConnectionStateChanged(archipelagoConnectionManager.getConnectionState())
 	_onEnabledToggled(archipelagoDataManager.getEnabled())
+	_hostField.grab_focus()
 
 func _onConnectionStateChanged(new_state: int, error: int = 0):
 	_errorLabel.visible = false
-	
+	print(BaseArchipelagoClient.ConnectState.DISCONNECTED)
 	_updateFieldsState(new_state == BaseArchipelagoClient.ConnectState.DISCONNECTED)
 	match new_state:
 		BaseArchipelagoClient.ConnectState.DISCONNECTED:

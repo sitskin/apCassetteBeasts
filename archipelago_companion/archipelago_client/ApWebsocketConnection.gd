@@ -93,11 +93,8 @@ func connect_to_server(server: String) -> bool:
 		_waiting_to_connect_to_server = ws_url
 		_make_connection_timeout(ws_url)
 		_result = _client.connect_to_url(ws_url)
-		print(ws_url)
-		print(_result)
 
 		ws_success = yield (self, "_stop_waiting_to_connect")
-		print(ws_success)
 		_waiting_to_connect_to_server = null
 		if ws_success:
 			_url = ws_url
@@ -166,11 +163,16 @@ func say(text: String):
 		"text": text,
 	})
 
-func get_data_package(games: Array):
-	_send_command({
-		"cmd": "GetDataPackage",
-		"games": games,
-	})
+func get_data_package(games = null):
+	if not games:
+		_send_command({
+			"cmd": "GetDataPackage",
+		})
+	else:
+		_send_command({
+			"cmd": "GetDataPackage",
+			"games": games,
+		})
 
 func bounce(games: Array, slots: Array, tags: Array, data: Dictionary):
 	_send_command({
@@ -309,7 +311,6 @@ func _handle_command(command: Dictionary):
 			print("Received Unknown Command %s" % command["cmd"])
 
 func _process(_delta):
-	#print("process")
 	# Only run when the connection the the server is not closed.
 	if _client != null:
 		_client.poll()

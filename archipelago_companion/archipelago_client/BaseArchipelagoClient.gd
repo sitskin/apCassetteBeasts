@@ -77,6 +77,8 @@ var hint_points: int
 
 var room_info: Dictionary
 var data_package: ApDataPackage
+var gameToDataPackage: Dictionary
+var locationId_itemInfo: Dictionary
 
 signal _received_connect_response(message)
 ## Sent when the connection status to the server changes.
@@ -222,6 +224,31 @@ func connect_to_multiworld(password: String="", get_data_pacakge: bool=true) -> 
 	#    connection.
 
 	_set_connection_state(ConnectState.CONNECTED_TO_MULTIWORLD)
+	
+	var games = []
+	for slot in self.slot_info.values():
+		if !(slot["game"] in games):
+			games.append(slot["game"])
+			websocket_client.get_data_package([slot["game"]])
+			var data_package_message = yield (websocket_client, "on_data_package")
+			for gameName in data_package_message["data"]["games"].keys():
+				self.gameToDataPackage[gameName] = ApDataPackage.new(data_package_message["data"]["games"][gameName])
+	
+	websocket_client.send_location_scouts(missing_locations, 0)
+	var locationInfo = yield (websocket_client, "on_location_info")
+	var slotId_playerName:Dictionary
+	for player in self.players:
+		slotId_playerName[player.slot] = player.alias
+	for networkItem in locationInfo.locations:
+		var locationId = networkItem.location
+		if networkItem.player == self.slot:
+			continue
+		var playerName = slotId_playerName[networkItem.player]
+		var gameName = self.slot_info[str(networkItem.player)].game
+		var itemId_name = self.gameToDataPackage[gameName].item_id_to_name
+		var itemName = itemId_name[networkItem.item]
+		self.locationId_itemInfo[locationId] = {"playerName": playerName, "itemName": itemName}
+	
 	return ConnectResult.SUCCESS
 
 func disconnect_from_multiworld():
