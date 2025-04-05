@@ -194,6 +194,7 @@ class CassetteBeastsWorld(World):
 			},
 			"settings": {
 				"death_link": self.options.death_link.value,
+				"harbourtown_station_access": self.options.harbourtown_station_access,
 				"use_pier": self.options.use_pier.value,
 				"shuffle_chest_loot_tables": self.options.shuffle_chest_loot_tables.value,
 				"traps": self.options.traps != "none",
