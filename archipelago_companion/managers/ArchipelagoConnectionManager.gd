@@ -118,7 +118,7 @@ func _giveReceivedItems(givenItems: Array):
 			cbItemsToGive.append({"item": cbItem, "amount": itemAmount})
 			continue
 		
-		if SaveState.abilities.has(itemName):
+		if SaveState.has_ability(itemName):
 			_onAbilityReceived(itemName)
 		
 		if "progressive" in itemName:
@@ -126,17 +126,17 @@ func _giveReceivedItems(givenItems: Array):
 				_onAbilityReceived("flight" if SaveState.has_ability("glide") else "glide")
 			if "magnetism" in itemName:
 				if SaveState.has_ability("magnetism"):
-					pass #TODO ability advantage
+					SaveState.stats.get_stat("exchange_purchased").report_event("ability_advantage_magnetism")
 				else:
 					_onAbilityReceived("magnetism")
 			if "dash" in itemName:
 				if SaveState.has_ability("dash"):
-					pass #TODO ability advantage
+					SaveState.stats.get_stat("exchange_purchased").report_event("ability_advantage_dash")
 				else:
 					_onAbilityReceived("dash")
 			if "climb" in itemName:
 				if SaveState.has_ability("climb"):
-					pass #TODO ability advantage
+					SaveState.stats.get_stat("exchange_purchased").report_event("ability_advantage_climb")
 				else:
 					_onAbilityReceived("climb")
 		
