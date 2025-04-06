@@ -6,7 +6,7 @@
 [resource]
 script = ExtResource( 1 )
 name = "ap_item"
-aux_name = "ap_item"
+aux_name = ""
 icon = ExtResource( 2 )
 description = ""
 category = "misc"

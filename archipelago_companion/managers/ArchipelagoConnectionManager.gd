@@ -201,10 +201,10 @@ func sendCaptainDefeated(captainFlag: String):
 
 func handleGiveItemAction(itemName: String):
 	if !(itemName in _archipelagoClient.slot_data["giveItemAction_to_location"]):
-		return false
+		return null
 	var location = _archipelagoClient.slot_data["giveItemAction_to_location"][itemName]
 	_archipelagoClient.check_locations([location])
-	return true
+	return location
 
 func getItemString(locationString: String):
 	var apName = _archipelagoClient.slot_data["location_cbName_to_apName"][locationString]
