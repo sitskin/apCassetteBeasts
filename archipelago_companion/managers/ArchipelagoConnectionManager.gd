@@ -105,7 +105,8 @@ func _onApItemReceived(itemData: Array, networkItem: Dictionary):
 	if networkItem.location in SaveState.other_data.archipelago.receivedItems:
 		print("The location %d already exists" % networkItem.location)
 		return
-	SaveState.other_data.archipelago.receivedItems.push_back(networkItem.location)
+	if networkItem.location > 0:
+		SaveState.other_data.archipelago.receivedItems.push_back(networkItem.location)
 	_itemsReceivedFromServer.append(GivenApItem.new(itemData))
 
 func _giveReceivedItems(givenItems: Array):
