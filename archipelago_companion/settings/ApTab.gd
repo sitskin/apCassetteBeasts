@@ -2,7 +2,6 @@ extends Control
 
 const BaseArchipelagoClient = preload("res://mods/archipelago_companion/archipelago_client/BaseArchipelagoClient.gd")
 
-onready var _enabledCheckButton: BaseButton = find_node("EnableCheckButton")
 onready var _hostField: LineEdit = find_node("HostEdit")
 onready var _playerField: LineEdit = find_node("PlayerEdit")
 onready var _passwordField: LineEdit = find_node("PasswordEdit")
@@ -18,13 +17,11 @@ onready var archipelagoDataManager = preload("res://mods/archipelago_companion/m
 func _ready():
 	_errorLabel.visible = false
 	archipelagoConnectionManager.connect("connectionStateChanged", self, "_onConnectionStateChanged")
-	_enabledCheckButton.connect("toggled", self, "_onEnabledToggled")
 	_connectButton.connect("pressed", self, "_onConnectButtonPressed")
 	_disconnectButton.connect("pressed", self, "_onDisconnectButtonPressed")
 
 # this is called when this tab is switched to
 func grab_focus():
-	_enabledCheckButton.pressed = archipelagoDataManager.getEnabled()
 	_hostField.text = archipelagoDataManager.getServer()
 	_playerField.text = archipelagoDataManager.getPlayer()
 	_onConnectionStateChanged(archipelagoConnectionManager.getConnectionState())
@@ -65,8 +62,6 @@ func _updateFieldsState(isDisconnected: bool):
 	_passwordField.editable = isDisconnected
 
 func _disableAll():
-	_enabledCheckButton.set_pressed_no_signal(false)
-	_enabledCheckButton.disabled = true
 	_hostField.editable = false
 	_playerField.editable = false
 	_passwordField.editable = false
