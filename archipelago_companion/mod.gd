@@ -38,6 +38,8 @@ func init_content() -> void:
 
 # adds the AP Settings page to the menu
 func _onSettingsMenuReady(scene: Control):
+	if scene.tabs[scene.tabs.size() - 1].name == "Archipelago Companion":
+		return
 	var tab = ApTab.instance()
 	scene.content_container.add_child(tab)
 	tab.visible = false
