@@ -35,6 +35,7 @@ func init_content() -> void:
 	# connect to any scenes that we need modified
 	DLC.mods_by_id.cat_modutils.callbacks.connect_scene_ready("res://menus/settings/SettingsMenu.tscn", self, "_onSettingsMenuReady")
 	DLC.mods_by_id.cat_modutils.callbacks.connect_scene_ready("res://cutscenes/intro/OutskirtsWrongWay.tscn", self, "_onOutskirtsWrongWay")
+	DLC.mods_by_id.cat_modutils.callbacks.connect_class_ready("res://world/core/ConditionalLayer.gd", self, "_removeInvisWalls")
 
 # adds the AP Settings page to the menu
 func _onSettingsMenuReady(scene: Control):
@@ -51,3 +52,7 @@ func _onSettingsMenuReady(scene: Control):
 # disables tutorial railroading if AP Client is enabled
 func _onOutskirtsWrongWay(scene: CheckConditionAction):
 	scene.deny_flags.push_back(preload("managers/ArchipelagoDataManager.gd").new().AP_ENABLED_KEY)
+
+func _removeInvisWalls(scene: Node):
+	if scene.name == "ConditionalLayer_Tutorial":
+		scene.queue_free()
