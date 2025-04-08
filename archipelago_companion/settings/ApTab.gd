@@ -24,13 +24,14 @@ func _ready():
 func grab_focus():
 	_hostField.text = archipelagoDataManager.getServer()
 	_playerField.text = archipelagoDataManager.getPlayer()
-	_onConnectionStateChanged(archipelagoConnectionManager.getConnectionState())
 	_onEnabledToggled(archipelagoDataManager.getEnabled())
 	_hostField.grab_focus()
+	# Slight delay to let node tree settle before updating values in the tree
+	yield(get_tree().create_timer(0.01), "timeout")
+	_onConnectionStateChanged(archipelagoConnectionManager.getConnectionState())
 
 func _onConnectionStateChanged(new_state: int, error: int = 0):
 	_errorLabel.visible = false
-	print(BaseArchipelagoClient.ConnectState.DISCONNECTED)
 	_updateFieldsState(new_state == BaseArchipelagoClient.ConnectState.DISCONNECTED)
 	match new_state:
 		BaseArchipelagoClient.ConnectState.DISCONNECTED:
@@ -115,6 +116,7 @@ func _onDisconnectButtonPressed():
 		print("Disconnect button pressed")
 	archipelagoConnectionManager.startDisconnection()
 
+# UI Toggle was removed for now, keeping this method just in case though
 func _onEnabledToggled(enabled: bool):
 	if _isDebug:
 		var enDis = "en" if enabled else "dis"
