@@ -119,7 +119,7 @@ func _giveReceivedItems(givenItems: Array):
 			cbItemsToGive.append({"item": cbItem, "amount": itemAmount})
 			continue
 		
-		if SaveState.has_ability(itemName):
+		if SaveState.abilities.has(itemName):
 			_onAbilityReceived(itemName)
 		
 		if "progressive" in itemName:
