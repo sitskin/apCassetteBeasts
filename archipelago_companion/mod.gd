@@ -33,9 +33,11 @@ func init_content() -> void:
 	var apShowStampCardAction = preload("extensions/ShowStampCardActionAP.gd")
 	apShowStampCardAction.take_over_path("res://nodes/actions/ShowStampCardAction.gd")
 	# connect to any scenes that we need modified
-	DLC.mods_by_id.cat_modutils.callbacks.connect_scene_ready("res://menus/settings/SettingsMenu.tscn", self, "_onSettingsMenuReady")
-	DLC.mods_by_id.cat_modutils.callbacks.connect_scene_ready("res://cutscenes/intro/OutskirtsWrongWay.tscn", self, "_onOutskirtsWrongWay")
-	DLC.mods_by_id.cat_modutils.callbacks.connect_class_ready("res://world/core/ConditionalLayer.gd", self, "_removeInvisWalls")
+	var callbacks = DLC.mods_by_id.cat_modutils.callbacks
+	callbacks.connect_scene_ready("res://menus/settings/SettingsMenu.tscn", self, "_onSettingsMenuReady")
+	callbacks.connect_scene_ready("res://cutscenes/intro/OutskirtsWrongWay.tscn", self, "_onOutskirtsWrongWay")
+	callbacks.connect_class_ready("res://world/core/ConditionalLayer.gd", self, "_removeInvisWalls")
+	callbacks.connect_scene_ready("res://cutscenes/intro/PensbyIntro.tscn", self, "_giveKayleighEarly")
 
 # adds the AP Settings page to the menu
 func _onSettingsMenuReady(scene: Control):
@@ -56,3 +58,22 @@ func _onOutskirtsWrongWay(scene: CheckConditionAction):
 func _removeInvisWalls(scene: Node):
 	if scene.name == "ConditionalLayer_Tutorial":
 		scene.queue_free()
+
+func _giveKayleighEarly(scene: Cutscene):
+	scene.get_node("QuestStartAction").queue_free()
+	var unlockKayleighAction = UnlockPartnerAction.new()
+	unlockKayleighAction.partner_id = "kayleigh"
+	scene.add_child(unlockKayleighAction)
+	# need to use resource loading in order to grab the correct taken over class
+	var giveHarbourtownKeyAction = load("res://nodes/actions/GiveItemAction.gd").new()
+	giveHarbourtownKeyAction.item = ItemFactory.generate_item(load("res://data/items/key_harbourtown.tres"))
+	scene.add_child(giveHarbourtownKeyAction)
+	var setEncounterAction = CheckConditionAction.new()
+	setEncounterAction.set_flags = ["encounter_aa_oldgante"]
+	scene.add_child(setEncounterAction)
+	scene.add_child(WaitAction.new())
+	var warpToCafeAction = WarpAction.new()
+	warpToCafeAction.warp_target_scene = "res://world/maps/interiors/GramophoneInterior.tscn"
+	warpToCafeAction.warp_target_name = "CafeTable"
+	scene.add_child(warpToCafeAction)
+
