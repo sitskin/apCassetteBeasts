@@ -2,22 +2,6 @@ from dataclasses import dataclass
 from datetime import datetime
 from Options import DeathLink, Choice, Range, Toggle, PerGameCommonOptions, Visibility
 
-class HarbourtownStationAccess(Choice):
-    """
-    Modifies how Harbourtown Station is reached
-    
-    Bridge - A bridge is placed after the recording tutorial
-
-    Elevator - The Harbourtown elevator is fixed after the recording tutorial
-
-    Glide - The normal way of reaching the station is used
-    """
-    display_name = "Harbourtown Station Access"
-    option_bridge = 0
-    option_elevator = 1
-    option_glide = 2
-    default = 0
-
 class UsePier(Toggle):#UNIMPLEMENTED
     """
     Adds the Pier of the Unknown locations and items
@@ -208,7 +192,6 @@ class FusionsanityItemCount(Range):#UNIMPLEMENTED
 @dataclass
 class CassetteBeastsOptions(PerGameCommonOptions):
     death_link: DeathLink
-    harbourtown_station_access: HarbourtownStationAccess
     use_pier: UsePier
     shuffle_chest_loot_tables: ShuffleChestLootTables
     traps: Traps
