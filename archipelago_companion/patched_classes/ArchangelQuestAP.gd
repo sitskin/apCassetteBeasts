@@ -65,7 +65,7 @@ func update_clue_count():
 	for id in archangel_ids:
 		var flag = "encounter_" + id
 		# PATCH: ADD LINES HERE
-		flag = "ap_" + flag
+		flag = "ap_song_part_" + id
 		# PATCH: STOP
 		if SaveState.has_flag(flag):
 			archangels_defeated += 1

@@ -163,7 +163,7 @@ func _onAbilityReceived(abilityName: String):
 	print("Ability %s given to player" % abilityName)
 
 func _onSongReceived(aaName: String):
-	SaveState.set_flag("ap_encounter_" + aaName, true)
+	SaveState.set_flag("ap_song_part_" + aaName, true)
 	print("Song for archangel %s given to player" % aaName)
 
 func _onStampReceived(stampFlag: String):
@@ -171,9 +171,9 @@ func _onStampReceived(stampFlag: String):
 	print("Stamp for captain %s given to player" % stampFlag)
 
 func _onFlagChanged(flag: String, value: bool):
-	if "captain" in flag and value:
+	if "encounter_captain" in flag and value:
 		return sendCaptainDefeated(flag)
-	if "aa" in flag and !("encounter" in flag) and value:
+	if "encounter_aa" in flag and value:
 		return sendArchAngelDefeated(flag)
 
 # sending checks to server
@@ -186,9 +186,10 @@ func sendChestOpened(chestFlag: String):
 	_sendCheckLocation(chestFlag)
 
 func sendArchAngelDefeated(aaFlag: String):
-	print("Archangel defeated: %s" % aaFlag)
+	var locationString = "ap_" + aaFlag
+	print("Archangel defeated: %s" % locationString)
 	# there may be some additional information added
-	_sendCheckLocation(aaFlag)
+	_sendCheckLocation(locationString)
 
 func sendAbilityUnlocked(abilityName: String):
 	print("Ability Unlocked: %s" % abilityName)
