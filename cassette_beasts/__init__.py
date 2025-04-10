@@ -168,15 +168,11 @@ class CassetteBeastsWorld(World):
 				self.options.fusionsanity_item_count.value = locs
 
 	def pre_fill(self):
-		# Harbourtown Gate Key pre_filled into its original location
-		# It's a BK point with only 3 checks available and moving past the
-		#   gate early breaks the tutorial in a way that might softlock the game
-		item = self.create_item("Harbourtown Gate Key")
-		self.multiworld.get_location("Harbourtown Gate Key", self.player).place_locked_item(item)
+		pass
 
 	def get_pre_fill_items(self):
 		return [
-			self.create_item("Harbourtown Gate Key"),
+			
 		]
 
 	def fill_slot_data(self):

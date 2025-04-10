@@ -10,18 +10,18 @@ from .Locations import chest_loot_locations, shopsanity_locations, trainersanity
 
 
 item_groups = {
-	"song fragments": {
-		"Song Fragment (Oldgante)",
-		"Song Fragment (Puppetox)",
-		"Song Fragment (Mourningstar)",
-		"Song Fragment (Nowhere Monarch)",
-		"Song Fragment (Heckahedron)",
-		"Song Fragment (Alice)",
-		"Song Fragment (Robin Goodfellow)",
-		"Song Fragment (Mammon)",
-		"Song Fragment (Lamento Mori)",
-		"Song Fragment (Babelith)",
-		"Song Fragment (Kuneko)"
+	"song parts": {
+		"Song Part (Oldgante)",
+		"Song Part (Puppetox)",
+		"Song Part (Mourningstar)",
+		"Song Part (Nowhere Monarch)",
+		"Song Part (Heckahedron)",
+		"Song Part (Alice)",
+		"Song Part (Robin Goodfellow)",
+		"Song Part (Mammon)",
+		"Song Part (Lamento Mori)",
+		"Song Part (Babelith)",
+		"Song Part (Kuneko)"
 	},
 	"abilities": {k for k in cb_abilities.keys()},
 	"key items": {k for k in cb_key_items.keys()},

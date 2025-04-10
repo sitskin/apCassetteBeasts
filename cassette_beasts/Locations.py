@@ -153,7 +153,7 @@ base_locations = {
 		CassetteBeastsLocationData("chest_overworld_8_-6", "Autumn Hill", CB_BASE_ID+64),
 	"NE Mire Sea Chest (8,-7)": 
 		CassetteBeastsLocationData("chest_overworld_8_-7", "NE Mire Sea", CB_BASE_ID+65),
-	"Upper Path Chest on Wall Before Harbortown West (-1, -2)": 
+	"Upper Path Chest on Wall Before Harbourtown West (-1, -2)": 
 		CassetteBeastsLocationData("chest_overworld_-1_-2", "Upper Path", CB_BASE_ID+66),
 	"Lakeside Chest by Waterfall (-1,-6)": 
 		CassetteBeastsLocationData("overworld_-1_-6_chest_1", "Lakeside", CB_BASE_ID+67),
@@ -305,7 +305,7 @@ base_locations = {
 		CassetteBeastsLocationData("chest_office4", "Eastham Woods Cliff", CB_BASE_ID+140),
 	"Landkeeper Office 5 Cabinet (-6,-3)": 
 		CassetteBeastsLocationData("chest_office5", "The Marshes", CB_BASE_ID+141),
-	"Harbortown Station Chest (1,-2)": 
+	"Harbourtown Station Chest (1,-2)": 
 		CassetteBeastsLocationData("harbourtown_station_chest1", "Harbourtown Station", CB_BASE_ID+142),
 	"Night's Bridge Station Clockhands Chest (?,?)": 
 		CassetteBeastsLocationData("room_1A_chest_1", "Night's Bridge Station", CB_BASE_ID+143),
