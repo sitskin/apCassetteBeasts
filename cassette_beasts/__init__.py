@@ -175,6 +175,12 @@ class CassetteBeastsWorld(World):
 			
 		]
 
+	def set_victory(self):
+		# TODO options for other victory conditions
+		#	  change victory to Defeated Aleph Null
+		victory = self.multiworld.get_location("Victory", self.player)
+		self.multiworld.completion_condition[self.player] = lambda state: state.has("Victory", self.player)
+
 	def fill_slot_data(self):
 		
 		return {
