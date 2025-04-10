@@ -99,12 +99,12 @@ def set_rules(cbworld):
 	#Harbourtown East
 
 	#Harbourtown Outskirts
-	for e in multiworld.get_region("Harbourtown Outskirts", player).entrances:
-		set_rule(e, lambda state: state.has("Harbourtown Gate Key", player))
+	# for e in multiworld.get_region("Harbourtown Outskirts", player).entrances:
+	# 	set_rule(e, lambda state: state.has("Harbourtown Gate Key", player))
 
 	#Upper Path
-	for e in multiworld.get_region("Upper Path", player).entrances:
-		set_rule(e, lambda state: canGlide(state, player))
+	# for e in multiworld.get_region("Upper Path", player).entrances:
+	# 	set_rule(e, lambda state: canGlide(state, player))
 		#if e.name == "Harbourtown Outskirts":
 		#	set_rule(e, lambda state: canGlide(state, player))
 		# elif e.name == "Harbourtown East":
@@ -113,7 +113,7 @@ def set_rules(cbworld):
 	#Harbourtown West
 	for e in multiworld.get_region("Harbourtown West", player).entrances:
 		if e.name == "Upper Path":
-			set_rule(e, lambda state: state.has("Defeated Oldgante", player) and \
+			set_rule(e, lambda state:# state.has("Defeated Oldgante", player) and \
 				(canMagnetism(state, player) or canDash(state, player)))
 
 	#New Wirral Park
@@ -219,7 +219,7 @@ def set_rules(cbworld):
 
 	#Night's Bridge Station
 	for e in multiworld.get_region("Night's Bridge Station", player).entrances:
-		set_rule(e, lambda state: state.has_group("song fragments", player, 8) and \
+		set_rule(e, lambda state: state.has_group("song parts", player, 8) and \
 			canGlide(state, player) and canSwim(state, player) and \
 			canMagnetism(state, player) and canDash(state, player))
 
@@ -307,7 +307,7 @@ def set_rules(cbworld):
 		lambda state: canGlide(state, player) or canSwim(state, player))
 	set_rule(multiworld.get_location("NE Mire Sea Chest (8,-7)", player),
 		lambda state: canGlide(state, player) and canMagnetism(state, player))
-	set_rule(multiworld.get_location("Upper Path Chest on Wall Before Harbortown West (-1, -2)", player),
+	set_rule(multiworld.get_location("Upper Path Chest on Wall Before Harbourtown West (-1, -2)", player),
 		lambda state: canGlide(state, player) and canMagnetism(state, player))
 	set_rule(multiworld.get_location("Ham Chest Near Mt Wirral (-1,-7)", player),
 		lambda state: canGlide(state, player))
@@ -374,11 +374,11 @@ def set_rules(cbworld):
 
 	#---Events---
 	set_rule(multiworld.get_location("Defeated Oldgante", player),
-		lambda state: state.can_reach_location("Defeat Oldgante", player))
+		lambda state: True)#state.can_reach_location("Defeat Oldgante", player))
 	set_rule(multiworld.get_location("Recruited Kayleigh", player),
-		lambda state: state.has("Defeated Oldgante", player))
+		lambda state: True)#state.has("Defeated Oldgante", player))
 	set_rule(multiworld.get_location("Recruited Eugene", player),
-		lambda state: state.has("Defeated Oldgante", player))
+		lambda state: True)#state.has("Defeated Oldgante", player))
 	set_rule(multiworld.get_location("Recruited Meredith", player),
 		lambda state: state.has("Envelope for Meredith", player) and state.has("Met Meredith", player))
 	set_rule(multiworld.get_location("Recruited Barkley", player),
