@@ -38,6 +38,8 @@ func init_content() -> void:
 	callbacks.connect_scene_ready("res://cutscenes/intro/OutskirtsWrongWay.tscn", self, "_onOutskirtsWrongWay")
 	callbacks.connect_class_ready("res://world/core/ConditionalLayer.gd", self, "_removeInvisWalls")
 	callbacks.connect_scene_ready("res://cutscenes/intro/PensbyIntro.tscn", self, "_giveKayleighEarly")
+	callbacks.connect_scene_ready("res://cutscenes/merchants/Clemence_Exchange.tscn", self, "_unlockTapes")
+	callbacks.connect_scene_ready("res://cutscenes/merchants/RangerTrader_Exchange.tscn", self, "_removeAbilityAdvantages")
 
 # adds the AP Settings page to the menu
 func _onSettingsMenuReady(scene: Control):
@@ -77,3 +79,23 @@ func _giveKayleighEarly(scene: Cutscene):
 	warpToCafeAction.warp_target_name = "CafeTable"
 	scene.add_child(warpToCafeAction)
 
+func _unlockTapes(scene: Cutscene):
+	var exchange = scene.get_node("ExchangeMenuAction")
+	var basicTapeIndex = exchange.exchanges.find(load("res://data/exchanges/clemence/tape_basic.tres"))
+	var chromeTapeIndex = exchange.exchanges.find(load("res://data/exchanges/clemence/tape_chrome.tres"))
+	if basicTapeIndex >= 0:
+		exchange.exchanges[basicTapeIndex].conditional = null
+	if chromeTapeIndex >= 0:
+		exchange.exchanges[chromeTapeIndex].conditional = null
+
+func _removeAbilityAdvantages(scene: Cutscene):
+	var exchange = scene.get_node("ExchangeMenuAction")
+	var climbIndex = exchange.exchanges.find(load("res://data/exchanges/ranger_trader/ability_advantage_climb.tres"))
+	var dashIndex = exchange.exchanges.find(load("res://data/exchanges/ranger_trader/ability_advantage_dash.tres"))
+	var magIndex = exchange.exchanges.find(load("res://data/exchanges/ranger_trader/ability_advantage_magnetism.tres"))
+	if climbIndex >= 0:
+		exchange.exchanges.remove(climbIndex)
+	if dashIndex >= 0:
+		exchange.exchanges.remove(dashIndex)
+	if magIndex >= 0:
+		exchange.exchanges.remove(magIndex)
