@@ -1,6 +1,24 @@
 from dataclasses import dataclass
 from datetime import datetime
-from Options import DeathLink, Choice, Range, Toggle, PerGameCommonOptions, Visibility
+from Options import DeathLink, Choice, OptionSet, Range, Toggle, PerGameCommonOptions, Visibility
+
+class Goal(OptionSet):
+    """
+    Determines what your goal(s) are required to beat the game.
+    If none are selected, the goal becomes Escape.
+
+    Escape - Complete Land of Confusion
+
+    Captain - Beat Ianthe and become a ranger captain
+    """
+    # future options
+    # Sunny - Complete People are People
+    # Pier - Complete Pier of the Unknown
+    # Archangel Hunt - Defeat a selection of Archangels
+    display_name = "Goal"
+    valid_keys = ["Escape", "Captain"]
+    default = ["Escape"]
+
 
 class UsePier(Toggle):#UNIMPLEMENTED
     """
@@ -165,11 +183,11 @@ class FusionsanityAmount(Range):#UNIMPLEMENTED
     The number of fusions that must be seen or fused
       into to obtain all items
     Without the Pier of the Unknown dlc, the max
-      amount is 16384
+      amount is 17689
     """
     display_name = "Fusionsanity Amount"
     range_start = 1
-    range_end = 139**2
+    range_end = 143**2
     default = 32
     if datetime.today().month != 4:
         visibility = Visibility.none
@@ -184,13 +202,14 @@ class FusionsanityItemCount(Range):#UNIMPLEMENTED
     """
     display_name = "Fusionsanity Item Count"
     range_start = 1
-    range_end = 2048
+    range_end = 1024
     default = 16
     if datetime.today().month != 4:
         visibility = Visibility.none
 
 @dataclass
 class CassetteBeastsOptions(PerGameCommonOptions):
+    goal: Goal
     death_link: DeathLink
     use_pier: UsePier
     shuffle_chest_loot_tables: ShuffleChestLootTables

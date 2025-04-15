@@ -325,6 +325,10 @@ base_locations = {
 		CassetteBeastsLocationData("Envelope for Meredith", "Harbourtown East", CB_BASE_ID+150),
 	"Landkeeper Key":
 		CassetteBeastsLocationData("Landkeeper Key", "Harbourtown Outskirts", CB_BASE_ID+151),
+	"Landkeeper Secret Hideout Button Chest (-4,-1)":
+		CassetteBeastsLocationData("dungeon_landkeeper_secret_chest_1", "New Landkeeper Hideout", CB_BASE_ID+152),
+	"Landkeeper Secret Hideout Pillar Chest (-4,-1)":
+		CassetteBeastsLocationData("dungeon_landkeeper_secret_chest_2", "New Landkeeper Hideout", CB_BASE_ID+153),
 }
 
 id_off = len(base_locations)
@@ -574,7 +578,10 @@ event_data_table = {
 	"Met Ianthe": CassetteBeastsEventData("New Wirral Park", "Met Ianthe"),
 	"Met Meredith": CassetteBeastsEventData("New Wirral Park", "Met Meredith"),
 	"Cleared Landkeeper Offices": CassetteBeastsEventData("The Marshes", "Cleared Landkeeper Offices"),
-	"Victory": CassetteBeastsEventData("Night's Bridge Station", "Victory"),
+	"Defeated Aleph": CassetteBeastsEventData("Night's Bridge Station", "Defeated Aleph"),
+	"Became Captain": CassetteBeastsEventData("Harbourtown East", "Became Captain"),
+	"Recruited Sunny": CassetteBeastsEventData("Mt Wirral", "Recruited Sunny"),
+	"Quest People are People": CassetteBeastsEventData("New Landkeeper Hideout", "Quest People are People"),
 }
 
 location_data_table = base_locations|chest_loot_locations|shopsanity_locations|trainersanity_locations|tapesanity_locations|tapesanity_percentage_locations|\

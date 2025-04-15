@@ -23,7 +23,7 @@ region_data = {
 	"The Marshes": ["Piper Farm", "Lost Hearts Graveyard", "West Mire Sea", "Spider Cave", "Landkeeper HQ"],
 	"Spider Cave": [],
 	"Piper Farm": ["Harbourtown West"],
-	"Lost Hearts Graveyard": ["Aldgrave Tomb Station"],
+	"Lost Hearts Graveyard": ["Aldgrave Tomb Station", "New Landkeeper Hideout"],
 	"West Mire Sea": [],
 	"Cast Iron Shore": ["Titania Shipwreck"],
 	"Mt Wirral": ["Brokenhead", "Icelington Station"],
@@ -46,4 +46,5 @@ region_data = {
 	"The Witch House": [],
 	"Funworld": [],
 	"Cosmic Zone": [],
+	"New Landkeeper Hideout": [],
 }

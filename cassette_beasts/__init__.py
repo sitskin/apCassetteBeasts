@@ -138,9 +138,12 @@ class CassetteBeastsWorld(World):
 	def set_rules(self):
 		from .Rules import set_rules
 		set_rules(self)
+		self.set_victory()
+		# from Utils import visualize_regions
+		# visualize_regions(self.multiworld.get_region("Menu", self.player), "my_world.puml")
 
 	def generate_early(self):
-		print(self.fill_slot_data())
+		#print(self.fill_slot_data())
 		# Check if Tapesanity Percentage has too many items and fix
 		if self.options.tapesanity == "percentage":
 			count = self.options.tapesanity_percentage_item_count
@@ -176,10 +179,15 @@ class CassetteBeastsWorld(World):
 		]
 
 	def set_victory(self):
-		# TODO options for other victory conditions
-		#	  change victory to Defeated Aleph Null
-		victory = self.multiworld.get_location("Victory", self.player)
-		self.multiworld.completion_condition[self.player] = lambda state: state.has("Victory", self.player)
+		conditions = []
+		for goal in self.options.goal.value:
+			match goal:
+				case "Escape":
+					conditions.append(lambda state: state.has("Defeated Aleph", self.player))
+				case "Captain":
+					conditions.append(lambda state: state.has("Became Captain", self.player))
+		self.multiworld.completion_condition[self.player] = lambda state: all([c(state) for c in conditions])
+
 
 	def fill_slot_data(self):
 		
@@ -195,6 +203,7 @@ class CassetteBeastsWorld(World):
 				"captain_badge": "Beat Ianthe",
 			},
 			"settings": {
+				"goal": self.options.goal.value,
 				"death_link": self.options.death_link.value,
 				"use_pier": self.options.use_pier.value,
 				"shuffle_chest_loot_tables": self.options.shuffle_chest_loot_tables.value,

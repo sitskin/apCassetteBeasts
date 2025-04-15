@@ -1074,6 +1074,27 @@ base_monsters = {
 		'type': "earth",
 		'stats': [130,130,130,130,130,150],
 		},
+	'Pawper': {
+		'id': 'bear1',
+		'locations': [
+			"Recruited Sunny",
+			"New Landkeeper Hideout"
+		],
+		'type': "beast",
+		'stats': [120,130,100,100,120,130],
+		},
+	'Pawprince': {
+		'id': 'bear1',
+		'locations': ["reamster_Pawper"],
+		'type': "beast",
+		'stats': [140,160,110,110,140,140],	
+		},
+	'Minosteam': {
+		'id': 'minosteam',
+		'locations': ["Quest People are People"],
+		'type': "beast",
+		'stats': [140,160,110,110,140,140],	
+		},
 }
 for data in base_monsters.values():
 	data['dlc'] = None
