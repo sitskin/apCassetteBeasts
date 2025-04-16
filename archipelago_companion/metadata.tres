@@ -13,6 +13,6 @@ save_file_format_tag = "archipelago_companion"
 save_file_format_tag_version = 1
 network_protocol_tag = "archipelago_companion"
 disable_network_multiplayer = true
-modified_files = [ "res://menus/ranger_stamp_card/StampSlot.gd", "res://data/quests/story/ArchangelQuest.gd" ]
+modified_files = [ "res://menus/ranger_stamp_card/StampSlot.gd", "res://data/quests/story/ArchangelQuest.gd", "res://data/spawn_config_scripts/MonsterSpawnConfig.gd" ]
 modified_dirs = [  ]
 translations = [  ]

@@ -216,6 +216,11 @@ func getItemString(locationString: String):
 	var itemInfo = _archipelagoClient.locationId_itemInfo[locationId]
 	return "Sent %s to %s" % [itemInfo.itemName, itemInfo.playerName]
 
+func getSetting(setting: String):
+	if _apWebSocketConnection.connection_state != 1:
+		return null
+	return _archipelagoClient.slot_data.settings[setting]
+
 func _checkForVictory():
 	# victory logic:
 	# Escape - Complete Land of Confusion
