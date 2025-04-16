@@ -225,7 +225,7 @@ def set_rules(cbworld):
 
 	#Postgame
 	for e in multiworld.get_region("Postgame", player).entrances:
-		set_rule(e, lambda state: state.has("Azure Keystone", player, 2))
+		set_rule(e, lambda state: state.has("Defeated Aleph", player))
 
 	#Brightside Pier
 	for e in multiworld.get_region("Brightside Pier", player).entrances:
@@ -243,6 +243,9 @@ def set_rules(cbworld):
 	for e in multiworld.get_region("Cosmic Zone", player).entrances:
 		set_rule(e, lambda state: False)# dlc
 
+	#"New Landkeeper Hideout"
+	for e in multiworld.get_region("New Landkeeper Hideout", player).entrances:
+		set_rule(e, lambda state: state.has("Recruited Sunny", player))
 
 	#---Location Rules---
 	#set_rule(multiworld.get_location("", player),
@@ -371,6 +374,10 @@ def set_rules(cbworld):
 		lambda state: state.has("Met Meredith", player))
 	set_rule(multiworld.get_location("Landkeeper Key", player),
 		lambda state: canGlide(state, player))
+	set_rule(multiworld.get_location("Landkeeper Secret Hideout Button Chest (-4,-1)", player),
+		lambda state: canGlide(state, player))
+	set_rule(multiworld.get_location("Landkeeper Secret Hideout Pillar Chest (-4,-1)", player),
+		lambda state: canGlide(state, player))
 
 	#---Events---
 	set_rule(multiworld.get_location("Defeated Oldgante", player),
@@ -379,14 +386,21 @@ def set_rules(cbworld):
 		lambda state: True)#state.has("Defeated Oldgante", player))
 	set_rule(multiworld.get_location("Recruited Eugene", player),
 		lambda state: True)#state.has("Defeated Oldgante", player))
+
+	set_rule(multiworld.get_location("Met Meredith", player),
+		lambda state: state.has("Progressive Glide", player))
 	set_rule(multiworld.get_location("Recruited Meredith", player),
 		lambda state: state.has("Envelope for Meredith", player) and state.has("Met Meredith", player))
 	set_rule(multiworld.get_location("Recruited Barkley", player),
 		lambda state: state.has("Progressive Climb", player))
 	set_rule(multiworld.get_location("Cleared Landkeeper Offices", player),
 		lambda state: clearedLandkeeperOffices(state, player))
-	set_rule(multiworld.get_location("Victory", player),
+	set_rule(multiworld.get_location("Defeated Aleph", player),
 		lambda state: state.has("Azure Keystone", player, 2))
+	set_rule(multiworld.get_location("Became Captain", player),
+		lambda state: state.can_reach_location("Beat Ianthe", player))
+	set_rule(multiworld.get_location("Recruited Sunny", player),
+		lambda state: state.has("Defeated Aleph", player) and state.can_reach_location("Defeat Mammon", player))
 
 	#---Trainersanity---
 	if cbworld.options.trainersanity:

@@ -62,6 +62,7 @@ cb_key_items = {
 	"Song Part (Kuneko)": CassetteBeastsItemData("aa_kuneko", id_off+35, IC.progression, 1, 1),
 	"Ranger Handbook": CassetteBeastsItemData("tutorial", id_off+36, IC.progression, 1, 1),
 	"Type Chart": CassetteBeastsItemData("type_chart", id_off+37, IC.filler, 1, 1),
+	"Landkeeper Card Key": CassetteBeastsItemData("key_landkeeper2", id_off+38, IC.progression, 1, 2),
 }
 
 id_off += len(cb_key_items)
