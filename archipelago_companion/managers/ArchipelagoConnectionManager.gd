@@ -20,6 +20,8 @@ var _itemsReceivedFromServer = []
 var _itemGiveTimer = 0.0
 const _ITEM_GIVE_DELAY = 1.0
 
+const _AP_AA_DEFEATED_KEY = "ap_aa_defeated"
+
 var _tempReceivedItems = []
 
 var locationId_ItemDescription: Dictionary
@@ -81,16 +83,13 @@ func _process(delta):
 			_itemsReceivedFromServer.clear()
 
 func _onFileLoaded():
+	SaveState.achievements.connect("achievement_unlocked", self, "_checkForVictory")
 	SaveState.set_flag(ArchipelagoDataManager.AP_ENABLED_KEY, archipelagoDataManager.getEnabled())
 	# if it doesn't exist create it
 	if !SaveState.other_data.has("archipelago") or !SaveState.other_data["archipelago"].has("receivedItems"):
 		SaveState.other_data["archipelago"] = {"receivedItems": []}
 	for data in _tempReceivedItems:
 		_onApItemReceived(data.itemData, data.networkItem)
-	
-	# we now have the full list of items this game has received
-	# cross reference that with the list of items in other_data
-	# add all missing items to _itemsReceivedFromServer
 
 func _getApItemConsole(itemName: String, itemAmount: int):
 	_giveReceivedItems([GivenApItem.new([itemName, itemAmount])])
@@ -172,9 +171,10 @@ func _onStampReceived(stampFlag: String):
 
 func _onFlagChanged(flag: String, value: bool):
 	if "encounter_captain" in flag and value:
-		return sendCaptainDefeated(flag)
+		sendCaptainDefeated(flag)
 	if "encounter_aa" in flag and value:
-		return sendArchAngelDefeated(flag)
+		sendArchAngelDefeated(flag)
+	_checkForVictory()
 
 # sending checks to server
 func _sendCheckLocation(location: String):
@@ -188,7 +188,7 @@ func sendChestOpened(chestFlag: String):
 func sendArchAngelDefeated(aaFlag: String):
 	var locationString = "ap_" + aaFlag
 	print("Archangel defeated: %s" % locationString)
-	# there may be some additional information added
+	SaveState.stats.get_stat(_AP_AA_DEFEATED_KEY).set_count(locationString, 1)
 	_sendCheckLocation(locationString)
 
 func sendAbilityUnlocked(abilityName: String):
@@ -215,3 +215,26 @@ func getItemString(locationString: String):
 		return "Self Item"
 	var itemInfo = _archipelagoClient.locationId_itemInfo[locationId]
 	return "Sent %s to %s" % [itemInfo.itemName, itemInfo.playerName]
+
+func _checkForVictory():
+	# victory logic:
+	# Escape - Complete Land of Confusion
+	# Captain - Beat Ianthe and become a Captain
+	# Sunny - Complete People are People
+	# Pier - Complete Pier of the Unknown (Requires DLC)
+	# Archangel Hunt - Defeat a selection of Archangels
+	var passingChecks = 0
+	var victoryConditions = _archipelagoClient.slot_data.settings.goal
+	if victoryConditions.has("Escape") && SaveState.has_flag("encounter_aa_aleph_null"):
+		passingChecks += 1
+	if victoryConditions.has("Captain") && SaveState.has_flag("defeat_ianthe"):
+		passingChecks += 1
+	if victoryConditions.has("Sunny") && SaveState.achievements.is_unlocked("quest_sunny"):
+		passingChecks += 1
+	if victoryConditions.has("Pier") && false: # not sure what flag this is
+		passingChecks += 1
+	if victoryConditions.has("Archangel Hunt") && false: # need number required
+		SaveState.stats.get_stat(_AP_AA_DEFEATED_KEY).total
+		passingChecks += 1
+	if passingChecks >= victoryConditions.size():
+		_archipelagoClient.set_status(30)
