@@ -10,15 +10,59 @@ class Goal(OptionSet):
     Escape - Complete Land of Confusion
 
     Captain - Beat Ianthe and become a ranger captain
+
+    Sunny - Complete People are People
+
+    Archangel Hunt - Defeat a number of Archangels
     """
     # future options
-    # Sunny - Complete People are People
     # Pier - Complete Pier of the Unknown
     # Archangel Hunt - Defeat a selection of Archangels
     display_name = "Goal"
-    valid_keys = ["Escape", "Captain"]
+    valid_keys = ["Escape", "Captain", "Sunny", "Archangel Hunt"]
     default = ["Escape"]
 
+class FinalBattleFriendCount(Range):
+    """
+    How many companions the game expects you to have
+      unlock and reached friendship level 1 with in
+      order to fight the final battle
+    You will be able to fight the battle with fewer
+      companions, but it will be outside of logic
+    """
+    display_name = "Final Battle Friend Count"
+    range_start = 1
+    range_end = 6
+    default = 5
+
+class ArchangelHuntCount(Range):
+    """
+    How many Archangels must be defeated to achive the
+      Archangel Hunt goal
+    Without the Pier of the Unknown DLC, the max number
+      is 13
+    """
+    display_name = "Archangel Hunt Count"
+    range_start = 3
+    range_end = 13
+    default = 8
+
+class ExcludePostgame(Toggle):
+    """
+    Force all postgame locations to be filler
+    """
+    display_name = "Exclude Postgame"
+    default = True
+
+class BootlegChance(Range):
+    """
+    The 1/X odds that an overworld monster will be a
+      bootleg. Normal odds is 1000
+    """
+    display_name = "Bootleg Chance"
+    range_start = 1
+    range_end = 1000
+    default = 20
 
 class UsePier(Toggle):#UNIMPLEMENTED
     """
@@ -210,7 +254,10 @@ class FusionsanityItemCount(Range):#UNIMPLEMENTED
 @dataclass
 class CassetteBeastsOptions(PerGameCommonOptions):
     goal: Goal
-    death_link: DeathLink
+    final_battle_friend_count: FinalBattleFriendCount
+    archangel_hunt_count: ArchangelHuntCount
+    exclude_postgame: ExcludePostgame
+    bootleg_chance: BootlegChance
     use_pier: UsePier
     shuffle_chest_loot_tables: ShuffleChestLootTables
     traps: Traps
@@ -225,3 +272,4 @@ class CassetteBeastsOptions(PerGameCommonOptions):
     fusionsanity: Fusionsanity
     fusionsanity_amount: FusionsanityAmount
     fusionsanity_item_count: FusionsanityItemCount
+    death_link: DeathLink

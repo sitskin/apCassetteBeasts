@@ -45,6 +45,16 @@ def clearedLandkeeperOffices(state, player):
 		state.can_reach_location("Landkeeper Office 4 Cabinet (1,-7)",    player) and\
 		state.can_reach_location("Landkeeper Office 5 Cabinet (-6,-3)",   player)
 
+def friendCount(state, player):
+	return sum([
+		state.has("Recruited Kayleigh", player),
+		state.has("Recruited Eugene", player) and state.has("Defeated Mammon", player),
+		state.has("Recruited Meredith", player) and state.has("Defeated Nowhere Monarch", player),
+		state.has("Recruited Felix", player) and state.has("Defeated Shining Kuneko", player),
+		state.has("Recruited Viola", player) and state.has("Defeated Robin Goodfellow", player),
+		state.has("Recruited Barkley", player) and state.has("Defeated Averevoir", player)
+		])
+
 def getCanReachMonsters(options=None):
 	return {monster: getCanReachMonster(monster, data) for monster, data in monsters(options).items()}
 
@@ -256,6 +266,8 @@ def set_rules(cbworld):
 		lambda state: state.has("White Rabbit Key", player))
 	set_rule(multiworld.get_location("Defeat Lamento Mori", player),
 		lambda state: state.has("Train Ticket (Aldgrave Tomb)", player))
+	set_rule(multiworld.get_location("Defeat Shining Kuneko", player),
+		lambda state: state.has("Recruited Felix", player) and canSwim(state, player))
 	set_rule(multiworld.get_location("Beat Skip", player),
 		lambda state: canFly(state, player) or canSwim(state, player))
 	set_rule(multiworld.get_location("Beat Clee-o", player),
@@ -378,14 +390,46 @@ def set_rules(cbworld):
 		lambda state: canGlide(state, player))
 	set_rule(multiworld.get_location("Landkeeper Secret Hideout Pillar Chest (-4,-1)", player),
 		lambda state: canGlide(state, player))
+	set_rule(multiworld.get_location("Defeat Lenna", player),
+		lambda state: canFly(state, player))
 
 	#---Events---
 	set_rule(multiworld.get_location("Defeated Oldgante", player),
 		lambda state: True)#state.can_reach_location("Defeat Oldgante", player))
 	set_rule(multiworld.get_location("Recruited Kayleigh", player),
 		lambda state: True)#state.has("Defeated Oldgante", player))
-	set_rule(multiworld.get_location("Recruited Eugene", player),
-		lambda state: True)#state.has("Defeated Oldgante", player))
+	#set_rule(multiworld.get_location("Recruited Eugene", player),
+	#	lambda state: True)#state.has("Defeated Oldgante", player))
+
+	set_rule(multiworld.get_location("Defeated Poppetox", player),
+		lambda state: state.can_reach_location("Defeat Poppetox", player))
+	set_rule(multiworld.get_location("Defeated Mourningstar", player),
+		lambda state: state.can_reach_location("Defeat Mourningstar", player))
+	set_rule(multiworld.get_location("Defeated Nowhere Monarch", player),
+		lambda state: state.can_reach_location("Defeat Nowhere Monarch", player))
+	set_rule(multiworld.get_location("Defeated Heckahedron", player),
+		lambda state: state.can_reach_location("Defeat Heckahedron", player))
+	set_rule(multiworld.get_location("Defeated Alice", player),
+		lambda state: state.can_reach_location("Defeat Alice", player))
+	set_rule(multiworld.get_location("Defeated Robin Goodfellow", player),
+		lambda state: state.can_reach_location("Defeat Robin Goodfellow", player))
+	set_rule(multiworld.get_location("Defeated Mammon", player),
+		lambda state: state.can_reach_location("Defeat Mammon", player))
+	set_rule(multiworld.get_location("Defeated Lamento Mori", player),
+		lambda state: state.can_reach_location("Defeat Lamento Mori", player))
+	set_rule(multiworld.get_location("Defeated Babelith", player),
+		lambda state: state.can_reach_location("Defeat Babelith", player))
+	set_rule(multiworld.get_location("Defeated Shining Kuneko", player),
+		lambda state: state.can_reach_location("Defeat Shining Kuneko", player))
+	set_rule(multiworld.get_location("Defeated Morgante", player),
+		lambda state: state.can_reach_location("Defeat Morgante", player))
+	set_rule(multiworld.get_location("Defeated Helia", player),
+		lambda state: state.can_reach_location("Defeat Helia", player))
+	set_rule(multiworld.get_location("Defeated Lenna", player),
+		lambda state: state.can_reach_location("Defeat Lenna", player))
+	if cbworld.options.use_pier:
+		set_rule(multiworld.get_location("Defeated Gwenivar", player),
+			lambda state: state.can_reach_location("Defeat Gwenivar", player))
 
 	set_rule(multiworld.get_location("Met Meredith", player),
 		lambda state: state.has("Progressive Glide", player))
@@ -396,7 +440,8 @@ def set_rules(cbworld):
 	set_rule(multiworld.get_location("Cleared Landkeeper Offices", player),
 		lambda state: clearedLandkeeperOffices(state, player))
 	set_rule(multiworld.get_location("Defeated Aleph", player),
-		lambda state: state.has("Azure Keystone", player, 2))
+		lambda state: state.has("Azure Keystone", player, 2) and \
+			friendCount(state, player) >= cbworld.options.final_battle_friend_count.value)
 	set_rule(multiworld.get_location("Became Captain", player),
 		lambda state: state.can_reach_location("Beat Ianthe", player))
 	set_rule(multiworld.get_location("Recruited Sunny", player),
@@ -434,7 +479,8 @@ def set_rules(cbworld):
 			if cbworld.options.bootlegsanity == "specific":
 				for _type in types:
 					set_rule(multiworld.get_location(f"Recorded {_type.capitalize()} Bootleg {monster}", player),
-						lambda state, a=access: a(state, player))
+						lambda state, a=access: a(state, player) and \
+						True if _type != "glass" else state.can_reach_location("Recorded Glaistain"))
 			else:
 				set_rule(multiworld.get_location(f"Recorded Bootleg {monster}", player),
 					lambda state, a=access: a(state, player))

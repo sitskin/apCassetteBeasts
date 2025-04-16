@@ -115,6 +115,9 @@ class CassetteBeastsWorld(World):
 
 		# Create Events
 		for name, data in event_data_table.items():
+			if data.dlc:
+				if data.dlc == "pier" and not self.options.use_pier:
+					continue
 			region = self.multiworld.get_region(data.region, self.player)
 			event = CassetteBeastsLocation(self.player, name, None, region)
 			event.place_locked_item(CassetteBeastsItem(data.item, IC.progression_skip_balancing, None, self.player))
@@ -171,7 +174,9 @@ class CassetteBeastsWorld(World):
 				self.options.fusionsanity_item_count.value = locs
 
 	def pre_fill(self):
-		pass
+		if self.options.exclude_postgame:
+			for loc in self.multiworld.get_region("Postgame", self.player).locations:
+				loc.progress_type = 3 # Excluded
 
 	def get_pre_fill_items(self):
 		return [
@@ -190,7 +195,9 @@ class CassetteBeastsWorld(World):
 
 
 	def fill_slot_data(self):
-		
+		# Fix empty goal set
+		if self.options.goal.value == {}:
+			self.options.goal.value = {"Escape"}
 		return {
 			"item_apName_to_cbItemData": {key: (value.cb_name, value.amount) for key, value in item_data_table.items()},
 			"location_cbName_to_apName": {value.cb_name: name for name, value in location_data_table.items() if isLocation(self.options, name)},
@@ -204,7 +211,10 @@ class CassetteBeastsWorld(World):
 			},
 			"settings": {
 				"goal": self.options.goal.value,
-				"death_link": self.options.death_link.value,
+				"final_battle_friend_count": self.options.final_battle_friend_count.value,
+				"archangel_hunt_count": self.options.archangel_hunt_count.value,
+				"exclude_postgame": self.options.exclude_postgame.value,
+				"bootleg_chance": self.options.bootleg_chance.value,
 				"use_pier": self.options.use_pier.value,
 				"shuffle_chest_loot_tables": self.options.shuffle_chest_loot_tables.value,
 				"traps": self.options.traps != "none",
@@ -219,5 +229,6 @@ class CassetteBeastsWorld(World):
 				"fusionsanity": self.options.fusionsanity.value,
 				"fusionsanity_amount": self.options.fusionsanity_amount.value,
 				"fusionsanity__item_count": self.options.fusionsanity_item_count.value,
+				"death_link": self.options.death_link.value,
 			},
 		}
