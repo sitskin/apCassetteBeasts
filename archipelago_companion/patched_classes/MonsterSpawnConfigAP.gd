@@ -50,7 +50,7 @@ func _configure_world_mon(node: Node)->Node:
 		var tape = TapeConfig.new()
 		tape.form = mon
 		# PATCH: ADD LINES HERE
-		var ap_chance = 1 / DLC.mods_by_id.archipelago_companion.archipelagoConnectionManager.getSetting("bootleg_chance")
+		var ap_chance = BOOTLEG_CHANCE * DLC.mods_by_id.archipelago_companion.archipelagoConnectionManager.getSetting("bootleg_multiplier")
 		if ap_chance == null:
 			ap_chance = BOOTLEG_CHANCE
 		# PATCH: STOP
