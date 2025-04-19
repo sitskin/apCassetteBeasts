@@ -54,15 +54,15 @@ class ExcludePostgame(Toggle):
     display_name = "Exclude Postgame"
     default = True
 
-class BootlegChance(Range):
+class BootlegMultiplier(Range):
     """
-    The 1/X odds that an overworld monster will be a
-      bootleg. Normal odds is 1000
+    The multiply the odds that an overworld monster will be a bootleg.
+    1000 = 100% Bootleg chance 
     """
-    display_name = "Bootleg Chance"
+    display_name = "Bootleg Multiplier"
     range_start = 1
     range_end = 1000
-    default = 20
+    default = 1
 
 class UsePier(Toggle):#UNIMPLEMENTED
     """
@@ -257,7 +257,7 @@ class CassetteBeastsOptions(PerGameCommonOptions):
     final_battle_friend_count: FinalBattleFriendCount
     archangel_hunt_count: ArchangelHuntCount
     exclude_postgame: ExcludePostgame
-    bootleg_chance: BootlegChance
+    bootleg_multiplier: BootlegMultiplier
     use_pier: UsePier
     shuffle_chest_loot_tables: ShuffleChestLootTables
     traps: Traps

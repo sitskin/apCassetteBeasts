@@ -322,20 +322,24 @@ base_locations = {
 		CassetteBeastsLocationData("Type Chart", "Menu", CB_BASE_ID+148),
 	"Harbourtown Gate Key":
 		CassetteBeastsLocationData("Harbourtown Gate Key", "Harbourtown Beach", CB_BASE_ID+149),
+	"Train Ticket (Glowcester)":
+		CassetteBeastsLocationData("Train Ticket (Glowcester)", "Glowcester Road Station", CB_BASE_ID+150),
+	"Train Ticket (Aldgrave Tomb)":
+		CassetteBeastsLocationData("Train Ticket (Aldgrave Tomb)", "Aldgrave Tomb Station", CB_BASE_ID+151),
 	"Envelope for Meredith":
-		CassetteBeastsLocationData("Envelope for Meredith", "Harbourtown East", CB_BASE_ID+150),
+		CassetteBeastsLocationData("Envelope for Meredith", "Harbourtown East", CB_BASE_ID+152),
 	"Landkeeper Key":
-		CassetteBeastsLocationData("Landkeeper Key", "Harbourtown Outskirts", CB_BASE_ID+151),
+		CassetteBeastsLocationData("Landkeeper Key", "Harbourtown Outskirts", CB_BASE_ID+153),
 	"Landkeeper Secret Hideout Button Chest (-4,-1)":
-		CassetteBeastsLocationData("dungeon_landkeeper_secret_chest_1", "New Landkeeper Hideout", CB_BASE_ID+152),
+		CassetteBeastsLocationData("dungeon_landkeeper_secret_chest_1", "New Landkeeper Hideout", CB_BASE_ID+154),
 	"Landkeeper Secret Hideout Pillar Chest (-4,-1)":
-		CassetteBeastsLocationData("dungeon_landkeeper_secret_chest_2", "New Landkeeper Hideout", CB_BASE_ID+153),
+		CassetteBeastsLocationData("dungeon_landkeeper_secret_chest_2", "New Landkeeper Hideout", CB_BASE_ID+155),
 	"Defeat Morgante": 
-		CassetteBeastsLocationData("ap_encounter_aa_morgante", "Postgame", CB_BASE_ID+154),
+		CassetteBeastsLocationData("ap_encounter_aa_morgante", "Postgame", CB_BASE_ID+156),
 	"Defeat Helia": 
-		CassetteBeastsLocationData("ap_encounter_aa_helia", "Postgame", CB_BASE_ID+155),
+		CassetteBeastsLocationData("ap_encounter_aa_helia", "Postgame", CB_BASE_ID+157),
 	"Defeat Lenna": 
-		CassetteBeastsLocationData("ap_encounter_aa_lenna", "Postgame", CB_BASE_ID+156),
+		CassetteBeastsLocationData("ap_encounter_aa_lenna", "Postgame", CB_BASE_ID+158),
 }
 
 id_off = len(base_locations)

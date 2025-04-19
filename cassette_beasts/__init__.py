@@ -209,12 +209,16 @@ class CassetteBeastsWorld(World):
 				"key_landkeeper": "Landkeeper Key",
 				"captain_badge": "Beat Ianthe",
 			},
+			"itemDrop_to_location": {
+				"trainticket_glowshroom": "Train Ticket (Glowcester)",
+				"trainticket_graveyard": "Train Ticket (Aldgrave Tomb)",
+			},
 			"settings": {
 				"goal": self.options.goal.value,
 				"final_battle_friend_count": self.options.final_battle_friend_count.value,
 				"archangel_hunt_count": self.options.archangel_hunt_count.value,
 				"exclude_postgame": self.options.exclude_postgame.value,
-				"bootleg_chance": self.options.bootleg_chance.value,
+				"bootleg_multiplier": self.options.bootleg_multiplier.value,
 				"use_pier": self.options.use_pier.value,
 				"shuffle_chest_loot_tables": self.options.shuffle_chest_loot_tables.value,
 				"traps": self.options.traps != "none",

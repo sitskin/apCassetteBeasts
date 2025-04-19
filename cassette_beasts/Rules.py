@@ -382,6 +382,8 @@ def set_rules(cbworld):
 		lambda state: canGlide(state, player) and canClimb(state, player))
 	set_rule(multiworld.get_location("Type Chart", player),
 		lambda state: state.has("Ranger Handbook", player))
+	set_rule(multiworld.get_location("Train Ticket (Aldgrave Tomb)", player),
+		lambda state: canGlide(state, player))
 	set_rule(multiworld.get_location("Envelope for Meredith", player),
 		lambda state: state.has("Met Meredith", player))
 	set_rule(multiworld.get_location("Landkeeper Key", player),
