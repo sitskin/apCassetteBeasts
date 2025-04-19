@@ -12,6 +12,10 @@ const MODUTILS: Dictionary = {
 			"patch": "res://mods/archipelago_companion/patched_classes/ArchangelQuestAP.gd",
 			"target": "res://data/quests/story/ArchangelQuest.gd",
 		},
+		{
+			"patch": "res://mods/archipelago_companion/patched_classes/MonsterSpawnConfigAP.gd",
+			"target": "res://data/spawn_config_scripts/MonsterSpawnConfig.gd",
+		},
 	],
 }
 

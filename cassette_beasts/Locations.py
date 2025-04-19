@@ -18,6 +18,7 @@ class CassetteBeastsLocationData(NamedTuple):
 class CassetteBeastsEventData(NamedTuple):
 	region: str
 	item: str
+	dlc: Optional[str] = None
 
 
 base_locations = {
@@ -321,20 +322,36 @@ base_locations = {
 		CassetteBeastsLocationData("Type Chart", "Menu", CB_BASE_ID+148),
 	"Harbourtown Gate Key":
 		CassetteBeastsLocationData("Harbourtown Gate Key", "Harbourtown Beach", CB_BASE_ID+149),
+	"Train Ticket (Glowcester)":
+		CassetteBeastsLocationData("Train Ticket (Glowcester)", "Glowcester Road Station", CB_BASE_ID+150),
+	"Train Ticket (Aldgrave Tomb)":
+		CassetteBeastsLocationData("Train Ticket (Aldgrave Tomb)", "Aldgrave Tomb Station", CB_BASE_ID+151),
 	"Envelope for Meredith":
-		CassetteBeastsLocationData("Envelope for Meredith", "Harbourtown East", CB_BASE_ID+150),
+		CassetteBeastsLocationData("Envelope for Meredith", "Harbourtown East", CB_BASE_ID+152),
 	"Landkeeper Key":
-		CassetteBeastsLocationData("Landkeeper Key", "Harbourtown Outskirts", CB_BASE_ID+151),
+		CassetteBeastsLocationData("Landkeeper Key", "Harbourtown Outskirts", CB_BASE_ID+153),
 	"Landkeeper Secret Hideout Button Chest (-4,-1)":
-		CassetteBeastsLocationData("dungeon_landkeeper_secret_chest_1", "New Landkeeper Hideout", CB_BASE_ID+152),
+		CassetteBeastsLocationData("dungeon_landkeeper_secret_chest_1", "New Landkeeper Hideout", CB_BASE_ID+154),
 	"Landkeeper Secret Hideout Pillar Chest (-4,-1)":
-		CassetteBeastsLocationData("dungeon_landkeeper_secret_chest_2", "New Landkeeper Hideout", CB_BASE_ID+153),
+		CassetteBeastsLocationData("dungeon_landkeeper_secret_chest_2", "New Landkeeper Hideout", CB_BASE_ID+155),
+	"Defeat Morgante": 
+		CassetteBeastsLocationData("ap_encounter_aa_morgante", "Postgame", CB_BASE_ID+156),
+	"Defeat Helia": 
+		CassetteBeastsLocationData("ap_encounter_aa_helia", "Postgame", CB_BASE_ID+157),
+	"Defeat Lenna": 
+		CassetteBeastsLocationData("ap_encounter_aa_lenna", "Postgame", CB_BASE_ID+158),
 }
 
 id_off = len(base_locations)
+pier_locations = {
+	"Defeat Gwenivar": 
+		CassetteBeastsLocationData("ap_encounter_aa_clown", "Brightside Pier", CB_BASE_ID+0),
+}
+
+id_off += len(pier_locations)
 chest_loot_locations = {
 	loc.replace("Chest", "Chest Loot"): CassetteBeastsLocationData("loot_"+data.cb_name, data.region, -1)\
-	for loc, data in base_locations.items() if "Chest" in loc
+	for loc, data in (base_locations|pier_locations).items() if "Chest" in loc
 }
 for i, loc in enumerate(chest_loot_locations.keys()):
 	data = chest_loot_locations[loc]
@@ -575,6 +592,21 @@ event_data_table = {
 	"Recruited Viola": CassetteBeastsEventData("The Marshes", "Recruited Viola"),
 	"Recruited Barkley": CassetteBeastsEventData("Mt Wirral", "Recruited Barkley"),
 	"Defeated Oldgante": CassetteBeastsEventData("Harbourtown Station", "Defeated Oldgante"),
+	"Defeated Poppetox": CassetteBeastsEventData("Glowcester Road Station", "Defeated Poppetox"),
+	"Defeated Mourningstar": CassetteBeastsEventData("Mourningstar Crescent Station", "Defeated Mourningstar"),
+	"Defeated Nowhere Monarch": CassetteBeastsEventData("Falldown Mall", "Defeated Nowhere Monarch"),
+	"Defeated Heckahedron": CassetteBeastsEventData("Waterloop Station", "Defeated Heckahedron"),
+	"Defeated Alice": CassetteBeastsEventData("Cherry Cross Station", "Defeated Alice"),
+	"Defeated Robin Goodfellow": CassetteBeastsEventData("Bard Street Station", "Defeated Robin Goodfellow"),
+	"Defeated Mammon": CassetteBeastsEventData("Landkeeper HQ", "Defeated Mammon"),
+	"Defeated Lamento Mori": CassetteBeastsEventData("Aldgrave Tomb Station", "Defeated Lamento Mori"),
+	"Defeated Babelith": CassetteBeastsEventData("Icelington Station", "Defeated Babelith"),
+	"Defeated Shining Kuneko": CassetteBeastsEventData("Cherry Meadow", "Defeated Shining Kuneko"),
+	"Defeated Morgante": CassetteBeastsEventData("Postgame", "Defeated Morgante"),
+	"Defeated Helia": CassetteBeastsEventData("Postgame", "Defeated Helia"),
+	"Defeated Lenna": CassetteBeastsEventData("Postgame", "Defeated Lenna"),
+	"Defeated Gwenivar": CassetteBeastsEventData("Brightside Pier", "Defeated Gwenivar", "pier"),
+	"Defeated Averevoir": CassetteBeastsEventData("Mt Wirral", "Defeated Averevoir"),
 	"Met Ianthe": CassetteBeastsEventData("New Wirral Park", "Met Ianthe"),
 	"Met Meredith": CassetteBeastsEventData("New Wirral Park", "Met Meredith"),
 	"Cleared Landkeeper Offices": CassetteBeastsEventData("The Marshes", "Cleared Landkeeper Offices"),
@@ -584,7 +616,7 @@ event_data_table = {
 	"Quest People are People": CassetteBeastsEventData("New Landkeeper Hideout", "Quest People are People"),
 }
 
-location_data_table = base_locations|chest_loot_locations|shopsanity_locations|trainersanity_locations|tapesanity_locations|tapesanity_percentage_locations|\
+location_data_table = base_locations|pier_locations|chest_loot_locations|shopsanity_locations|trainersanity_locations|tapesanity_locations|tapesanity_percentage_locations|\
 						bootlegsanity_per_tape_locations|bootlegsanity_specific_locations|bootlegsanity_percentage_locations|fusionsanity_locations
 location_table = {name: data.address for name, data in location_data_table.items() if data.address is not None}
 
@@ -615,6 +647,7 @@ def isLocation(options, name):
 	if not hasDLC(options, name):
 		return False
 	return  (name in base_locations.keys()) or\
+			(name in pier_locations.keys() and options.use_pier == True) or\
 			(name in chest_loot_locations.keys() and options.shuffle_chest_loot_tables == True) or\
 			(name in shopsanity_locations.keys() and options.shopsanity == True) or\
 			(name in trainersanity_locations.keys() and options.trainersanity == True) or\
