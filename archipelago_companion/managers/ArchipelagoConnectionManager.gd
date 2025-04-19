@@ -201,6 +201,16 @@ func sendCaptainDefeated(captainFlag: String):
 	# there may be some additional information added
 	_sendCheckLocation(captainFlag)
 
+func checkItemDrop(itemName: String):
+	return itemName in _archipelagoClient.slot_data["itemDrop_to_location"]
+
+func handleItemDrop(itemName: String):
+	if !(itemName in _archipelagoClient.slot_data["itemDrop_to_location"]):
+		return null
+	var location = _archipelagoClient.slot_data["itemDrop_to_location"][itemName]
+	_archipelagoClient.check_locations([location])
+	return location
+
 func handleGiveItemAction(itemName: String):
 	if !(itemName in _archipelagoClient.slot_data["giveItemAction_to_location"]):
 		return null
