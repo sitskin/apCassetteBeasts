@@ -83,7 +83,7 @@ func connect_to_server(server: String) -> bool:
 	_waiting_to_connect_to_server = null
 
 	var ws_success = false
-	if true:#not wss_success:
+	if not wss_success:
 		# We don't have any info on why the connection failed (thanks Godot), so we
 		# assume it was because the server doesn't support SSL. So, try connecting using
 		# "ws://" instead.
