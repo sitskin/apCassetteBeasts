@@ -326,20 +326,22 @@ base_locations = {
 		CassetteBeastsLocationData("Train Ticket (Glowcester)", "Glowcester Road Station", CB_BASE_ID+150),
 	"Train Ticket (Aldgrave Tomb)":
 		CassetteBeastsLocationData("Train Ticket (Aldgrave Tomb)", "Aldgrave Tomb Station", CB_BASE_ID+151),
+	"Captain Clee-o Coin":
+		CassetteBeastsLocationData("Captain Clee-o Coin", "Eastham Woods", CB_BASE_ID+152),
 	"Envelope for Meredith":
-		CassetteBeastsLocationData("Envelope for Meredith", "Harbourtown East", CB_BASE_ID+152),
+		CassetteBeastsLocationData("Envelope for Meredith", "Harbourtown East", CB_BASE_ID+153),
 	"Landkeeper Key":
-		CassetteBeastsLocationData("Landkeeper Key", "Harbourtown Outskirts", CB_BASE_ID+153),
+		CassetteBeastsLocationData("Landkeeper Key", "Harbourtown Outskirts", CB_BASE_ID+154),
 	"Landkeeper Secret Hideout Button Chest (-4,-1)":
-		CassetteBeastsLocationData("dungeon_landkeeper_secret_chest_1", "New Landkeeper Hideout", CB_BASE_ID+154),
+		CassetteBeastsLocationData("dungeon_landkeeper_secret_chest_1", "New Landkeeper Hideout", CB_BASE_ID+155),
 	"Landkeeper Secret Hideout Pillar Chest (-4,-1)":
-		CassetteBeastsLocationData("dungeon_landkeeper_secret_chest_2", "New Landkeeper Hideout", CB_BASE_ID+155),
+		CassetteBeastsLocationData("dungeon_landkeeper_secret_chest_2", "New Landkeeper Hideout", CB_BASE_ID+156),
 	"Defeat Morgante": 
-		CassetteBeastsLocationData("ap_encounter_aa_morgante", "Postgame", CB_BASE_ID+156),
+		CassetteBeastsLocationData("ap_encounter_aa_morgante", "Postgame", CB_BASE_ID+157),
 	"Defeat Helia": 
-		CassetteBeastsLocationData("ap_encounter_aa_helia", "Postgame", CB_BASE_ID+157),
+		CassetteBeastsLocationData("ap_encounter_aa_helia", "Postgame", CB_BASE_ID+158),
 	"Defeat Lenna": 
-		CassetteBeastsLocationData("ap_encounter_aa_lenna", "Postgame", CB_BASE_ID+158),
+		CassetteBeastsLocationData("ap_encounter_aa_lenna", "Postgame", CB_BASE_ID+159),
 }
 
 id_off = len(base_locations)
