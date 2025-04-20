@@ -212,6 +212,7 @@ class CassetteBeastsWorld(World):
 			"itemDrop_to_location": {
 				"trainticket_glowshroom": "Train Ticket (Glowcester)",
 				"trainticket_graveyard": "Train Ticket (Aldgrave Tomb)",
+				"captain_cleeo_coin": "Captain Clee-o Coin",
 			},
 			"settings": {
 				"goal": self.options.goal.value,
