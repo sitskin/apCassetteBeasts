@@ -14,3 +14,8 @@ func update_progress():
 		
 	set_completable(stampsCollected.size() >= captain_ids.size())
 	emit_signal("changed", self)
+
+func get_description_params()->Dictionary:
+	var result = .get_description_params()
+	result.num = stampsCollected.size()
+	return result
