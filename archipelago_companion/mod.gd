@@ -88,6 +88,10 @@ func _giveKayleighEarly(scene: Cutscene):
 	var giveHarbourtownKeyAction = load("res://nodes/actions/GiveItemAction.gd").new()
 	giveHarbourtownKeyAction.item = ItemFactory.generate_item(load("res://data/items/key_harbourtown.tres"))
 	scene.add_child(giveHarbourtownKeyAction)
+	var give5TapesAction = load("res://nodes/actions/GiveItemAction.gd").new()
+	give5TapesAction.item = ItemFactory.generate_item(load("res://data/items/tape_basic.tres"))
+	give5TapesAction.item_amount = 5
+	scene.add_child(give5TapesAction)
 	var setEncounterAction = CheckConditionAction.new()
 	setEncounterAction.set_flags = ["encounter_aa_oldgante"]
 	scene.add_child(setEncounterAction)
