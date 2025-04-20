@@ -17,4 +17,5 @@ discardable = false
 value = 1
 usable_contexts = 0
 battle_usage = 0
+skip_multiplayer_replication = false
 sort_order = 0

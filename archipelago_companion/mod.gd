@@ -16,6 +16,10 @@ const MODUTILS: Dictionary = {
 			"patch": "res://mods/archipelago_companion/patched_classes/MonsterSpawnConfigAP.gd",
 			"target": "res://data/spawn_config_scripts/MonsterSpawnConfig.gd",
 		},
+		{
+			"patch": "res://mods/archipelago_companion/patched_classes/ItemDropAp.gd",
+			"target": "res://world/core/ItemDrop.gd",
+		},
 	],
 }
 
@@ -36,6 +40,7 @@ func init_content() -> void:
 	apGiveItemAction.take_over_path("res://nodes/actions/GiveItemAction.gd")
 	var apShowStampCardAction = preload("extensions/ShowStampCardActionAP.gd")
 	apShowStampCardAction.take_over_path("res://nodes/actions/ShowStampCardAction.gd")
+	
 	# connect to any scenes that we need modified
 	var callbacks = DLC.mods_by_id.cat_modutils.callbacks
 	callbacks.connect_scene_ready("res://menus/settings/SettingsMenu.tscn", self, "_onSettingsMenuReady")
@@ -44,6 +49,15 @@ func init_content() -> void:
 	callbacks.connect_scene_ready("res://cutscenes/intro/PensbyIntro.tscn", self, "_giveKayleighEarly")
 	callbacks.connect_scene_ready("res://cutscenes/merchants/Clemence_Exchange.tscn", self, "_unlockTapes")
 	callbacks.connect_scene_ready("res://cutscenes/merchants/RangerTrader_Exchange.tscn", self, "_removeAbilityAdvantages")
+	callbacks.connect_scene_ready("res://world/core/ItemDrop.tscn", self, "_onItemDrop")
+
+func _onItemDrop(scene: Interaction):
+	var item = scene.item
+	var sprite = scene.sprite
+	# need to use resource loading in order to grab the correct taken over class
+	scene.set_script(preload("res://mods/archipelago_companion/extensions/ItemDropAp.gd"))
+	scene.sprite = sprite
+	scene.item = item
 
 # adds the AP Settings page to the menu
 func _onSettingsMenuReady(scene: Control):
@@ -74,6 +88,10 @@ func _giveKayleighEarly(scene: Cutscene):
 	var giveHarbourtownKeyAction = load("res://nodes/actions/GiveItemAction.gd").new()
 	giveHarbourtownKeyAction.item = ItemFactory.generate_item(load("res://data/items/key_harbourtown.tres"))
 	scene.add_child(giveHarbourtownKeyAction)
+	var give5TapesAction = load("res://nodes/actions/GiveItemAction.gd").new()
+	give5TapesAction.item = ItemFactory.generate_item(load("res://data/items/tape_basic.tres"))
+	give5TapesAction.item_amount = 5
+	scene.add_child(give5TapesAction)
 	var setEncounterAction = CheckConditionAction.new()
 	setEncounterAction.set_flags = ["encounter_aa_oldgante"]
 	scene.add_child(setEncounterAction)

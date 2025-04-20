@@ -10,9 +10,4 @@ func _run():
 		item.description = "This will explain what AP item you got"
 	if item.name == "Self Item":
 		item = null
-	if item != null and item_amount > 0:
-		var co = MenuHelper.give_item(item, item_amount, passive_message)
-		if co is GDScriptFunctionState:
-			yield (co, "completed")
-	
-	return true
+	return ._run()
