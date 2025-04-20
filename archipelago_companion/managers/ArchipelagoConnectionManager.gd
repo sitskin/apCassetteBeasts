@@ -232,6 +232,8 @@ func getSetting(setting: String):
 	return _archipelagoClient.slot_data.settings[setting]
 
 func _checkForVictory():
+	if !isConnected():
+		return
 	# victory logic:
 	# Escape - Complete Land of Confusion
 	# Captain - Beat Ianthe and become a Captain
