@@ -20,6 +20,10 @@ const MODUTILS: Dictionary = {
 			"patch": "res://mods/archipelago_companion/patched_classes/ItemDropAp.gd",
 			"target": "res://world/core/ItemDrop.gd",
 		},
+		{
+			"patch": "res://mods/archipelago_companion/patched_classes/CaptainQuestAP.gd",
+			"target": "res://data/quests/story/CaptainQuest.gd",
+		},
 	],
 }
 
