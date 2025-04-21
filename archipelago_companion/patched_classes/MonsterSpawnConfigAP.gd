@@ -50,11 +50,11 @@ func _configure_world_mon(node: Node)->Node:
 		var tape = TapeConfig.new()
 		tape.form = mon
 		# PATCH: ADD LINES HERE
-		var ap_chance = BOOTLEG_CHANCE * DLC.mods_by_id.archipelago_companion.archipelagoConnectionManager.getSetting("bootleg_multiplier")
+		var ap_chance = DLC.mods_by_id.archipelago_companion.archipelagoConnectionManager.getSetting("bootleg_multiplier")
 		if ap_chance == null:
-			ap_chance = BOOTLEG_CHANCE
+			ap_chance = 1
 		# PATCH: STOP
-		# PATCH: REPLACE TEXT BOOTLEG_CHANCE #INTO# ap_chance
+		# PATCH: REPLACE TEXT BOOTLEG_CHANCE #INTO# BOOTLEG_CHANCE * ap_chance
 		if character_kind == Character.CharacterKind.MONSTER and randf() < BOOTLEG_CHANCE:
 			tape.type_override = [BattleSetupUtil.random_type(Random.new())]
 		c.add_child(tape)
