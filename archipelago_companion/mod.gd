@@ -97,6 +97,9 @@ func _giveKayleighEarly(scene: Cutscene):
 	var setEncounterAction = CheckConditionAction.new()
 	setEncounterAction.set_flags = ["encounter_aa_oldgante"]
 	scene.add_child(setEncounterAction)
+	var unlockTrainAction = UnlockAbilityAction.new()
+	unlockTrainAction.ability = "train_travel"
+	scene.add_child(unlockTrainAction)
 	scene.add_child(WaitAction.new())
 	var warpToCafeAction = WarpAction.new()
 	warpToCafeAction.warp_target_scene = "res://world/maps/interiors/GramophoneInterior.tscn"
