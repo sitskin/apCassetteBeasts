@@ -42,6 +42,8 @@ func init_content() -> void:
 	apShowStampCardAction.take_over_path("res://nodes/actions/ShowStampCardAction.gd")
 	var apCaptainQuest = preload("extensions/CaptainQuestAP.gd")
 	apCaptainQuest.take_over_path("res://data/quests/story/CaptainQuest.gd")
+	var apGainExpMenu = preload("extensions/GainExpMenuAP.gd")
+	apGainExpMenu.take_over_path("res://menus/gain_exp/GainExpMenu.gd")
 	
 	# connect to any scenes that we need modified
 	var callbacks = DLC.mods_by_id.cat_modutils.callbacks
