@@ -63,6 +63,7 @@ cb_key_items = {
 	"Ranger Handbook": CassetteBeastsItemData("tutorial", id_off+36, IC.progression, 1, 1),
 	"Type Chart": CassetteBeastsItemData("type_chart", id_off+37, IC.filler, 1, 1),
 	"Landkeeper Card Key": CassetteBeastsItemData("key_landkeeper2", id_off+38, IC.progression, 1, 2),
+	"Stamina Increase": CassetteBeastsItemData("ap_stamina", id_off+39, IC.progression, 1, 12),
 }
 
 id_off += len(cb_key_items)

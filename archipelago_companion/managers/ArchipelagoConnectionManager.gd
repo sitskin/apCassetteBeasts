@@ -146,6 +146,9 @@ func _giveReceivedItems(givenItems: Array):
 		if "_stamp" in itemName:
 			_onStampReceived(itemName)
 		
+		if itemName == "ap_stamina":
+			_increaseStamina()
+		
 	if !cbItemsToGive.empty():
 		MenuHelper.give_items(cbItemsToGive)
 
@@ -168,6 +171,10 @@ func _onSongReceived(aaName: String):
 func _onStampReceived(stampFlag: String):
 	SaveState.set_flag(stampFlag, true)
 	print("Stamp for captain %s given to player" % stampFlag)
+
+func _increaseStamina():
+	SaveState.max_stamina += 0.5
+	print("Stamina increased to %s" % SaveState.max_stamina)
 
 func _onFlagChanged(flag: String, value: bool):
 	if "encounter_captain" in flag and value:
