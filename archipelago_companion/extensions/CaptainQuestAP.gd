@@ -8,7 +8,7 @@ func update_progress():
 		if SaveState.has_flag(flag):
 			defeated_captains[id] = true
 		
-		var stampFlag = "ap_" + id.get_slice("_", 1) + "_stamp"
+		var stampFlag = "ap_" + id + "_stamp"
 		if SaveState.has_flag(stampFlag):
 			stampsCollected[stampFlag] = true
 		
