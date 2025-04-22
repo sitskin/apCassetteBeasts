@@ -208,6 +208,18 @@ func sendCaptainDefeated(captainFlag: String):
 	# there may be some additional information added
 	_sendCheckLocation(captainFlag)
 
+func sendNewSpecies(species_key: String):
+	print("Recorded new species: %s" % species_key)
+	if getSetting("tapesanity") == 1:# specific
+		_sendCheckLocation("record_%s" % species_key)
+
+func sendBootlegSpecies(species_key: String, type: String):
+	print("Recorded new %s %s" % [type, species_key])
+	if getSetting("bootlegsanity") == 1:# per tape
+		_sendCheckLocation("record_bootleg_%s" % species_key)
+	elif getSetting("bootlegsanity") == 2:# specific
+		_sendCheckLocation("record_%s_%s" % [type, species_key])
+
 func checkItemDrop(itemName: String):
 	return itemName in _archipelagoClient.slot_data["itemDrop_to_location"]
 
