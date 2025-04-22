@@ -146,6 +146,9 @@ func _giveReceivedItems(givenItems: Array):
 		if "_stamp" in itemName:
 			_onStampReceived(itemName)
 		
+		if itemName == "ap_stamina":
+			_increaseStamina()
+		
 	if !cbItemsToGive.empty():
 		MenuHelper.give_items(cbItemsToGive)
 
@@ -168,6 +171,10 @@ func _onSongReceived(aaName: String):
 func _onStampReceived(stampFlag: String):
 	SaveState.set_flag(stampFlag, true)
 	print("Stamp for captain %s given to player" % stampFlag)
+
+func _increaseStamina():
+	SaveState.max_stamina += 0.5
+	print("Stamina increased to %s" % SaveState.max_stamina)
 
 func _onFlagChanged(flag: String, value: bool):
 	if "encounter_captain" in flag and value:
@@ -200,6 +207,18 @@ func sendCaptainDefeated(captainFlag: String):
 	print("Captain Defeated: %s" % captainFlag)
 	# there may be some additional information added
 	_sendCheckLocation(captainFlag)
+
+func sendNewSpecies(species_key: String):
+	print("Recorded new species: %s" % species_key)
+	if getSetting("tapesanity") == 1:# specific
+		_sendCheckLocation("record_%s" % species_key)
+
+func sendBootlegSpecies(species_key: String, type: String):
+	print("Recorded new %s %s" % [type, species_key])
+	if getSetting("bootlegsanity") == 1:# per tape
+		_sendCheckLocation("record_bootleg_%s" % species_key)
+	elif getSetting("bootlegsanity") == 2:# specific
+		_sendCheckLocation("record_%s_%s" % [type, species_key])
 
 func checkItemDrop(itemName: String):
 	return itemName in _archipelagoClient.slot_data["itemDrop_to_location"]

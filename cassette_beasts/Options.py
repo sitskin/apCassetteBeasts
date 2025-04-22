@@ -54,10 +54,24 @@ class ExcludePostgame(Toggle):
     display_name = "Exclude Postgame"
     default = True
 
+class ExperienceMultiplier(Range):
+    """
+    Multiplies the amount of experience gain by a percentage
+    100 = default
+    50  = half
+    200 = double
+    etc.
+    """
+    display_name = "Experience Multiplier"
+    range_start = 0
+    range_end = 1000
+    default = 100
+
 class BootlegMultiplier(Range):
     """
-    The multiply the odds that an overworld monster will be a bootleg.
-    1000 = 100% Bootleg chance 
+    Multiplies the odds that an overworld monster will be a bootleg.
+    1000 = 100% Bootleg chance
+    10   = 1%
     """
     display_name = "Bootleg Multiplier"
     range_start = 1
@@ -257,6 +271,7 @@ class CassetteBeastsOptions(PerGameCommonOptions):
     final_battle_friend_count: FinalBattleFriendCount
     archangel_hunt_count: ArchangelHuntCount
     exclude_postgame: ExcludePostgame
+    experience_multiplier: ExperienceMultiplier
     bootleg_multiplier: BootlegMultiplier
     use_pier: UsePier
     shuffle_chest_loot_tables: ShuffleChestLootTables

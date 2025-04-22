@@ -219,6 +219,7 @@ class CassetteBeastsWorld(World):
 				"final_battle_friend_count": self.options.final_battle_friend_count.value,
 				"archangel_hunt_count": self.options.archangel_hunt_count.value,
 				"exclude_postgame": self.options.exclude_postgame.value,
+				"experience_multiplier": self.options.experience_multiplier.value,
 				"bootleg_multiplier": self.options.bootleg_multiplier.value,
 				"use_pier": self.options.use_pier.value,
 				"shuffle_chest_loot_tables": self.options.shuffle_chest_loot_tables.value,
