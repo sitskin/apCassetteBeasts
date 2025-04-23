@@ -50,6 +50,9 @@ func _init():
 func isConnected():
 	return _archipelagoClient.connect_state == BaseArchipelagoClient.ConnectState.CONNECTED_TO_MULTIWORLD
 
+func isInGame():
+	return SaveSystem.save_path != "user://unknown.json"
+
 func setHost(host: String):
 	_archipelagoClient.server = host
 
@@ -208,17 +211,24 @@ func sendCaptainDefeated(captainFlag: String):
 	# there may be some additional information added
 	_sendCheckLocation(captainFlag)
 
-func sendNewSpecies(species_key: String):
-	print("Recorded new species: %s" % species_key)
+func sendSpecies(species_key: String):
+	print("Recorded species: %s" % species_key)
 	if getSetting("tapesanity") == 1:# specific
 		_sendCheckLocation("record_%s" % species_key)
 
 func sendBootlegSpecies(species_key: String, type: String):
-	print("Recorded new %s %s" % [type, species_key])
+	print("Recorded bootleg: %s %s" % [type, species_key])
 	if getSetting("bootlegsanity") == 1:# per tape
 		_sendCheckLocation("record_bootleg_%s" % species_key)
 	elif getSetting("bootlegsanity") == 2:# specific
 		_sendCheckLocation("record_%s_%s" % [type, species_key])
+
+func checkRecorded(obtained: Dictionary):
+	for species_key in obtained.keys():
+		sendSpecies(species_key)
+		for type in obtained[species_key]:
+			if type != "":
+				sendBootlegSpecies(species_key, type)
 
 func checkItemDrop(itemName: String):
 	return itemName in _archipelagoClient.slot_data["itemDrop_to_location"]
