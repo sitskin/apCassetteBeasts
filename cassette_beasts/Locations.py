@@ -166,7 +166,7 @@ base_locations = {
 		CassetteBeastsLocationData("overworld_-1_-7_chest_2", "Ham", CB_BASE_ID+70),
 	"Thirstaton Lake Statue Puzzle Chest (-2,-3)": 
 		CassetteBeastsLocationData("overworld_-2_-3_chest", "Thirstaton Lake", CB_BASE_ID+71),
-	"Cherry Meadow Chest Over Thirstaton Lake (2,-3)": 
+	"Cherry Meadow Chest Over Thirstaton Lake (-2,-3)": 
 		CassetteBeastsLocationData("overworld_-2_-3_chest_2", "Cherry Meadow", CB_BASE_ID+72),
 	"Thirstaton Lake Chest in Wall (-2,-5)": 
 		CassetteBeastsLocationData("overworld_-2_-5_chest", "Thirstaton Lake", CB_BASE_ID+73),
