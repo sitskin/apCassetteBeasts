@@ -23,7 +23,8 @@ const _ITEM_GIVE_DELAY = 0.5
 const _AP_AA_DEFEATED_KEY = "ap_aa_defeated"
 
 var _tempReceivedItems = []
-var randSeed
+var randSeed: int
+var _locationsCheckedWithoutConnection = []
 
 signal connectionStateChanged(state, error)
 
@@ -76,6 +77,8 @@ func _roomInfoReceived(roomInfo: Dictionary):
 
 func _onConnectionChanged(newState: int, error: int = 0):
 	emit_signal("connectionStateChanged", newState, error)
+	if isConnected() && _locationsCheckedWithoutConnection.size() > 0:
+		_archipelagoClient.check_locations(_locationsCheckedWithoutConnection)
 
 func _process(delta):
 	if WorldSystem.is_in_world() and WorldSystem.is_player_control_enabled():
@@ -189,7 +192,9 @@ func _onFlagChanged(flag: String, value: bool):
 
 # sending checks to server
 func _sendCheckLocation(location: String):
-	# store checked locations locally
+	if !isConnected():
+		_locationsCheckedWithoutConnection.append(location)
+		return
 	_archipelagoClient.check_locations([location])
 
 func sendChestOpened(chestFlag: String):
