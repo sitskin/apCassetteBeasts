@@ -24,7 +24,7 @@ func _ready():
 func grab_focus():
 	_hostField.text = archipelagoDataManager.getServer()
 	_playerField.text = archipelagoDataManager.getPlayer()
-	_onEnabledToggled(archipelagoDataManager.getEnabled())
+	_onEnabledToggled(true)
 	_hostField.grab_focus()
 	# Slight delay to let node tree settle before updating values in the tree
 	yield(get_tree().create_timer(0.01), "timeout")

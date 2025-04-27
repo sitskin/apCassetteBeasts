@@ -16,6 +16,8 @@ func interact(_player):
 	var itemName = ItemFactory.get_id(item)
 	var location = DLC.mods_by_id.archipelago_companion.archipelagoConnectionManager.handleItemDrop(itemName)
 	if location != null:
+		# mark item as having been picked up so it doesn't spawn again
+		SaveState.flags[itemName + "_picked_up"] = true
 		item = ItemFactory.generate_item(apItem)
 		item.name = DLC.mods_by_id.archipelago_companion.archipelagoConnectionManager.getItemString(location)
 		item.description = "This will explain what AP item you got"
