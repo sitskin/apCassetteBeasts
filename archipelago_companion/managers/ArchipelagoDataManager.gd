@@ -19,7 +19,7 @@ func setEnabled(enabled):
 	configFile.save(_CFG_FILE_PATH)
 
 func getEnabled():
-	return configFile.get_value(_AP_SETTINGS_SECTION, AP_ENABLED_KEY, false)
+	return configFile.get_value(_AP_SETTINGS_SECTION, AP_ENABLED_KEY, true)
 
 func setServer(server):
 	configFile.set_value(_AP_SETTINGS_SECTION, _AP_SERVER_KEY, server)

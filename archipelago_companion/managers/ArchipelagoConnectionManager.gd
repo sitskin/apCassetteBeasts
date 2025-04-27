@@ -41,7 +41,7 @@ func _init():
 	_apWebSocketConnection.connect("on_room_info", self, "_roomInfoReceived")
 	SaveSystem.connect("file_loaded", self, "_onFileLoaded")
 	SaveState.connect("flag_changed", self, "_onFlagChanged")
-	SceneManager.connect("quick_loaded", self, "_onQuickLoad")
+	SceneManager.preloader.connect("singleton_setup_completed", self, "_onSingleSetupComplete")
 	Console.register("getApItem", {
 		"description":"Triggers the receive AP item method", 
 		"args":[TYPE_STRING, TYPE_INT], 
@@ -68,6 +68,7 @@ func startConnection(password: String = ""):
 
 func startDisconnection():
 	_archipelagoClient.disconnect_from_multiworld()
+	_tempReceivedItems.clear()
 
 func getConnectionState() -> int:
 	return _archipelagoClient.connect_state
@@ -81,7 +82,7 @@ func _onConnectionChanged(newState: int, error: int = 0):
 		_archipelagoClient.check_locations(_locationsCheckedWithoutConnection)
 
 # preload has finished, quests now exists
-func _onQuickLoad():
+func _onSingleSetupComplete():
 	SaveState.quests.connect("quest_completed", self, "_onQuestCompleted")
 
 func _process(delta):
@@ -106,7 +107,8 @@ func _onFileLoaded():
 	_tempReceivedItems.clear()
 
 func _onQuestCompleted(quest_res: Resource):
-	var questItem = quest_res.required_item
+	var quest = quest_res.instance()
+	var questItem = quest.required_item
 	if questItem && checkItemDrop(ItemFactory.get_id(questItem)):
 		handleItemDrop(ItemFactory.get_id(questItem))
 
@@ -117,7 +119,7 @@ func _getApItemConsole(itemName: String, itemAmount: int):
 # itemData is [itemName, itemAmount]
 # networkItem is {item: int, location: int, ...}
 func _onApItemReceived(itemData: Array, networkItem: Dictionary):
-	if !SaveState.other_data.has("archipelago"):
+	if !isInGame() || !SaveState.other_data.has("archipelago"):
 		_tempReceivedItems.append({"itemData": itemData, "networkItem": networkItem})
 		return
 	if networkItem.location in SaveState.other_data.archipelago.receivedItems:
