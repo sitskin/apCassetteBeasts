@@ -41,7 +41,7 @@ func _init():
 	_apWebSocketConnection.connect("on_room_info", self, "_roomInfoReceived")
 	SaveSystem.connect("file_loaded", self, "_onFileLoaded")
 	SaveState.connect("flag_changed", self, "_onFlagChanged")
-	SaveState.quests.connect("quest_completed", self, "_onQuestCompleted")
+	SceneManager.connect("quick_loaded", self, "_onQuickLoad")
 	Console.register("getApItem", {
 		"description":"Triggers the receive AP item method", 
 		"args":[TYPE_STRING, TYPE_INT], 
@@ -79,6 +79,10 @@ func _onConnectionChanged(newState: int, error: int = 0):
 	emit_signal("connectionStateChanged", newState, error)
 	if isConnected() && _locationsCheckedWithoutConnection.size() > 0:
 		_archipelagoClient.check_locations(_locationsCheckedWithoutConnection)
+
+# preload has finished, quests now exists
+func _onQuickLoad():
+	SaveState.quests.connect("quest_completed", self, "_onQuestCompleted")
 
 func _process(delta):
 	if WorldSystem.is_in_world() and WorldSystem.is_player_control_enabled():
