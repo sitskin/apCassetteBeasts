@@ -85,7 +85,8 @@ func _process(delta):
 			_itemsReceivedFromServer.clear()
 
 func _onFileLoaded():
-	# use the save file name check here first
+	if !isInGame():
+		return 
 	SaveState.set_random_seed(randSeed)
 	SaveState.achievements.connect("achievement_unlocked", self, "_checkForVictory")
 	SaveState.set_flag(ArchipelagoDataManager.AP_ENABLED_KEY, archipelagoDataManager.getEnabled())
