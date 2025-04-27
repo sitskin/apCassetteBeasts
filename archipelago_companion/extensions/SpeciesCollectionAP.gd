@@ -22,18 +22,17 @@ func register(tape:MonsterTape):
 		get_parent().stats.get_stat("observed_species").report_event(species)
 		get_parent().stats.get_stat("registered_species").report_event(species)
 		emit_signal("new_species_registered", species)
-		if apManager.isConnected():
-			apManager.sendNewSpecies(species_key)
 	
 	if tape.type_override.size() > 0:
 		var bootleg_type = tape.type_override[0]
 		if get_parent().stats.get_stat("registered_bootleg_types").get_count(bootleg_type) == 0:
 			get_parent().stats.get_stat("registered_bootleg_types").report_event(bootleg_type)
-		if apManager.isConnected():
-			apManager.sendBootlegSpecies(species_key, tape.type_override[0].id)
 	
 	if tape.form.unlock_ability != "":
 		apManager.sendAbilityUnlocked(tape.form.unlock_ability)
+	
+	if apManager.isInGame():
+		apManager.checkRecorded(obtained)
 
 # return value is only used in UnlockDeferredAbilitiesAction, which is only used in the 
 # tutorial, I guess if you happened to somehow record a mon that gives you 

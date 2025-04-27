@@ -234,7 +234,7 @@ class CassetteBeastsWorld(World):
 				"bootlegsanity_percentage_item_count": self.options.bootlegsanity_percentage_item_count.value,
 				"fusionsanity": self.options.fusionsanity.value,
 				"fusionsanity_amount": self.options.fusionsanity_amount.value,
-				"fusionsanity__item_count": self.options.fusionsanity_item_count.value,
+				"fusionsanity_item_count": self.options.fusionsanity_item_count.value,
 				"death_link": self.options.death_link.value,
 			},
 		}
