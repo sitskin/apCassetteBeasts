@@ -23,8 +23,7 @@ const _ITEM_GIVE_DELAY = 0.5
 const _AP_AA_DEFEATED_KEY = "ap_aa_defeated"
 
 var _tempReceivedItems = []
-
-var locationId_ItemDescription: Dictionary
+var randSeed
 
 signal connectionStateChanged(state, error)
 
@@ -38,7 +37,7 @@ func _init():
 	_archipelagoClient.connect("_received_connect_response", self, "_receivedConnectPacket")
 	_archipelagoClient.connect("connection_state_changed", self, "_onConnectionChanged")
 	_archipelagoClient.connect("item_received", self, "_onApItemReceived")
-	_apWebSocketConnection.connect("on_location_info", self, "_locationInfoReceived")
+	_apWebSocketConnection.connect("on_room_info", self, "_roomInfoReceived")
 	SaveSystem.connect("file_loaded", self, "_onFileLoaded")
 	SaveState.connect("flag_changed", self, "_onFlagChanged")
 	Console.register("getApItem", {
@@ -71,8 +70,8 @@ func startDisconnection():
 func getConnectionState() -> int:
 	return _archipelagoClient.connect_state
 
-func _locationInfoReceived(locationInfo: Dictionary):
-	pass
+func _roomInfoReceived(roomInfo: Dictionary):
+	randSeed = roomInfo.seed_name.hash()
 
 func _onConnectionChanged(newState: int, error: int = 0):
 	emit_signal("connectionStateChanged", newState, error)
@@ -87,6 +86,7 @@ func _process(delta):
 
 func _onFileLoaded():
 	# use the save file name check here first
+	SaveState.set_random_seed(randSeed)
 	SaveState.achievements.connect("achievement_unlocked", self, "_checkForVictory")
 	SaveState.set_flag(ArchipelagoDataManager.AP_ENABLED_KEY, archipelagoDataManager.getEnabled())
 	# if it doesn't exist create it
@@ -156,14 +156,6 @@ func _giveReceivedItems(givenItems: Array):
 		
 	if !cbItemsToGive.empty():
 		MenuHelper.give_items(cbItemsToGive)
-
-func _tryGiveItem(itemName: String, itemAmount: int):
-	var item = ItemFactory.create_from_id(itemName)
-	if item == null:
-		return false
-	MenuHelper.give_item(item, itemAmount, false)
-	print("Item %s given to player" % itemName)
-	return true
 
 func _onAbilityReceived(abilityName: String):
 	SaveState.set_ability(abilityName, true)
