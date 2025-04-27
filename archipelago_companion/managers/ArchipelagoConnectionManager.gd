@@ -40,6 +40,7 @@ func _init():
 	_apWebSocketConnection.connect("on_room_info", self, "_roomInfoReceived")
 	SaveSystem.connect("file_loaded", self, "_onFileLoaded")
 	SaveState.connect("flag_changed", self, "_onFlagChanged")
+	SaveState.quests.connect("quest_completed", self, "_onQuestCompleted")
 	Console.register("getApItem", {
 		"description":"Triggers the receive AP item method", 
 		"args":[TYPE_STRING, TYPE_INT], 
@@ -96,6 +97,11 @@ func _onFileLoaded():
 	for data in _tempReceivedItems:
 		_onApItemReceived(data.itemData, data.networkItem)
 	_tempReceivedItems.clear()
+
+func _onQuestCompleted(quest_res: Resource):
+	var questItem = quest_res.required_item
+	if questItem && checkItemDrop(ItemFactory.get_id(questItem)):
+		handleItemDrop(ItemFactory.get_id(questItem))
 
 func _getApItemConsole(itemName: String, itemAmount: int):
 	_giveReceivedItems([GivenApItem.new([itemName, itemAmount])])
