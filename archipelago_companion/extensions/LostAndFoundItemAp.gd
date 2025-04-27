@@ -14,7 +14,9 @@ func _enter_tree():
 	if has_node("ItemDrop"):
 		$ItemDrop / QuestMarker.quests = [quest.get_resource()]
 		var item_drop = $ItemDrop
-		if quest.completable && !isApItem && hasPickedUpItem:
+		# if it is not an ap item, go with quest.completable
+		# if it is an ap item, go with hasPickedUpItem
+		if (quest.completable && !isApItem) || hasPickedUpItem:
 			remove_child(item_drop)
 			item_drop.queue_free()
 		else :
