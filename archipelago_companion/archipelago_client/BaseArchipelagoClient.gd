@@ -60,7 +60,10 @@ class ApDataPackage:
 			var location_id = location_name_to_id[location_name]
 			location_id_to_name[location_id] = location_name
 
+const ArchipelagoDataManager = preload("res://mods/archipelago_companion/managers/ArchipelagoDataManager.gd")
+
 var websocket_client
+var dataManager: ArchipelagoDataManager
 var connect_state = ConnectState.DISCONNECTED
 var player: String = ""
 var server: String = "archipelago.gg"
@@ -94,13 +97,13 @@ signal room_updated(updated_room_info)
 
 func _init(websocket_client_):
 	self.websocket_client = websocket_client_
+	self.dataManager = ArchipelagoDataManager.new()
 
 func _ready():
-	var _status: int
-	_status = websocket_client.connect("on_received_items", self, "_on_received_items")
-	_status = websocket_client.connect("on_set_reply", self, "_on_set_reply")
-	_status = websocket_client.connect("on_retrieved", self, "_on_retrieved")
-	_status = websocket_client.connect("on_room_update", self, "_on_room_update")
+	websocket_client.connect("on_received_items", self, "_on_received_items")
+	websocket_client.connect("on_set_reply", self, "_on_set_reply")
+	websocket_client.connect("on_retrieved", self, "_on_retrieved")
+	websocket_client.connect("on_room_update", self, "_on_room_update")
 
 func _connected_or_connection_refused_received(message: Dictionary):
 	emit_signal("_received_connect_response", message)
@@ -160,12 +163,27 @@ func connect_to_multiworld(password: String="", get_data_pacakge: bool=true) -> 
 		# 2. Server accepts connection and responds with a RoomInfo packet.
 		room_info = yield (websocket_client, "on_room_info")
 
-		# 3. Client may send a GetDataPackage packet.
+		# 3. Get all games' data package
+		var games = []
+	
+		for game in room_info.games:
+			if !(game in games):
+				games.append(game)
+				# check to see if we have this game's data package already
+				var cachedDataPackage = dataManager.getDataPackage(game)
+				var remoteCheck = room_info.datapackage_checksums[game]
+				if cachedDataPackage != null && remoteCheck == cachedDataPackage.checksum:
+					self.gameToDataPackage[game] = ApDataPackage.new(cachedDataPackage)
+				else:
+					websocket_client.get_data_package([game])
+					var data_package_message = yield (websocket_client, "on_data_package")
+					for gameName in data_package_message["data"]["games"].keys():
+						dataManager.setDataPackage(gameName, data_package_message["data"]["games"][gameName])
+						self.gameToDataPackage[gameName] = ApDataPackage.new(data_package_message["data"]["games"][gameName])
+		
+		# 4. Grab our data package for easier reference
 		if get_data_pacakge:
-			websocket_client.get_data_package([game])
-			# 4. Server sends a DataPackage packet in return. (If the client sent GetDataPackage.)
-			var data_package_message = yield (websocket_client, "on_data_package")
-			data_package = ApDataPackage.new(data_package_message["data"]["games"][self.game])
+			data_package = self.gameToDataPackage[self.game]
 
 	# 5. Client sends Connect packet in order to authenticate with the server.
 	# 6. Server validates the client's packet and responds with Connected or
@@ -225,15 +243,7 @@ func connect_to_multiworld(password: String="", get_data_pacakge: bool=true) -> 
 
 	_set_connection_state(ConnectState.CONNECTED_TO_MULTIWORLD)
 	
-	var games = []
-	for slot in self.slot_info.values():
-		if !(slot["game"] in games):
-			games.append(slot["game"])
-			websocket_client.get_data_package([slot["game"]])
-			var data_package_message = yield (websocket_client, "on_data_package")
-			for gameName in data_package_message["data"]["games"].keys():
-				self.gameToDataPackage[gameName] = ApDataPackage.new(data_package_message["data"]["games"][gameName])
-	
+	# We scout all of our missing locations in order to setup sent item text
 	websocket_client.send_location_scouts(missing_locations, 0)
 	var locationInfo = yield (websocket_client, "on_location_info")
 	var slotId_playerName:Dictionary

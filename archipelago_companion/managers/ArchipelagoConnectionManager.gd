@@ -18,7 +18,7 @@ var _archipelagoClient: BaseArchipelagoClient
 
 var _itemsReceivedFromServer = []
 var _itemGiveTimer = 0.0
-const _ITEM_GIVE_DELAY = 1.0
+const _ITEM_GIVE_DELAY = 0.5
 
 const _AP_AA_DEFEATED_KEY = "ap_aa_defeated"
 
@@ -86,6 +86,7 @@ func _process(delta):
 			_itemsReceivedFromServer.clear()
 
 func _onFileLoaded():
+	# use the save file name check here first
 	SaveState.achievements.connect("achievement_unlocked", self, "_checkForVictory")
 	SaveState.set_flag(ArchipelagoDataManager.AP_ENABLED_KEY, archipelagoDataManager.getEnabled())
 	# if it doesn't exist create it
@@ -93,6 +94,7 @@ func _onFileLoaded():
 		SaveState.other_data["archipelago"] = {"receivedItems": []}
 	for data in _tempReceivedItems:
 		_onApItemReceived(data.itemData, data.networkItem)
+	_tempReceivedItems.clear()
 
 func _getApItemConsole(itemName: String, itemAmount: int):
 	_giveReceivedItems([GivenApItem.new([itemName, itemAmount])])
@@ -188,6 +190,7 @@ func _onFlagChanged(flag: String, value: bool):
 
 # sending checks to server
 func _sendCheckLocation(location: String):
+	# store checked locations locally
 	_archipelagoClient.check_locations([location])
 
 func sendChestOpened(chestFlag: String):
@@ -237,20 +240,24 @@ func handleItemDrop(itemName: String):
 	if !(itemName in _archipelagoClient.slot_data["itemDrop_to_location"]):
 		return null
 	var location = _archipelagoClient.slot_data["itemDrop_to_location"][itemName]
-	_archipelagoClient.check_locations([location])
+	_sendCheckLocation(location)
 	return location
 
 func handleGiveItemAction(itemName: String):
 	if !(itemName in _archipelagoClient.slot_data["giveItemAction_to_location"]):
 		return null
 	var location = _archipelagoClient.slot_data["giveItemAction_to_location"][itemName]
-	_archipelagoClient.check_locations([location])
+	_sendCheckLocation(location)
 	return location
 
+# refactor to getItem that will return either the apItem if remote
+# or the acutal item if local, and figure out the location id and add it to the
+# array of received locations
 func getItemString(locationString: String):
 	var apName = _archipelagoClient.slot_data["location_cbName_to_apName"][locationString]
 	var locationId = _archipelagoClient.data_package.location_name_to_id[apName]
 	if !_archipelagoClient.locationId_itemInfo.has(locationId):
+		var itemData = _archipelagoClient.slot_data["item_apName_to_cbItemData"][apName]
 		return "Self Item"
 	var itemInfo = _archipelagoClient.locationId_itemInfo[locationId]
 	return "Sent %s to %s" % [itemInfo.itemName, itemInfo.playerName]

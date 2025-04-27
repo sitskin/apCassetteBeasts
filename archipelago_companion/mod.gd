@@ -48,6 +48,8 @@ func init_content() -> void:
 	apBattle.take_over_path("res://battle/Battle.gd")
 	var apWiredSpawner = preload("extensions/WiredSpawnerAp.gd")
 	apWiredSpawner.take_over_path("res://world/objects/spawner/WiredSpawner.gd")
+	var apLostAndFoundItem = preload("extensions/LostAndFoundItemAp.gd")
+	apLostAndFoundItem.take_over_path("res://world/quest_scenes/LostAndFoundItem.gd")
 	
 	
 	# connect to any scenes that we need modified
