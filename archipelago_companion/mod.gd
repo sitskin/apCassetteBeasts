@@ -46,15 +46,14 @@ func init_content() -> void:
 	apGainExpMenu.take_over_path("res://menus/gain_exp/GainExpMenu.gd")
 	var apBattle = preload("res://mods/archipelago_companion/extensions/BattleAP.gd")
 	apBattle.take_over_path("res://battle/Battle.gd")
-	var apWiredSpawner = preload("extensions/WiredSpawnerAp.gd")
-	apWiredSpawner.take_over_path("res://world/objects/spawner/WiredSpawner.gd")
-	var apLostAndFoundItem = preload("extensions/LostAndFoundItemAp.gd")
-	apLostAndFoundItem.take_over_path("res://world/quest_scenes/LostAndFoundItem.gd")
+	var apFileButton = preload("res://mods/archipelago_companion/extensions/FileButtonAP.gd")
+	apFileButton.take_over_path("res://menus/title/FileButton.gd")
 	
 	
 	# connect to any scenes that we need modified
 	var callbacks = DLC.mods_by_id.cat_modutils.callbacks
 	callbacks.connect_scene_ready("res://menus/settings/SettingsMenu.tscn", self, "_onSettingsMenuReady")
+	callbacks.connect_scene_ready("res://menus/title/FileMenu.tscn", self, "_onFileMenu")
 	callbacks.connect_scene_ready("res://cutscenes/intro/OutskirtsWrongWay.tscn", self, "_onOutskirtsWrongWay")
 	callbacks.connect_class_ready("res://world/core/ConditionalLayer.gd", self, "_removeInvisWalls")
 	callbacks.connect_scene_ready("res://cutscenes/intro/PensbyIntro.tscn", self, "_giveKayleighEarly")
@@ -81,6 +80,26 @@ func _onSettingsMenuReady(scene: Control):
 		name = "Archipelago Companion", 
 		node = tab
 	})
+
+func _onFileMenu(scene: SlidingControl):
+	#var path = "VBoxContainer/HBoxContainer/PanelContainer/ScrollContainer/ScrollInterior/FileButtonContainer/FileButton"
+	#for i in range(1, 4):
+	#	var fb = scene.get_node("%s%s" % [path, i])
+	#	fb.file_path = "user://ap_save%s" % i
+	#	fb.refresh()
+	var path = "VBoxContainer/HBoxContainer/PanelContainer/ScrollContainer/ScrollInterior/FileButtonContainer"
+	for file_button in scene.get_node(path).get_children():
+		if not "file" in file_button.file_path:
+			continue
+		file_button.file_path = file_button.file_path.replace("file", "ap_save")
+		var ap_sticker = TextureRect.new()
+		ap_sticker.texture = preload("res://mods/archipelago_companion/sprites/ap_save_file_sticker.png")
+		ap_sticker.anchor_left = 0.75
+		ap_sticker.anchor_top = 0.6
+		ap_sticker.anchor_bottom = 1
+		ap_sticker.anchor_right = 1
+		file_button.add_child(ap_sticker)
+		file_button.refresh()
 
 # disables tutorial railroading if AP Client is enabled
 func _onOutskirtsWrongWay(scene: CheckConditionAction):
