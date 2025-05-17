@@ -48,6 +48,8 @@ func init_content() -> void:
 	apBattle.take_over_path("res://battle/Battle.gd")
 	var apFileButton = preload("res://mods/archipelago_companion/extensions/FileButtonAP.gd")
 	apFileButton.take_over_path("res://menus/title/FileButton.gd")
+	var apSaveDataContainer = preload("res://mods/archipelago_companion/extensions/FileMenu_SaveDataContainerAP.gd")
+	apSaveDataContainer.take_over_path("res://menus/title/FileMenu_SaveDataContainer.gd")
 	
 	
 	# connect to any scenes that we need modified
@@ -82,11 +84,6 @@ func _onSettingsMenuReady(scene: Control):
 	})
 
 func _onFileMenu(scene: SlidingControl):
-	#var path = "VBoxContainer/HBoxContainer/PanelContainer/ScrollContainer/ScrollInterior/FileButtonContainer/FileButton"
-	#for i in range(1, 4):
-	#	var fb = scene.get_node("%s%s" % [path, i])
-	#	fb.file_path = "user://ap_save%s" % i
-	#	fb.refresh()
 	var path = "VBoxContainer/HBoxContainer/PanelContainer/ScrollContainer/ScrollInterior/FileButtonContainer"
 	for file_button in scene.get_node(path).get_children():
 		if not "file" in file_button.file_path:
