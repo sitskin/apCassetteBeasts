@@ -441,7 +441,6 @@ func getItemString(locationString: String):
 	var apName = _archipelagoClient.slot_data["location_cbName_to_apName"][locationString]
 	var locationId = _archipelagoClient.data_package.location_name_to_id[apName]
 	if !_archipelagoClient.locationId_itemInfo.has(locationId):
-		#var itemData = _archipelagoClient.slot_data["item_apName_to_cbItemData"][apName]
 		return "Self Item"
 	var itemInfo = _archipelagoClient.locationId_itemInfo[locationId]
 	return "Sent %s to %s" % [itemInfo.itemName, itemInfo.playerName]
