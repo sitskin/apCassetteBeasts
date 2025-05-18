@@ -102,15 +102,22 @@ func _onFileLoaded():
 	# if it doesn't exist create it
 	if !SaveState.other_data.has("archipelago") or !SaveState.other_data["archipelago"].has("receivedItems"):
 		SaveState.other_data["archipelago"] = {"receivedItems": []}
+	if !SaveState.other_data.has("ap_seed"):
+		SaveState.other_data["ap_seed"] = randSeed
+	if !SaveState.other_data.has("ap_player"):
+		SaveState.other_data["ap_player"] = _archipelagoClient.player
+	SaveState.other_data["ap_locations_checked"] = getCheckedLocationCount()
+	SaveState.other_data["ap_locations_total"] = getTotalLocationCount()
 	for data in _tempReceivedItems:
 		_onApItemReceived(data.itemData, data.networkItem)
 	_tempReceivedItems.clear()
 
 func _onQuestCompleted(quest_res: Resource):
 	var quest = quest_res.instance()
-	var questItem = quest.required_item
-	if questItem && checkItemDrop(ItemFactory.get_id(questItem)):
-		handleItemDrop(ItemFactory.get_id(questItem))
+	if "required_item" in quest:
+		var questItem = quest.required_item
+		if questItem && checkItemDrop(ItemFactory.get_id(questItem)):
+			handleItemDrop(ItemFactory.get_id(questItem))
 
 func _getApItemConsole(itemName: String, itemAmount: int):
 	_giveReceivedItems([GivenApItem.new([itemName, itemAmount])])
@@ -202,6 +209,7 @@ func _sendCheckLocation(location: String):
 		_locationsCheckedWithoutConnection.append(location)
 		return
 	_archipelagoClient.check_locations([location])
+	SaveState.other_data.ap_locations_checked += 1
 
 func sendChestOpened(chestFlag: String):
 	print("Opened chest: %s" % chestFlag)
@@ -276,6 +284,12 @@ func getSetting(setting: String):
 	if _apWebSocketConnection.connection_state != 1:
 		return null
 	return _archipelagoClient.slot_data.settings[setting]
+
+func getTotalLocationCount() -> int:
+	return _archipelagoClient.missing_locations.size() + _archipelagoClient.checked_locations.size()
+
+func getCheckedLocationCount() -> int:
+	return _archipelagoClient.checked_locations.size()
 
 func _checkForVictory():
 	if !isConnected():
