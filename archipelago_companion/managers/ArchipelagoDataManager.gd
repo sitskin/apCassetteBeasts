@@ -36,10 +36,21 @@ func getPlayer():
 	return configFile.get_value(_AP_SETTINGS_SECTION, _AP_PLAYER_KEY, "")
 
 func setDataPackage(gameName: String, dataPackage: Dictionary):
-	configFile.set_value(_AP_DATA_PACKAGE_SECTION, gameName, dataPackage)
+	# ConfigFile truncates floats over 1*10^7
+	# Saving as int is a workaround
+	var dp = dataPackage.duplicate(true)
+	for key in ["item_name_to_id", "location_name_to_id"]:
+		for e in dp[key].keys():
+			dp[key][e] = int(dp[key][e])
+	configFile.set_value(_AP_DATA_PACKAGE_SECTION, gameName, dp)
 	configFile.save(_CFG_FILE_PATH)
 
 func getDataPackage(gameName: String):
 	if configFile.has_section_key(_AP_DATA_PACKAGE_SECTION, gameName):
-		return configFile.get_value(_AP_DATA_PACKAGE_SECTION, gameName)
+		# Reversing workaround
+		var dataPackage = configFile.get_value(_AP_DATA_PACKAGE_SECTION, gameName)
+		for key in ["item_name_to_id", "location_name_to_id"]:
+			for e in dataPackage[key].keys():
+				dataPackage[key][e] = float(dataPackage[key][e])
+		return dataPackage
 	return null
