@@ -8,6 +8,7 @@ base_monsters = {
 		],
 		'type': "beast",
 		'stats': [90,130,80,80,90,130],
+		'bootleg': 'record',
 		},
 	'Hopskin': {
 		'id': 'hopskin',
@@ -18,6 +19,7 @@ base_monsters = {
 		],
 		'type': "beast",
 		'stats': [90,170,100,90,100,150],
+		'bootleg': 'record',# same as Springheel for split remaster
 		},
 	'Ripterra': {
 		'id': 'ripterra',
@@ -27,6 +29,7 @@ base_monsters = {
 		],
 		'type': "beast",
 		'stats': [120,200,100,90,120,170],
+		'bootleg': 'remaster',
 		},
 	'Snoopin': {
 		'id': 'snoopin',
@@ -37,6 +40,7 @@ base_monsters = {
 		],
 		'type': "beast",
 		'stats': [90,160,80,150,90,130],
+		'bootleg': 'remaster',
 		},
 	'Scampire': {
 		'id': 'scampire',
@@ -46,6 +50,7 @@ base_monsters = {
 		],
 		'type': "beast",
 		'stats': [120,160,80,180,90,170],
+		'bootleg': 'remaster',
 		},
 	'Carniviper': {
 		'id': 'carniviper',
@@ -60,6 +65,7 @@ base_monsters = {
 		],
 		'type': "poison",
 		'stats': [60,120,80,120,80,140],
+		'bootleg': 'record',
 		},
 	'Masquerattle': {
 		'id': 'masquerattle',
@@ -71,6 +77,7 @@ base_monsters = {
 		],
 		'type': "poison",
 		'stats': [90,140,80,140,90,160],
+		'bootleg': 'record',# same as Carniviper for split remaster 1
 		},
 	'Jormungold': {
 		'id': 'jormungold',
@@ -81,18 +88,21 @@ base_monsters = {
 		],
 		'type': "poison",
 		'stats': [100,155,100,155,100,190],
+		'bootleg': 'record',# same as Carniviper for split remaster 2
 		},
 	'Mardiusa': {
 		'id': 'mardiusa',
 		'locations': ["remaster_Masquerattle"],
 		'type': "poison",
 		'stats': [130,160,100,120,130,160],
+		'bootleg': 'remaster',
 		},
 	'Aeroboros': {
 		'id': 'aeroboros',
 		'locations': ["remaster-Zephyr_Masquerattle"],
 		'type': "air",
 		'stats': [190,30,100,160,160,160],
+		'bootleg': 'remaster',
 		},
 	'Traffikrab': {
 		'id': 'traffikrab',
@@ -108,6 +118,7 @@ base_monsters = {
 		],
 		'type': "plastic",
 		'stats': [80,120,80,120,110,90],
+		'bootleg': 'record',
 		},
 	'Weevilite': {
 		'id': 'weevilite',
@@ -119,6 +130,7 @@ base_monsters = {
 		],
 		'type': "plastic",
 		'stats': [120,120,120,160,120,160],
+		'bootleg': 'remaster',
 		},
 	'Lobstacle': {
 		'id': 'lobstacle',
@@ -130,66 +142,77 @@ base_monsters = {
 		],
 		'type': "plastic",
 		'stats': [150,120,160,120,160,90],
+		'bootleg': 'remaster',
 		},
 	'Candevil': {
 		'id': 'candevil',
 		'locations': ["Funworld", "Postgame"],# dlc area, alse buy with ranger badge
 		'type': "beast",
 		'stats': [115,110,100,110,105,100],
+		'bootleg': 'candle',# dlc changes to record
 		},
 	'Malchemy': {
 		'id': 'malchemy',
 		'locations': ["remaster_Candevil"],
 		'type': "poison",
 		'stats': [120,125,110,145,110,130],
+		'bootleg': 'candle',# same as Candevil for split remaster
 		},
 	'Miasmodeus': {
 		'id': 'miasmodeus',
 		'locations': ["remaster_Malchemy"],
 		'type': "poison",
 		'stats': [130,150,120,170,120,150],
+		'bootleg': 'remaster',
 		},
 	'Vendemon': {
 		'id': 'vendemon',
 		'locations': ["remaster_Candevil"],
 		'type': "metal",
 		'stats': [130,110,130,120,130,120],
+		'bootleg': 'remaster',
 		},
 	'Gumbaal': {
 		'id': 'gumbaal',
 		'locations': ["remaster_Vendemon"],
 		'type': "metal",
 		'stats': [150,110,160,130,160,130],
+		'bootleg': 'remaster',
 		},
 	'Bansheep': {
 		'id': 'bansheep',
 		'locations': ["The Witch House", "Postgame"],# dlc area, alse buy with ranger badge
 		'type': "beast",
 		'stats': [115,110,105,110,100,100],
+		'bootleg': 'candle',# dlc changes to record
 		},
 	'Wooltergeist': {
 		'id': 'wooltergeist',
 		'locations': ["remaster_Bansheep"],
 		'type': "astral",
 		'stats': [120,145,110,125,110,130],
+		'bootleg': 'candle',# same as Bansheep for split remaster
 		},
 	'Ramtasm': {
 		'id': 'ramtasm',
 		'locations': ["remaster_Wooltergeist"],
 		'type': "astral",
 		'stats': [130,170,120,150,120,150],
+		'bootleg': 'remaster',
 		},
 	'Zombleat': {
 		'id': 'zombleat',
 		'locations': ["remaster_Bansheep"],
 		'type': "earth",
 		'stats': [130,130,130,110,130,110],
+		'bootleg': 'remaster',
 		},
 	'Capricorpse': {
 		'id': 'capricorpse',
 		'locations': ["remaster_Zombleat"],
 		'type': "earth",
 		'stats': [160,140,160,110,160,110],
+		'bootleg': 'remaster',
 		},
 	'Sirenade': {
 		'id': 'sirenade',
@@ -199,12 +222,14 @@ base_monsters = {
 		],
 		'type': "air",
 		'stats': [110,70,80,130,120,90],
+		'bootleg': 'record',
 		},
 	'Decibelle': {
 		'id': 'decibelle',
 		'locations': ["remaster_Sirenade"],
 		'type': "air",
 		'stats': [135,100,110,170,160,125],
+		'bootleg': 'remaster',
 		},
 	'Dandylion': {
 		'id': 'dandylion',
@@ -218,6 +243,7 @@ base_monsters = {
 		],
 		'type': "plant",
 		'stats': [120,80,120,100,120,60],
+		'bootleg': 'record',
 		},
 	'Blossomaw': {
 		'id': 'blossomaw',
@@ -227,6 +253,7 @@ base_monsters = {
 		],
 		'type': "plant",
 		'stats': [160,100,160,130,160,90],
+		'bootleg': 'remaster',
 		},
 	'Macabra': {
 		'id': 'macabra',
@@ -239,6 +266,7 @@ base_monsters = {
 		],
 		'type': "beast",
 		'stats': [140,120,60,100,100,120],
+		'bootleg': 'record',
 		},
 	'Folklord': {
 		'id': 'folklord',
@@ -250,6 +278,7 @@ base_monsters = {
 		],
 		'type': "beast",
 		'stats': [140,135,135,100,120,120],
+		'bootleg': 'remaster',
 		},
 	'Dominoth': {
 		'id': 'dominoth',
@@ -265,6 +294,7 @@ base_monsters = {
 		],
 		'type': "air",
 		'stats': [100,100,100,100,120,80],
+		'bootleg': 'record',
 		},
 	'Wingloom': {
 		'id': 'wingloom',
@@ -279,6 +309,7 @@ base_monsters = {
 		],
 		'type': "lightning",
 		'stats': [120,100,120,100,120,90],
+		'bootleg': 'record',# same as Dominoth for split remaster
 		},
 	'Mothmanic': {
 		'id': 'mothmanic',
@@ -291,12 +322,14 @@ base_monsters = {
 		],
 		'type': "lightning",
 		'stats': [130,110,120,180,140,120],
+		'bootleg': 'remaster',
 		},
 	'Tokusect': {
 		'id': 'tokusect',
 		'locations': ["remaster_Dominoth"],
 		'type': "air",
 		'stats': [120,170,120,100,120,170],
+		'bootleg': 'remaster',
 		},
 	'Squirey': {
 		'id': 'squirey',
@@ -312,6 +345,7 @@ base_monsters = {
 		],
 		'type': "beast",
 		'stats': [90,110,110,100,90,100],
+		'bootleg': 'record',
 		},
 	'Manispear': {
 		'id': 'manispear',
@@ -324,12 +358,14 @@ base_monsters = {
 		],
 		'type': "metal",
 		'stats': [110,120,170,100,150,100],
+		'bootleg': 'record',# same as Squirey for split remaster
 		},
 	'Palangolin': {
 		'id': 'palangolin',
 		'locations': ["remaster_Squirey"],
 		'type': "metal",
 		'stats': [150,120,120,100,100,160],
+		'bootleg': 'remaster',
 		},
 	'Kittelly': {
 		'id': 'kittelly',
@@ -339,12 +375,14 @@ base_monsters = {
 		],
 		'type': "lightning",
 		'stats': [100,110,90,110,90,100],
+		'bootleg': 'record',
 		},
 	'Cat-5': {
 		'id': 'cat-5',
 		'locations': ["remaster_Kittelly"],
 		'type': "lightning",
 		'stats': [150,160,100,120,120,150],
+		'bootleg': 'remaster',
 		},
 	'Puppercut': {
 		'id': 'puppercut',
@@ -358,6 +396,7 @@ base_monsters = {
 		],
 		'type': "metal",
 		'stats': [100,120,110,80,80,110],
+		'bootleg': 'record',
 		},
 	'Southpaw': {
 		'id': 'southpaw',
@@ -367,6 +406,7 @@ base_monsters = {
 		],
 		'type': "metal",
 		'stats': [130,160,140,110,110,150],
+		'bootleg': 'remaster',
 		},
 	'Bulletino': {
 		'id': 'bulletino',
@@ -377,6 +417,7 @@ base_monsters = {
 		],
 		'type': "fire",
 		'stats': [80,70,70,100,70,200],
+		'bootleg': 'record',
 		},
 	'Velocirifle': {
 		'id': 'velocirifle',
@@ -387,18 +428,21 @@ base_monsters = {
 		],
 		'type': "fire",
 		'stats': [100,100,100,140,100,160],
+		'bootleg': 'record',# same as Bulletino for split remaster
 		},
 	'Artillerex': {
 		'id': 'artillerex',
 		'locations': ["remaster_Velocirifle"],
 		'type': "fire",
 		'stats': [110,170,120,170,110,120],
+		'bootleg': 'remaster',
 		},
 	'Gearyu': {
 		'id': 'gearyu',
 		'locations': ["remaster-Gear Shear_Velocirifle"],
 		'type': "metal",
 		'stats': [110,120,170,170,110,120],
+		'bootleg': 'remaster',
 		},
 	'Diveal': {
 		'id': 'diveal',
@@ -410,6 +454,7 @@ base_monsters = {
 		],
 		'type': "water",
 		'stats': [100,100,125,125,100,50],
+		'bootleg': 'record',
 		},
 	'Scubalrus': {
 		'id': 'scubalrus',
@@ -421,6 +466,7 @@ base_monsters = {
 		],
 		'type': "water",
 		'stats': [130,125,160,160,125,100],
+		'bootleg': 'record',# same as Diveal for split remaster
 		},
 	'Nevermort': {
 		'id': 'nevermort',
@@ -433,12 +479,14 @@ base_monsters = {
 		],
 		'type': "poison",
 		'stats': [150,70,75,80,75,150],
+		'bootleg': 'record',
 		},
 	'Apocrowlypse': {
 		'id': 'apocrowlypse',
 		'locations': ["remaster_Nevermort"],
 		'type': "poison",
 		'stats': [160,120,120,120,120,160],
+		'bootleg': 'remaster',
 		},
 	'Clocksley': {
 		'id': 'clocksley',
@@ -448,18 +496,21 @@ base_monsters = {
 		],
 		'type': "plastic",
 		'stats': [80,80,80,150,130,80],
+		'bootleg': 'record',
 		},
 	'Robindam': {
 		'id': 'robindam',
 		'locations': ["remaster_Clocksley"],
 		'type': "plastic",
 		'stats': [110,110,110,200,150,120],
+		'bootleg': 'remaster',
 		},
 	'Thwackalope': {
 		'id': 'thwackalope',
 		'locations': ["Autumn Hill"],
 		'type': "air",
 		'stats': [110,180,110,110,110,180],
+		'bootleg': 'record',
 		},
 	'Allseer': {
 		'id': 'allseer',
@@ -474,12 +525,14 @@ base_monsters = {
 		],
 		'type': "metal",
 		'stats': [100,50,120,150,80,100],
+		'bootleg': 'record',
 		},
 	'Khufo': {
 		'id': 'khufo',
 		'locations': ["remaster-Close Encounter_Allseer"],
 		'type': "astral",
 		'stats': [120,160,140,160,100,120],
+		'bootleg': 'remaster',
 		},
 	'Triphinx': {
 		'id': 'triphinx',
@@ -492,6 +545,7 @@ base_monsters = {
 		],
 		'type': "metal",
 		'stats': [140,50,140,190,140,140],
+		'bootleg': 'record',# same as Allseer for split remaster
 		},
 	'Braxsuit': {
 		'id': 'braxsuit',
@@ -501,6 +555,7 @@ base_monsters = {
 		],
 		'type': "air",
 		'stats': [100,100,70,100,90,140],
+		'bootleg': 'record',
 		},
 	'Flapwoods': {
 		'id': 'flapwoods',
@@ -511,6 +566,7 @@ base_monsters = {
 		],
 		'type': "air",
 		'stats': [140,140,100,140,100,180],
+		'bootleg': 'remaster',
 		},
 	'Sanzatime': {
 		'id': 'sanzatime',
@@ -521,12 +577,14 @@ base_monsters = {
 		],
 		'type': "plastic",
 		'stats': [100,120,120,100,110,50],
+		'bootleg': 'record',
 		},
 	'Fortiwinx': {
 		'id': 'fortiwinx',
 		'locations': ["remaster_Sanzatime"],
 		'type': "plastic",
 		'stats': [130,165,155,130,140,80],
+		'bootleg': 'remaster',
 		},
 	'Salamagus': {
 		'id': 'salamagus',
@@ -537,12 +595,14 @@ base_monsters = {
 		],
 		'type': "fire",
 		'stats': [100,50,80,150,120,100],
+		'bootleg': 'record',
 		},
 	'Pyromeleon': {
 		'id': 'pyromeleon',
 		'locations': ["remaster_Salamagus"],
 		'type': "fire",
 		'stats': [150,60,100,200,150,140],
+		'bootleg': 'record',# same as Salamagus for split remaster
 		},
 	'Muskrateer': {
 		'id': 'muskrateer',
@@ -554,6 +614,7 @@ base_monsters = {
 		],
 		'type': "beast",
 		'stats': [80,100,80,80,80,120],
+		'bootleg': 'record',
 		},
 	'Ratcousel': {
 		'id': 'ratcousel',
@@ -564,12 +625,14 @@ base_monsters = {
 		],
 		'type': "plastic",
 		'stats': [136,136,136,136,136,120],
+		'bootleg': 'remaster',
 		},
 	'Padpole': {
 		'id': 'padpole',
 		'locations': ["Thirstaton Lake"],
 		'type': "water",
 		'stats': [120,120,80,80,80,120],
+		'bootleg': 'record',
 		},
 	'Frillypad': {
 		'id': 'frillypad',
@@ -580,6 +643,7 @@ base_monsters = {
 		],
 		'type': "water",
 		'stats': [140,180,100,100,100,140],
+		'bootleg': 'remaster',
 		},
 	'Liligator': {
 		'id': 'liligator',
@@ -589,6 +653,7 @@ base_monsters = {
 		],
 		'type': "water",
 		'stats': [150,200,100,100,100,150],
+		'bootleg': 'remaster',
 		},
 	'Elfless': {
 		'id': 'elfless',
@@ -602,6 +667,7 @@ base_monsters = {
 		],
 		'type': "ice",
 		'stats': [100,100,100,100,100,100],
+		'bootleg': 'record',
 		},
 	'Grampus': {
 		'id': 'grampus',
@@ -611,12 +677,14 @@ base_monsters = {
 		],
 		'type': "ice",
 		'stats': [160,150,160,100,130,100],
+		'bootleg': 'record',# same as Elfless for split remaster
 		},
 	'Faerious': {
 		'id': 'faerious',
 		'locations': ["remaster-Toy Hammer_Elfless"],
 		'type': "ice",
 		'stats': [160,160,100,120,100,160],
+		'bootleg': 'remaster',
 		},
 	'Brushroom': {
 		'id': 'brushroom',
@@ -626,12 +694,14 @@ base_monsters = {
 		],
 		'type': "plant",
 		'stats': [100,100,100,90,110,100],
+		'bootleg': 'record',
 		},
 	'Fungogh': {
 		'id': 'fungogh',
 		'locations': ["remaster_Brushroom"],
 		'type': "plant",
 		'stats': [120,160,160,100,140,120],
+		'bootleg': 'remaster',
 		},
 	'Boltam': {
 		'id': 'boltam',
@@ -641,6 +711,7 @@ base_monsters = {
 		],
 		'type': "lightning",
 		'stats': [90,90,90,90,90,150],
+		'bootleg': 'record',
 		},
 	'Plasmantler': {
 		'id': 'plasmantler',
@@ -652,6 +723,7 @@ base_monsters = {
 		],
 		'type': "lightning",
 		'stats': [120,120,120,120,160,160],
+		'bootleg': 'record',# same as Boltam for split remaster
 		},
 	'Busheye': {
 		'id': 'busheye',
@@ -661,6 +733,7 @@ base_monsters = {
 		],
 		'type': "plant",
 		'stats': [150,90,90,90,90,90],
+		'bootleg': 'record',
 		},
 	'Huntorch': {
 		'id': 'huntorch',
@@ -671,12 +744,14 @@ base_monsters = {
 		],
 		'type': "plant",
 		'stats': [150,140,90,90,90,140],
+		'bootleg': 'remaster',
 		},
 	'Hedgeherne': {
 		'id': 'hedgeherne',
 		'locations': ["remaster_Huntorch"],
 		'type': "plant",
 		'stats': [150,140,110,140,110,150],
+		'bootleg': 'remaster',
 		},
 	'Terracooka': {
 		'id': 'terracooka',
@@ -690,6 +765,7 @@ base_monsters = {
 		],
 		'type': "earth",
 		'stats': [100,110,110,100,100,80],
+		'bootleg': 'record',
 		},
 	'Coaldron': {
 		'id': 'coaldron',
@@ -699,6 +775,7 @@ base_monsters = {
 		],
 		'type': "earth",
 		'stats': [160,110,140,160,140,90],
+		'bootleg': 'remaster',
 		},
 	'Stardigrade': {
 		'id': 'stardigrade',
@@ -711,48 +788,56 @@ base_monsters = {
 		],
 		'type': "astral",
 		'stats': [180,40,150,40,150,40],
+		'bootleg': 'record',
 		},
 	'Galagor': {
 		'id': 'galagor',
 		'locations': ["remaster_Stardigrade"],
 		'type': "astral",
 		'stats': [200,60,180,150,150,60],
+		'bootleg': 'remaster',
 		},
 	'Mascotoy': {
 		'id': 'mascotoy',
 		'locations': ["Falldown Mall"],
 		'type': "plastic",
 		'stats': [120,150,100,80,80,70],
+		'bootleg': 'record',
 		},
 	'Mascotorn': {
 		'id': 'mascotorn',
 		'locations': ["remaster_Mascotoy"],
 		'type': "plastic",
 		'stats': [150,200,150,100,110,90],
+		'bootleg': 'remaster',
 		},
 	'Binvader': {
 		'id': 'binvader',
 		'locations': ["Falldown Mall"],
 		'type': "metal",
 		'stats': [90,90,140,140,90,50],
+		'bootleg': 'record',
 		},
 	'Binterloper': {
 		'id': 'binterloper',
 		'locations': ["remaster_Binvader"],
 		'type': "plastic",
 		'stats': [110,110,170,170,110,110],
+		'bootleg': 'remaster',
 		},
 	'Twirligig': {
 		'id': 'twirligig',
 		'locations': ["Cherry Meadow"],
 		'type': "plant",
 		'stats': [190,50,150,50,150,10],
+		'bootleg': 'record',
 		},
 	'Kirikuri': {
 		'id': 'kirikuri',
 		'locations': ["remaster_Twirligig"],
 		'type': "plant",
 		'stats': [190,160,150,70,110,120],
+		'bootleg': 'remaster',
 		},
 	'Jellyton': {
 		'id': 'jellyton',
@@ -762,6 +847,7 @@ base_monsters = {
 		],
 		'type': "poison",
 		'stats': [120,200,130,150,90,110],
+		'bootleg': 'record',
 		},
 	'Spirouette': {
 		'id': 'spirouette',
@@ -771,36 +857,42 @@ base_monsters = {
 		],
 		'type': "water",
 		'stats': [140,70,70,110,70,140],
+		'bootleg': 'record',
 		},
 	'Regensea': {
 		'id': 'regensea',
 		'locations': ["remaster_Spirouette"],
 		'type': "water",
 		'stats': [170,115,100,145,100,170],
+		'bootleg': 'remaster',
 		},
 	'Jumpkin': {
 		'id': 'jumpkin',
 		'locations': ["Piper Farm"],# also requires skelly jelly
 		'type': "plant",
 		'stats': [130,100,100,75,100,140],
+		'bootleg': 'record',
 		},
 	'Beanstalker': {
 		'id': 'beanstalker',
 		'locations': ["remaster_Jumpkin"],
 		'type': "plant",
 		'stats': [140,185,110,100,100,165],
+		'bootleg': 'record',# same as Jumpkin for split remaster
 		},
 	'Draculeaf': {
 		'id': 'draculeaf',
 		'locations': ["remaster_Jumpkin"],
 		'type': "plant",
 		'stats': [160,125,125,125,125,140],
+		'bootleg': 'remaster',
 		},
 	'Pawndead': {
 		'id': 'pawndead',
 		'locations': ["Lost Hearts Graveyard"],
 		'type': "earth",
 		'stats': [90,90,90,90,90,90],
+		'bootleg': 'record',
 		},
 	'Skelevangelist': {
 		'id': 'skelevangelist',
@@ -810,21 +902,28 @@ base_monsters = {
 		],
 		'type': "earth",
 		'stats': [110,110,110,110,110,110],
+		'bootleg': 'record',# same as Pawndead for split remaster
 		},
 	'Kingrave': {
 		'id': 'kingrave',
-		'locations': ["remaster_Skelevangelist"],
+		'locations': [
+			"New Landkeeper Hideout",
+			"remaster_Skelevangelist"
+		],
 		'type': "earth",
 		'stats': [110,220,110,160,110,110],
+		'bootleg': 'remaster',
 		},
 	'Queenyx': {
 		'id': 'queenyx',
 		'locations': [
 			"Night's Bridge Station",
+			"New Landkeeper Hideout",
 			"remaster_Skelevangelist"
 		],
 		'type': "earth",
 		'stats': [180,110,110,110,110,200],
+		'bootleg': 'remaster',
 		},
 	'Burnace': {
 		'id': 'burnace',
@@ -835,6 +934,7 @@ base_monsters = {
 		],
 		'type': "fire",
 		'stats': [100,60,150,100,150,40],
+		'bootleg': 'record',
 		},
 	'Smogmagog': {
 		'id': 'smogmagog',
@@ -845,6 +945,7 @@ base_monsters = {
 		],
 		'type': "fire",
 		'stats': [140,110,195,110,195,50],
+		'bootleg': 'remaster',
 		},
 	'Faucetear': {
 		'id': 'faucetear',
@@ -855,6 +956,7 @@ base_monsters = {
 		],
 		'type': "water",
 		'stats': [90,100,90,110,100,90],
+		'bootleg': 'record',
 		},
 	'Fountess': {
 		'id': 'fountess',
@@ -865,18 +967,21 @@ base_monsters = {
 			"remaster_Faucetear"],
 		'type': "water",
 		'stats': [125,135,125,155,135,125],
+		'bootleg': 'remaster',
 		},
 	'Cluckabilly': {
 		'id': 'cluckabilly',
 		'locations': ["Piper Farm"],
 		'type': "air",
 		'stats': [100,115,90,105,90,100],
+		'bootleg': 'record',
 		},
 	'Rockertrice': {
 		'id': 'rockertrice',
 		'locations': ["remaster_Cluckabilly"],
 		'type': "air",
 		'stats': [130,145,130,135,130,130],
+		'bootleg': 'remaster',
 		},
 	'Pondwalker': {
 		'id': 'pondwalker',
@@ -886,6 +991,7 @@ base_monsters = {
 		],
 		'type': 'water',
 		'stats': [100,100,100,100,100,100],
+		'bootleg': 'record',
 		},
 	'Sharktanker': {
 		'id': 'sharktanker',
@@ -896,6 +1002,7 @@ base_monsters = {
 		],
 		'type': 'water',
 		'stats': [130,150,140,130,140,110],
+		'bootleg': 'remaster',
 		},
 	'Pombomb': {
 		'id': 'pombomb',
@@ -906,12 +1013,14 @@ base_monsters = {
 		],
 		'type': "fire",
 		'stats': [100,90,90,100,120,100],
+		'bootleg': 'record',
 		},
 	'Spitzfyre': {
 		'id': 'spitzfyre',
 		'locations': ["remaster_Pombomb"],
 		'type': "fire",
 		'stats': [140,110,110,160,150,130],
+		'bootleg': 'remaster',
 		},
 	'Icepeck': {
 		'id': 'icepeck',
@@ -922,6 +1031,7 @@ base_monsters = {
 		],
 		'type': "ice",
 		'stats': [80,150,80,80,80,190],
+		'bootleg': 'record',
 		},
 	'Cryoshear': {
 		'id': 'cryoshear',
@@ -932,12 +1042,14 @@ base_monsters = {
 		],
 		'type': "ice",
 		'stats': [150,180,90,90,90,200],
+		'bootleg': 'remaster',
 		},
 	'Sparktan': {
 		'id': 'sparktan',
 		'locations': ["Mt Wirral"],
 		'type': "lightning",
 		'stats': [100,80,90,90,90,150],
+		'bootleg': 'record',
 		},
 	'Zeustrike': {
 		'id': 'zeustrike',
@@ -947,18 +1059,21 @@ base_monsters = {
 		],
 		'type': "lightning",
 		'stats': [140,100,110,120,130,200],
+		'bootleg': 'remaster',
 		},
 	'Kuneko': {
 		'id': 'kuneko',
 		'locations': ["Defeat Shining Kuneko"],
 		'type': "air",
 		'stats': [115,115,115,115,115,115],
+		'bootleg': 'record',
 		},
 	'Shining Kuneko': {
 		'id': 'shining_kuneko',
 		'locations': ["remaster_Kuneko"],
 		'type': "astral",
 		'stats': [140,140,140,140,140,140],
+		'bootleg': 'remaster',
 		},
 	'Djinn Entonic': {
 		'id': 'djinn_entonic',
@@ -968,12 +1083,14 @@ base_monsters = {
 		],
 		'type': "astral",
 		'stats': [150,100,150,150,100,150],
+		'bootleg': 'record',
 		},
 	'Arkidd': {
 		'id': 'arkidd',
 		'locations': ["Falldown Mall"],
 		'type': "lightning",
 		'stats': [100,150,100,100,100,250],
+		'bootleg': 'record',
 		},
 	'Undyin': {
 		'id': 'undyin',
@@ -983,6 +1100,7 @@ base_monsters = {
 		],
 		'type': "water",
 		'stats': [200,110,110,160,110,110],
+		'bootleg': 'record',
 		},
 	'Spooki-onna': {
 		'id': 'spooki-onna',
@@ -992,54 +1110,63 @@ base_monsters = {
 		],
 		'type': "ice",
 		'stats': [190,120,130,130,130,100],
+		'bootleg': 'record',
 		},
 	'Khepri': {
 		'id': 'khepri',
 		'locations': ["Mt Wirral"],
 		'type': "fire",
 		'stats': [100,1,100,300,250,79],
+		'bootleg': 'record',
 		},
 	'Averevoir': {
 		'id': 'averevoir',
 		'locations': ["Recruited Barkley"],
 		'type': "air",
 		'stats': [150,100,150,100,150,190],
+		'bootleg': 'record',
 		},
 	'Glaistain': {
 		'id': 'glaistain',
 		'locations': ["Cherry Meadow"],# also magnet?
 		'type': "glass",
 		'stats': [120,160,90,160,90,220],
+		'bootleg': 'record',
 		},
 	'Miss Mimic': {
 		'id': 'miss_mimic',
 		'locations': ["Postgame"],# technically level 50 or level 65
 		'type': "metal",
 		'stats': [110,210,110,110,110,150],
+		'bootleg': 'record',
 		},
 	'Anathema': {
 		'id': 'anathema',
 		'locations': ["Postgame"],
 		'type': "beast",
 		'stats': [150,155,140,140,130,85],
+		'bootleg': 'record',
 		},
 	'Pinbolt': {
 		'id': 'pinbolt',
 		'locations': ["remaster_Boltam"],
 		'type': "lightning",
 		'stats': [120,120,105,160,105,190],
+		'bootleg': 'remaster',
 		},
 	'Diveberg': {
 		'id': 'diveberg',
 		'locations': ["remaster-Ice Coating_Diveal"],
 		'type': "ice",
 		'stats': [100,160,150,125,135,130],
+		'bootleg': 'remaster',
 		},
 	'Adeptile': {
 		'id': 'adeptile',
 		'locations': ["remaster-Magic Tome_Salamagus"],
 		'type': "astral",
 		'stats': [110,80,180,150,180,100],
+		'bootleg': 'remaster',
 		},
 	'Trapwurm': {
 		'id': 'trapwurm',
@@ -1049,30 +1176,38 @@ base_monsters = {
 		],
 		'type': "earth",
 		'stats': [120,150,120,90,120,90],
+		'bootleg': 'record',
 		},
 	'Wyrmaw': {
 		'id': 'wyrmaw',
-		'locations': ["remaster_Trapwurm"],
+		'locations': [
+			"New Landkeeper Hideout",
+			"remaster_Trapwurm"
+		],
 		'type': "earth",
 		'stats': [150,180,130,110,130,100],
+		'bootleg': 'remaster',
 		},
 	'Ferriclaw': {
 		'id': 'ferriclaw',
 		'locations': ["Spider Cave"],
 		'type': "metal",
 		'stats': [90,140,100,90,140,140],
+		'bootleg': 'record',
 		},
 	'Auriclaw': {
 		'id': 'auriclaw',
 		'locations': ["remaster_Ferriclaw"],
 		'type': "metal",
 		'stats': [100,170,100,100,170,160],
+		'bootleg': 'remaster',
 		},
 	'Picksie': {
 		'id': 'picksie',
 		'locations': ["Spider Cave"],
 		'type': "earth",
 		'stats': [130,130,130,130,130,150],
+		'bootleg': 'record',
 		},
 	'Pawper': {
 		'id': 'bear1',
@@ -1082,18 +1217,21 @@ base_monsters = {
 		],
 		'type': "beast",
 		'stats': [120,130,100,100,120,130],
+		'bootleg': 'record',
 		},
 	'Pawprince': {
 		'id': 'bear1',
-		'locations': ["reamster_Pawper"],
+		'locations': ["remaster_Pawper"],
 		'type': "beast",
 		'stats': [140,160,110,110,140,140],	
+		'bootleg': 'remaster',
 		},
 	'Minosteam': {
 		'id': 'minosteam',
 		'locations': ["Quest People are People"],
 		'type': "beast",
 		'stats': [140,160,110,110,140,140],	
+		'bootleg': 'record',
 		},
 }
 for data in base_monsters.values():
@@ -1105,6 +1243,7 @@ other_monsters = {
 		'locations': ["remaster-astral_Traffikrab"],
 		'type': "astral",
 		'stats': [105,160,105,160,150,120],
+		'bootleg': 'candle',
 		'dlc': None,
 		},
 }
@@ -1115,12 +1254,14 @@ pier_monsters = {
 		'locations': ["Funworld"],
 		'type': "lightning",
 		'stats': [120,100,120,100,80,80],
+		'bootleg': 'record',
 	},
 	"Blunderbusk": {
 		'id': "blunderbusk",
 		'locations': ["remaster_Charlequin"],
 		'type': "fire",
 		'stats': [150,120,150,150,100,130],
+		'bootleg': 'record',# same as Charlequin for split remaster
 		},
 	"Charlequin": {
 		'id': "charlequin",
@@ -1131,60 +1272,70 @@ pier_monsters = {
 		],
 		'type': "fire",
 		'stats': [80,110,80,120,100,110],
+		'bootleg': 'record',
 		},
 	"Fragliacci": {
 		'id': "fragliacci",
 		'locations': ["remaster_Charlequin"],
 		'type': "fire",
 		'stats': [100,140,100,170,160,130],
+		'bootleg': 'remaster',
 		},
 	"Hauntome": {
 		'id': "hauntome",
 		'locations': ["The Witch House"],
 		'type': "air",
 		'stats': [110,180,150,180,80,100],
+		'bootleg': 'record',
 		},
 	"Lapacitor": {
 		'id': "lapacitor",
 		'locations': ["remaster_Amphare"],
 		'type': "lightning",
 		'stats': [150,125,150,125,150,100],
+		'bootleg': 'remaster',
 		},
 	"Littlered": {
 		'id': "littlered",
 		'locations': ["The Witch House"],
 		'type': "beast",
 		'stats': [100,100,100,100,100,100],
+		'bootleg': 'record',
 		},
 	"Majortom": {
 		'id': "majortom",
 		'locations': ["remaster_Minortom"],
 		'type': "metal",
 		'stats': [150,150,150,110,110,130],
+		'bootleg': 'remaster',
 		},
 	"Minortom": {
 		'id': "minortom",
 		'locations': ["Cosmic Zone"],
 		'type': "metal",
 		'stats': [130,130,130,70,70,70],
+		'bootleg': 'record',
 		},
 	"Rosehood": {
 		'id': "rosehood",
 		'locations': ["remaster_Littlered"],
 		'type': "plant",
 		'stats': [160,110,100,160,110,160],
+		'bootleg': 'record',# same as Littlered for split remaster
 		},
 	"Scarleteeth": {
 		'id': "scarleteeth",
 		'locations': ["remaster-Carnivore_Littlered"],
 		'type': "beast",
 		'stats': [110,160,160,100,160,110],
+		'bootleg': 'remaster',
 		},
 	"Umbrahella": {
 		'id': "umbrahella",
 		'locations': ["Warehouse Key"],# this is a special case, needs work in rules
 		'type': "poison",
 		'stats': [150,120,140,170,200,60],
+		'bootleg': 'record',
 		},
 }
 for data in pier_monsters.values():
