@@ -54,6 +54,8 @@ func init_content() -> void:
 	apFileButton.take_over_path("res://menus/title/FileButton.gd")
 	var apSaveDataContainer = preload("res://mods/archipelago_companion/extensions/FileMenu_SaveDataContainerAP.gd")
 	apSaveDataContainer.take_over_path("res://menus/title/FileMenu_SaveDataContainer.gd")
+	var apLandkeeperOffice = preload("res://mods/archipelago_companion/extensions/LandkeeperOfficeAP.gd")
+	apLandkeeperOffice.take_over_path("res://world/objects/dungeons/LandkeeperOffice.gd")
 	
 	
 	# connect to any scenes that we need modified
