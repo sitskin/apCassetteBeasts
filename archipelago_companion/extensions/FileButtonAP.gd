@@ -17,7 +17,7 @@ func load_file():
 		if not _contains_save_tags(version_dlc, DLC.save_file_format_tags) or true:
 			# this currently always happens until offline play is fixed
 			GlobalMessageDialog.clear_state()
-			yield (GlobalMessageDialog.show_message("You are not connected to a Archipelago Server.", true), "completed")
+			yield (GlobalMessageDialog.show_message("You are not connected to an Archipelago Server.", true), "completed")
 			grab_focus()
 			return
 		else:
