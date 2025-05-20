@@ -47,6 +47,11 @@ func _init():
 		"args":[TYPE_STRING, TYPE_INT], 
 		"target":[self, "_getApItemConsole"],
 	})
+	Console.register("getApTapes", {
+		"description":"Gives one of each AP bootleg tape", 
+		"args":[], 
+		"target":[self, "_getApTapesConsole"],
+	})
 
 func isConnected():
 	return _archipelagoClient.connect_state == BaseArchipelagoClient.ConnectState.CONNECTED_TO_MULTIWORLD
@@ -122,6 +127,14 @@ func _onQuestCompleted(quest_res: Resource):
 func _getApItemConsole(itemName: String, itemAmount: int):
 	_giveReceivedItems([GivenApItem.new([itemName, itemAmount])])
 
+func _getApTapesConsole():
+	var items_to_give = []
+	var items = ["blizzard", "contagion", "damascus", "deluge", "earthquake", "ferocious", "glitter_bomb", "inferno", "maelstrom", "overgrowth", "plastic", "stained_glass", "tornado"]
+	for item in items:
+		var cbItem = ItemFactory.create_from_id("res://mods/archipelago_companion/items/ap_tape_%s.tres" % item)
+		items_to_give.append({"item": cbItem, "amount": 1})
+	MenuHelper.give_items(items_to_give)
+
 # recieving items from server
 # itemData is [itemName, itemAmount]
 # networkItem is {item: int, location: int, ...}
@@ -140,6 +153,8 @@ func _giveReceivedItems(givenItems: Array):
 	var cbItemsToGive = []
 	for givenItem in givenItems:
 		var itemName: String = givenItem.itemName
+		if "ap_tape" in itemName:
+			itemName = "res://mods/archipelago_companion/items/%s.tres" % itemName
 		var itemAmount: int = givenItem.itemAmount
 		var cbItem = ItemFactory.create_from_id(itemName)
 		if cbItem != null:
@@ -275,7 +290,7 @@ func getItemString(locationString: String):
 	var apName = _archipelagoClient.slot_data["location_cbName_to_apName"][locationString]
 	var locationId = _archipelagoClient.data_package.location_name_to_id[apName]
 	if !_archipelagoClient.locationId_itemInfo.has(locationId):
-		var itemData = _archipelagoClient.slot_data["item_apName_to_cbItemData"][apName]
+		#var itemData = _archipelagoClient.slot_data["item_apName_to_cbItemData"][apName]
 		return "Self Item"
 	var itemInfo = _archipelagoClient.locationId_itemInfo[locationId]
 	return "Sent %s to %s" % [itemInfo.itemName, itemInfo.playerName]

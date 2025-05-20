@@ -1,0 +1,25 @@
+[gd_resource type="Resource" load_steps=4 format=2]
+
+[ext_resource path="res://data/item_scripts/BlankTape.gd" type="Script" id=1]
+[ext_resource path="res://mods/archipelago_companion/sprites/ap_tape_tornado.png" type="Texture" id=2]
+[ext_resource path="res://data/elemental_types/astral.tres" type="Resource" id=3]
+
+[resource]
+script = ExtResource( 1 )
+name = "Tornado Tape"
+aux_name = ""
+icon = ExtResource( 2 )
+description = "A tape made by combining worlds.\nConverts the monster recoreded with it into an Air bootleg."
+category = "tapes"
+base_stack_limit = 0
+stack_limit_category = ""
+consume_on_use = true
+discardable = false
+value = 1000000000
+usable_contexts = 2
+battle_usage = 1
+sort_order = 100
+capture_rate = -1
+type_affinity_rate_boost = 0
+force_bootleg_type = ExtResource( 3 )
+rarity = 2
