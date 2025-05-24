@@ -20,6 +20,8 @@ var _itemsReceivedFromServer = []
 var _itemGiveTimer = 0.0
 const _ITEM_GIVE_DELAY = 0.5
 
+var _trapsReceivedFromServer = []
+
 const _AP_AA_DEFEATED_KEY = "ap_aa_defeated"
 
 var _tempReceivedItems = []
@@ -95,8 +97,12 @@ func _process(delta):
 		_itemGiveTimer -= delta
 		if _itemGiveTimer < 0.0:
 			_itemGiveTimer = _ITEM_GIVE_DELAY
-			_giveReceivedItems(_itemsReceivedFromServer)
-			_itemsReceivedFromServer.clear()
+			if len(_itemsReceivedFromServer) > 0:
+				_giveReceivedItems(_itemsReceivedFromServer)
+				_itemsReceivedFromServer.clear()
+			elif len(_trapsReceivedFromServer) > 0:
+				_giveReceivedTraps(_trapsReceivedFromServer)
+				_trapsReceivedFromServer.clear()
 
 func _onFileLoaded():
 	if !isInGame():
@@ -161,6 +167,9 @@ func _giveReceivedItems(givenItems: Array):
 			cbItemsToGive.append({"item": cbItem, "amount": itemAmount})
 			continue
 		
+		if "ap_trap" in itemName:
+			_trapsReceivedFromServer.append(itemName)
+		
 		if SaveState.abilities.has(itemName):
 			_onAbilityReceived(itemName)
 		
@@ -194,6 +203,21 @@ func _giveReceivedItems(givenItems: Array):
 		
 	if !cbItemsToGive.empty():
 		MenuHelper.give_items(cbItemsToGive)
+
+func _giveReceivedTraps(givenTraps: Array):
+	var encounter = EncounterConfig.new()
+	for givenTrap in givenTraps:
+		var character = CharacterConfig.new()
+		character.base_character = preload("res://data/characters/blank_monster.tres")
+		character.pronouns = randi() % 3
+		character.level_override = WorldSystem.get_player().character.level
+		var tape = TapeConfig.new()
+		tape.set("form", load("res://data/monster_forms/%s.tres" % givenTrap.replace("ap_trap_", "")))
+		tape.set("tape_seed_value", randi())
+		encounter.add_child(character)
+		character.add_child(tape)
+	encounter.run_encounter(encounter.get_config())
+	print("Traps given to player: ", givenTraps)
 
 func _onAbilityReceived(abilityName: String):
 	SaveState.set_ability(abilityName, true)
