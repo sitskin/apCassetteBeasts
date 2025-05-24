@@ -169,6 +169,15 @@ class TapesanityPercentageItemCount(Range):#UNIMPLEMENTED
     range_end = 128
     default = 64
 
+class AddBootlegTapes(Toggle):
+    """
+    Adds custom tapes that always record and turn
+      the recorded monster into a specific bootleg.
+
+    At least one of each will be added to the item pool.
+    """
+    display_name = "Add Bootleg Tapes"
+
 class Bootlegsanity(Choice):#UNIMPLEMENTED
     """
     Adds recording bootleg tapes as locations
@@ -196,8 +205,8 @@ class Bootlegsanity(Choice):#UNIMPLEMENTED
     option_percentage_tape = 3
     option_percentage_all = 4
     default = 0
-    if datetime.today().month != 4:
-        visibility = Visibility.none
+    #if datetime.today().month != 4:
+    #    visibility = Visibility.none
 
 class BootlegsanityPercentage(Range):#UNIMPLEMENTED
     """
@@ -208,8 +217,8 @@ class BootlegsanityPercentage(Range):#UNIMPLEMENTED
     range_start = 1
     range_end = 100
     default = 1
-    if datetime.today().month != 4:
-        visibility = Visibility.none
+    #if datetime.today().month != 4:
+    #    visibility = Visibility.none
 
 class BootlegsanityPercentageItemCount(Range):#UNIMPLEMENTED
     """
@@ -223,8 +232,8 @@ class BootlegsanityPercentageItemCount(Range):#UNIMPLEMENTED
     range_start = 1
     range_end = 512
     default = 4
-    if datetime.today().month != 4:
-        visibility = Visibility.none
+    #if datetime.today().month != 4:
+    #    visibility = Visibility.none
 
 class Fusionsanity(Toggle):#UNIMPLEMENTED
     """
@@ -233,8 +242,8 @@ class Fusionsanity(Toggle):#UNIMPLEMENTED
     Many Pear Fusilli will be added to the item pool
     """
     display_name = "Fusionsanity"
-    if datetime.today().month != 4:
-        visibility = Visibility.none
+    #if datetime.today().month != 4:
+    #    visibility = Visibility.none
 
 class FusionsanityAmount(Range):#UNIMPLEMENTED
     """
@@ -247,8 +256,8 @@ class FusionsanityAmount(Range):#UNIMPLEMENTED
     range_start = 1
     range_end = 143**2
     default = 32
-    if datetime.today().month != 4:
-        visibility = Visibility.none
+    #if datetime.today().month != 4:
+    #    visibility = Visibility.none
 
 class FusionsanityItemCount(Range):#UNIMPLEMENTED
     """
@@ -262,8 +271,8 @@ class FusionsanityItemCount(Range):#UNIMPLEMENTED
     range_start = 1
     range_end = 1024
     default = 16
-    if datetime.today().month != 4:
-        visibility = Visibility.none
+    #if datetime.today().month != 4:
+    #    visibility = Visibility.none
 
 @dataclass
 class CassetteBeastsOptions(PerGameCommonOptions):
@@ -281,6 +290,7 @@ class CassetteBeastsOptions(PerGameCommonOptions):
     tapesanity: Tapesanity
     tapesanity_percentage: TapesanityPercentage
     tapesanity_percentage_item_count: TapesanityPercentageItemCount
+    add_bootleg_tapes: AddBootlegTapes
     bootlegsanity: Bootlegsanity
     bootlegsanity_percentage: BootlegsanityPercentage
     bootlegsanity_percentage_item_count: BootlegsanityPercentageItemCount

@@ -6,7 +6,8 @@ from BaseClasses import Location, Region, ItemClassification as IC
 from worlds.AutoWorld import WebWorld, World
 
 from .Groups import item_groups, location_groups
-from .Items import CassetteBeastsItem, item_table, item_data_table, cb_regular_items, cb_resource_items, cb_tape_items, cb_trap_items, cb_remaster_sticker_items, shouldAddItem
+from .Items import CassetteBeastsItem, item_table, item_data_table, cb_regular_items, cb_resource_items, cb_tape_items, cb_bootleg_tape_items,\
+					cb_trap_items, cb_remaster_sticker_items, shouldAddItem
 from .Locations import CassetteBeastsLocation, location_table, location_data_table, event_data_table, getLocationCount, isLocation
 from .Options import CassetteBeastsOptions
 from .Regions import region_data
@@ -65,9 +66,21 @@ class CassetteBeastsWorld(World):
 
 		# Bootlegsanity
 		if self.options.bootlegsanity != "none":
-			count = monsterCount(self.options)*14 if self.options.bootlegsanity == "specific" else self.options.bootlegsanity_percentage_item_count
-			items = ["Ritual Candle", "Cyber Material x20", "Black Shuck's Tape"]
-			item_pool += [self.create_item(c) for c in choices(items, weights=[1,3,2], k=count)]
+			per_tape = self.options.bootlegsanity in ["per_tape", "percentage_tape"]
+			items = []
+			for mon in monsters(self.options).values():
+				if mon["bootleg"] == "record":
+					if per_tape:
+						items += choices([key for key in cb_bootleg_tape_items.keys()], k=1)
+					else:
+						items += [key for key in cb_bootleg_tape_items.keys()]
+				elif mon["bootleg"] == "candle":
+					items += ["Ritual Candle"] if per_tape else ["Ritual Candle"]*14
+				else:
+					items += choices([key for key in cb_bootleg_tape_items.keys()]+["Ritual Candle", "Cyber Material x20"],
+										weights=[1]*14+[8,28], k=1 if per_tape else 14)
+			item_pool += [self.create_item(item) for item in items]
+
 
 		# Fusionsanity
 		if self.options.fusionsanity:
@@ -90,9 +103,12 @@ class CassetteBeastsWorld(World):
 			item_pool += [self.create_item(c) for c in choices([*cb_trap_items.keys()], [5,2,3,1], k=count)]
 
 		# Randomized Filler
+		filler_items = cb_regular_items.keys()|cb_resource_items.keys()|cb_tape_items.keys()
+		if self.options.add_bootleg_tapes:
+			filler_items |= cb_bootleg_tape_items.keys()
 		item_pool += [self.create_item(c)
 			for c in choices(
-				[*cb_regular_items.keys()|cb_resource_items.keys()|cb_tape_items.keys()],
+				[*filler_items],
 				k=getLocationCount(self.options)-len(item_pool)-len(self.get_pre_fill_items()))
 			]
 
@@ -229,6 +245,7 @@ class CassetteBeastsWorld(World):
 				"tapesanity": self.options.tapesanity.value,
 				"tapesanity_percentage": self.options.tapesanity_percentage.value,
 				"tapesanity_percentage_item_count": self.options.tapesanity_percentage_item_count.value,
+				# add_bootleg_tapes not required to be sent to Cassette Beasts
 				"bootlegsanity": self.options.bootlegsanity.value,
 				"bootlegsanity_percentage": self.options.bootlegsanity_percentage.value,
 				"bootlegsanity_percentage_item_count": self.options.bootlegsanity_percentage_item_count.value,

@@ -447,7 +447,7 @@ def set_rules(cbworld):
 	set_rule(multiworld.get_location("Became Captain", player),
 		lambda state: state.can_reach_location("Beat Ianthe", player))
 	set_rule(multiworld.get_location("Recruited Sunny", player),
-		lambda state: state.has("Defeated Aleph", player) and state.can_reach_location("Defeat Mammon", player))
+		lambda state: state.has("Defeated Aleph", player) and state.has("Defeated Mammon", player))
 
 	#---Trainersanity---
 	if cbworld.options.trainersanity:

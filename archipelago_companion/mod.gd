@@ -54,7 +54,8 @@ func init_content() -> void:
 	apFileButton.take_over_path("res://menus/title/FileButton.gd")
 	var apSaveDataContainer = preload("res://mods/archipelago_companion/extensions/FileMenu_SaveDataContainerAP.gd")
 	apSaveDataContainer.take_over_path("res://menus/title/FileMenu_SaveDataContainer.gd")
-	
+	var apLandkeeperOffice = preload("res://mods/archipelago_companion/extensions/LandkeeperOfficeAP.gd")
+	apLandkeeperOffice.take_over_path("res://world/objects/dungeons/LandkeeperOffice.gd")
 	
 	# connect to any scenes that we need modified
 	var callbacks = DLC.mods_by_id.cat_modutils.callbacks
@@ -66,6 +67,7 @@ func init_content() -> void:
 	callbacks.connect_scene_ready("res://cutscenes/merchants/Clemence_Exchange.tscn", self, "_unlockTapes")
 	callbacks.connect_scene_ready("res://cutscenes/merchants/RangerTrader_Exchange.tscn", self, "_removeAbilityAdvantages")
 	callbacks.connect_scene_ready("res://world/core/ItemDrop.tscn", self, "_onItemDrop")
+	callbacks.connect_scene_ready("res://cutscenes/meredith_quest/MeredithIntro2_InteractionBehavior.tscn", self, "_patchMeredithQuest3")
 
 func _onItemDrop(scene: Interaction):
 	var item = scene.item
@@ -101,6 +103,19 @@ func _onFileMenu(scene: SlidingControl):
 		ap_sticker.anchor_right = 1
 		file_button.add_child(ap_sticker)
 		file_button.refresh()
+
+func _patchMeredithQuest3(scene):
+	var apCheckCondition = preload("res://mods/archipelago_companion/extensions/CheckConditionActionAP.gd").new()
+	var path = "Cutscene/ChangeMusicAction/Selector/HaveQuest3Envelope"
+	var item = load("res://data/items/meredith_envelope.tres")#ItemFactory.create_from_id("meredith_envelope.tres")
+	
+	apCheckCondition.set("require_quest", preload("res://data/quests/partner_quests/MeredithQuest3.tscn"))
+	apCheckCondition.set("require_quest_state", 6)
+	apCheckCondition.set("require_item", item)
+	
+	scene.get_node(path).queue_free()
+	scene.get_node(path).replace_by(apCheckCondition)
+	
 
 # disables tutorial railroading if AP Client is enabled
 func _onOutskirtsWrongWay(scene: CheckConditionAction):

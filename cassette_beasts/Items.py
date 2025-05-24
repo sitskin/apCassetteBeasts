@@ -2,6 +2,8 @@ from typing import NamedTuple, Optional
 
 from BaseClasses import Item, ItemClassification as IC
 
+from .Data.tape_data import monsters
+
 CB_BASE_ID = 1
 
 class CassetteBeastsItem(Item):
@@ -134,24 +136,41 @@ cb_tape_items = {
 	"Basic Tape x5": CassetteBeastsItemData("tape_basic", id_off+0, IC.filler, 5, 2),
 	"Chrome Tape x5": CassetteBeastsItemData("tape_chrome", id_off+1, IC.useful, 5, 1),
 	"Optical Laser Tape": CassetteBeastsItemData("tape_optical_laser", id_off+2, IC.useful, 1, 0),
-	"Black Shuck's Tape": CassetteBeastsItemData("tape_black_shuck", id_off+3, IC.useful, 1, 0),
-	"Aerosol Tape": CassetteBeastsItemData("tape_air", id_off+4, IC.filler, 1, 0),
-	"Ethereal Tape": CassetteBeastsItemData("tape_astral", id_off+5, IC.filler, 1, 0),
-	"Faux Fur Tape": CassetteBeastsItemData("tape_beast", id_off+6, IC.filler, 1, 0),
-	"Ceramic Tape": CassetteBeastsItemData("tape_earth", id_off+7, IC.filler, 1, 0),
-	"Toaster Tape": CassetteBeastsItemData("tape_fire", id_off+8, IC.filler, 1, 0),
-	"Ice-IX Tape": CassetteBeastsItemData("tape_ice", id_off+9, IC.filler, 1, 0),
-	"Superconductive Tape": CassetteBeastsItemData("tape_lightning", id_off+10, IC.filler, 1, 0),
-	"Ferrichrome Tape": CassetteBeastsItemData("tape_metal", id_off+11, IC.filler, 1, 0),
-	"Treebark Tape": CassetteBeastsItemData("tape_plant", id_off+12, IC.filler, 1, 0),
-	"Recycled Tape": CassetteBeastsItemData("tape_plastic", id_off+13, IC.filler, 1, 0),
-	"Snakeskin Tape": CassetteBeastsItemData("tape_poison", id_off+14, IC.filler, 1, 0),
-	"Water-Filled Tape": CassetteBeastsItemData("tape_water", id_off+15, IC.filler, 1, 0),
-	"Basic Tape": CassetteBeastsItemData("tape_basic", id_off+16, IC.filler, 1, 0),
-	"Chrome Tape": CassetteBeastsItemData("tape_chrome", id_off+17, IC.useful, 1, 0),
+	"Aerosol Tape": CassetteBeastsItemData("tape_air", id_off+3, IC.filler, 1, 0),
+	"Ethereal Tape": CassetteBeastsItemData("tape_astral", id_off+4, IC.filler, 1, 0),
+	"Faux Fur Tape": CassetteBeastsItemData("tape_beast", id_off+5, IC.filler, 1, 0),
+	"Ceramic Tape": CassetteBeastsItemData("tape_earth", id_off+6, IC.filler, 1, 0),
+	"Toaster Tape": CassetteBeastsItemData("tape_fire", id_off+7, IC.filler, 1, 0),
+	"Ice-IX Tape": CassetteBeastsItemData("tape_ice", id_off+8, IC.filler, 1, 0),
+	"Superconductive Tape": CassetteBeastsItemData("tape_lightning", id_off+9, IC.filler, 1, 0),
+	"Ferrichrome Tape": CassetteBeastsItemData("tape_metal", id_off+10, IC.filler, 1, 0),
+	"Treebark Tape": CassetteBeastsItemData("tape_plant", id_off+11, IC.filler, 1, 0),
+	"Recycled Tape": CassetteBeastsItemData("tape_plastic", id_off+12, IC.filler, 1, 0),
+	"Snakeskin Tape": CassetteBeastsItemData("tape_poison", id_off+13, IC.filler, 1, 0),
+	"Water-Filled Tape": CassetteBeastsItemData("tape_water", id_off+14, IC.filler, 1, 0),
+	"Basic Tape": CassetteBeastsItemData("tape_basic", id_off+15, IC.filler, 1, 0),
+	"Chrome Tape": CassetteBeastsItemData("tape_chrome", id_off+16, IC.useful, 1, 0),
 }
 
 id_off += len(cb_tape_items)
+cb_bootleg_tape_items = {
+	"Black Shuck's Tape": CassetteBeastsItemData("tape_black_shuck", id_off+0, IC.useful, 1, 1),
+	"Blizzard Tape": CassetteBeastsItemData("ap_tape_blizzard", id_off+1, IC.useful, 1, 1),
+	"Contagion Tape": CassetteBeastsItemData("ap_tape_contagion", id_off+2, IC.useful, 1, 1),
+	"Damascus Tape": CassetteBeastsItemData("ap_tape_damascus", id_off+3, IC.useful, 1, 1),
+	"Deluge Tape": CassetteBeastsItemData("ap_tape_deluge", id_off+4, IC.useful, 1, 1),
+	"Earthquake Tape": CassetteBeastsItemData("ap_tape_earthquake", id_off+5, IC.useful, 1, 1),
+	"Ferocious Tape": CassetteBeastsItemData("ap_tape_ferocious", id_off+6, IC.useful, 1, 1),
+	"Glitter Bomb Tape": CassetteBeastsItemData("ap_tape_glitter_bomb", id_off+7, IC.useful, 1, 1),
+	"Inferno Tape": CassetteBeastsItemData("ap_tape_inferno", id_off+8, IC.useful, 1, 1),
+	"Maelstrom Tape": CassetteBeastsItemData("ap_tape_maelstrom", id_off+9, IC.useful, 1, 1),
+	"Overgrowth Tape": CassetteBeastsItemData("ap_tape_overgrowth", id_off+10, IC.useful, 1, 1),
+	"Plastic Tape": CassetteBeastsItemData("ap_tape_plastic", id_off+11, IC.useful, 1, 1),
+	"Stained Glass Tape": CassetteBeastsItemData("ap_tape_stained_glass", id_off+12, IC.useful, 1, 1),
+	"Tornado Tape": CassetteBeastsItemData("ap_tape_tornado", id_off+13, IC.useful, 1, 1),
+}
+
+id_off += len(cb_bootleg_tape_items)
 cb_remaster_sticker_items = {
 	"Close Encounter Sticker": CassetteBeastsItemData("sticker:close_encounter", id_off+0, IC.progression, 1, 0),
 	"Gear Shear Sticker": CassetteBeastsItemData("sticker:gear_shear", id_off+1, IC.progression, 1, 1),
@@ -210,8 +229,8 @@ cb_trap_items = {
 }
 
 item_data_table = cb_abilities|cb_key_items|cb_regular_items|cb_resource_items|\
-				  cb_tape_items|cb_remaster_sticker_items|cb_upgrade_items|\
-				  cb_loot_table_items|cb_trap_items
+				  cb_tape_items|cb_bootleg_tape_items|cb_remaster_sticker_items|\
+				  cb_upgrade_items|cb_loot_table_items|cb_trap_items
 item_table = {name: data.code
 	for name, data in item_data_table.items()
 	if data.code is not None}
@@ -221,6 +240,7 @@ def shouldAddItem(options, name):
 			(name in cb_key_items.keys()) or\
 			(name in cb_regular_items.keys()) or\
 			(name in cb_tape_items.keys()) or\
+			(name in cb_bootleg_tape_items.keys() and options.add_bootleg_tapes) or\
 			(name in cb_remaster_sticker_items.keys() and (options.tapesanity != "none" or options.bootlegsanity != "none" or options.fusionsanity)) or\
 			(name in cb_upgrade_items.keys() and options.shopsanity == True) or\
 			(name in cb_loot_table_items.keys() and options.shuffle_chest_loot_tables == True)
