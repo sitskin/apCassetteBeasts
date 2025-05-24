@@ -6,7 +6,7 @@
 
 [resource]
 script = ExtResource( 1 )
-name = "Stained Glass Tape"
+name = "Trinitite Tape"
 aux_name = ""
 icon = ExtResource( 2 )
 description = "A tape made by combining worlds.\nConverts the monster recoreded with it into a Glass bootleg."

@@ -166,8 +166,8 @@ cb_bootleg_tape_items = {
 	"Maelstrom Tape": CassetteBeastsItemData("ap_tape_maelstrom", id_off+9, IC.useful, 1, 1),
 	"Overgrowth Tape": CassetteBeastsItemData("ap_tape_overgrowth", id_off+10, IC.useful, 1, 1),
 	"Plastic Tape": CassetteBeastsItemData("ap_tape_plastic", id_off+11, IC.useful, 1, 1),
-	"Stained Glass Tape": CassetteBeastsItemData("ap_tape_stained_glass", id_off+12, IC.useful, 1, 1),
-	"Tornado Tape": CassetteBeastsItemData("ap_tape_tornado", id_off+13, IC.useful, 1, 1),
+	"Tornado Tape": CassetteBeastsItemData("ap_tape_tornado", id_off+12, IC.useful, 1, 1),
+	"Trinitite Tape": CassetteBeastsItemData("ap_tape_trinitite", id_off+13, IC.useful, 1, 1),
 }
 
 id_off += len(cb_bootleg_tape_items)
@@ -222,10 +222,10 @@ cb_loot_table_items = {
 
 id_off += len(cb_loot_table_items)
 cb_trap_items = {
-	"Traffikrab Trap": CassetteBeastsItemData("AP_trap_traffikrab", id_off+0, IC.trap, 1, 0),
-	"Lobstacle Trap": CassetteBeastsItemData("AP_trap_lobstacle", id_off+1, IC.trap, 1, 0),
-	"Trapwurm Trap": CassetteBeastsItemData("AP_trap_trapwurm", id_off+2, IC.trap, 1, 0),
-	"Miss Mimic Trap": CassetteBeastsItemData("AP_trap_mimic", id_off+3, IC.trap, 1, 0),
+	"Traffikrab Trap": CassetteBeastsItemData("ap_trap_traffikrab", id_off+0, IC.trap, 1, 0),
+	"Lobstacle Trap": CassetteBeastsItemData("ap_trap_lobstacle", id_off+1, IC.trap, 1, 0),
+	"Trapwurm Trap": CassetteBeastsItemData("ap_trap_trapwurm", id_off+2, IC.trap, 1, 0),
+	"Miss Mimic Trap": CassetteBeastsItemData("ap_trap_miss_mimic", id_off+3, IC.trap, 1, 0),
 }
 
 item_data_table = cb_abilities|cb_key_items|cb_regular_items|cb_resource_items|\
