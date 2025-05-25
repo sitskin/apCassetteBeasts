@@ -236,10 +236,12 @@ class CassetteBeastsWorld(World):
 				"archangel_hunt_count": self.options.archangel_hunt_count.value,
 				"exclude_postgame": self.options.exclude_postgame.value,
 				"experience_multiplier": self.options.experience_multiplier.value,
+				"friendship_multiplier": self.options.friendship_multiplier.value,
+				"battle_loot_multiplier": self.options.battle_loot_multiplier.value,
 				"bootleg_multiplier": self.options.bootleg_multiplier.value,
 				"use_pier": self.options.use_pier.value,
 				"shuffle_chest_loot_tables": self.options.shuffle_chest_loot_tables.value,
-				"traps": self.options.traps != "none",
+				# traps not required to be sent to Cassette Beasts
 				"shopsanity": self.options.shopsanity.value,
 				"trainersanity": self.options.trainersanity.value,
 				"tapesanity": self.options.tapesanity.value,

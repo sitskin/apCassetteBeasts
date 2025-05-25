@@ -49,7 +49,7 @@ class ArchangelHuntCount(Range):
 
 class ExcludePostgame(Toggle):
     """
-    Force all postgame locations to be filler
+    Force postgame locations to be filler
     """
     display_name = "Exclude Postgame"
     default = True
@@ -63,6 +63,32 @@ class ExperienceMultiplier(Range):
     etc.
     """
     display_name = "Experience Multiplier"
+    range_start = 0
+    range_end = 1000
+    default = 100
+
+class FriendshipMultiplier(Range):
+    """
+    Multiplies the amount of friendship gain by a percentage
+    100 = default
+    50  = half
+    200 = double
+    etc.
+    """
+    display_name = "Friendship Multiplier"
+    range_start = 0
+    range_end = 1000
+    default = 100
+
+class BattleLootMultiplier(Range):
+    """
+    Multiplies the amount of battle loot gain by a percentage
+    100 = default
+    50  = half
+    200 = double
+    etc.
+    """
+    display_name = "Battle Loot Multiplier"
     range_start = 0
     range_end = 1000
     default = 100
@@ -281,6 +307,8 @@ class CassetteBeastsOptions(PerGameCommonOptions):
     archangel_hunt_count: ArchangelHuntCount
     exclude_postgame: ExcludePostgame
     experience_multiplier: ExperienceMultiplier
+    friendship_multiplier: FriendshipMultiplier
+    battle_loot_multiplier: BattleLootMultiplier
     bootleg_multiplier: BootlegMultiplier
     use_pier: UsePier
     shuffle_chest_loot_tables: ShuffleChestLootTables
