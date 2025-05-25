@@ -207,16 +207,35 @@ func _giveReceivedItems(givenItems: Array):
 func _giveReceivedTraps(givenTraps: Array):
 	var encounter = EncounterConfig.new()
 	for givenTrap in givenTraps:
-		var character = CharacterConfig.new()
-		character.base_character = preload("res://data/characters/blank_monster.tres")
-		character.pronouns = randi() % 3
-		character.level_override = WorldSystem.get_player().character.level
-		var tape = TapeConfig.new()
-		tape.set("form", load("res://data/monster_forms/%s.tres" % givenTrap.replace("ap_trap_", "")))
-		tape.set("tape_seed_value", randi())
-		encounter.add_child(character)
-		character.add_child(tape)
-	encounter.run_encounter(encounter.get_config())
+		if "solo" in givenTrap:
+			var character = CharacterConfig.new()
+			character.base_character = preload("res://data/characters/blank_monster.tres")
+			character.pronouns = randi() % 3
+			character.level_override = WorldSystem.get_player().character.level
+			var tape = TapeConfig.new()
+			tape.set("form", load("res://data/monster_forms/%s.tres" % givenTrap.replace("ap_trap_solo_", "")))
+			tape.set("tape_seed_value", randi())
+			encounter.add_child(character)
+			character.add_child(tape)
+		elif "swarm" in givenTrap:
+			for i in range(5):
+				var character = CharacterConfig.new()
+				character.base_character = preload("res://data/characters/blank_monster.tres")
+				character.pronouns = randi() % 3
+				character.level_override = int(WorldSystem.get_player().character.level / 2)
+				var tape = TapeConfig.new()
+				tape.set("form", load("res://data/monster_forms/%s.tres" % givenTrap.replace("ap_trap_swarm_", "")))
+				tape.set("tape_seed_value", randi())
+				encounter.add_child(character)
+				character.add_child(tape)
+		elif "special" in givenTrap:
+			match givenTrap.replace("ap_trap_special_", ""):
+				"starters":
+					specialTrapStarters(encounter)
+				"partners":
+					specialTrapPartners(encounter)
+	if encounter.get_child_count() > 0:
+		encounter.run_encounter(encounter.get_config())
 	if len(givenTraps) > 1:
 		showPassiveMessage("Recieved %s Traps" % len(givenTraps))
 	else:
@@ -314,6 +333,30 @@ func handleGiveItemAction(itemName: String):
 	var location = _archipelagoClient.slot_data["giveItemAction_to_location"][itemName]
 	_sendCheckLocation(location)
 	return location
+
+func specialTrapStarters(encounter: EncounterConfig):
+	for mon in ["bansheep", "candevil"]:
+		var character = CharacterConfig.new()
+		character.base_character = preload("res://data/characters/blank_monster.tres")
+		character.pronouns = randi() % 3
+		character.level_override = WorldSystem.get_player().character.level
+		var tape = TapeConfig.new()
+		tape.set("form", load("res://data/monster_forms/%s.tres" % mon))
+		tape.set("tape_seed_value", randi())
+		encounter.add_child(character)
+		character.add_child(tape)
+
+func specialTrapPartners(encounter: EncounterConfig):
+	for mon in ["sirenade", "kittelly", "clocksley", "brushroom", "spirouette", "pombomb", "bear1"]:
+		var character = CharacterConfig.new()
+		character.base_character = preload("res://data/characters/blank_monster.tres")
+		character.pronouns = randi() % 3
+		character.level_override = int(WorldSystem.get_player().character.level / 3)
+		var tape = TapeConfig.new()
+		tape.set("form", load("res://data/monster_forms/%s.tres" % mon))
+		tape.set("tape_seed_value", randi())
+		encounter.add_child(character)
+		character.add_child(tape)
 
 func showPassiveMessage(message: String, speaker: String = "Archipelago"):
 	var msg = PassiveMessageAction.new()

@@ -222,11 +222,16 @@ cb_loot_table_items = {
 
 id_off += len(cb_loot_table_items)
 cb_trap_items = {
-	"Traffikrab Trap": CassetteBeastsItemData("ap_trap_traffikrab", id_off+0, IC.trap, 1, 0),
-	"Lobstacle Trap": CassetteBeastsItemData("ap_trap_lobstacle", id_off+1, IC.trap, 1, 0),
-	"Trapwurm Trap": CassetteBeastsItemData("ap_trap_trapwurm", id_off+2, IC.trap, 1, 0),
-	"Miss Mimic Trap": CassetteBeastsItemData("ap_trap_miss_mimic", id_off+3, IC.trap, 1, 0),
+	"Traffikrab Trap": CassetteBeastsItemData("ap_trap_solo_traffikrab", id_off+0, IC.trap, 1, 0),
+	"Lobstacle Trap": CassetteBeastsItemData("ap_trap_solo_lobstacle", id_off+1, IC.trap, 1, 0),
+	"Trapwurm Trap": CassetteBeastsItemData("ap_trap_solo_trapwurm", id_off+2, IC.trap, 1, 0),
+	"Miss Mimic Trap": CassetteBeastsItemData("ap_trap_solo_miss_mimic", id_off+3, IC.trap, 1, 0),
+	"Traffikrab Swarm Trap": CassetteBeastsItemData("ap_trap_swarm_traffikrab", id_off+4, IC.trap, 1, 0),
+	"Bulletino Swarm Trap": CassetteBeastsItemData("ap_trap_swarm_bulletino", id_off+5, IC.trap, 1, 0),
+	"Starters Battle Trap": CassetteBeastsItemData("ap_trap_special_starters", id_off+6, IC.trap, 1, 0),
+	"Partners Battle Trap": CassetteBeastsItemData("ap_trap_special_partners", id_off+7, IC.trap, 1, 0),
 }
+cb_trap_item_weights = [50, 20, 30, 5, 10, 5, 1, 1]
 
 item_data_table = cb_abilities|cb_key_items|cb_regular_items|cb_resource_items|\
 				  cb_tape_items|cb_bootleg_tape_items|cb_remaster_sticker_items|\

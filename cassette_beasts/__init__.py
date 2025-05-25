@@ -7,7 +7,7 @@ from worlds.AutoWorld import WebWorld, World
 
 from .Groups import item_groups, location_groups
 from .Items import CassetteBeastsItem, item_table, item_data_table, cb_regular_items, cb_resource_items, cb_tape_items, cb_bootleg_tape_items,\
-					cb_trap_items, cb_remaster_sticker_items, shouldAddItem
+					cb_trap_items, cb_remaster_sticker_items, shouldAddItem, cb_trap_item_weights
 from .Locations import CassetteBeastsLocation, location_table, location_data_table, event_data_table, getLocationCount, isLocation
 from .Options import CassetteBeastsOptions
 from .Regions import region_data
@@ -100,7 +100,7 @@ class CassetteBeastsWorld(World):
 				count = min(max(5, remaining//5), remaining)
 			elif self.options.traps == "many":
 				count = min(max(6, remaining//2), remaining)
-			item_pool += [self.create_item(c) for c in choices([*cb_trap_items.keys()], [5,2,3,1], k=count)]
+			item_pool += [self.create_item(c) for c in choices([*cb_trap_items.keys()], cb_trap_item_weights, k=count)]
 
 		# Randomized Filler
 		filler_items = cb_regular_items.keys()|cb_resource_items.keys()|cb_tape_items.keys()
