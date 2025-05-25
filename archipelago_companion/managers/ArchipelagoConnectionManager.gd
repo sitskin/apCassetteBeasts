@@ -217,22 +217,30 @@ func _giveReceivedTraps(givenTraps: Array):
 		encounter.add_child(character)
 		character.add_child(tape)
 	encounter.run_encounter(encounter.get_config())
+	if len(givenTraps) > 1:
+		showPassiveMessage("Recieved %s Traps" % len(givenTraps))
+	else:
+		showPassiveMessage("Recieved Trap")
 	print("Traps given to player: ", givenTraps)
 
 func _onAbilityReceived(abilityName: String):
 	SaveState.set_ability(abilityName, true)
+	showPassiveMessage("Recieved $s" % abilityName)
 	print("Ability %s given to player" % abilityName)
 
 func _onSongReceived(aaName: String):
 	SaveState.set_flag("ap_song_part_" + aaName, true)
+	showPassiveMessage("Recieved Song Part")
 	print("Song for archangel %s given to player" % aaName)
 
 func _onStampReceived(stampFlag: String):
 	SaveState.set_flag(stampFlag, true)
+	showPassiveMessage("Recieved $s" % stampFlag)
 	print("Stamp for captain %s given to player" % stampFlag)
 
 func _increaseStamina():
 	SaveState.max_stamina += 0.5
+	showPassiveMessage("Stamina increased to %s" % SaveState.max_stamina)
 	print("Stamina increased to %s" % SaveState.max_stamina)
 
 func _onFlagChanged(flag: String, value: bool):
@@ -306,6 +314,15 @@ func handleGiveItemAction(itemName: String):
 	var location = _archipelagoClient.slot_data["giveItemAction_to_location"][itemName]
 	_sendCheckLocation(location)
 	return location
+
+func showPassiveMessage(message: String, speaker: String = "Archipelago"):
+	var msg = PassiveMessageAction.new()
+	msg.speaker_name = speaker
+	msg.message = message
+	msg.use_pawn_npc_name = false
+	WorldSystem.add_child(msg)
+	msg._run()
+	msg.queue_free()
 
 # refactor to getItem that will return either the apItem if remote
 # or the acutal item if local, and figure out the location id and add it to the
