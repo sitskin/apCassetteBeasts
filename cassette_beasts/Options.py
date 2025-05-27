@@ -10,17 +10,27 @@ class Goal(OptionSet):
     Escape - Complete Land of Confusion
 
     Captain - Beat Ianthe and become a ranger captain
-
-    Sunny - Complete People are People
-
-    Archangel Hunt - Defeat a number of Archangels
     """
-    # future options
+    #Sunny - Complete People are People
+
+    #Archangel Hunt - Defeat a number of Archangels
+
     # Pier - Complete Pier of the Unknown
-    # Archangel Hunt - Defeat a selection of Archangels
     display_name = "Goal"
-    valid_keys = ["Escape", "Captain", "Sunny", "Archangel Hunt"]
+    valid_keys = ["Escape", "Captain"]#, "Sunny", "Archangel Hunt", "Pier"]
     default = ["Escape"]
+
+class SongPartCount(Range):
+    """
+    How many Song Parts are in the item pool.
+    Game normally has 9, requires 4, and expects 8
+    Extra Song Parts do nothing.
+    """
+    display_name = "Song Part Count"
+    range_start = 8
+    range_end = 16
+    default = 9
+    visibility = Visibility.none# Implementation unfinished
 
 class FinalBattleFriendCount(Range):
     """
@@ -46,6 +56,7 @@ class ArchangelHuntCount(Range):
     range_start = 3
     range_end = 13
     default = 8
+    visibility = Visibility.none# Implementation unfinished
 
 class ExcludePostgame(Toggle):
     """
@@ -109,7 +120,7 @@ class UsePier(Toggle):#UNIMPLEMENTED
     Adds the Pier of the Unknown locations and items
     """
     display_name = "Use Pier of the Unknown"
-    #visibility = Visibility.none
+    visibility = Visibility.none# Implementation unfinished
 
 class ShuffleChestLootTables(Toggle):#UNIMPLEMENTED
     """
@@ -120,6 +131,7 @@ class ShuffleChestLootTables(Toggle):#UNIMPLEMENTED
       their randomized loot
     """
     display_name = "Shuffle Chest Loot Tables"
+    visibility = Visibility.none# Implementation unfinished
 
 class Traps(Choice):#UNIMPLEMENTED
     """
@@ -146,6 +158,7 @@ class Shopsanity(Toggle):#UNIMPLEMENTED
       and Fused Shards in the item pool
     """
     display_name = "Shopsanity"
+    visibility = Visibility.none# Implementation unfinished
 
 class Trainersanity(Toggle):#UNIMPLEMENTED
     """
@@ -153,6 +166,7 @@ class Trainersanity(Toggle):#UNIMPLEMENTED
       and put their loot into the item pool
     """
     display_name = "Trainersanity"
+    visibility = Visibility.none# Implementation unfinished
 
 class Tapesanity(Choice):#UNIMPLEMENTED
     """
@@ -231,8 +245,8 @@ class Bootlegsanity(Choice):#UNIMPLEMENTED
     option_percentage_tape = 3
     option_percentage_all = 4
     default = 0
-    #if datetime.today().month != 4:
-    #    visibility = Visibility.none
+    if datetime.today().month != 4:
+        visibility = Visibility.none
 
 class BootlegsanityPercentage(Range):#UNIMPLEMENTED
     """
@@ -243,8 +257,8 @@ class BootlegsanityPercentage(Range):#UNIMPLEMENTED
     range_start = 1
     range_end = 100
     default = 1
-    #if datetime.today().month != 4:
-    #    visibility = Visibility.none
+    if datetime.today().month != 4:
+        visibility = Visibility.none
 
 class BootlegsanityPercentageItemCount(Range):#UNIMPLEMENTED
     """
@@ -258,8 +272,8 @@ class BootlegsanityPercentageItemCount(Range):#UNIMPLEMENTED
     range_start = 1
     range_end = 512
     default = 4
-    #if datetime.today().month != 4:
-    #    visibility = Visibility.none
+    if datetime.today().month != 4:
+        visibility = Visibility.none
 
 class Fusionsanity(Toggle):#UNIMPLEMENTED
     """
@@ -268,6 +282,7 @@ class Fusionsanity(Toggle):#UNIMPLEMENTED
     Many Pear Fusilli will be added to the item pool
     """
     display_name = "Fusionsanity"
+    visibility = Visibility.none# Implementation unfinished
     #if datetime.today().month != 4:
     #    visibility = Visibility.none
 
@@ -282,6 +297,7 @@ class FusionsanityAmount(Range):#UNIMPLEMENTED
     range_start = 1
     range_end = 143**2
     default = 32
+    visibility = Visibility.none# Implementation unfinished
     #if datetime.today().month != 4:
     #    visibility = Visibility.none
 
@@ -297,12 +313,22 @@ class FusionsanityItemCount(Range):#UNIMPLEMENTED
     range_start = 1
     range_end = 1024
     default = 16
+    visibility = Visibility.none# Implementation unfinished
     #if datetime.today().month != 4:
     #    visibility = Visibility.none
+
+class SpecialMonsters(Toggle):
+    """
+    Add the secret monster to applicable locations.
+    """
+    display_name = "Special Monsters"
+    if datetime.today().month != 4:
+        visibility = Visibility.none
 
 @dataclass
 class CassetteBeastsOptions(PerGameCommonOptions):
     goal: Goal
+    song_part_count: SongPartCount
     final_battle_friend_count: FinalBattleFriendCount
     archangel_hunt_count: ArchangelHuntCount
     exclude_postgame: ExcludePostgame
@@ -325,4 +351,5 @@ class CassetteBeastsOptions(PerGameCommonOptions):
     fusionsanity: Fusionsanity
     fusionsanity_amount: FusionsanityAmount
     fusionsanity_item_count: FusionsanityItemCount
+    special_monsters: SpecialMonsters
     death_link: DeathLink
