@@ -111,7 +111,8 @@ base_locations = {
 		CassetteBeastsLocationData("encounter_captain_cleeo", "Eastham Woods", next(c),
 			lambda state, player: state.has("Coin", player)),
 	"Beat Lodestein": 
-		CassetteBeastsLocationData("encounter_captain_lodestein", "Ham", next(c)),
+		CassetteBeastsLocationData("encounter_captain_lodestein", "Ham", next(c),
+			lambda state, player: state.has("Progressive Dash", player) and state.has("Progressive Magnetism", player)),
 	"Beat Penny Dreadful": 
 		CassetteBeastsLocationData("encounter_captain_dreadful", "New London", next(c)),
 	"Beat Gladiola": 
@@ -233,7 +234,7 @@ base_locations = {
 	"NE Mire Sea Chest (8,-7)": 
 		CassetteBeastsLocationData("chest_overworld_8_-7", "NE Mire Sea", next(c),
 			lambda state, player: state.has("Progressive Glide", player) and state.has("Progressive Magnetism", player)),
-	"Upper Path Chest on Wall Before Harbourtown West (-1, -2)": 
+	"Upper Path Chest on Wall Before Harbourtown West (-1,-2)": 
 		CassetteBeastsLocationData("chest_overworld_-1_-2", "Upper Path", next(c),
 			lambda state, player: state.has("Progressive Glide", player) and state.has("Progressive Magnetism", player)),
 	"Lakeside Chest by Waterfall (-1,-6)": 
@@ -418,9 +419,9 @@ base_locations = {
 	"Night's Bridge Station Clockhands Chest (?,?)": 
 		CassetteBeastsLocationData("room_1A_chest_1", "Night's Bridge Station", next(c),
 			lambda state, player: state.has("Progressive Climb", player)),
-	"Night's Bridge Station Right Azure Keystone Chest (?/?)": 
+	"Night's Bridge Station Right Azure Keystone Chest (?,?)": 
 		CassetteBeastsLocationData("room_1A_chest_2", "Night's Bridge Station", next(c)),
-	"Night's Bridge Station Left Azure Keystone Chest (?/?)": 
+	"Night's Bridge Station Left Azure Keystone Chest (?,?)": 
 		CassetteBeastsLocationData("room_2A_chest_1", "Night's Bridge Station", next(c)),
 	"Titania Shipwreck Chest on Chimney (-6,-6)":
 		CassetteBeastsLocationData("chest_shipyard_ship_chimney", "Cast Iron Shore", next(c),
@@ -459,9 +460,11 @@ pier_locations = {
 }
 
 chest_loot_locations = {
-	loc.replace("Chest", "Chest Loot"): CassetteBeastsLocationData("loot_"+data.cb_name, data.region, next(c), data.rules,
+	loc.replace("Chest", "Chest Loot").replace("Cabinet", "Cabinet Loot").replace("Fridge", "Fridge Loot"):
+	CassetteBeastsLocationData("loot_"+data.cb_name, data.region, next(c), data.rules,
 		lambda options, f=data.requires: (f and f(options)) and options.shuffle_chest_loot)\
-	for loc, data in (base_locations|pier_locations).items() if "Chest" in loc
+	for loc, data in (base_locations|pier_locations).items() if
+		any(["Chest" in loc, "Cabinet" in loc, "Fridge" in loc])
 }
 
 shopsanity_locations = {
