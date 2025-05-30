@@ -1,0 +1,91 @@
+{
+  // sets layouts for shadred items grids
+  // bigger example: https://github.com/Cyb3RGER/sm_ap_tracker/blob/main/layouts/items.json
+  "shared_item_grid": {
+    "type": "array",
+    "orientation": "vertical",
+    "margin": "0,0",
+    "content": [
+      {
+        "type": "array",
+        "orientation": "horizontal",
+        "margin": "0,0",
+        "content": [
+          {
+            "type": "itemgrid",
+            "item_margin": "10, 10",
+            "h_alignment": "left",
+            "rows": [
+              [
+                "glide",
+                "dash",
+                "magnetism",
+                "swim",
+                "climb",
+                "song_parts",
+                "empty_space",
+                "captain_wallace",
+                "captain_skip",
+                "captain_zedd",
+                "captain_judas",
+                "key_harbourtown",
+                "key_landkeeper_office",
+                "key_rusted",
+                "envelope",
+                "coin",
+                "key_old_silver",
+                "key_old_rusted"
+              ],
+              [
+                "flight",
+                "advantage_dash",
+                "advantage_magnetism",
+                "empty_space",
+                "advantage_climb",
+                "stamina",
+                "empty_space",
+                "captain_cleeo",
+                "captain_lodestein",
+                "captain_dreadful",
+                "captain_gladiola",
+                "tutorial",
+                "captain_badge",
+                "machinepart",
+                "trainticketGlow",
+                "trainticketGrave",
+                "valve",
+                "keystone"
+              ],
+              [
+                "recruited_kayleigh",
+                "recruited_eugene",
+                "recruited_meredith",
+                "recruited_felix",
+                "recruited_viola",
+                "recruited_barkley",
+                "recruited_sunny",
+                "captain_heather",
+                "captain_buffy",
+                "captain_cybil",
+                "captain_codey",
+                "poppetox",
+                "mourningstar",
+                "monarch",
+                "cube",
+                "alice",
+                "robin",
+                "mammon",
+                "lamento",
+                "babelith",
+                "aa_kuneko",
+                "morgante",
+                "helia",
+                "lenna"
+              ]
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}
