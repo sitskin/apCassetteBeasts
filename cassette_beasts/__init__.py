@@ -1,4 +1,3 @@
-
 from math import ceil
 from random import choices
 
@@ -7,12 +6,14 @@ from worlds.AutoWorld import WebWorld, World
 
 from .Groups import item_groups, location_groups
 from .Items import CassetteBeastsItem, item_table, item_data_table, cb_regular_items, cb_resource_items, cb_tape_items, cb_bootleg_tape_items,\
-					cb_trap_items, cb_remaster_sticker_items, shouldAddItem
-from .Locations import CassetteBeastsLocation, location_table, location_data_table, event_data_table, getLocationCount, isLocation
+					cb_trap_items, cb_remaster_sticker_items, shouldAddItem, cb_trap_item_weights
+from .Locations import CassetteBeastsLocation, location_table, location_data_table, event_data_table, getLocationCount
 from .Options import CassetteBeastsOptions
-from .Regions import region_data
+from .Regions import region_data_table
 
-from .Data.tape_data import monsterCount, monsters
+from .Data.tape_data import monsters
+
+
 
 class CassetteBeastsWebWorld(WebWorld):
 	theme = "grass"
@@ -32,64 +33,72 @@ class CassetteBeastsWorld(World):
 	item_name_groups = item_groups
 	location_name_groups = location_groups
 
-	def create_item(self, name):
-		
+	def create_item(self, name: str) -> CassetteBeastsItem:
 		return CassetteBeastsItem(name, item_data_table[name].type, item_data_table[name].code, self.player)
 
-	def create_items(self):
+	def create_items(self) -> None:
 		item_pool = []
-
 		for item_name, item_data in item_data_table.items():
-			#TODO code for managing starting items and ignoring them when adding items
 			if shouldAddItem(self.options, item_name):
 				item_pool += [self.create_item(item_name) for _ in range(item_data.count)]
 
 		# Trainersanity
 		if self.options.trainersanity:
-			count = 88 # TODO de-magic this number
+			count = getLocationCount(self.options, "trainersanity_locations")
 			trainersanity_items = [name for name in ["Olive-Up!", "Respool", "Rewind", "Upgrape"]]
-			item_pool += [self.create_item(c) for c in choices(trainersanity_items, weights=[3,2,1,1], k=count)]
+			item_pool += [self.create_item(c) for c in choices(trainersanity_items, weights=[1,2,3,1], k=count)]
 
 		# Tapesanity
 		if self.options.tapesanity != "none":
-			count = monsterCount(self.options) if self.options.tapesanity == "specific" else self.options.tapesanity_percentage_item_count
-			count -= 8 # remaster stickers except gear shear and 2 skelly jelly
+			count = 0
+			if self.options.tapesanity == "specific":
+				monster_data = monsters(self.options).values()
+				for monster in monster_data:
+					if monster.tapesanity_item == None:
+						count += 1
+					else:
+						item_pool += [self.create_item(monster.tapesanity_item)]
+			else:
+				count += self.options.tapesanity_percentage_item_count
+
+			count -= 2 # skelly jellies
 			item_pool += [CassetteBeastsItem("Skelly Jelly", IC.progression, item_data_table["Skelly Jelly"].code, self.player)
 							for i in range(2)]
-			item_pool += [self.create_item(item_name) for item_name, item_data in cb_remaster_sticker_items.items() if item_data.count == 0]
-			if count >= 14:
-				for name in cb_tape_items.keys():
-					if name in ["Basic Tape x5", "Chrome Tape x5", "Optical Laser Tape", "Black Shuck's Tape"]:
-						continue
-					item_pool += [self.create_item(n) for n in [name]*(count//14)]
-			item_pool += [self.create_item(c) for c in choices([*cb_tape_items.keys()], k=count%14)]
+			filler = cb_tape_items
+			if self.options.add_bootleg_tapes:
+				filler |= cb_bootleg_tape_items
+			item_pool += [self.create_item(c) for c in choices([*filler.keys()], k=count)]
 
 		# Bootlegsanity
 		if self.options.bootlegsanity != "none":
 			per_tape = self.options.bootlegsanity in ["per_tape", "percentage_tape"]
-			items = []
-			for mon in monsters(self.options).values():
-				if mon["bootleg"] == "record":
-					if per_tape:
-						items += choices([key for key in cb_bootleg_tape_items.keys()], k=1)
+			percentage = self.options.bootlegsanity in ["percentage_tape", "percentage_all"]
+			pool = ["Cyber Material x20", "Ritual Candle"] + [*cb_bootleg_tape_items]
+			if not percentage:
+				count = 0
+				for monster in monsters(self.options).values():
+					if monster.bootlegsanity_item == "bootleg_tape":
+						if per_tape:
+							item_pool += [self.create_item(choices([*cb_bootleg_tape_items.keys()], k=1)[0])]
+						else:
+							item_pool += [self.create_item(key) for key in cb_bootleg_tape_items.keys()]
+					elif monster.bootlegsanity_item == None:
+						count += 1 if per_tape else 14
 					else:
-						items += [key for key in cb_bootleg_tape_items.keys()]
-				elif mon["bootleg"] == "candle":
-					items += ["Ritual Candle"] if per_tape else ["Ritual Candle"]*14
-				else:
-					items += choices([key for key in cb_bootleg_tape_items.keys()]+["Ritual Candle", "Cyber Material x20"],
-										weights=[1]*14+[8,28], k=1 if per_tape else 14)
-			item_pool += [self.create_item(item) for item in items]
-
+						item_pool += [self.create_item(monster.bootlegsanity_item) for i in range(1 if per_tape else 14)]
+				count -= 2 if per_tape else 28 # skelly jellies
+				item_pool += [CassetteBeastsItem("Skelly Jelly", IC.useful, item_data_table["Skelly Jelly"].code, self.player)
+							for i in range(2 if per_tape else 28)]
+				item_pool += [self.create_item(c) for c in choices(pool, weights=[5,2]+[1]*14, k=count)]
+			else:
+				item_pool += [self.create_item(c) for c in choices(pool, weights=[5,2]+[1]*14, k=self.options.bootlegsanity_percentage_item_count)]
 
 		# Fusionsanity
 		if self.options.fusionsanity:
-			for i in range(self.options.fusionsanity_item_count):
+			for i in range(max(self.options.fusionsanity_item_count-2, 1)):
 				item_pool += [CassetteBeastsItem("Pear Fusilli", IC.filler, item_data_table["Pear Fusilli"].code, self.player)]
-
-		if self.options.tapesanity == "none" and (self.options.bootlegsanity != "none" or self.options.fusionsanity):
-			# Add remaster stickers except gear shear if not using tapesanity caused them to be skipped
-			item_pool += [self.create_item(item_name) for item_name, item_data in cb_remaster_sticker_items.items() if item_data.count == 0]
+			item_pool += [CassetteBeastsItem("Skelly Jelly", IC.progression, item_data_table["Skelly Jelly"].code, self.player)
+							for i in range(2)]
 
 		# Add Traps
 		if self.options.traps != "none":
@@ -100,12 +109,13 @@ class CassetteBeastsWorld(World):
 				count = min(max(5, remaining//5), remaining)
 			elif self.options.traps == "many":
 				count = min(max(6, remaining//2), remaining)
-			item_pool += [self.create_item(c) for c in choices([*cb_trap_items.keys()], [5,2,3,1], k=count)]
+			item_pool += [self.create_item(c) for c in choices([*cb_trap_items.keys()], cb_trap_item_weights, k=count)]
 
 		# Randomized Filler
 		filler_items = cb_regular_items.keys()|cb_resource_items.keys()|cb_tape_items.keys()
 		if self.options.add_bootleg_tapes:
 			filler_items |= cb_bootleg_tape_items.keys()
+
 		item_pool += [self.create_item(c)
 			for c in choices(
 				[*filler_items],
@@ -114,34 +124,31 @@ class CassetteBeastsWorld(World):
 
 		self.multiworld.itempool += item_pool
 
-	def create_regions(self):
+	def create_regions(self) -> None:
 		# Create Regions
-		for region_name in region_data.keys():
-			region = Region(region_name, self.player, self.multiworld)
-			self.multiworld.regions.append(region)
+		for name in region_data_table.keys():
+			self.multiworld.regions.append(Region(name, self.player, self.multiworld))
 
 		# Create Locations
-		for region_name, region_exits in region_data.items():
-			region = self.multiworld.get_region(region_name, self.player)
+		for name, data in region_data_table.items():
+			region = self.multiworld.get_region(name, self.player)
 			region.add_locations({
-				location_name: location_data.address for location_name, location_data in location_data_table.items()
-				if location_data.region == region_name and isLocation(self.options, location_name)
+				loc_name: loc_data.address for loc_name, loc_data in location_data_table.items()
+				if loc_data.region == name and (loc_data.requires == None or loc_data.requires(self.options))
 				}, CassetteBeastsLocation)
-			region.add_exits(region_exits)
+			region.add_exits([exit for exit, rules in data.exit_rules.items()])
 
 		# Create Events
 		for name, data in event_data_table.items():
-			if data.dlc:
-				if data.dlc == "pier" and not self.options.use_pier:
-					continue
+			if not (data.requires == None or data.requires(self.options)):
+				continue
 			region = self.multiworld.get_region(data.region, self.player)
 			event = CassetteBeastsLocation(self.player, name, None, region)
 			event.place_locked_item(CassetteBeastsItem(data.item, IC.progression_skip_balancing, None, self.player))
 			region.locations += [event]
 
-		# For tapesanity percentage, bootlegsanity, and fusionsanity we need Recorded of each monster
-		if self.options.tapesanity != "specific" and\
-		(self.options.tapesanity == "percentage" or self.options.bootlegsanity != "none" or self.options.fusionsanity):
+		# For tapesanity percentage, bootlegsanity, and fusionsanity, and Captain Zedd we need Recorded of each monster
+		if self.options.tapesanity != "specific":
 			for monster in monsters(self.options).keys():
 				region = self.multiworld.get_region("Menu", self.player)
 				event = CassetteBeastsLocation(self.player, f"Recorded {monster}", None, region)
@@ -150,19 +157,15 @@ class CassetteBeastsWorld(World):
 
 		self.multiworld.completion_condition[self.player] = lambda state: state.has("Victory", self.player)
 
-
-	def get_filler_item_name(self):
+	def get_filler_item_name(self) -> str:
 		return "Cyber Material"
 
-	def set_rules(self):
+	def set_rules(self) -> None:
 		from .Rules import set_rules
 		set_rules(self)
 		self.set_victory()
-		# from Utils import visualize_regions
-		# visualize_regions(self.multiworld.get_region("Menu", self.player), "my_world.puml")
 
-	def generate_early(self):
-		#print(self.fill_slot_data())
+	def generate_early(self) -> None:
 		# Check if Tapesanity Percentage has too many items and fix
 		if self.options.tapesanity == "percentage":
 			count = self.options.tapesanity_percentage_item_count
@@ -189,15 +192,10 @@ class CassetteBeastsWorld(World):
 				print(f"Too many items for Fusionsanity: reducing from {count} to {locs}")
 				self.options.fusionsanity_item_count.value = locs
 
-	def pre_fill(self):
+	def pre_fill(self) -> None:
 		if self.options.exclude_postgame:
 			for loc in self.multiworld.get_region("Postgame", self.player).locations:
 				loc.progress_type = 3 # Excluded
-
-	def get_pre_fill_items(self):
-		return [
-			
-		]
 
 	def set_victory(self):
 		conditions = []
@@ -209,14 +207,14 @@ class CassetteBeastsWorld(World):
 					conditions.append(lambda state: state.has("Became Captain", self.player))
 		self.multiworld.completion_condition[self.player] = lambda state: all([c(state) for c in conditions])
 
-
 	def fill_slot_data(self):
 		# Fix empty goal set
 		if self.options.goal.value == {}:
 			self.options.goal.value = {"Escape"}
 		return {
-			"item_apName_to_cbItemData": {key: (value.cb_name, value.amount) for key, value in item_data_table.items()},
-			"location_cbName_to_apName": {value.cb_name: name for name, value in location_data_table.items() if isLocation(self.options, name)},
+			"item_apName_to_cbItemData": {name: (data.cb_name, data.amount) for name, data in item_data_table.items()},
+			"location_cbName_to_apName": {data.cb_name: name for name, data in location_data_table.items()
+											if (data.requires == None or data.requires(self.options))},
 			"giveItemAction_to_location": {
 				"tutorial": "Ranger Handbook",
 				"type_chart": "Type Chart",
@@ -232,14 +230,17 @@ class CassetteBeastsWorld(World):
 			},
 			"settings": {
 				"goal": self.options.goal.value,
+				"song_part_count": self.options.song_part_count.value,
 				"final_battle_friend_count": self.options.final_battle_friend_count.value,
-				"archangel_hunt_count": self.options.archangel_hunt_count.value,
-				"exclude_postgame": self.options.exclude_postgame.value,
+				# archangel_hunt_count not required to be sent to Cassette Beasts
+				# exclude_postgame" not required to be sent to Cassette Beasts
 				"experience_multiplier": self.options.experience_multiplier.value,
+				"friendship_multiplier": self.options.friendship_multiplier.value,
+				"battle_loot_multiplier": self.options.battle_loot_multiplier.value,
 				"bootleg_multiplier": self.options.bootleg_multiplier.value,
-				"use_pier": self.options.use_pier.value,
+				# use_pier not required to be sent to Cassette Beasts
 				"shuffle_chest_loot_tables": self.options.shuffle_chest_loot_tables.value,
-				"traps": self.options.traps != "none",
+				# traps not required to be sent to Cassette Beasts
 				"shopsanity": self.options.shopsanity.value,
 				"trainersanity": self.options.trainersanity.value,
 				"tapesanity": self.options.tapesanity.value,
@@ -252,6 +253,7 @@ class CassetteBeastsWorld(World):
 				"fusionsanity": self.options.fusionsanity.value,
 				"fusionsanity_amount": self.options.fusionsanity_amount.value,
 				"fusionsanity_item_count": self.options.fusionsanity_item_count.value,
+				# special_monsters not required to be sent to Cassette Beasts
 				"death_link": self.options.death_link.value,
 			},
 		}

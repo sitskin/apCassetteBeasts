@@ -1,0 +1,244 @@
+{
+  //sets the trackers layout
+  //more info: https://github.com/black-sliver/PopTracker/blob/master/doc/PACKS.md#layouts
+  "tracker_horizontal": {
+    "type": "container",
+    "background": "#000000",
+    "content": {
+      "type": "dock",
+      "dropshadow": true,
+      "content": [
+        {
+          "type": "dock",
+          "dock": "bottom",
+          "content": [
+            {
+              "type": "group",
+              "header": "Items",
+              "dock": "left",
+              "margin": "0,0,3,0",
+              "content": {
+                "type": "layout",
+                "h_alignment": "center",
+                "v_alignment": "center",
+                "key": "shared_item_grid"
+              }
+            }
+          ]
+        },
+        {
+          "type": "tabbed",
+          "tabs": [
+            {
+              "title": "New Wirral",
+              "content": {
+                "type": "map",
+                "maps": [
+                  "new_wirral"
+                ]
+              }
+            },
+            {
+              "title": "Pier of the Unknown",
+              "content": {
+                "type": "map",
+                "maps": [
+                  "map2"
+                ]
+              }
+            },
+            {
+              "title": "Monsters",
+              "content": {
+                "type": "itemgrid",
+                "orientation": "horizontal",
+                "h_alignment": "center",
+                "v_alignment": "center",
+                "item_margin": "5,2",
+                "item_size": 80,
+                "rows": [
+                  [
+                    "springheel",
+                    "hopskin",
+                    "ripterra",
+                    "snoopin",
+                    "scampire",
+                    "carniviper",
+                    "masquerattle",
+                    "jormungold",
+                    "mardiusa",
+                    "aeroboros",
+                    "traffikrab",
+                    "weevilite",
+                    "lobstacle",
+                    "candevil",
+                    "malchemy",
+                    "miasmodeus"
+                  ],
+                  [
+                    "vendemon",
+                    "gumbaal",
+                    "bansheep",
+                    "wooltergeist",
+                    "ramtasm",
+                    "zombleat",
+                    "capricorpse",
+                    "sirenade",
+                    "decibelle",
+                    "dandylion",
+                    "blossomaw",
+                    "macabra",
+                    "folklord",
+                    "dominoth",
+                    "wingloom",
+                    "mothmanic"
+                  ],
+                  [
+                    "tokusect",
+                    "squirey",
+                    "manispear",
+                    "palangolin",
+                    "kittelly",
+                    "cat-5",
+                    "puppercut",
+                    "southpaw",
+                    "bulletino",
+                    "velocirifle",
+                    "artillerex",
+                    "gearyu",
+                    "diveal",
+                    "scubalrus",
+                    "nevermort",
+                    "apocrowlypse"
+                  ],
+                  [
+                    "clocksley",
+                    "robindam",
+                    "thwackalope",
+                    "allseer",
+                    "khufo",
+                    "triphinx",
+                    "braxsuit",
+                    "flapwoods",
+                    "sanzatime",
+                    "fortiwinx",
+                    "salamagus",
+                    "pyromeleon",
+                    "muskrateer",
+                    "ratcousel",
+                    "padpole",
+                    "frillypad"
+                  ],
+                  [
+                    "liligator",
+                    "elfless",
+                    "grampus",
+                    "faerious",
+                    "brushroom",
+                    "fungogh",
+                    "boltam",
+                    "plasmantler",
+                    "busheye",
+                    "huntorch",
+                    "hedgeherne",
+                    "terracooka",
+                    "coaldron",
+                    "stardigrade",
+                    "galagor",
+                    "mascotoy"
+                  ],
+                  [
+                    "mascotorn",
+                    "binvader",
+                    "binterloper",
+                    "twirligig",
+                    "kirikuri",
+                    "jellyton",
+                    "spirouette",
+                    "regensea",
+                    "jumpkin",
+                    "beanstalker",
+                    "draculeaf",
+                    "pawndead",
+                    "skelevangelist",
+                    "kingrave",
+                    "queenyx",
+                    "burnace"
+                  ],
+                  [
+                    "smogmagog",
+                    "faucetear",
+                    "fountess",
+                    "cluckabilly",
+                    "rockertrice",
+                    "pondwalker",
+                    "sharktanker",
+                    "pombomb",
+                    "spitzfyre",
+                    "icepeck",
+                    "cryoshear",
+                    "sparktan",
+                    "zeustrike",
+                    "kuneko",
+                    "shining_kuneko",
+                    "djinn_entonic"
+                  ],
+                  [
+                    "arkidd",
+                    "undyin",
+                    "spooki-onna",
+                    "khepri",
+                    "averevoir",
+                    "glaistain",
+                    "miss_mimic",
+                    "anathema",
+                    "pinbolt",
+                    "diveberg",
+                    "adeptile",
+                    "trapwurm",
+                    "wyrmaw",
+                    "ferriclaw",
+                    "auriclaw",
+                    "picksie"
+                  ],
+                  [
+                    "bear1",
+                    "bear2",
+                    "minosteam",
+                    "amphare",
+                    "blunderbusk",
+                    "charlequin",
+                    "fragliacci",
+                    "hauntome",
+                    "lapacitor",
+                    "littlered",
+                    "majortom",
+                    "minortom",
+                    "rosehood",
+                    "scarleteeth",
+                    "umbrahella",
+                    "magikrab"
+                  ]
+                ]
+              }
+            },
+            {
+              "title": "Settings",
+              "content": {
+                "type": "itemgrid",
+                "orientation": "horizontal",
+                "h_alignment": "center",
+                "v_alignment": "center",
+                "item_margin": "20,20",
+                "item_size": 100,
+                "rows": [
+                  ["setting_loot", "setting_trainers"]
+                ]
+              }
+            }
+          ]
+        }
+      ]
+    }
+  }
+}

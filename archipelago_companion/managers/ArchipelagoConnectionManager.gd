@@ -20,6 +20,8 @@ var _itemsReceivedFromServer = []
 var _itemGiveTimer = 0.0
 const _ITEM_GIVE_DELAY = 0.5
 
+var _trapsReceivedFromServer = []
+
 const _AP_AA_DEFEATED_KEY = "ap_aa_defeated"
 
 var _tempReceivedItems = []
@@ -95,8 +97,12 @@ func _process(delta):
 		_itemGiveTimer -= delta
 		if _itemGiveTimer < 0.0:
 			_itemGiveTimer = _ITEM_GIVE_DELAY
-			_giveReceivedItems(_itemsReceivedFromServer)
-			_itemsReceivedFromServer.clear()
+			if len(_itemsReceivedFromServer) > 0:
+				_giveReceivedItems(_itemsReceivedFromServer)
+				_itemsReceivedFromServer.clear()
+			elif len(_trapsReceivedFromServer) > 0:
+				_giveReceivedTraps(_trapsReceivedFromServer)
+				_trapsReceivedFromServer.clear()
 
 func _onFileLoaded():
 	if !isInGame():
@@ -161,6 +167,9 @@ func _giveReceivedItems(givenItems: Array):
 			cbItemsToGive.append({"item": cbItem, "amount": itemAmount})
 			continue
 		
+		if "ap_trap" in itemName:
+			_trapsReceivedFromServer.append(itemName)
+		
 		if SaveState.abilities.has(itemName):
 			_onAbilityReceived(itemName)
 		
@@ -195,20 +204,62 @@ func _giveReceivedItems(givenItems: Array):
 	if !cbItemsToGive.empty():
 		MenuHelper.give_items(cbItemsToGive)
 
+func _giveReceivedTraps(givenTraps: Array):
+	var encounter = EncounterConfig.new()
+	for givenTrap in givenTraps:
+		if "solo" in givenTrap:
+			var character = CharacterConfig.new()
+			character.base_character = preload("res://data/characters/blank_monster.tres")
+			character.pronouns = randi() % 3
+			character.level_override = WorldSystem.get_player().character.level
+			var tape = TapeConfig.new()
+			tape.set("form", load("res://data/monster_forms/%s.tres" % givenTrap.replace("ap_trap_solo_", "")))
+			tape.set("tape_seed_value", randi())
+			encounter.add_child(character)
+			character.add_child(tape)
+		elif "swarm" in givenTrap:
+			for i in range(5):
+				var character = CharacterConfig.new()
+				character.base_character = preload("res://data/characters/blank_monster.tres")
+				character.pronouns = randi() % 3
+				character.level_override = int(WorldSystem.get_player().character.level / 2)
+				var tape = TapeConfig.new()
+				tape.set("form", load("res://data/monster_forms/%s.tres" % givenTrap.replace("ap_trap_swarm_", "")))
+				tape.set("tape_seed_value", randi())
+				encounter.add_child(character)
+				character.add_child(tape)
+		elif "special" in givenTrap:
+			match givenTrap.replace("ap_trap_special_", ""):
+				"starters":
+					specialTrapStarters(encounter)
+				"partners":
+					specialTrapPartners(encounter)
+	if encounter.get_child_count() > 0:
+		encounter.run_encounter(encounter.get_config())
+	if len(givenTraps) > 1:
+		showPassiveMessage("Recieved %s Traps" % len(givenTraps))
+	else:
+		showPassiveMessage("Recieved Trap")
+	print("Traps given to player: ", givenTraps)
+
 func _onAbilityReceived(abilityName: String):
 	SaveState.set_ability(abilityName, true)
+	showPassiveMessage("Recieved $s" % abilityName)
 	print("Ability %s given to player" % abilityName)
 
 func _onSongReceived(aaName: String):
 	SaveState.set_flag("ap_song_part_" + aaName, true)
+	showPassiveMessage("Recieved Song Part")
 	print("Song for archangel %s given to player" % aaName)
 
 func _onStampReceived(stampFlag: String):
 	SaveState.set_flag(stampFlag, true)
+	showPassiveMessage("Recieved $s" % stampFlag)
 	print("Stamp for captain %s given to player" % stampFlag)
 
 func _increaseStamina():
 	SaveState.max_stamina += 0.5
+	showPassiveMessage("Stamina increased to %s" % SaveState.max_stamina)
 	print("Stamina increased to %s" % SaveState.max_stamina)
 
 func _onFlagChanged(flag: String, value: bool):
@@ -282,6 +333,39 @@ func handleGiveItemAction(itemName: String):
 	var location = _archipelagoClient.slot_data["giveItemAction_to_location"][itemName]
 	_sendCheckLocation(location)
 	return location
+
+func specialTrapStarters(encounter: EncounterConfig):
+	for mon in ["bansheep", "candevil"]:
+		var character = CharacterConfig.new()
+		character.base_character = preload("res://data/characters/blank_monster.tres")
+		character.pronouns = randi() % 3
+		character.level_override = WorldSystem.get_player().character.level
+		var tape = TapeConfig.new()
+		tape.set("form", load("res://data/monster_forms/%s.tres" % mon))
+		tape.set("tape_seed_value", randi())
+		encounter.add_child(character)
+		character.add_child(tape)
+
+func specialTrapPartners(encounter: EncounterConfig):
+	for mon in ["sirenade", "kittelly", "clocksley", "brushroom", "spirouette", "pombomb", "bear1"]:
+		var character = CharacterConfig.new()
+		character.base_character = preload("res://data/characters/blank_monster.tres")
+		character.pronouns = randi() % 3
+		character.level_override = int(WorldSystem.get_player().character.level / 3)
+		var tape = TapeConfig.new()
+		tape.set("form", load("res://data/monster_forms/%s.tres" % mon))
+		tape.set("tape_seed_value", randi())
+		encounter.add_child(character)
+		character.add_child(tape)
+
+func showPassiveMessage(message: String, speaker: String = "Archipelago"):
+	var msg = PassiveMessageAction.new()
+	msg.speaker_name = speaker
+	msg.message = message
+	msg.use_pawn_npc_name = false
+	WorldSystem.add_child(msg)
+	msg._run()
+	msg.queue_free()
 
 # refactor to getItem that will return either the apItem if remote
 # or the acutal item if local, and figure out the location id and add it to the

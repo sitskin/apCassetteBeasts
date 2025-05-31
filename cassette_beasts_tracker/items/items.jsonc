@@ -1,0 +1,1340 @@
+[
+  //more info: https://github.com/black-sliver/PopTracker/blob/master/doc/PACKS.md#items
+  {
+    "name": "Add Chest Loot",
+    "type": "toggle",
+    "img": "images/items/station_icon.png",
+    "codes": "setting_loot"
+  },
+  {
+    "name": "Trainersanity",
+    "type": "toggle",
+    "img": "images/items/landkeeper_1.png",
+    "codes": "setting_trainers"
+  },
+  {
+    "name": "Mothwing Glide",
+    "type": "toggle",
+    "img": "images/items/abilities/glide.png",
+    "codes": "glide"
+  },
+  {
+    "name": "Bulletino Dash",
+    "type": "toggle",
+    "img": "images/items/abilities/dash.png",
+    "codes": "dash"
+  },
+  {
+    "name": "Electromagnetism",
+    "type": "toggle",
+    "img": "images/items/abilities/magnetism.png",
+    "codes": "magnetism"
+  },
+  {
+    "name": "Diveal Swim",
+    "type": "toggle",
+    "img": "images/items/abilities/swim.png",
+    "codes": "swim"
+  },
+  {
+    "name": "Pumpkin Vine Ball",
+    "type": "toggle",
+    "img": "images/items/abilities/climb.png",
+    "codes": "climb"
+  },
+  {
+    "name": "Avereoir Flight",
+    "type": "toggle",
+    "img": "images/items/abilities/flight.png",
+    "codes": "flight"
+  },
+  {
+    "name": "Bulletino Cartridge Shard",
+    "type": "toggle",
+    "img": "images/items/abilities/advantage_dash.png",
+    "codes": "advantage_dash"
+  },
+  {
+    "name": "Boltam Fur",
+    "type": "toggle",
+    "img": "images/items/abilities/advantage_magnetism.png",
+    "codes": "advantage_magnetism"
+  },
+  {
+    "name": "Jumpkin Seed",
+    "type": "toggle",
+    "img": "images/items/abilities/advantage_climb.png",
+    "codes": "advantage_climb"
+  },
+  {
+    "name": "Recruited Kayleigh",
+    "type": "toggle",
+    "img": "images/items/partners/partner_kayleigh.png",
+    "codes": "recruited_kayleigh"
+  },
+  {
+    "name": "Recruited Eugene",
+    "type": "toggle",
+    "img": "images/items/partners/partner_eugene.png",
+    "codes": "recruited_eugene"
+  },
+  {
+    "name": "Recruited Meredith",
+    "type": "toggle",
+    "img": "images/items/partners/partner_meredith.png",
+    "codes": "recruited_meredith"
+  },
+  {
+    "name": "Recruited Felix",
+    "type": "toggle",
+    "img": "images/items/partners/partner_felix.png",
+    "codes": "recruited_felix"
+  },
+  {
+    "name": "Recruited Viola",
+    "type": "toggle",
+    "img": "images/items/partners/partner_viola.png",
+    "codes": "recruited_viola"
+  },
+  {
+    "name": "Recruited Barkley",
+    "type": "toggle",
+    "img": "images/items/partners/partner_dog.png",
+    "codes": "recruited_barkley"
+  },
+  {
+    "name": "Recruited Sunny",
+    "type": "toggle",
+    "img": "images/items/partners/quest_sunny.png",
+    "codes": "recruited_sunny"
+  },
+  {
+    "name": "Song Parts",
+    "type": "consumable",
+    "img": "images/items/archangels/song_parts_8.png",
+    "max_quantity": 8,
+    "increment": 1,
+    "decrement": 1,
+    "initial_quantity": 0,
+    "codes": "song_parts"
+  },
+  {
+    "name": "Stamina",
+    "type": "consumable",
+    "img": "images/items/abilities/ability_flight.png",
+    "max_quantity": 12,
+    "increment": 1,
+    "decrement": 1,
+    "initial_quantity": 0,
+    "codes": "stamina"
+  },
+  {
+    "name": "Beat Ianthe",
+    "type": "toggle",
+    "img": "images/items/captains/defeat_ianthe.png",
+    "codes": "beat_ianthe"
+  },
+  {
+    "name": "Wallace Stamp",
+    "type": "toggle",
+    "img": "images/items/captains/captain_wallace.png",
+    "codes": "captain_wallace"
+  },
+  {
+    "name": "Skip Stamp",
+    "type": "toggle",
+    "img": "images/items/captains/captain_skip.png",
+    "codes": "captain_skip"
+  },
+  {
+    "name": "Zedd Stamp",
+    "type": "toggle",
+    "img": "images/items/captains/captain_zedd.png",
+    "codes": "captain_zedd"
+  },
+  {
+    "name": "Judas Stamp",
+    "type": "toggle",
+    "img": "images/items/captains/captain_judas.png",
+    "codes": "captain_judas"
+  },
+  {
+    "name": "Clee-o Stamp",
+    "type": "toggle",
+    "img": "images/items/captains/captain_cleeo.png",
+    "codes": "captain_cleeo"
+  },
+  {
+    "name": "Lodestein Stamp",
+    "type": "toggle",
+    "img": "images/items/captains/captain_lodestein.png",
+    "codes": "captain_lodestein"
+  },
+  {
+    "name": "Penny Dreadful Stamp",
+    "type": "toggle",
+    "img": "images/items/captains/captain_dreadful.png",
+    "codes": "captain_dreadful"
+  },
+  {
+    "name": "Gladiola Stamp",
+    "type": "toggle",
+    "img": "images/items/captains/captain_gladiola.png",
+    "codes": "captain_gladiola"
+  },
+  {
+    "name": "Heather Stamp",
+    "type": "toggle",
+    "img": "images/items/captains/captain_heather.png",
+    "codes": "captain_heather"
+  },
+  {
+    "name": "Buffy Stamp",
+    "type": "toggle",
+    "img": "images/items/captains/captain_buffy.png",
+    "codes": "captain_buffy"
+  },
+  {
+    "name": "Cybil Stamp",
+    "type": "toggle",
+    "img": "images/items/captains/captain_cybil.png",
+    "codes": "captain_cybil"
+  },
+  {
+    "name": "Codey Stamp",
+    "type": "toggle",
+    "img": "images/items/captains/captain_codey.png",
+    "codes": "captain_codey"
+  },
+  {
+    "name": "Defeated Poppetox",
+    "type": "toggle",
+    "img": "images/items/archangels/aa_puppet.png",
+    "codes": "poppetox"
+  },
+  {
+    "name": "Defeated Mourningstar",
+    "type": "toggle",
+    "img": "images/items/archangels/quest_kayleigh1.png",
+    "codes": "mourningstar"
+  },
+  {
+    "name": "Defeated Nowhere Monarch",
+    "type": "toggle",
+    "img": "images/items/archangels/quest_meredith1.png",
+    "codes": "monarch"
+  },
+  {
+    "name": "Defeated Heckahedron",
+    "type": "toggle",
+    "img": "images/items/archangels/aa_cube.png",
+    "codes": "cube"
+  },
+  {
+    "name": "Defeated Alice",
+    "type": "toggle",
+    "img": "images/items/archangels/aa_alice.png",
+    "codes": "alice"
+  },
+  {
+    "name": "Defeated Robin Goodfellow",
+    "type": "toggle",
+    "img": "images/items/archangels/quest_viola1.png",
+    "codes": "robin"
+  },
+  {
+    "name": "Defeated Mammon",
+    "type": "toggle",
+    "img": "images/items/station_icon.png",
+    "codes": "mammon"
+  },
+  {
+    "name": "Defeated Lamento Mori",
+    "type": "toggle",
+    "img": "images/items/archangels/aa_lamento_mori.png",
+    "codes": "lamento"
+  },
+  {
+    "name": "Defeated Babelith",
+    "type": "toggle",
+    "img": "images/items/archangels/aa_tower.png",
+    "codes": "babelith"
+  },
+  {
+    "name": "Defeated Shining Kuneko",
+    "type": "toggle",
+    "img": "images/items/archangels/quest_felix1.png",
+    "codes": "aa_kuneko"
+  },
+  {
+    "name": "Defeated Morgante",
+    "type": "toggle",
+    "img": "images/items/archangels/aa_morgante.png",
+    "codes": "morgante"
+  },
+  {
+    "name": "Defeated Helia",
+    "type": "toggle",
+    "img": "images/items/archangels/aa_helia.png",
+    "codes": "helia"
+  },
+  {
+    "name": "Defeated Lenna",
+    "type": "toggle",
+    "img": "images/items/archangels/aa_lenna.png",
+    "codes": "lenna"
+  },
+  {
+    "name": "Defeated Aleph Null",
+    "type": "toggle",
+    "img": "images/items/archangels/aa_aleph_null.png",
+    "codes": "aleph"
+  },
+  {
+    "name": "Clee-o Coin",
+    "type": "toggle",
+    "img": "images/items/key/coin.png",
+    "codes": "coin"
+  },
+  {
+    "name": "Envelope for Meredith",
+    "type": "toggle",
+    "img": "images/items/key/envelope.png",
+    "codes": "envelope"
+  },
+  {
+    "name": "Harbourtown Gate Key",
+    "type": "toggle",
+    "img": "images/items/key/key.png",
+    "codes": "key_harbourtown"
+  },
+  {
+    "name": "Landkeeper Office Key",
+    "type": "toggle",
+    "img": "images/items/key/key.png",
+    "codes": "key_landkeeper_office"
+  },
+  {
+    "name": "Mourningtown Key",
+    "type": "toggle",
+    "img": "images/items/key/key_rusted.png",
+    "codes": "key_rusted"
+  },
+  {
+    "name": "White Rabbit Key",
+    "type": "toggle",
+    "img": "images/items/key/key_old_silver.png",
+    "codes": "key_old_silver"
+  },
+  {
+    "name": "Waterloop Key",
+    "type": "toggle",
+    "img": "images/items/key/key_old_rusted.png",
+    "codes": "key_old_rusted"
+  },
+  {
+    "name": "Ranger Handbook",
+    "type": "toggle",
+    "img": "images/items/key/tutorial_book.png",
+    "codes": "tutorial"
+  },
+  {
+    "name": "Type Chart",
+    "type": "toggle",
+    "img": "images/items/key/type_chart.png",
+    "codes": "type_chart"
+  },
+  {
+    "name": "Captain Badge",
+    "type": "toggle",
+    "img": "images/items/key/captain_badge.png",
+    "codes": "captain_badge"
+  },
+  {
+    "name": "Machine Part",
+    "type": "toggle",
+    "img": "images/items/key/machinepart.png",
+    "codes": "machinepart"
+  },
+  {
+    "name": "Train Ticket (Glowcester)",
+    "type": "toggle",
+    "img": "images/items/key/trainticket.png",
+    "codes": "trainticketGlow"
+  },
+  {
+    "name": "Train Ticket (Aldgrave)",
+    "type": "toggle",
+    "img": "images/items/key/trainticket.png",
+    "codes": "trainticketGrave"
+  },
+  {
+    "name": "Valve",
+    "type": "consumable",
+    "img": "images/items/key/valve.png",
+    "max_quantity": 2,
+    "increment": 1,
+    "decrement": 1,
+    "initial_quantity": 0,
+    "codes": "valve"
+  },
+  {
+    "name": "Azure Keystone",
+    "type": "consumable",
+    "img": "images/items/key/keystone.png",
+    "max_quantity": 2,
+    "increment": 1,
+    "decrement": 1,
+    "initial_quantity": 0,
+    "codes": "keystone"
+  },
+  {
+    "name": "Cleared Office 1",
+    "type": "toggle",
+    "img": "images/items/archangels/offices_cleared_1.png",
+    "codes": "office1"
+  },
+  {
+    "name": "Cleared Office 2",
+    "type": "toggle",
+    "img": "images/items/archangels/offices_cleared_2.png",
+    "codes": "office2"
+  },
+  {
+    "name": "Cleared Office 3",
+    "type": "toggle",
+    "img": "images/items/archangels/offices_cleared_3.png",
+    "codes": "office3"
+  },
+  {
+    "name": "Cleared Office 4",
+    "type": "toggle",
+    "img": "images/items/archangels/offices_cleared_4.png",
+    "codes": "office4"
+  },
+  {
+    "name": "Cleared Office 5",
+    "type": "toggle",
+    "img": "images/items/archangels/offices_cleared_5.png",
+    "codes": "office5"
+  },
+  {
+    "name": "Springheel",
+    "type": "toggle",
+    "img": "images/items/tapes/springheel.png",
+    "codes": "springheel"
+  },
+  {
+    "name": "Hopskin",
+    "type": "toggle",
+    "img": "images/items/tapes/hopskin.png",
+    "codes": "hopskin"
+  },
+  {
+    "name": "Ripterra",
+    "type": "toggle",
+    "img": "images/items/tapes/ripterra.png",
+    "codes": "ripterra"
+  },
+  {
+    "name": "Snoopin",
+    "type": "toggle",
+    "img": "images/items/tapes/snoopin.png",
+    "codes": "snoopin"
+  },
+  {
+    "name": "Scampire",
+    "type": "toggle",
+    "img": "images/items/tapes/scampire.png",
+    "codes": "scampire"
+  },
+  {
+    "name": "Carniviper",
+    "type": "toggle",
+    "img": "images/items/tapes/carniviper.png",
+    "codes": "carniviper"
+  },
+  {
+    "name": "Masquerattle",
+    "type": "toggle",
+    "img": "images/items/tapes/masquerattle.png",
+    "codes": "masquerattle"
+  },
+  {
+    "name": "Jormungold",
+    "type": "toggle",
+    "img": "images/items/tapes/jormungold.png",
+    "codes": "jormungold"
+  },
+  {
+    "name": "Mardiusa",
+    "type": "toggle",
+    "img": "images/items/tapes/mardiusa.png",
+    "codes": "mardiusa"
+  },
+  {
+    "name": "Aeroboros",
+    "type": "toggle",
+    "img": "images/items/tapes/aeroboros.png",
+    "codes": "aeroboros"
+  },
+  {
+    "name": "Traffikrab",
+    "type": "toggle",
+    "img": "images/items/tapes/traffikrab.png",
+    "codes": "traffikrab"
+  },
+  {
+    "name": "Weevilite",
+    "type": "toggle",
+    "img": "images/items/tapes/weevilite.png",
+    "codes": "weevilite"
+  },
+  {
+    "name": "Lobstacle",
+    "type": "toggle",
+    "img": "images/items/tapes/lobstacle.png",
+    "codes": "lobstacle"
+  },
+  {
+    "name": "Candevil",
+    "type": "toggle",
+    "img": "images/items/tapes/candevil.png",
+    "codes": "candevil"
+  },
+  {
+    "name": "Malchemy",
+    "type": "toggle",
+    "img": "images/items/tapes/malchemy.png",
+    "codes": "malchemy"
+  },
+  {
+    "name": "Miasmodeus",
+    "type": "toggle",
+    "img": "images/items/tapes/miasmodeus.png",
+    "codes": "miasmodeus"
+  },
+  {
+    "name": "Vendemon",
+    "type": "toggle",
+    "img": "images/items/tapes/vendemon.png",
+    "codes": "vendemon"
+  },
+  {
+    "name": "Gumbaal",
+    "type": "toggle",
+    "img": "images/items/tapes/gumbaal.png",
+    "codes": "gumbaal"
+  },
+  {
+    "name": "Bansheep",
+    "type": "toggle",
+    "img": "images/items/tapes/bansheep.png",
+    "codes": "bansheep"
+  },
+  {
+    "name": "Wooltergeist",
+    "type": "toggle",
+    "img": "images/items/tapes/wooltergeist.png",
+    "codes": "wooltergeist"
+  },
+  {
+    "name": "Ramtasm",
+    "type": "toggle",
+    "img": "images/items/tapes/ramtasm.png",
+    "codes": "ramtasm"
+  },
+  {
+    "name": "Zombleat",
+    "type": "toggle",
+    "img": "images/items/tapes/zombleat.png",
+    "codes": "zombleat"
+  },
+  {
+    "name": "Capricorpse",
+    "type": "toggle",
+    "img": "images/items/tapes/capricorpse.png",
+    "codes": "capricorpse"
+  },
+  {
+    "name": "Sirenade",
+    "type": "toggle",
+    "img": "images/items/tapes/sirenade.png",
+    "codes": "sirenade"
+  },
+  {
+    "name": "Decibelle",
+    "type": "toggle",
+    "img": "images/items/tapes/decibelle.png",
+    "codes": "decibelle"
+  },
+  {
+    "name": "Dandylion",
+    "type": "toggle",
+    "img": "images/items/tapes/dandylion.png",
+    "codes": "dandylion"
+  },
+  {
+    "name": "Blossomaw",
+    "type": "toggle",
+    "img": "images/items/tapes/blossomaw.png",
+    "codes": "blossomaw"
+  },
+  {
+    "name": "Macabra",
+    "type": "toggle",
+    "img": "images/items/tapes/macabra.png",
+    "codes": "macabra"
+  },
+  {
+    "name": "Folklord",
+    "type": "toggle",
+    "img": "images/items/tapes/folklord.png",
+    "codes": "folklord"
+  },
+  {
+    "name": "Dominoth",
+    "type": "toggle",
+    "img": "images/items/tapes/dominoth.png",
+    "codes": "dominoth"
+  },
+  {
+    "name": "Wingloom",
+    "type": "toggle",
+    "img": "images/items/tapes/wingloom.png",
+    "codes": "wingloom"
+  },
+  {
+    "name": "Mothmanic",
+    "type": "toggle",
+    "img": "images/items/tapes/mothmanic.png",
+    "codes": "mothmanic"
+  },
+  {
+    "name": "Tokusect",
+    "type": "toggle",
+    "img": "images/items/tapes/tokusect.png",
+    "codes": "tokusect"
+  },
+  {
+    "name": "Squirey",
+    "type": "toggle",
+    "img": "images/items/tapes/squirey.png",
+    "codes": "squirey"
+  },
+  {
+    "name": "Manispear",
+    "type": "toggle",
+    "img": "images/items/tapes/manispear.png",
+    "codes": "manispear"
+  },
+  {
+    "name": "Palangolin",
+    "type": "toggle",
+    "img": "images/items/tapes/palangolin.png",
+    "codes": "palangolin"
+  },
+  {
+    "name": "Kittelly",
+    "type": "toggle",
+    "img": "images/items/tapes/kittelly.png",
+    "codes": "kittelly"
+  },
+  {
+    "name": "Cat-5",
+    "type": "toggle",
+    "img": "images/items/tapes/cat-5.png",
+    "codes": "cat-5"
+  },
+  {
+    "name": "Puppercut",
+    "type": "toggle",
+    "img": "images/items/tapes/puppercut.png",
+    "codes": "puppercut"
+  },
+  {
+    "name": "Southpaw",
+    "type": "toggle",
+    "img": "images/items/tapes/southpaw.png",
+    "codes": "southpaw"
+  },
+  {
+    "name": "Bulletino",
+    "type": "toggle",
+    "img": "images/items/tapes/bulletino.png",
+    "codes": "bulletino"
+  },
+  {
+    "name": "Velocirifle",
+    "type": "toggle",
+    "img": "images/items/tapes/velocirifle.png",
+    "codes": "velocirifle"
+  },
+  {
+    "name": "Artillerex",
+    "type": "toggle",
+    "img": "images/items/tapes/artillerex.png",
+    "codes": "artillerex"
+  },
+  {
+    "name": "Gearyu",
+    "type": "toggle",
+    "img": "images/items/tapes/gearyu.png",
+    "codes": "gearyu"
+  },
+  {
+    "name": "Diveal",
+    "type": "toggle",
+    "img": "images/items/tapes/diveal.png",
+    "codes": "diveal"
+  },
+  {
+    "name": "Scubalrus",
+    "type": "toggle",
+    "img": "images/items/tapes/scubalrus.png",
+    "codes": "scubalrus"
+  },
+  {
+    "name": "Nevermort",
+    "type": "toggle",
+    "img": "images/items/tapes/nevermort.png",
+    "codes": "nevermort"
+  },
+  {
+    "name": "Apocrowlypse",
+    "type": "toggle",
+    "img": "images/items/tapes/apocrowlypse.png",
+    "codes": "apocrowlypse"
+  },
+  {
+    "name": "Clocksley",
+    "type": "toggle",
+    "img": "images/items/tapes/clocksley.png",
+    "codes": "clocksley"
+  },
+  {
+    "name": "Robindam",
+    "type": "toggle",
+    "img": "images/items/tapes/robindam.png",
+    "codes": "robindam"
+  },
+  {
+    "name": "Thwackalope",
+    "type": "toggle",
+    "img": "images/items/tapes/thwackalope.png",
+    "codes": "thwackalope"
+  },
+  {
+    "name": "Allseer",
+    "type": "toggle",
+    "img": "images/items/tapes/allseer.png",
+    "codes": "allseer"
+  },
+  {
+    "name": "Khufo",
+    "type": "toggle",
+    "img": "images/items/tapes/khufo.png",
+    "codes": "khufo"
+  },
+  {
+    "name": "Triphinx",
+    "type": "toggle",
+    "img": "images/items/tapes/triphinx.png",
+    "codes": "triphinx"
+  },
+  {
+    "name": "Braxsuit",
+    "type": "toggle",
+    "img": "images/items/tapes/braxsuit.png",
+    "codes": "braxsuit"
+  },
+  {
+    "name": "Flapwoods",
+    "type": "toggle",
+    "img": "images/items/tapes/flapwoods.png",
+    "codes": "flapwoods"
+  },
+  {
+    "name": "Sanzatime",
+    "type": "toggle",
+    "img": "images/items/tapes/sanzatime.png",
+    "codes": "sanzatime"
+  },
+  {
+    "name": "Fortiwinx",
+    "type": "toggle",
+    "img": "images/items/tapes/fortiwinx.png",
+    "codes": "fortiwinx"
+  },
+  {
+    "name": "Salamagus",
+    "type": "toggle",
+    "img": "images/items/tapes/salamagus.png",
+    "codes": "salamagus"
+  },
+  {
+    "name": "Pyromeleon",
+    "type": "toggle",
+    "img": "images/items/tapes/pyromeleon.png",
+    "codes": "pyromeleon"
+  },
+  {
+    "name": "Muskrateer",
+    "type": "toggle",
+    "img": "images/items/tapes/muskrateer.png",
+    "codes": "muskrateer"
+  },
+  {
+    "name": "Ratcousel",
+    "type": "toggle",
+    "img": "images/items/tapes/ratcousel.png",
+    "codes": "ratcousel"
+  },
+  {
+    "name": "Padpole",
+    "type": "toggle",
+    "img": "images/items/tapes/padpole.png",
+    "codes": "padpole"
+  },
+  {
+    "name": "Frillypad",
+    "type": "toggle",
+    "img": "images/items/tapes/frillypad.png",
+    "codes": "frillypad"
+  },
+  {
+    "name": "Liligator",
+    "type": "toggle",
+    "img": "images/items/tapes/liligator.png",
+    "codes": "liligator"
+  },
+  {
+    "name": "Elfless",
+    "type": "toggle",
+    "img": "images/items/tapes/elfless.png",
+    "codes": "elfless"
+  },
+  {
+    "name": "Grampus",
+    "type": "toggle",
+    "img": "images/items/tapes/grampus.png",
+    "codes": "grampus"
+  },
+  {
+    "name": "Faerious",
+    "type": "toggle",
+    "img": "images/items/tapes/faerious.png",
+    "codes": "faerious"
+  },
+  {
+    "name": "Brushroom",
+    "type": "toggle",
+    "img": "images/items/tapes/brushroom.png",
+    "codes": "brushroom"
+  },
+  {
+    "name": "Fungogh",
+    "type": "toggle",
+    "img": "images/items/tapes/fungogh.png",
+    "codes": "fungogh"
+  },
+  {
+    "name": "Boltam",
+    "type": "toggle",
+    "img": "images/items/tapes/boltam.png",
+    "codes": "boltam"
+  },
+  {
+    "name": "Plasmantler",
+    "type": "toggle",
+    "img": "images/items/tapes/plasmantler.png",
+    "codes": "plasmantler"
+  },
+  {
+    "name": "Busheye",
+    "type": "toggle",
+    "img": "images/items/tapes/busheye.png",
+    "codes": "busheye"
+  },
+  {
+    "name": "Huntorch",
+    "type": "toggle",
+    "img": "images/items/tapes/huntorch.png",
+    "codes": "huntorch"
+  },
+  {
+    "name": "Hedgeherne",
+    "type": "toggle",
+    "img": "images/items/tapes/hedgeherne.png",
+    "codes": "hedgeherne"
+  },
+  {
+    "name": "Terracooka",
+    "type": "toggle",
+    "img": "images/items/tapes/terracooka.png",
+    "codes": "terracooka"
+  },
+  {
+    "name": "Coaldron",
+    "type": "toggle",
+    "img": "images/items/tapes/coaldron.png",
+    "codes": "coaldron"
+  },
+  {
+    "name": "Stardigrade",
+    "type": "toggle",
+    "img": "images/items/tapes/stardigrade.png",
+    "codes": "stardigrade"
+  },
+  {
+    "name": "Galagor",
+    "type": "toggle",
+    "img": "images/items/tapes/galagor.png",
+    "codes": "galagor"
+  },
+  {
+    "name": "Mascotoy",
+    "type": "toggle",
+    "img": "images/items/tapes/mascotoy.png",
+    "codes": "mascotoy"
+  },
+  {
+    "name": "Mascotorn",
+    "type": "toggle",
+    "img": "images/items/tapes/mascotorn.png",
+    "codes": "mascotorn"
+  },
+  {
+    "name": "Binvader",
+    "type": "toggle",
+    "img": "images/items/tapes/binvader.png",
+    "codes": "binvader"
+  },
+  {
+    "name": "Binterloper",
+    "type": "toggle",
+    "img": "images/items/tapes/binterloper.png",
+    "codes": "binterloper"
+  },
+  {
+    "name": "Twirligig",
+    "type": "toggle",
+    "img": "images/items/tapes/twirligig.png",
+    "codes": "twirligig"
+  },
+  {
+    "name": "Kirikuri",
+    "type": "toggle",
+    "img": "images/items/tapes/kirikuri.png",
+    "codes": "kirikuri"
+  },
+  {
+    "name": "Jellyton",
+    "type": "toggle",
+    "img": "images/items/tapes/jellyton.png",
+    "codes": "jellyton"
+  },
+  {
+    "name": "Spirouette",
+    "type": "toggle",
+    "img": "images/items/tapes/spirouette.png",
+    "codes": "spirouette"
+  },
+  {
+    "name": "Regensea",
+    "type": "toggle",
+    "img": "images/items/tapes/regensea.png",
+    "codes": "regensea"
+  },
+  {
+    "name": "Jumpkin",
+    "type": "toggle",
+    "img": "images/items/tapes/jumpkin.png",
+    "codes": "jumpkin"
+  },
+  {
+    "name": "Beanstalker",
+    "type": "toggle",
+    "img": "images/items/tapes/beanstalker.png",
+    "codes": "beanstalker"
+  },
+  {
+    "name": "Draculeaf",
+    "type": "toggle",
+    "img": "images/items/tapes/draculeaf.png",
+    "codes": "draculeaf"
+  },
+  {
+    "name": "Pawndead",
+    "type": "toggle",
+    "img": "images/items/tapes/pawndead.png",
+    "codes": "pawndead"
+  },
+  {
+    "name": "Skelevangelist",
+    "type": "toggle",
+    "img": "images/items/tapes/skelevangelist.png",
+    "codes": "skelevangelist"
+  },
+  {
+    "name": "Kingrave",
+    "type": "toggle",
+    "img": "images/items/tapes/kingrave.png",
+    "codes": "kingrave"
+  },
+  {
+    "name": "Queenyx",
+    "type": "toggle",
+    "img": "images/items/tapes/queenyx.png",
+    "codes": "queenyx"
+  },
+  {
+    "name": "Burnace",
+    "type": "toggle",
+    "img": "images/items/tapes/burnace.png",
+    "codes": "burnace"
+  },
+  {
+    "name": "Smogmagog",
+    "type": "toggle",
+    "img": "images/items/tapes/smogmagog.png",
+    "codes": "smogmagog"
+  },
+  {
+    "name": "Faucetear",
+    "type": "toggle",
+    "img": "images/items/tapes/faucetear.png",
+    "codes": "faucetear"
+  },
+  {
+    "name": "Fountess",
+    "type": "toggle",
+    "img": "images/items/tapes/fountess.png",
+    "codes": "fountess"
+  },
+  {
+    "name": "Cluckabilly",
+    "type": "toggle",
+    "img": "images/items/tapes/cluckabilly.png",
+    "codes": "cluckabilly"
+  },
+  {
+    "name": "Rockertrice",
+    "type": "toggle",
+    "img": "images/items/tapes/rockertrice.png",
+    "codes": "rockertrice"
+  },
+  {
+    "name": "Pondwalker",
+    "type": "toggle",
+    "img": "images/items/tapes/pondwalker.png",
+    "codes": "pondwalker"
+  },
+  {
+    "name": "Sharktanker",
+    "type": "toggle",
+    "img": "images/items/tapes/sharktanker.png",
+    "codes": "sharktanker"
+  },
+  {
+    "name": "Pombomb",
+    "type": "toggle",
+    "img": "images/items/tapes/pombomb.png",
+    "codes": "pombomb"
+  },
+  {
+    "name": "Spitzfyre",
+    "type": "toggle",
+    "img": "images/items/tapes/spitzfyre.png",
+    "codes": "spitzfyre"
+  },
+  {
+    "name": "Icepeck",
+    "type": "toggle",
+    "img": "images/items/tapes/icepeck.png",
+    "codes": "icepeck"
+  },
+  {
+    "name": "Cryoshear",
+    "type": "toggle",
+    "img": "images/items/tapes/cryoshear.png",
+    "codes": "cryoshear"
+  },
+  {
+    "name": "Sparktan",
+    "type": "toggle",
+    "img": "images/items/tapes/sparktan.png",
+    "codes": "sparktan"
+  },
+  {
+    "name": "Zeustrike",
+    "type": "toggle",
+    "img": "images/items/tapes/zeustrike.png",
+    "codes": "zeustrike"
+  },
+  {
+    "name": "Kuneko",
+    "type": "toggle",
+    "img": "images/items/tapes/kuneko.png",
+    "codes": "kuneko"
+  },
+  {
+    "name": "Shining Kuneko",
+    "type": "toggle",
+    "img": "images/items/tapes/shining_kuneko.png",
+    "codes": "shining_kuneko"
+  },
+  {
+    "name": "Djinn Entonic",
+    "type": "toggle",
+    "img": "images/items/tapes/djinn_entonic.png",
+    "codes": "djinn_entonic"
+  },
+  {
+    "name": "Arkidd",
+    "type": "toggle",
+    "img": "images/items/tapes/arkidd.png",
+    "codes": "arkidd"
+  },
+  {
+    "name": "Undyin",
+    "type": "toggle",
+    "img": "images/items/tapes/undyin.png",
+    "codes": "undyin"
+  },
+  {
+    "name": "Spooki-onna",
+    "type": "toggle",
+    "img": "images/items/tapes/spooki-onna.png",
+    "codes": "spooki-onna"
+  },
+  {
+    "name": "Khepri",
+    "type": "toggle",
+    "img": "images/items/tapes/khepri.png",
+    "codes": "khepri"
+  },
+  {
+    "name": "Averevoir",
+    "type": "toggle",
+    "img": "images/items/tapes/averevoir.png",
+    "codes": "averevoir"
+  },
+  {
+    "name": "Glaistain",
+    "type": "toggle",
+    "img": "images/items/tapes/glaistain.png",
+    "codes": "glaistain"
+  },
+  {
+    "name": "Miss Mimic",
+    "type": "toggle",
+    "img": "images/items/tapes/miss_mimic.png",
+    "codes": "miss_mimic"
+  },
+  {
+    "name": "Anathema",
+    "type": "toggle",
+    "img": "images/items/tapes/anathema.png",
+    "codes": "anathema"
+  },
+  {
+    "name": "Pinbolt",
+    "type": "toggle",
+    "img": "images/items/tapes/pinbolt.png",
+    "codes": "pinbolt"
+  },
+  {
+    "name": "Diveberg",
+    "type": "toggle",
+    "img": "images/items/tapes/diveberg.png",
+    "codes": "diveberg"
+  },
+  {
+    "name": "Adeptile",
+    "type": "toggle",
+    "img": "images/items/tapes/adeptile.png",
+    "codes": "adeptile"
+  },
+  {
+    "name": "Trapwurm",
+    "type": "toggle",
+    "img": "images/items/tapes/trapwurm.png",
+    "codes": "trapwurm"
+  },
+  {
+    "name": "Wyrmaw",
+    "type": "toggle",
+    "img": "images/items/tapes/wyrmaw.png",
+    "codes": "wyrmaw"
+  },
+  {
+    "name": "Ferriclaw",
+    "type": "toggle",
+    "img": "images/items/tapes/ferriclaw.png",
+    "codes": "ferriclaw"
+  },
+  {
+    "name": "Auriclaw",
+    "type": "toggle",
+    "img": "images/items/tapes/auriclaw.png",
+    "codes": "auriclaw"
+  },
+  {
+    "name": "Picksie",
+    "type": "toggle",
+    "img": "images/items/tapes/picksie.png",
+    "codes": "picksie"
+  },
+  {
+    "name": "Pawper",
+    "type": "toggle",
+    "img": "images/items/tapes/bear1.png",
+    "codes": "bear1"
+  },
+  {
+    "name": "Pawprince",
+    "type": "toggle",
+    "img": "images/items/tapes/bear2.png",
+    "codes": "bear2"
+  },
+  {
+    "name": "Minosteam",
+    "type": "toggle",
+    "img": "images/items/tapes/minosteam.png",
+    "codes": "minosteam"
+  },
+  {
+    "name": "Magikrab",
+    "type": "toggle",
+    "img": "images/items/tapes/magikrab.png",
+    "codes": "magikrab"
+  },
+  {
+    "name": "Amphare",
+    "type": "toggle",
+    "img": "images/items/tapes/amphare.png",
+    "codes": "amphare"
+  },
+  {
+    "name": "Blunderbusk",
+    "type": "toggle",
+    "img": "images/items/tapes/blunderbusk.png",
+    "codes": "blunderbusk"
+  },
+  {
+    "name": "Charlequin",
+    "type": "toggle",
+    "img": "images/items/tapes/charlequin.png",
+    "codes": "charlequin"
+  },
+  {
+    "name": "Fragliacci",
+    "type": "toggle",
+    "img": "images/items/tapes/fragliacci.png",
+    "codes": "fragliacci"
+  },
+  {
+    "name": "Hauntome",
+    "type": "toggle",
+    "img": "images/items/tapes/hauntome.png",
+    "codes": "hauntome"
+  },
+  {
+    "name": "Lapacitor",
+    "type": "toggle",
+    "img": "images/items/tapes/lapacitor.png",
+    "codes": "lapacitor"
+  },
+  {
+    "name": "Littlered",
+    "type": "toggle",
+    "img": "images/items/tapes/littlered.png",
+    "codes": "littlered"
+  },
+  {
+    "name": "Majortom",
+    "type": "toggle",
+    "img": "images/items/tapes/majortom.png",
+    "codes": "majortom"
+  },
+  {
+    "name": "Minortom",
+    "type": "toggle",
+    "img": "images/items/tapes/minortom.png",
+    "codes": "minortom"
+  },
+  {
+    "name": "Rosehood",
+    "type": "toggle",
+    "img": "images/items/tapes/rosehood.png",
+    "codes": "rosehood"
+  },
+  {
+    "name": "Scarleteeth",
+    "type": "toggle",
+    "img": "images/items/tapes/scarleteeth.png",
+    "codes": "scarleteeth"
+  },
+  {
+    "name": "Umbrahella",
+    "type": "toggle",
+    "img": "images/items/tapes/umbrahella.png",
+    "codes": "umbrahella"
+  }
+
+
+  // {
+  //   "name": "Toggle",
+  //   "type": "toggle",
+  //   "img": "images/items/toggle.png",
+  //   "codes": "toggle"
+  // },
+  // {
+  //   "name": "Progressive",
+  //   "type": "progressive",
+  //   "allow_disabled": true,
+  //   "initial_stage_idx": 0,
+  //   "stages": [
+  //     {
+  //       "img": "images/items/progressive.png",
+  //       "codes": "progressive",
+  //       "inherit_codes": false
+  //     },
+  //     {
+  //       "img": "images/items/progressive_2.png",
+  //       "codes": "progressive_2",
+  //       "inherit_codes": false
+  //     }
+  //   ]
+  // },
+  // {
+  //   "name": "Consumable",
+  //   "type": "consumable",
+  //   "img": "images/items/consumable.png",
+  //   "max_quantity": 8,
+  //   "increment": 1,
+  //   "decrement": 1,
+  //   "initial_quantity": 1,
+  //   "overlay_background": "#000000",
+  //   "overlay_font_size": 8,
+  //   "codes": "consumable"
+  // },
+  // {
+  //   "name": "Progressive Toggle",
+  //   "type": "progressive_toggle",
+  //   "initial_stage_idx": 0,
+  //   "stages": [
+  //     {
+  //       "img": "images/items/progressive.png",
+  //       "codes": "progressive_toggle",
+  //       "inherit_codes": false
+  //     },
+  //     {
+  //       "img": "images/items/progressive_2.png",
+  //       "codes": "progressive_toggle_2",
+  //       "inherit_codes": false
+  //     }
+  //   ]
+  // }
+]

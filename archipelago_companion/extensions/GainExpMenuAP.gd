@@ -1,10 +1,20 @@
 extends "res://menus/gain_exp/GainExpMenu.gd"
 
 func apply_exp():
-	var loot_exp_yield = exp_yield
-	var percent = DLC.mods_by_id.archipelago_companion.archipelagoConnectionManager.getSetting("experience_multiplier")
-	if percent != null:
-		exp_yield *= percent/100
+	var acm = DLC.mods_by_id.archipelago_companion.archipelagoConnectionManager
+	var friend_yield = exp_yield
+	var loot_yield = exp_yield
+	
+	var exp_percent = acm.getSetting("experience_multiplier")
+	var freind_percent = acm.getSetting("friendship_multiplier")
+	var loot_percent = acm.getSetting("battle_loot_multiplier")
+	
+	if freind_percent != null:
+		friend_yield *= freind_percent / 100
+	if loot_percent != null:
+		loot_yield *= loot_percent / 100
+	if exp_percent != null:
+		exp_yield *= exp_percent/100
 		
 	var leveling = []
 	var unlocked_stickers = []
@@ -24,7 +34,7 @@ func apply_exp():
 		if member[0] == null:
 			continue
 		if member[0].relationship_level > 0 and whitelist.size() == 0:
-			member[0].relationship_points += exp_yield
+			member[0].relationship_points += friend_yield
 		
 		if whitelist.size() == 0 or whitelist.has(member[0]):
 			points[member[0]] = exp_yield
@@ -67,7 +77,7 @@ func apply_exp():
 	
 	var rewards = []
 	if loot_table != null:
-		rewards = loot_table.generate_rewards(loot_rand, loot_exp_yield)
+		rewards = loot_table.generate_rewards(loot_rand, loot_yield)
 	rewards += extra_loot
 	if rewards.size() > 0 or unlocked_stickers.size() > 0:
 		yield (MenuHelper.give_items(rewards, unlocked_stickers), "completed")
