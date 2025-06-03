@@ -37,10 +37,16 @@ class CassetteBeastsWorld(World):
 		return CassetteBeastsItem(name, item_data_table[name].type, item_data_table[name].code, self.player)
 
 	def create_items(self) -> None:
+		start_inventory = self.options.start_inventory.value
 		item_pool = []
 		for item_name, item_data in item_data_table.items():
+			count = item_data.count
+			if item_name in start_inventory.keys():
+				count -= start_inventory[item_name]
+				if count <= 0:
+					continue
 			if shouldAddItem(self.options, item_name):
-				item_pool += [self.create_item(item_name) for _ in range(item_data.count)]
+				item_pool += [self.create_item(item_name) for _ in range(count)]
 
 		# Trainersanity
 		if self.options.trainersanity:
