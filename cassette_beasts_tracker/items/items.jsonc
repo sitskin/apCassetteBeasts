@@ -67,6 +67,24 @@
     "codes": "advantage_climb"
   },
   {
+    "name": "Met Ianthe",
+    "type": "toggle",
+    "img": "images/items/station_icon.png",
+    "codes": "met_ianthe"
+  },
+  {
+    "name": "Met Meredith",
+    "type": "toggle",
+    "img": "images/items/partners/partner_meredith.png",
+    "codes": "met_meredith"
+  },
+  {
+    "name": "Met Felix",
+    "type": "toggle",
+    "img": "images/items/partners/partner_felix.png",
+    "codes": "met_felix"
+  },
+  {
     "name": "Recruited Kayleigh",
     "type": "toggle",
     "img": "images/items/partners/partner_kayleigh.png",

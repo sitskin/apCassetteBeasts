@@ -6,11 +6,45 @@
 -- if you run into issues when touching A LOT of items/locations here, see the comment about Tracker.AllowDeferredLogicUpdate in autotracking.lua
 ScriptHost:LoadScript("scripts/autotracking/item_mapping.lua")
 ScriptHost:LoadScript("scripts/autotracking/location_mapping.lua")
+ScriptHost:LoadScript("scripts/autotracking/event_mapping.lua")
 
 CUR_INDEX = -1
 LOCAL_ITEMS = {}
 GLOBAL_ITEMS = {}
 OBTAINED_ITEMS = {}
+
+EVENTS = {
+	"Recruited Kayleigh",
+	"Recruited Eugene",
+	"Recruited Meredith",
+	"Recruited Felix",
+	"Recruited Viola",
+	"Recruited Barkley",
+	"Defeated Oldgante",
+	"Defeated Poppetox",
+	"Defeated Mourningstar",
+	"Defeated Nowhere Monarch",
+	"Defeated Heckahedron",
+	"Defeated Alice",
+	"Defeated Robin Goodfellow",
+	"Defeated Mammon",
+	"Defeated Lamento Mori",
+	"Defeated Babelith",
+	"Defeated Shining Kuneko",
+	"Defeated Morgante",
+	"Defeated Helia",
+	"Defeated Lenna",
+	"Defeated Gwenivar",
+	"Defeated Averevoir",
+	"Met Ianthe",
+	"Met Meredith",
+	"Cleared Landkeeper Offices",
+	"Defeated Aleph",
+	"Became Captain",
+	"Recruited Sunny",
+	"Quest People are People"
+}
+
 
 function resetItems()
 	for _, value in pairs(ITEM_MAPPING) do
@@ -31,19 +65,26 @@ function resetLocations()
 		--print("loc_map", id, value)
 		for _, code in pairs(value) do
 			--print("value", _, code)
-			print(id, code)
-			local object = Tracker:FindObjectForCode(code)
-			if object then
+			--print(id, code)
+			local obj = Tracker:FindObjectForCode(code)
+			if obj then
 				if code:sub(1,1) == "@" then
-					object.AvailableChestCount = object.ChestCount
+					obj.AvailableChestCount = obj.ChestCount
 				else
-					object.Active = false
+					obj.Active = false
 				end
 			end
 		end
 		::continue::
 	end
 end
+
+function resetEvents()
+	for _, code in pairs(EVENT_MAPPING) do
+		Tracker:FindObjectForCode(code).Active = false
+	end
+end
+
 
 function onClear(slot_data)
 	Tracker.BulkUpdate = true	
@@ -55,6 +96,13 @@ function onClear(slot_data)
 	CUR_INDEX = -1
 	resetItems()
 	resetLocations()
+	if PLAYER_NUMBER > -1 then
+		resetEvents()
+		for _, event in ipairs(EVENTS) do
+			Archipelago:SetNotify({event})
+			Archipelago:Get({event})
+		end
+	end
 	Tracker.BulkUpdate = false
 end
 
@@ -129,6 +177,35 @@ function onBounce(json)
 	-- your code goes here
 end
 
+function onNotify(key, value, old_value)
+	if value ~= old_value then
+		if AUTOTRACKER_ENABLE_DEBUG_LOGGING_AP then
+			print(string.format("called onNotify: %s, %s, %s", key, value, old_value))
+		end
+		updateEvent(key, value)
+	end
+end
+
+function onNotifyLaunch(key, value)
+	if AUTOTRACKER_ENABLE_DEBUG_LOGGING_AP then
+		print(string.format("called onNotifyLaunch: %s, %s", key, value))
+	end
+	updateEvent(key, value)
+end
+
+function updateEvent(key, value)
+	for event, code in pairs(EVENT_MAPPING) do
+		if event == key then
+			local obj = Tracker:FindObjectForCode(code)
+			if value == 1 then
+				obj.Active = true
+			else
+				obj.Active = false
+			end
+		end
+	end
+end
+
 -- add AP callbacks
 -- un-/comment as needed
 Archipelago:AddClearHandler("clear handler", onClear)
@@ -142,3 +219,5 @@ Archipelago:AddClearHandler("clear handler", onClear)
 -- Archipelago:AddBouncedHandler("bounce handler", onBounce)
 Archipelago:AddItemHandler("item handler", onItem)
 Archipelago:AddLocationHandler("location handler", onLocation)
+Archipelago:AddSetReplyHandler("notify handler", onNotify)
+Archipelago:AddRetrievedHandler("notify launch handler", onNotifyLaunch)
