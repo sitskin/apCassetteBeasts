@@ -214,7 +214,7 @@ func _giveReceivedItems(givenItems: Array):
 		if "progressive" in itemName:
 			if "glide" in itemName:
 				_onAbilityReceived("flight" if SaveState.has_ability("glide") else "glide")
-			if "magnetism" in itemName:
+			if "magnet" in itemName:
 				if SaveState.has_ability("magnetism"):
 					SaveState.stats.get_stat("exchange_purchased").report_event("ability_advantage_magnetism")
 				else:
