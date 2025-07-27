@@ -326,6 +326,8 @@ func sendArchAngelDefeated(aaFlag: String):
 	var locationString = "ap_" + aaFlag
 	print("Archangel defeated: %s" % locationString)
 	SaveState.stats.get_stat(_AP_AA_DEFEATED_KEY).set_count(locationString, 1)
+	if aaFlag == "encounter_aa_aleph" or aaFlag == "encounter_aa_aleph_null":
+		return# Victory condition, not location
 	_sendCheckLocation(locationString)
 
 func sendAbilityUnlocked(abilityName: String):
@@ -468,5 +470,4 @@ func _checkForVictory():
 		SaveState.stats.get_stat(_AP_AA_DEFEATED_KEY).total
 		passingChecks += 1
 	if passingChecks >= victoryConditions.size():
-		print("VICTORY!")
 		_archipelagoClient.set_status(30)
