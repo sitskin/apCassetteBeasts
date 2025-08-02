@@ -149,13 +149,13 @@ func _onFileLoaded():
 		SaveState.other_data["ap_player"] = _archipelagoClient.player
 	SaveState.other_data["ap_locations_checked"] = getCheckedLocationCount()
 	SaveState.other_data["ap_locations_total"] = getTotalLocationCount()
-	if !SaveState.other_data.has("first_connect"):
-		print("--Seting up first connect flag--")
-		SaveState.other_data["first_connect"] = true
+	if !SaveState.other_data.has("ap_special_items"):
+		SaveState.other_data["ap_special_items"] = {"received":[],"to_ignore":[]}
+	if len(SaveState.other_data["ap_special_items"]["received"]) > 0:
+		SaveState.other_data["ap_special_items"]["to_ignore"] = SaveState.other_data["ap_special_items"]["received"]
 	for data in _tempReceivedItems:
 		_onApItemReceived(data.itemData, data.networkItem)
 	_tempReceivedItems.clear()
-	SaveState.other_data["first_connect"] = false
 
 func _onQuestCompleted(quest_res: Resource):
 	var quest = quest_res.instance()
@@ -185,10 +185,12 @@ func _onApItemReceived(itemData: Array, networkItem: Dictionary):
 	if networkItem.location in SaveState.other_data.archipelago.receivedItems:
 		print("The location %d already exists" % networkItem.location)
 		return
-	if networkItem.location == -2:# starting archipelago items
-		if SaveState.other_data.has("first_connect") and !SaveState.other_data["first_connect"]:
-			print("Already recieved starting item %s" % itemData[0])
+	if networkItem.location <= 0:# special archipelago items
+		var pair = "%s:%s" % [networkItem.item, networkItem.location]
+		if pair in SaveState.other_data.ap_special_items.to_ignore:
+			SaveState.other_data.ap_special_items.to_ignore.erase(pair)
 			return
+		SaveState.other_data.ap_special_items.received.push_back(pair)
 	if networkItem.location > 0:
 		SaveState.other_data.archipelago.receivedItems.push_back(networkItem.location)
 	_itemsReceivedFromServer.append(GivenApItem.new(itemData))
