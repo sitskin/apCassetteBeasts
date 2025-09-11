@@ -23,6 +23,36 @@ const _ITEM_GIVE_DELAY = 0.5
 var _trapsReceivedFromServer = []
 
 const _AP_AA_DEFEATED_KEY = "ap_aa_defeated"
+const _AP_EVENT_FLAGS_TO_AP = {
+	"ap_event_recruited_kayleigh": "Recruited Kayleigh",
+	"ap_event_recruited_eugine": "Recruited Eugene",
+	"ap_event_recruited_meredith": "Recruited Meredith",
+	"ap_event_recruited_felix": "Recruited Felix",
+	"ap_event_recruited_viola": "Recruited Viola",
+	"ap_event_recruited_dog": "Recruited Barkley",
+	"ap_event_recruited_sunny": "Recruited Sunny",
+	"encounter_aa_oldgante": "Defeated Oldgante",
+	"encounter_aa_puppet": "Defeated Poppetox",
+	"encounter_aa_mourningstar": "Defeated Mourningstar",
+	"encounter_aa_monarch": "Defeated Nowhere Monarch",
+	"encounter_aa_cube": "Defeated Heckahedron",
+	"encounter_aa_alice": "Defeated Alice",
+	"encounter_aa_robin": "Defeated Robin Goodfellow",
+	"encounter_aa_mammon": "Defeated Mammon",
+	"encounter_aa_lamento_mori": "Defeated Lamento Mori",
+	"encounter_aa_tower": "Defeated Babelith",
+	"encounter_aa_kuneko": "Defeated Shining Kuneko",
+	"encounter_aa_averevoir": "Defeated Averevoir",
+	"encounter_aa_finalgante": "Defeated Morgante",
+	"encounter_aa_helia": "Defeated Helia",
+	"encounter_aa_lenna": "Defeated Lenna",
+	"encounter_aa_clown": "Defeated Gwenivar",
+	"encounter_aa_aleph_null": "Defeated Aleph",
+	"met_ianthe": "Met Ianthe",
+	"met_meredith": "Met Meredith",
+	"met_felix": "Met Felix",
+	"encounter_ianthe": "Bacame Captain"
+}
 
 var _tempReceivedItems = []
 var randSeed: int
@@ -119,6 +149,10 @@ func _onFileLoaded():
 		SaveState.other_data["ap_player"] = _archipelagoClient.player
 	SaveState.other_data["ap_locations_checked"] = getCheckedLocationCount()
 	SaveState.other_data["ap_locations_total"] = getTotalLocationCount()
+	if !SaveState.other_data.has("ap_special_items"):
+		SaveState.other_data["ap_special_items"] = {"received":[],"to_ignore":[]}
+	if len(SaveState.other_data["ap_special_items"]["received"]) > 0:
+		SaveState.other_data["ap_special_items"]["to_ignore"] = SaveState.other_data["ap_special_items"]["received"]
 	for data in _tempReceivedItems:
 		_onApItemReceived(data.itemData, data.networkItem)
 	_tempReceivedItems.clear()
@@ -151,6 +185,12 @@ func _onApItemReceived(itemData: Array, networkItem: Dictionary):
 	if networkItem.location in SaveState.other_data.archipelago.receivedItems:
 		print("The location %d already exists" % networkItem.location)
 		return
+	if networkItem.location <= 0:# special archipelago items
+		var pair = "%s:%s" % [networkItem.item, networkItem.location]
+		if pair in SaveState.other_data.ap_special_items.to_ignore:
+			SaveState.other_data.ap_special_items.to_ignore.erase(pair)
+			return
+		SaveState.other_data.ap_special_items.received.push_back(pair)
 	if networkItem.location > 0:
 		SaveState.other_data.archipelago.receivedItems.push_back(networkItem.location)
 	_itemsReceivedFromServer.append(GivenApItem.new(itemData))
@@ -176,7 +216,7 @@ func _giveReceivedItems(givenItems: Array):
 		if "progressive" in itemName:
 			if "glide" in itemName:
 				_onAbilityReceived("flight" if SaveState.has_ability("glide") else "glide")
-			if "magnetism" in itemName:
+			if "magnet" in itemName:
 				if SaveState.has_ability("magnetism"):
 					SaveState.stats.get_stat("exchange_purchased").report_event("ability_advantage_magnetism")
 				else:
@@ -234,6 +274,8 @@ func _giveReceivedTraps(givenTraps: Array):
 					specialTrapStarters(encounter)
 				"partners":
 					specialTrapPartners(encounter)
+				"fused":
+					specialTrapFused(encounter)
 	if encounter.get_child_count() > 0:
 		encounter.run_encounter(encounter.get_config())
 	if len(givenTraps) > 1:
@@ -244,7 +286,7 @@ func _giveReceivedTraps(givenTraps: Array):
 
 func _onAbilityReceived(abilityName: String):
 	SaveState.set_ability(abilityName, true)
-	showPassiveMessage("Recieved $s" % abilityName)
+	showPassiveMessage("Recieved %s" % abilityName)
 	print("Ability %s given to player" % abilityName)
 
 func _onSongReceived(aaName: String):
@@ -254,8 +296,12 @@ func _onSongReceived(aaName: String):
 
 func _onStampReceived(stampFlag: String):
 	SaveState.set_flag(stampFlag, true)
-	showPassiveMessage("Recieved $s" % stampFlag)
-	print("Stamp for captain %s given to player" % stampFlag)
+	var msg_words = stampFlag.replace("ap_", "").split("_")
+	msg_words[1].replace("cleeo", "Clee-o").replace("dreadful", "Penny Dreadful")
+	for i in range(len(msg_words)):
+		msg_words[i] = msg_words[i].capitalize()
+	showPassiveMessage("Recieved %s" % " ".join(msg_words))
+	print("Stamp for captain %s given to player" % msg_words[1])
 
 func _increaseStamina():
 	SaveState.max_stamina += 0.5
@@ -267,6 +313,10 @@ func _onFlagChanged(flag: String, value: bool):
 		sendCaptainDefeated(flag)
 	if "encounter_aa" in flag and value:
 		sendArchAngelDefeated(flag)
+	if flag in _AP_EVENT_FLAGS_TO_AP.keys() and value:
+		print("%s flag changed, Sending set message: %s" % [flag, _AP_EVENT_FLAGS_TO_AP[flag]])
+		_archipelagoClient.set_value(_AP_EVENT_FLAGS_TO_AP[flag],
+			"replace", 1)
 	_checkForVictory()
 
 # sending checks to server
@@ -286,6 +336,8 @@ func sendArchAngelDefeated(aaFlag: String):
 	var locationString = "ap_" + aaFlag
 	print("Archangel defeated: %s" % locationString)
 	SaveState.stats.get_stat(_AP_AA_DEFEATED_KEY).set_count(locationString, 1)
+	if aaFlag == "encounter_aa_aleph" or aaFlag == "encounter_aa_aleph_null":
+		return# Victory condition, not location
 	_sendCheckLocation(locationString)
 
 func sendAbilityUnlocked(abilityName: String):
@@ -358,6 +410,21 @@ func specialTrapPartners(encounter: EncounterConfig):
 		encounter.add_child(character)
 		character.add_child(tape)
 
+func specialTrapFused(encounter: EncounterConfig):
+	var character = FusedCharacterConfig.new()
+	character.base_character = preload("res://data/characters/blank_monster.tres")
+	character.pronouns = randi() % 3
+	character.level_override = int(WorldSystem.get_player().character.level)
+	var tape1 = TapeConfig.new()
+	tape1.set("form", load("res://data/monster_forms/traffikrab.tres"))
+	tape1.set("tape_seed_value", randi())
+	var tape2 = TapeConfig.new()
+	tape2.set("form", load("res://data/monster_forms/traffikrab.tres"))
+	tape2.set("tape_seed_value", randi())
+	encounter.add_child(character)
+	character.add_child(tape1)
+	character.add_child(tape2)
+
 func showPassiveMessage(message: String, speaker: String = "Archipelago"):
 	var msg = PassiveMessageAction.new()
 	msg.speaker_name = speaker
@@ -403,7 +470,7 @@ func _checkForVictory():
 	var victoryConditions = _archipelagoClient.slot_data.settings.goal
 	if victoryConditions.has("Escape") && SaveState.has_flag("encounter_aa_aleph_null"):
 		passingChecks += 1
-	if victoryConditions.has("Captain") && SaveState.has_flag("defeat_ianthe"):
+	if victoryConditions.has("Captain") && SaveState.has_flag("encounter_ianthe"):
 		passingChecks += 1
 	if victoryConditions.has("Sunny") && SaveState.achievements.is_unlocked("quest_sunny"):
 		passingChecks += 1

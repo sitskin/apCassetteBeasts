@@ -34,6 +34,8 @@ func init_content() -> void:
 	apWiredChest.take_over_path("res://world/objects/chests/WiredChest.gd")
 	var apUnlockAblilityAction = preload("extensions/UnlockAbilityActionAP.gd")
 	apUnlockAblilityAction.take_over_path("res://nodes/actions/UnlockAbilityAction.gd")
+	var apUnlockPartnerAction = preload("extensions/UnlockPartnerActionAP.gd")
+	apUnlockPartnerAction.take_over_path("res://nodes/actions/UnlockPartnerAction.gd")
 	var apSpeciesCollection = preload("extensions/SpeciesCollectionAP.gd")
 	apSpeciesCollection.take_over_path("res://global/save_state/SpeciesCollection.gd")
 	var apGiveItemAction = preload("extensions/GiveItemActionAP.gd")
@@ -68,6 +70,8 @@ func init_content() -> void:
 	callbacks.connect_scene_ready("res://cutscenes/merchants/RangerTrader_Exchange.tscn", self, "_removeAbilityAdvantages")
 	callbacks.connect_scene_ready("res://world/core/ItemDrop.tscn", self, "_onItemDrop")
 	callbacks.connect_scene_ready("res://cutscenes/meredith_quest/MeredithIntro2_InteractionBehavior.tscn", self, "_patchMeredithQuest3")
+	callbacks.connect_scene_ready("res://cutscenes/captains/ianthe/Ianthe_InteractionBehavior.tscn", self, "_onIantheInteract")
+	callbacks.connect_scene_ready("res://cutscenes/end/End_Part7_Battle.tscn", self, "_onFinalBattle")
 
 func _onItemDrop(scene: Interaction):
 	var item = scene.item
@@ -116,6 +120,19 @@ func _patchMeredithQuest3(scene):
 	scene.get_node(path).queue_free()
 	scene.get_node(path).replace_by(apCheckCondition)
 	
+func _onIantheInteract(scene):
+	var path = "Selector/Sequence/MenuDialogAction2/CheckConditionAction_Captains/Selector/CheckConditionAction"
+	var action = scene.get_node(path)
+	var flags = action.require_flags
+	for i in range(len(flags)):
+		flags[i] = flags[i].replace("encounter", "ap") + "_stamp"
+	action.require_flags = flags
+
+func _onFinalBattle(scene: BattleAction):
+	var encounter = scene.get_node("EncounterConfig")
+	encounter.stamina_increase_on_win = 0
+	#the final battle has a strange crash with stamina increase of 1 where
+	# other archanges with a stamina increase of 0.5 do not
 
 # disables tutorial railroading if AP Client is enabled
 func _onOutskirtsWrongWay(scene: CheckConditionAction):
@@ -127,7 +144,7 @@ func _removeInvisWalls(scene: Node):
 
 func _giveKayleighEarly(scene: Cutscene):
 	scene.get_node("QuestStartAction").queue_free()
-	var unlockKayleighAction = UnlockPartnerAction.new()
+	var unlockKayleighAction = preload("extensions/UnlockPartnerActionAP.gd").new()
 	unlockKayleighAction.partner_id = "kayleigh"
 	scene.add_child(unlockKayleighAction)
 	# need to use resource loading in order to grab the correct taken over class

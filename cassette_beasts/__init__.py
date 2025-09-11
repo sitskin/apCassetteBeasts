@@ -37,10 +37,16 @@ class CassetteBeastsWorld(World):
 		return CassetteBeastsItem(name, item_data_table[name].type, item_data_table[name].code, self.player)
 
 	def create_items(self) -> None:
+		start_inventory = self.options.start_inventory.value
 		item_pool = []
 		for item_name, item_data in item_data_table.items():
+			count = item_data.count
+			if item_name in start_inventory.keys():
+				count -= start_inventory[item_name]
+				if count <= 0:
+					continue
 			if shouldAddItem(self.options, item_name):
-				item_pool += [self.create_item(item_name) for _ in range(item_data.count)]
+				item_pool += [self.create_item(item_name) for _ in range(count)]
 
 		# Trainersanity
 		if self.options.trainersanity:
@@ -197,7 +203,7 @@ class CassetteBeastsWorld(World):
 			for loc in self.multiworld.get_region("Postgame", self.player).locations:
 				loc.progress_type = 3 # Excluded
 
-	def set_victory(self):
+	def set_victory(self) -> None:
 		conditions = []
 		for goal in self.options.goal.value:
 			match goal:
@@ -207,7 +213,7 @@ class CassetteBeastsWorld(World):
 					conditions.append(lambda state: state.has("Became Captain", self.player))
 		self.multiworld.completion_condition[self.player] = lambda state: all([c(state) for c in conditions])
 
-	def fill_slot_data(self):
+	def fill_slot_data(self) -> dict:
 		# Fix empty goal set
 		if self.options.goal.value == {}:
 			self.options.goal.value = {"Escape"}
@@ -221,7 +227,7 @@ class CassetteBeastsWorld(World):
 				"key_harbourtown": "Harbourtown Gate Key",
 				"meredith_envelope": "Envelope for Meredith",
 				"key_landkeeper": "Landkeeper Key",
-				"captain_badge": "Beat Ianthe",
+				"captain_badge": "encounter_ianthe",
 			},
 			"itemDrop_to_location": {
 				"trainticket_glowshroom": "Train Ticket (Glowcester)",

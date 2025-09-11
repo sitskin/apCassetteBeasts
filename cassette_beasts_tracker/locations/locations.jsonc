@@ -102,7 +102,7 @@
           {
             "name": "Recruit Meredith",
             "item_count": 1,
-            "access_rules": ["envelope,glide"],
+            "access_rules": ["met_meredith,met_ianthe,envelope"],
             "visibility_rules": [],
             "hosted_item": "recruited_meredith",
             "chest_unopened_img": "images/items/meredith.png",
@@ -178,8 +178,19 @@
           {
             "name": "Envelope for Meredith",
             "item_count": 1,
-            "access_rules": ["met_ianthe"],
+            "access_rules": ["met_meredith,met_ianthe"],
             "visibility_rules": []
+          },
+          {
+            "name": "Beat Ianthe",
+            "item_count": 1,
+            "access_rules": [
+              "met_ianthe,captain_wallace,captain_skip,captain_zedd,captain_judas,captain_cleeo,captain_lodestein,captain_dreadful,captain_gladiola,captain_heather,captain_buffy,captain_cybil,captain_codey"
+            ],
+            "visibility_rules": [],
+            //"chest_unopened_img": "images/items/captains/ianthe.png",
+            //"chest_opened_img": "images/items/captains/ianthe.png",
+            "hosted_item": "beat_ianthe"
           }
         ],
         "map_locations": [
@@ -407,7 +418,7 @@
           {
             "name": "Recruit Felix",
             "item_count": 1,
-            "access_rules": ["@Lakeside"],
+            "access_rules": ["met_felix"],
             "visibility_rules": [],
             "hosted_item": "recruited_felix",
             "chest_unopened_img": "images/items/felix.png",
@@ -569,26 +580,13 @@
         "access_rules": [],
         "sections": [
           {
-            "name": "Beat Ianthe",
+            "name": "Met Ianthe",
             "item_count": 1,
-            "access_rules": [
-              "captain_wallace",
-              "captain_skip",
-              "captain_zedd",
-              "captain_judas",
-              "captain_cleeo",
-              "captain_lodestein",
-              "captain_dreadful",
-              "captain_gladiola",
-              "captain_heather",
-              "captain_buffy",
-              "captain_cybil",
-              "captain_codey"
-            ],
+            "access_rules": [],
             "visibility_rules": [],
-            //"chest_unopened_img": "images/items/captains/ianthe.png",
-            //"chest_opened_img": "images/items/captains/ianthe.png",
-            "hosted_item": "beat_ianthe"
+            "hosted_item": "met_ianthe",
+            "chest_unopened_img": "images/items/captains/ianthe.png",
+            "chest_opened_img": "images/items/captains/ianthe.png"
           },
           {
             "name": "New Wirral Park Chest Behind Ranger Station (2,-4)",
@@ -836,6 +834,15 @@
         "name": "3,-4",
         "access_rules": [],
         "sections": [
+          {
+            "name": "Met Meredith",
+            "item_count": 1,
+            "access_rules": ["glide"],
+            "visibility_rules": [],
+            "hosted_item": "met_meredith",
+            "chest_unopened_img": "images/items/meredith.png",
+            "chest_opened_img": "images/items/meredith.png"
+          },
           {
             "name": "New Wirral Park Landkeeper Battle (3,-4)",
             "item_count": 1,
@@ -2632,6 +2639,15 @@
         "name": "1,-5",
         "access_rules": [],
         "sections": [
+          {
+            "name": "Met Felix",
+            "item_count": 1,
+            "access_rules": [],
+            "visibility_rules": [],
+            "chest_unopened_img": "images/items/felix.png",
+            "chest_opened_img": "images/items/felix.png",
+            "hosted_item": "met_felix"
+          },
           {
             "name": "Lakeside Traveler Battle (1,-5)",
             "item_count": 1,
