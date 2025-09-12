@@ -1,0 +1,24 @@
+{
+  "name": "Cassette Beasts",
+  "game_name": "Cassette Beasts",
+  "package_version": "0.0.1",
+  "package_uid": "cassette_beasts_ap",
+  "platform": "pc",
+  "author": "Lucas Itskin",
+  "min_poptracker_version": "0.31.0",
+  "target_poptracker_version": "0.31.0",
+  "variants": {
+    "standard": {
+      "display_name": "Map Tracker",
+      "flags": [
+        "ap"
+      ]
+    },
+    "var_itemsonly": {
+      "display_name": "Items Only",
+      "flags": [
+        "ap"
+      ]
+    }
+  }
+}

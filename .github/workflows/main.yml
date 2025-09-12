@@ -1,0 +1,22 @@
+name: Upload apworld and tracker to release
+
+on:
+  release:
+    types: [created]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v5
+    - name: Zip the cassette_beasts and tracker folders
+      run: |
+        zip -r cassette_beasts.apworld cassette_beasts
+        zip -r cassette_beasts_tracker.zip cassette_beasts_tracker
+    - name: Upload to release
+      uses: softprops/action-gh-release@v2
+      with:
+        files: |
+          cassette_beasts.apworld
+          cassette_beasts_tracker.zip

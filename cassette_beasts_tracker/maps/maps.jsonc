@@ -1,0 +1,9 @@
+[
+  //more info: https://github.com/black-sliver/PopTracker/blob/master/doc/PACKS.md#maps
+  {
+    "name": "new_wirral",
+    "location_size": 8,
+    "location_border_thickness": 1,
+    "img": "images/maps/new_wirral.png"
+  }
+]

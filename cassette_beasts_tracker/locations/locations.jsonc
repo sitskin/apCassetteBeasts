@@ -1,0 +1,5000 @@
+[
+  {
+    "name": "Menu",
+    "access_rules": [],
+    "children": []
+  },
+  {
+    "name": "Harbourtown Beach",
+    "access_rules": [],
+    "children": [
+      {
+        "name": "3,0",
+        "access_rules": [],
+        "sections": [
+          {
+            "name": "Harbourtown Beach Chest (3,0)",
+            "item_count": 1,
+            "access_rules": [],
+            "visibility_rules": []
+          },
+          {
+            "name": "Harbourtown Beach Chest Loot (3,0)",
+            "item_count": 1,
+            "access_rules": [],
+            "visibility_rules": [
+              "setting_loot"
+            ]
+          }
+        ],
+        "map_locations": [
+          {
+            "map": "new_wirral",
+            "x": 336,
+            "y": 240
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "name": "Harbourtown East",
+    "access_rules": [],
+    "children": [
+      {
+        "name": "0,-1",
+        "access_rules": ["recruited_kayleigh"],
+        "sections": [
+          {
+            "name": "Harbourtown Chest under Crate on Flour Mill (0,-1)",
+            "item_count": 1,
+            "access_rules": ["dash"],
+            "visibility_rules": []
+          },
+          {
+            "name": "Harbourtown Chest Loot under Crate on Flour Mill (0,-1)",
+            "item_count": 1,
+            "access_rules": ["dash"],
+            "visibility_rules": [
+              "setting_loot"
+            ]
+          }
+        ],
+        "map_locations": [
+          {
+            "map": "new_wirral",
+            "x": 240,
+            "y": 208
+          }
+        ]
+      },
+      {
+        "name": "1,-1",
+        "access_rules": ["recruited_kayleigh"],
+        "sections": [
+          {
+            "name": "Harbourtown Chest on Top of House (1,-1)",
+            "item_count": 1,
+            "access_rules": ["glide"],
+            "visibility_rules": []
+          },
+          {
+            "name": "Harbourtown Chest Loot on Top of House (1,-1)",
+            "item_count": 1,
+            "access_rules": ["glide"],
+            "visibility_rules": [
+              "setting_loot"
+            ]
+          }
+        ],
+        "map_locations": [
+          {
+            "map": "new_wirral",
+            "x": 272,
+            "y": 208
+          }
+        ]
+      },
+      {
+        "name": "1,0",
+        "access_rules": ["recruited_kayleigh"],
+        "sections": [
+          {
+            "name": "Recruit Meredith",
+            "item_count": 1,
+            "access_rules": ["met_meredith,met_ianthe,envelope"],
+            "visibility_rules": [],
+            "hosted_item": "recruited_meredith",
+            "chest_unopened_img": "images/items/meredith.png",
+            "chest_opened_img": "images/items/meredith.png"
+          },
+          {
+            "name": "Harbourtown Kayliegh's Home Chest (1,0)",
+            "item_count": 1,
+            "access_rules": [],
+            "visibility_rules": []
+          },
+          {
+            "name": "Harbourtown Kayliegh's Home Chest Loot (1,0)",
+            "item_count": 1,
+            "access_rules": [],
+            "visibility_rules": [
+              "setting_loot"
+            ]
+          }
+        ],
+        "map_locations": [
+          {
+            "map": "new_wirral",
+            "x": 272,
+            "y": 240
+          }
+        ]
+      },
+      {
+        "name": "0,0",
+        "access_rules": [],
+        "sections": [
+          {
+            "name": "Recruit Kayleigh",
+            "item_count": 1,
+            "access_rules": [],
+            "hosted_item": "recruited_kayleigh",
+            "chest_unopened_img": "images/items/kayleigh.png",
+            "chest_opened_img": "images/items/kayleigh.png"
+          },
+          {
+            "name": "Ranger Handbook",
+            "item_count": 1,
+            "access_rules": [],
+            "visibility_rules": []
+          },
+          {
+            "name": "Harbourtown Gate Key",
+            "item_count": 1,
+            "access_rules": [],
+            "visibility_rules": []
+          },
+          {
+            "name": "Type Chart",
+            "item_count": 1,
+            "access_rules": ["tutorial"],
+            "visibility_rules": []
+          },
+          {
+            "name": "Harbourtown Town Hall Cabinet (0,0)",
+            "item_count": 1,
+            "access_rules": ["met_ianthe"],
+            "visibility_rules": []
+          },
+          {
+            "name": "Harbourtown Town Hall Cabinet Loot (0,0)",
+            "item_count": 1,
+            "access_rules": ["met_ianthe"],
+            "visibility_rules": [
+              "setting_loot"
+            ]
+          },
+          {
+            "name": "Envelope for Meredith",
+            "item_count": 1,
+            "access_rules": ["met_meredith,met_ianthe"],
+            "visibility_rules": []
+          },
+          {
+            "name": "Beat Ianthe",
+            "item_count": 1,
+            "access_rules": [
+              "met_ianthe,captain_wallace,captain_skip,captain_zedd,captain_judas,captain_cleeo,captain_lodestein,captain_dreadful,captain_gladiola,captain_heather,captain_buffy,captain_cybil,captain_codey"
+            ],
+            "visibility_rules": [],
+            //"chest_unopened_img": "images/items/captains/ianthe.png",
+            //"chest_opened_img": "images/items/captains/ianthe.png",
+            "hosted_item": "beat_ianthe"
+          }
+        ],
+        "map_locations": [
+          {
+            "map": "new_wirral",
+            "x": 240,
+            "y": 240
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "name": "Harbourtown Outskirts",
+    "access_rules": ["@Upper Path,recruited_kayleigh", "key_harbourtown"],
+    "children": [
+      {
+        "name": "2,-2",
+        "access_rules": [],
+        "sections": [
+          {
+            "name": "Harbourtown Outskirts Break Rock Chest (2,-2)",
+            "item_count": 1,
+            "access_rules": ["dash"],
+            "visibility_rules": []
+          },
+          {
+            "name": "Harbourtown Outskirts Break Rock Chest Loot (2,-2)",
+            "item_count": 1,
+            "access_rules": ["dash"],
+            "visibility_rules": [
+              "setting_loot"
+            ]
+          }
+        ],
+        "map_locations": [
+          {
+            "map": "new_wirral",
+            "x": 304,
+            "y": 176
+          }
+        ]
+      },
+      {
+        "name": "3,-2",
+        "access_rules": [],
+        "sections": [
+          {
+            "name": "Harbourtown Outskirts Chest Near Lamppost (3,-2)",
+            "item_count": 1,
+            "access_rules": [],
+            "visibility_rules": []
+          },
+          {
+            "name": "Harbourtown Outskirts Chest Loot Near Lamppost (3,-2)",
+            "item_count": 1,
+            "access_rules": [],
+            "visibility_rules": [
+              "setting_loot"
+            ]
+          }
+        ],
+        "map_locations": [
+          {
+            "map": "new_wirral",
+            "x": 336,
+            "y": 176
+          }
+        ]
+      },
+      {
+        "name": "1,-1",
+        "access_rules": [],
+        "sections": [
+          {
+            "name": "Harbourtown Outskirts Pipe Chest (1,-1)",
+            "item_count": 1,
+            "access_rules": ["glide,dash"],
+            "visibility_rules": []
+          },
+          {
+            "name": "Harbourtown Outskirts Pipe Chest Loot (1,-1)",
+            "item_count": 1,
+            "access_rules": ["glide,dash"],
+            "visibility_rules": [
+              "setting_loot"
+            ]
+          }
+        ],
+        "map_locations": [
+          {
+            "map": "new_wirral",
+            "x": 272,
+            "y": 208
+          }
+        ]
+      },
+      {
+        "name": "4,-1",
+        "access_rules": [],
+        "sections": [
+          {
+            "name": "Recruit Eugene",
+            "item_count": 1,
+            "access_rules": ["recruited_kayleigh"],
+            "hosted_item": "recruited_eugene",
+            "chest_unopened_img": "images/items/eugene.png",
+            "chest_opened_img": "images/items/eugene.png"
+          },
+          {
+            "name": "Landkeeper Window Key",
+            "item_count": 1,
+            "access_rules": ["glide"],
+            "visibility_rules": []
+          },
+          {
+            "name": "Cleared Landkeeper Office 1",
+            "item_count": 1,
+            "access_rules": ["glide"],
+            "visibility_rules": [],
+            "hosted_item": "office1"
+          },
+          {
+            "name": "Landkeeper Office 1 Cabinet (4,-1)",
+            "item_count": 1,
+            "access_rules": ["glide"],
+            "visibility_rules": []
+          },
+          {
+            "name": "Landkeeper Office 1 Cabinet Loot (4,-1)",
+            "item_count": 1,
+            "access_rules": ["glide"],
+            "visibility_rules": [
+              "setting_loot"
+            ]
+          },
+          {
+            "name": "Landkeeper Office 1 Battle (4,-1)",
+            "item_count": 1,
+            "access_rules": ["glide"],
+            "visibility_rules": [
+              "setting_trainers"
+            ],
+            "chest_unopened_img": "images/items/landkeeper_1.png",
+            "chest_opened_img": "images/items/landkeeper_1_gray.png"
+          }
+        ],
+        "map_locations": [
+          {
+            "map": "new_wirral",
+            "x": 368,
+            "y": 208
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "name": "Upper Path",
+    "access_rules": ["recruited_kayleigh"],
+    "children": [
+      {
+        "name": "-1,-2",
+        "access_rules": [],
+        "sections": [
+          {
+            "name": "Upper Path Chest on Wall Before Harbourtown West (-1,-2)",
+            "item_count": 1,
+            "access_rules": ["glide,magnetism"]
+          },
+          {
+            "name": "Upper Path Chest Loot on Wall Before Harbourtown West (-1,-2)",
+            "item_count": 1,
+            "access_rules": ["glide,magnetism"],
+            "visibility_rules": [
+              "setting_loot"
+            ]
+          }
+        ],
+        "map_locations": [
+          {
+            "map": "new_wirral",
+            "x": 208,
+            "y": 186
+          }
+        ]
+      },
+      {
+        "name": "0,-2",
+        "access_rules": [],
+        "sections": [
+          {
+            "name": "Upper Path Magnet Platform Chest (0,-2)",
+            "item_count": 1,
+            "access_rules": ["magnetism"],
+            "visibility_rules": []
+          },
+          {
+            "name": "Upper Path Magnet Platform Chest Loot (0,-2)",
+            "item_count": 1,
+            "access_rules": ["magnetism"],
+            "visibility_rules": [
+              "setting_loot"
+            ]
+          }
+        ],
+        "map_locations": [
+          {
+            "map": "new_wirral",
+            "x": 240,
+            "y": 176
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "name": "Harbourtown West",
+    "access_rules": ["recruited_kayleigh,dash", "recruited_kayleigh,glide,magnetism"],
+    "children": [
+      {
+        "name": "-1,0",
+        "access_rules": [],
+        "sections": [
+          {
+            "name": "Recruit Felix",
+            "item_count": 1,
+            "access_rules": ["met_felix"],
+            "visibility_rules": [],
+            "hosted_item": "recruited_felix",
+            "chest_unopened_img": "images/items/felix.png",
+            "chest_opened_img": "images/items/felix.png"
+          },
+          {
+            "name": "Harbourtown Apartment Chest (-1,0)",
+            "item_count": 1,
+            "access_rules": [],
+            "visibility_rules": []
+          },
+          {
+            "name": "Harbourtown Red House Fridge (-1,0)",
+            "item_count": 1,
+            "access_rules": [],
+            "visibility_rules": []
+          },
+          {
+            "name": "Harbourtown Apartment Chest Loot (-1,0)",
+            "item_count": 1,
+            "access_rules": [],
+            "visibility_rules": [
+              "setting_loot"
+            ]
+          },
+          {
+            "name": "Harbourtown Red House Fridge Loot (-1,0)",
+            "item_count": 1,
+            "access_rules": [],
+            "visibility_rules": [
+              "setting_loot"
+            ]
+          }
+        ],
+        "map_locations": [
+          {
+            "map": "new_wirral",
+            "x": 208,
+            "y": 240
+          }
+        ]
+      },
+      {
+        "name": "-2,0",
+        "access_rules": [],
+        "sections": [
+          {
+            "name": "Beat Captain Skip",
+            "item_count": 1,
+            "access_rules": ["swim", "flight"],
+            "visibility_rules": []//,
+            //"chest_unopened_img": "images/items/captains/skip.png",
+            //"chest_opened_img": "images/items/captains/skip.png",
+            //"hosted_item": "captain_skip"
+          }
+        ],
+        "map_locations": [
+          {
+            "map": "new_wirral",
+            "x": 176,
+            "y": 240
+          }
+        ]
+      },
+      {
+        "name": "-2,-1",
+        "access_rules": [],
+        "sections": [
+          {
+            "name": "Landkeeper Battle West of Harbourtown (-2,-1)",
+            "item_count": 1,
+            "access_rules": [],
+            "visibility_rules": [
+              "setting_trainers"
+            ],
+            "chest_unopened_img": "images/items/landkeeper_1.png",
+            "chest_opened_img": "images/items/landkeeper_1_gray.png"
+          }
+        ],
+        "map_locations": [
+          {
+            "map": "new_wirral",
+            "x": 176,
+            "y": 208
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "name": "New Wirral Park",
+    "access_rules": ["@Harbourtown Outskirts"],
+    "children": [
+      {
+        "name": "2,-3",
+        "access_rules": [],
+        "sections": [
+          {
+            "name": "Beat Captain Wallace",
+            "item_count": 1,
+            "access_rules": [],
+            "visibility_rules": []//,
+            //"chest_unopened_img": "images/items/captains/wallace.png",
+            //"chest_opened_img": "images/items/captains/wallace.png",
+            //"hosted_item": "captain_wallace"
+          },
+          {
+            "name": "New Wirral Park Chest Under Bridge by Lake (2,-3)",
+            "item_count": 1,
+            "access_rules": [],
+            "visibility_rules": []
+          },
+          {
+            "name": "New Wirral Park Chest Loot Under Bridge by Lake (2,-3)",
+            "item_count": 1,
+            "access_rules": [],
+            "visibility_rules": [
+              "setting_loot"
+            ]
+          }
+        ],
+        "map_locations": [
+          {
+            "map": "new_wirral",
+            "x": 304,
+            "y": 144
+          }
+        ]
+      },
+      {
+        "name": "3,-3",
+        "access_rules": [],
+        "sections": [
+          {
+            "name": "New Wirral Park Chest Lift Box in Pond (3,-3)",
+            "item_count": 1,
+            "access_rules": [],
+            "visibility_rules": []
+          },
+          {
+            "name": "New Wirral Park Chest Loot Lift Box in Pond (3,-3)",
+            "item_count": 1,
+            "access_rules": [],
+            "visibility_rules": [
+              "setting_loot"
+            ]
+          }
+        ],
+        "map_locations": [
+          {
+            "map": "new_wirral",
+            "x": 336,
+            "y": 144
+          }
+        ]
+      },
+      {
+        "name": "2,-4",
+        "access_rules": [],
+        "sections": [
+          {
+            "name": "Met Ianthe",
+            "item_count": 1,
+            "access_rules": [],
+            "visibility_rules": [],
+            "hosted_item": "met_ianthe",
+            "chest_unopened_img": "images/items/captains/ianthe.png",
+            "chest_opened_img": "images/items/captains/ianthe.png"
+          },
+          {
+            "name": "New Wirral Park Chest Behind Ranger Station (2,-4)",
+            "item_count": 1,
+            "access_rules": [],
+            "visibility_rules": []
+          },
+          {
+            "name": "New Wirral Park Under Ranger Station Cave Chest (2,-4)",
+            "item_count": 1,
+            "access_rules": ["glide"],
+            "visibility_rules": []
+          },
+          {
+            "name": "New Wirral Park Chest Loot Behind Ranger Station (2,-4)",
+            "item_count": 1,
+            "access_rules": [],
+            "visibility_rules": [
+              "setting_loot"
+            ]
+          },
+          {
+            "name": "New Wirral Park Under Ranger Station Cave Chest Loot (2,-4)",
+            "item_count": 1,
+            "access_rules": ["glide"],
+            "visibility_rules": [
+              "setting_loot"
+            ]
+          },
+          {
+            "name": "Ranger Wannabe Battle Near Ranger Station (2,-4)",
+            "item_count": 1,
+            "access_rules": [],
+            "visibility_rules": [
+              "setting_trainers"
+            ],
+            "chest_unopened_img": "images/items/landkeeper_1.png",
+            "chest_opened_img": "images/items/landkeeper_1_gray.png"
+          },
+          {
+            "name": "Ranger Recruiter Battle Near Ranger Station (2,-4)",
+            "item_count": 1,
+            "access_rules": [],
+            "visibility_rules": [
+              "setting_trainers"
+            ],
+            "chest_unopened_img": "images/items/landkeeper_1.png",
+            "chest_opened_img": "images/items/landkeeper_1_gray.png"
+          }
+        ],
+        "map_locations": [
+          {
+            "map": "new_wirral",
+            "x": 304,
+            "y": 112
+          }
+        ]
+      },
+      {
+        "name": "4,-5",
+        "access_rules": [],
+        "sections": [
+          {
+            "name": "New Wirral Park Break Rock Chest in Wall (4,-5)",
+            "item_count": 1,
+            "access_rules": ["dash"],
+            "visibility_rules": []
+          },
+          {
+            "name": "New Wirral Park Break Rock Chest Loot in Wall (4,-5)",
+            "item_count": 1,
+            "access_rules": ["dash"],
+            "visibility_rules": [
+              "setting_loot"
+            ]
+          },
+          {
+            "name": "New Wirral Park Battle (4,-5)",
+            "item_count": 1,
+            "access_rules": [],
+            "visibility_rules": [
+              "setting_trainers"
+            ],
+            "chest_unopened_img": "images/items/landkeeper_1.png",
+            "chest_opened_img": "images/items/landkeeper_1_gray.png"
+          }
+        ],
+        "map_locations": [
+          {
+            "map": "new_wirral",
+            "x": 368,
+            "y": 80
+          }
+        ]
+      },
+      {
+        "name": "5,-3",
+        "access_rules": [],
+        "sections": [
+          {
+            "name": "New Wirral Park Lower Platform Chest (5,-3)",
+            "item_count": 1,
+            "access_rules": ["glide,dash"],
+            "visibility_rules": []
+          },
+          {
+            "name": "New Wirral Park Lower Platform Chest Loot (5,-3)",
+            "item_count": 1,
+            "access_rules": ["glide,dash"],
+            "visibility_rules": [
+              "setting_loot"
+            ]
+          },
+          {
+            "name": "New Wirrl Park Duo Battle (5,-3)",
+            "item_count": 1,
+            "access_rules": [],
+            "visibility_rules": [
+              "setting_trainers"
+            ],
+            "chest_unopened_img": "images/items/landkeeper_1.png",
+            "chest_opened_img": "images/items/landkeeper_1_gray.png"
+          }
+        ],
+        "map_locations": [
+          {
+            "map": "new_wirral",
+            "x": 400,
+            "y": 144
+          }
+        ]
+      },
+      {
+        "name": "3,-5",
+        "access_rules": [],
+        "sections": [
+          {
+            "name": "New Wirral Park Track Cave Chest(3,-5)",
+            "item_count": 1,
+            "access_rules": ["dash"],
+            "visibility_rules": []
+          },
+          {
+            "name": "New Wirral Park Track Cave Chest Loot(3,-5)",
+            "item_count": 1,
+            "access_rules": ["dash"],
+            "visibility_rules": [
+              "setting_loot"
+            ]
+          },
+          {
+            "name": "New Wirral Park Rocker Battle (3,-5)",
+            "item_count": 1,
+            "access_rules": [],
+            "visibility_rules": [
+              "setting_trainers"
+            ],
+            "chest_unopened_img": "images/items/landkeeper_1.png",
+            "chest_opened_img": "images/items/landkeeper_1_gray.png"
+          }
+        ],
+        "map_locations": [
+          {
+            "map": "new_wirral",
+            "x": 336,
+            "y": 80
+          }
+        ]
+      },
+      {
+        "name": "4,-3",
+        "access_rules": [],
+        "sections": [
+          {
+            "name": "New Wirral Park Cave Chest (4,-3)",
+            "item_count": 1,
+            "access_rules": [],
+            "visibility_rules": []
+          },
+          {
+            "name": "New Wirral Park Cave Break Rock Chest (4,-3)",
+            "item_count": 1,
+            "access_rules": ["dash"],
+            "visibility_rules": []
+          },
+          {
+            "name": "New Wirral Park Cave Chest Loot (4,-3)",
+            "item_count": 1,
+            "access_rules": [],
+            "visibility_rules": [
+              "setting_loot"
+            ]
+          },
+          {
+            "name": "New Wirral Park Cave Break Rock Chest Loot (4,-3)",
+            "item_count": 1,
+            "access_rules": ["dash"],
+            "visibility_rules": [
+              "setting_loot"
+            ]
+          },
+          {
+            "name": "New Wirral Park Ranger Wannabe Battle (4,-3)",
+            "item_count": 1,
+            "access_rules": [],
+            "visibility_rules": [
+              "setting_trainers"
+            ],
+            "chest_unopened_img": "images/items/landkeeper_1.png",
+            "chest_opened_img": "images/items/landkeeper_1_gray.png"
+          }
+        ],
+        "map_locations": [
+          {
+            "map": "new_wirral",
+            "x": 368,
+            "y": 144
+          }
+        ]
+      },
+      {
+        "name": "2,-5",
+        "access_rules": [],
+        "sections": [
+          {
+            "name": "New Wirral Park Ranger Battle (2,-5)",
+            "item_count": 1,
+            "access_rules": [],
+            "visibility_rules": [
+              "setting_trainers"
+            ],
+            "chest_unopened_img": "images/items/landkeeper_1.png",
+            "chest_opened_img": "images/items/landkeeper_1_gray.png"
+          }
+        ],
+        "map_locations": [
+          {
+            "map": "new_wirral",
+            "x": 304,
+            "y": 80
+          }
+        ]
+      },
+      {
+        "name": "3,-4",
+        "access_rules": [],
+        "sections": [
+          {
+            "name": "Met Meredith",
+            "item_count": 1,
+            "access_rules": ["glide"],
+            "visibility_rules": [],
+            "hosted_item": "met_meredith",
+            "chest_unopened_img": "images/items/meredith.png",
+            "chest_opened_img": "images/items/meredith.png"
+          },
+          {
+            "name": "New Wirral Park Landkeeper Battle (3,-4)",
+            "item_count": 1,
+            "access_rules": [],
+            "visibility_rules": [
+              "setting_trainers"
+            ],
+            "chest_unopened_img": "images/items/landkeeper_1.png",
+            "chest_opened_img": "images/items/landkeeper_1_gray.png"
+          },
+          {
+            "name": "New Wirral Park Ranger Wannabe Duo Battle (3,-4)",
+            "item_count": 1,
+            "access_rules": [],
+            "visibility_rules": [
+              "setting_trainers"
+            ],
+            "chest_unopened_img": "images/items/landkeeper_1.png",
+            "chest_opened_img": "images/items/landkeeper_1_gray.png"
+          },
+          {
+            "name": "New Wirral Park Madman Battle (3,-4)",
+            "item_count": 1,
+            "access_rules": [],
+            "visibility_rules": [
+              "setting_trainers"
+            ],
+            "chest_unopened_img": "images/items/landkeeper_1.png",
+            "chest_opened_img": "images/items/landkeeper_1_gray.png"
+          }
+        ],
+        "map_locations": [
+          {
+            "map": "new_wirral",
+            "x": 336,
+            "y": 112
+          }
+        ]
+      },
+      {
+        "name": "4,-4",
+        "access_rules": [],
+        "sections": [
+          {
+            "name": "New Wirral Park Cultist Battle 1 (4,-4)",
+            "item_count": 1,
+            "access_rules": [],
+            "visibility_rules": [
+              "setting_trainers"
+            ],
+            "chest_unopened_img": "images/items/landkeeper_1.png",
+            "chest_opened_img": "images/items/landkeeper_1_gray.png"
+          }
+        ],
+        "map_locations": [
+          {
+            "map": "new_wirral",
+            "x": 368,
+            "y": 112
+          }
+        ]
+      },
+      {
+        "name": "5,-4",
+        "access_rules": [],
+        "sections": [
+          {
+            "name": "New Wirral Park Cultist Battle 2 (5,-4)",
+            "item_count": 1,
+            "access_rules": [],
+            "visibility_rules": [
+              "setting_trainers"
+            ],
+            "chest_unopened_img": "images/items/landkeeper_1.png",
+            "chest_opened_img": "images/items/landkeeper_1_gray.png"
+          }
+        ],
+        "map_locations": [
+          {
+            "map": "new_wirral",
+            "x": 400,
+            "y": 112
+          }
+        ]
+      },
+      {
+        "name": "5,-5",
+        "access_rules": [],
+        "sections": [
+          {
+            "name": "Darwin Battle (5,-5)",
+            "item_count": 1,
+            "access_rules": [],
+            "visibility_rules": [
+              "setting_trainers"
+            ],
+            "chest_unopened_img": "images/items/landkeeper_1.png",
+            "chest_opened_img": "images/items/landkeeper_1_gray.png"
+          }
+        ],
+        "map_locations": [
+          {
+            "map": "new_wirral",
+            "x": 400,
+            "y": 80
+          }
+        ]
+      },
+      {
+        "name": "7,-3",
+        "access_rules": [],
+        "sections": [
+          {
+            "name": "New Wirral Park Battle (7,-3)",
+            "item_count": 1,
+            "access_rules": [],
+            "visibility_rules": [
+              "setting_trainers"
+            ],
+            "chest_unopened_img": "images/items/landkeeper_1.png",
+            "chest_opened_img": "images/items/landkeeper_1_gray.png"
+          },
+          {
+            "name": "New Wirral Park Landkeeper Battle Near Office (7,-3)",
+            "item_count": 1,
+            "access_rules": [],
+            "visibility_rules": [
+              "setting_trainers"
+            ],
+            "chest_unopened_img": "images/items/landkeeper_1.png",
+            "chest_opened_img": "images/items/landkeeper_1_gray.png"
+          }
+        ],
+        "map_locations": [
+          {
+            "map": "new_wirral",
+            "x": 464,
+            "y": 144
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "name": "Autumn Hill",
+    "access_rules": ["@New Wirral Park"],
+    "children": [
+      {
+        "name": "6,-3",
+        "access_rules": [],
+        "sections": [
+          {
+            "name": "Autumn Hill Lever Chest in Lake (6,-3)",
+            "item_count": 1,
+            "access_rules": [],
+            "visibility_rules": []
+          },
+          {
+            "name": "Autumn Hill Lever Chest Loot in Lake (6,-3)",
+            "item_count": 1,
+            "access_rules": [],
+            "visibility_rules": [
+              "setting_loot"
+            ]
+          },
+          {
+            "name": "Autumn Hill Traveler Battle (6,-3)",
+            "item_count": 1,
+            "access_rules": [],
+            "visibility_rules": [
+              "setting_trainers"
+            ],
+            "chest_unopened_img": "images/items/landkeeper_1.png",
+            "chest_opened_img": "images/items/landkeeper_1_gray.png"
+          }
+        ],
+        "map_locations": [
+          {
+            "map": "new_wirral",
+            "x": 432,
+            "y": 144
+          }
+        ]
+      },
+      {
+        "name": "6,-5",
+        "access_rules": [],
+        "sections": [
+          {
+            "name": "Autumn Hill Chest with Button in Eastham Woods (6,-5)",
+            "item_count": 1,
+            "access_rules": [],
+            "visibility_rules": []
+          },
+          {
+            "name": "Autumn Hill Chest Loot with Button in Eastham Woods (6,-5)",
+            "item_count": 1,
+            "access_rules": [],
+            "visibility_rules": [
+              "setting_loot"
+            ]
+          },
+          {
+            "name": "Autumn Hill Cultist Battle After Gate (6,-5)",
+            "item_count": 1,
+            "access_rules": [],
+            "visibility_rules": [
+              "setting_trainers"
+            ],
+            "chest_unopened_img": "images/items/landkeeper_1.png",
+            "chest_opened_img": "images/items/landkeeper_1_gray.png"
+          }
+        ],
+        "map_locations": [
+          {
+            "map": "new_wirral",
+            "x": 432,
+            "y": 80
+          }
+        ]
+      },
+      {
+        "name": "7,-3",
+        "access_rules": [],
+        "sections": [
+          {
+            "name": "Autumn Hill Shortcut Chest (7,-3)",
+            "item_count": 1,
+            "access_rules": [],
+            "visibility_rules": []
+          },
+          {
+            "name": "Cleared Landkeeper Office 2",
+            "item_count": 1,
+            "access_rules": ["glide,landkeeper_office_key"],
+            "visibility_rules": [],
+            "hosted_item": "office2"
+          },
+          {
+            "name": "Landkeeper Office 2 Cabinet (7,-3)",
+            "item_count": 1,
+            "access_rules": ["glide,landkeeper_office_key"],
+            "visibility_rules": []
+          },
+          {
+            "name": "Autumn Hill Shortcut Chest Loot (7,-3)",
+            "item_count": 1,
+            "access_rules": [],
+            "visibility_rules": [
+              "setting_loot"
+            ]
+          },
+          {
+            "name": "Landkeeper Office 2 Cabinet Loot (7,-3)",
+            "item_count": 1,
+            "access_rules": ["glide,landkeeper_office_key"],
+            "visibility_rules": [
+              "setting_loot"
+            ]
+          },
+          {
+            "name": "Autumn Hill Cultist Newbie Battle (7,-3)",
+            "item_count": 1,
+            "access_rules": [],
+            "visibility_rules": [
+              "setting_trainers"
+            ],
+            "chest_unopened_img": "images/items/landkeeper_1.png",
+            "chest_opened_img": "images/items/landkeeper_1_gray.png"
+          },
+          {
+            "name": "Landkeeper Office 2 Battle (7,-3)",
+            "item_count": 1,
+            "access_rules": ["glide,landkeeper_office_key"],
+            "visibility_rules": [
+              "setting_trainers"
+            ],
+            "chest_unopened_img": "images/items/landkeeper_1.png",
+            "chest_opened_img": "images/items/landkeeper_1_gray.png"
+          }
+        ],
+        "map_locations": [
+          {
+            "map": "new_wirral",
+            "x": 464,
+            "y": 144
+          }
+        ]
+      },
+      {
+        "name": "7,-4",
+        "access_rules": [],
+        "sections": [
+          {
+            "name": "Autumn Hill Peak Break Rock Chest (7,-4)",
+            "item_count": 1,
+            "access_rules": ["dash"],
+            "visibility_rules": []
+          },
+          {
+            "name": "Autumn Hill Peak Break Rock Chest Loot (7,-4)",
+            "item_count": 1,
+            "access_rules": ["dash"],
+            "visibility_rules": [
+              "setting_loot"
+            ]
+          },
+          {
+            "name": "Autumn Hill Cultist Newbie Battle Near Post (7,-4)",
+            "item_count": 1,
+            "access_rules": [],
+            "visibility_rules": [
+              "setting_trainers"
+            ],
+            "chest_unopened_img": "images/items/landkeeper_1.png",
+            "chest_opened_img": "images/items/landkeeper_1_gray.png"
+          }
+        ],
+        "map_locations": [
+          {
+            "map": "new_wirral",
+            "x": 464,
+            "y": 112
+          }
+        ]
+      },
+      {
+        "name": "8,-3",
+        "access_rules": [],
+        "sections": [
+          {
+            "name": "Autumn Hill Button Chest (8,-3)",
+            "item_count": 1,
+            "access_rules": [],
+            "visibility_rules": []
+          },
+          {
+            "name": "Autumn Hill Button Chest Loot (8,-3)",
+            "item_count": 1,
+            "access_rules": [],
+            "visibility_rules": [
+              "setting_loot"
+            ]
+          },
+          {
+            "name": "Autumn Hill Cultist Battle (8,-3)",
+            "item_count": 1,
+            "access_rules": [],
+            "visibility_rules": [
+              "setting_trainers"
+            ],
+            "chest_unopened_img": "images/items/landkeeper_1.png",
+            "chest_opened_img": "images/items/landkeeper_1_gray.png"
+          }
+        ],
+        "map_locations": [
+          {
+            "map": "new_wirral",
+            "x": 496,
+            "y": 144
+          }
+        ]
+      },
+      {
+        "name": "8,-4",
+        "access_rules": [],
+        "sections": [
+          {
+            "name": "Beat Captain Zedd",
+            "item_count": 1,
+            "access_rules": [],
+            "visibility_rules": []//,
+            //"chest_unopened_img": "images/items/captains/zedd.png",
+            //"chest_opened_img": "images/items/captains/zedd.png",
+            //"hosted_item": "captain_zedd"
+          }
+        ],
+        "map_locations": [
+          {
+            "map": "new_wirral",
+            "x": 496,
+            "y": 112
+          }
+        ]
+      },
+      {
+        "name": "8,-5",
+        "access_rules": [],
+        "sections": [
+          {
+            "name": "Autumn Hill Elevator Chest (8,-5)",
+            "item_count": 1,
+            "access_rules": [],
+            "visibility_rules": []
+          },
+          {
+            "name": "Autumn Hill Elevator Chest Loot (8,-5)",
+            "item_count": 1,
+            "access_rules": [],
+            "visibility_rules": [
+              "setting_loot"
+            ]
+          },
+          {
+            "name": "Autumn Hill Cultist Battle Near Zedd (8,-5)",
+            "item_count": 1,
+            "access_rules": [],
+            "visibility_rules": [
+              "setting_trainers"
+            ],
+            "chest_unopened_img": "images/items/landkeeper_1.png",
+            "chest_opened_img": "images/items/landkeeper_1_gray.png"
+          }
+        ],
+        "map_locations": [
+          {
+            "map": "new_wirral",
+            "x": 496,
+            "y": 80
+          }
+        ]
+      },
+      {
+        "name": "8,-6",
+        "access_rules": [],
+        "sections": [
+          {
+            "name": "Autumn Hill Underwater Chest (8,-6)",
+            "item_count": 1,
+            "access_rules": ["swim"],
+            "visibility_rules": []
+          },
+          {
+            "name": "Autumn Hill Underwater Chest Loot (8,-6)",
+            "item_count": 1,
+            "access_rules": ["swim"],
+            "visibility_rules": [
+              "setting_loot"
+            ]
+          },
+          {
+            "name": "Autumn Hill Cultist Battle Near NE Mire Sea (8,-6)",
+            "item_count": 1,
+            "access_rules": [],
+            "visibility_rules": [
+              "setting_trainers"
+            ],
+            "chest_unopened_img": "images/items/landkeeper_1.png",
+            "chest_opened_img": "images/items/landkeeper_1_gray.png"
+          }
+        ],
+        "map_locations": [
+          {
+            "map": "new_wirral",
+            "x": 496,
+            "y": 48
+          }
+        ]
+      },
+      {
+        "name": "6,-4",
+        "access_rules": [],
+        "sections": [
+          {
+            "name": "Autumn Gate Cave Chest (6,-4)",
+            "item_count": 1,
+            "access_rules": [],
+            "visibility_rules": []
+          },
+          {
+            "name": "Autumn Gate Cave Chest Loot (6,-4)",
+            "item_count": 1,
+            "access_rules": [],
+            "visibility_rules": [
+              "setting_loot"
+            ]
+          },
+          {
+            "name": "Autumn Hill Cultist Battle Before Gate (6,-4)",
+            "item_count": 1,
+            "access_rules": [],
+            "visibility_rules": [
+              "setting_trainers"
+            ],
+            "chest_unopened_img": "images/items/landkeeper_1.png",
+            "chest_opened_img": "images/items/landkeeper_1_gray.png"
+          }
+        ],
+        "map_locations": [
+          {
+            "map": "new_wirral",
+            "x": 432,
+            "y": 112
+          }
+        ]
+      },
+      {
+        "name": "7,-6",
+        "access_rules": [],
+        "sections": [
+          {
+            "name": "Autumn Hill Gear Cave Chest (7,-6)",
+            "item_count": 1,
+            "access_rules": ["glide,dash"],
+            "visibility_rules": []
+          },
+          {
+            "name": "Autumn Hill Gear Cave Chest Loot (7,-6)",
+            "item_count": 1,
+            "access_rules": ["glide,dash"],
+            "visibility_rules": [
+              "setting_loot"
+            ]
+          },
+          {
+            "name": "Autumn Hill Cultist Duo Battle (7,-6)",
+            "item_count": 1,
+            "access_rules": [],
+            "visibility_rules": [
+              "setting_trainers"
+            ],
+            "chest_unopened_img": "images/items/landkeeper_1.png",
+            "chest_opened_img": "images/items/landkeeper_1_gray.png"
+          }
+        ],
+        "map_locations": [
+          {
+            "map": "new_wirral",
+            "x": 464,
+            "y": 48
+          }
+        ]
+      },
+      {
+        "name": "6,-6",
+        "access_rules": [],
+        "sections": [
+          {
+            "name": "Autumn Hill Cultist Battle Near Sign (6,-6)",
+            "item_count": 1,
+            "access_rules": [],
+            "visibility_rules": [
+              "setting_trainers"
+            ],
+            "chest_unopened_img": "images/items/landkeeper_1.png",
+            "chest_opened_img": "images/items/landkeeper_1_gray.png"
+          }
+        ],
+        "map_locations": [
+          {
+            "map": "new_wirral",
+            "x": 432,
+            "y": 48
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "name": "Eastham Woods",
+    "access_rules": ["@New Wirral Park"],
+    "children": [
+      {
+        "name": "0,-6",
+        "access_rules": [],
+        "sections": [
+          {
+            "name": "Eastham Woods Lift Rock Chest (0,-6)",
+            "item_count": 1,
+            "access_rules": [],
+            "visibility_rules": []
+          },
+          {
+            "name": "Eastham Woods Lift Rock Chest Loot (0,-6)",
+            "item_count": 1,
+            "access_rules": [],
+            "visibility_rules": [
+              "setting_loot"
+            ]
+          },
+          {
+            "name": "Eastham Woods Soldier Battle Near Ham (0,-6)",
+            "item_count": 1,
+            "access_rules": [],
+            "visibility_rules": [
+              "setting_trainers"
+            ],
+            "chest_unopened_img": "images/items/landkeeper_1.png",
+            "chest_opened_img": "images/items/landkeeper_1_gray.png"
+          }
+        ],
+        "map_locations": [
+          {
+            "map": "new_wirral",
+            "x": 240,
+            "y": 48
+          }
+        ]
+      },
+      {
+        "name": "0,-7",
+        "access_rules": [],
+        "sections": [
+          {
+            "name": "Eastham Woods Chest Near Ham (0,-7)",
+            "item_count": 1,
+            "access_rules": [],
+            "visibility_rules": []
+          },
+          {
+            "name": "Eastham Woods Chest Loot Near Ham (0,-7)",
+            "item_count": 1,
+            "access_rules": [],
+            "visibility_rules": [
+              "setting_loot"
+            ]
+          }
+        ],
+        "map_locations": [
+          {
+            "map": "new_wirral",
+            "x": 240,
+            "y": 16
+          }
+        ]
+      },
+      {
+        "name": "1,-6",
+        "access_rules": [],
+        "sections": [
+          {
+            "name": "Eastham Woods Three Lights Chest (1,-6)",
+            "item_count": 1,
+            "access_rules": ["magnetism"],
+            "visibility_rules": []
+          },
+          {
+            "name": "Eastham Woods Three Lights Chest Loot (1,-6)",
+            "item_count": 1,
+            "access_rules": ["magnetism"],
+            "visibility_rules": [
+              "setting_loot"
+            ]
+          },
+          {
+            "name": "Decartes Battle (1,-6)",
+            "item_count": 1,
+            "access_rules": [],
+            "visibility_rules": [
+              "setting_trainers"
+            ],
+            "chest_unopened_img": "images/items/landkeeper_1.png",
+            "chest_opened_img": "images/items/landkeeper_1_gray.png"
+          }
+        ],
+        "map_locations": [
+          {
+            "map": "new_wirral",
+            "x": 272,
+            "y": 48
+          }
+        ]
+      },
+      {
+        "name": "2,-6",
+        "access_rules": [],
+        "sections": [
+          {
+            "name": "Eastham Woods Magnet Button Chest (2,-6)",
+            "item_count": 1,
+            "access_rules": ["magnetism"],
+            "visibility_rules": []
+          },
+          {
+            "name": "Eastham Woods Cave Chest (2,-6)",
+            "item_count": 1,
+            "access_rules": ["magnetism"],
+            "visibility_rules": []
+          },
+          {
+            "name": "Eastham Woods Magnet Button Chest Loot (2,-6)",
+            "item_count": 1,
+            "access_rules": ["magnetism"],
+            "visibility_rules": [
+              "setting_loot"
+            ]
+          },
+          {
+            "name": "Eastham Woods Cave Chest Loot (2,-6)",
+            "item_count": 1,
+            "access_rules": ["magnetism"],
+            "visibility_rules": [
+              "setting_loot"
+            ]
+          }
+        ],
+        "map_locations": [
+          {
+            "map": "new_wirral",
+            "x": 304,
+            "y": 48
+          }
+        ]
+      },
+      {
+        "name": "3,-6",
+        "access_rules": [],
+        "sections": [
+          {
+            "name": "Coin",
+            "item_count": 1,
+            "access_rules": [],
+            "visibility_rules": []
+          },
+          {
+            "name": "Beat Captain Clee-o",
+            "item_count": 1,
+            "access_rules": ["coin"],
+            "visibility_rules": []//,
+            //"chest_unopened_img": "images/items/captains/cleeo.png",
+            //"chest_opened_img": "images/items/captains/cleeo.png",
+            //"hosted_item": "captain_cleeo"
+          },
+          {
+            "name": "Eastham Woods Cultist Battle (3,-6)",
+            "item_count": 1,
+            "access_rules": [],
+            "visibility_rules": [
+              "setting_trainers"
+            ],
+            "chest_unopened_img": "images/items/landkeeper_1.png",
+            "chest_opened_img": "images/items/landkeeper_1_gray.png"
+          }
+        ],
+        "map_locations": [
+          {
+            "map": "new_wirral",
+            "x": 336,
+            "y": 48
+          }
+        ]
+      },
+      {
+        "name": "3,-7",
+        "access_rules": [],
+        "sections": [
+          {
+            "name": "Eastham Woods Chest on Mall Roof (3,-7)",
+            "item_count": 1,
+            "access_rules": ["@Eastham Woods Cliff,magnetism,dash"],
+            "visibility_rules": []
+          },
+          {
+            "name": "Eastham Woods Chest Loot on Mall Roof (3,-7)",
+            "item_count": 1,
+            "access_rules": ["@Eastham Woods Cliff,magnetism,dash"],
+            "visibility_rules": [
+              "setting_loot"
+            ]
+          },
+          {
+            "name": "Treasure Seeker Battle Near Mall (3,-7)",
+            "item_count": 1,
+            "access_rules": ["@Eastham Woods,magnetism", "@Eastham Woods,climb"],
+            "visibility_rules": [
+              "setting_trainers"
+            ],
+            "chest_unopened_img": "images/items/landkeeper_1.png",
+            "chest_opened_img": "images/items/landkeeper_1_gray.png"
+          },
+          {
+            "name": "Eastham Woods Chest on Cliff Below Mall (3,-7)",
+            "item_count": 1,
+            "access_rules": ["@Eastham Woods Cliff", "climb"],
+            "visibility_rules": []
+          },
+          {
+            "name": "Eastham Woods Chest Loot on Cliff Below Mall (3,-7)",
+            "item_count": 1,
+            "access_rules": ["@Eastham Woods Cliff", "climb"],
+            "visibility_rules": [
+              "setting_loot"
+            ]
+          }
+        ],
+        "map_locations": [
+          {
+            "map": "new_wirral",
+            "x": 336,
+            "y": 16
+          }
+        ]
+      },
+      {
+        "name": "4,-6",
+        "access_rules": [],
+        "sections": [
+          {
+            "name": "Eastham Woods Levitator Magnet Chest (4,-6)",
+            "item_count": 1,
+            "access_rules": ["magnetism"],
+            "visibility_rules": []
+          },
+          {
+            "name": "Eastham Woods Levitator Magnet Chest Loot (4,-6)",
+            "item_count": 1,
+            "access_rules": ["magnetism"],
+            "visibility_rules": [
+              "setting_loot"
+            ]
+          },
+          {
+            "name": "Aristotle Battle (4,-6)",
+            "item_count": 1,
+            "access_rules": [],
+            "visibility_rules": [
+              "setting_trainers"
+            ],
+            "chest_unopened_img": "images/items/landkeeper_1.png",
+            "chest_opened_img": "images/items/landkeeper_1_gray.png"
+          }
+        ],
+        "map_locations": [
+          {
+            "map": "new_wirral",
+            "x": 368,
+            "y": 48
+          }
+        ]
+      },
+      {
+        "name": "4,-7",
+        "access_rules": [],
+        "sections": [
+          {
+            "name": "Eastham Woods Four Button Chest (4,-7)",
+            "item_count": 1,
+            "access_rules": ["magnetism"],
+            "visibility_rules": []
+          },
+          {
+            "name": "Eastham Woods Four Button Chest Loot (4,-7)",
+            "item_count": 1,
+            "access_rules": ["magnetism"],
+            "visibility_rules": [
+              "setting_loot"
+            ]
+          },
+          {
+            "name": "Eastham Woods Landkeeper Battle 4 (4,-7)",
+            "item_count": 1,
+            "access_rules": [],
+            "visibility_rules": [
+              "setting_trainers"
+            ],
+            "chest_unopened_img": "images/items/landkeeper_1.png",
+            "chest_opened_img": "images/items/landkeeper_1_gray.png"
+          }
+        ],
+        "map_locations": [
+          {
+            "map": "new_wirral",
+            "x": 368,
+            "y": 16
+          }
+        ]
+      },
+      {
+        "name": "5,-5",
+        "access_rules": [],
+        "sections": [
+          {
+            "name": "Eastham Woods Chest in Pond (5,-5)",
+            "item_count": 1,
+            "access_rules": [],
+            "visibility_rules": []
+          },
+          {
+            "name": "Eastham Woods Chest Loot in Pond (5,-5)",
+            "item_count": 1,
+            "access_rules": [],
+            "visibility_rules": [
+              "setting_loot"
+            ]
+          }
+        ],
+        "map_locations": [
+          {
+            "map": "new_wirral",
+            "x": 400,
+            "y": 80
+          }
+        ]
+      },
+      {
+        "name": "5,-7",
+        "access_rules": [],
+        "sections": [
+          {
+            "name": "Eastham Woods Levitator Magnet Lever Chest (5,-7)",
+            "item_count": 1,
+            "access_rules": ["magnetism"],
+            "visibility_rules": []
+          },
+          {
+            "name": "Eastham Woods Levitator Magnet Lever Chest Loot (5,-7)",
+            "item_count": 1,
+            "access_rules": ["magnetism"],
+            "visibility_rules": [
+              "setting_loot"
+            ]
+          },
+          {
+            "name": "Eastham Woods Duo Battle (5,-7)",
+            "item_count": 1,
+            "access_rules": [],
+            "visibility_rules": [
+              "setting_trainers"
+            ],
+            "chest_unopened_img": "images/items/landkeeper_1.png",
+            "chest_opened_img": "images/items/landkeeper_1_gray.png"
+          }
+        ],
+        "map_locations": [
+          {
+            "map": "new_wirral",
+            "x": 400,
+            "y": 16
+          }
+        ]
+      },
+      {
+        "name": "5,-6",
+        "access_rules": [],
+        "sections": [
+          {
+            "name": "Eastham Woods Soldier Battle (5,-6)",
+            "item_count": 1,
+            "access_rules": [],
+            "visibility_rules": [
+              "setting_trainers"
+            ],
+            "chest_unopened_img": "images/items/landkeeper_1.png",
+            "chest_opened_img": "images/items/landkeeper_1_gray.png"
+          }
+        ],
+        "map_locations": [
+          {
+            "map": "new_wirral",
+            "x": 400,
+            "y": 48
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "name": "Eastham Woods Cliff",
+    "access_rules": ["@Eastham Woods,magnetism", "@Eastham Woods,climb"],
+    "children": [
+      {
+        "name": "1,-7",
+        "access_rules": [],
+        "sections": [
+          {
+            "name": "Cleared Landkeeper Office 4",
+            "item_count": 1,
+            "access_rules": ["glide,landkeeper_office_key"],
+            "visibility_rules": [],
+            "hosted_item": "office4"
+          },
+          {
+            "name": "Landkeeper Office 4 Cabinet (1,-7)",
+            "item_count": 1,
+            "access_rules": ["glide,landkeeper_office_key"],
+            "visibility_rules": []
+          },
+          {
+            "name": "Landkeeper Office 4 Cabinet Loot (1,-7)",
+            "item_count": 1,
+            "access_rules": ["glide,landkeeper_office_key"],
+            "visibility_rules": [
+              "setting_loot"
+            ]
+          },
+          {
+            "name": "Eastham Landkeeper Battle 1 (1,-7)",
+            "item_count": 1,
+            "access_rules": [],
+            "visibility_rules": [
+              "setting_trainers"
+            ],
+            "chest_unopened_img": "images/items/landkeeper_1.png",
+            "chest_opened_img": "images/items/landkeeper_1_gray.png"
+          },
+          {
+            "name": "Eastham Landkeeper Battle 2 (1,-7)",
+            "item_count": 1,
+            "access_rules": [],
+            "visibility_rules": [
+              "setting_trainers"
+            ],
+            "chest_unopened_img": "images/items/landkeeper_1.png",
+            "chest_opened_img": "images/items/landkeeper_1_gray.png"
+          },
+          {
+            "name": "Landkeeper Office 4 Battle (1,-7)",
+            "item_count": 1,
+            "access_rules": ["glide,landkeeper_office_key"],
+            "visibility_rules": [
+              "setting_trainers"
+            ],
+            "chest_unopened_img": "images/items/landkeeper_1.png",
+            "chest_opened_img": "images/items/landkeeper_1_gray.png"
+          }
+        ],
+        "map_locations": [
+          {
+            "map": "new_wirral",
+            "x": 272,
+            "y": 16
+          }
+        ]
+      },
+      {
+        "name": "2,-7",
+        "access_rules": [],
+        "sections": [
+          {
+            "name": "Eastham Landkeeper Battle 3 (2,-7)",
+            "item_count": 1,
+            "access_rules": [],
+            "visibility_rules": [
+              "setting_trainers"
+            ],
+            "chest_unopened_img": "images/items/landkeeper_1.png",
+            "chest_opened_img": "images/items/landkeeper_1_gray.png"
+          }
+        ],
+        "map_locations": [
+          {
+            "map": "new_wirral",
+            "x": 304,
+            "y": 16
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "name": "Deadlands",
+    "access_rules": ["@Harbourtown Outskirts"],
+    "children": [
+      {
+        "name": "4,-2",
+        "access_rules": [],
+        "sections": [
+          {
+            "name": "Deadlands Floor Button Chest (4,-2)",
+            "item_count": 1,
+            "access_rules": [],
+            "visibility_rules": []
+          },
+          {
+            "name": "Deadlands Floor Button Chest Loot (4,-2)",
+            "item_count": 1,
+            "access_rules": [],
+            "visibility_rules": [
+              "setting_loot"
+            ]
+          }
+        ],
+        "map_locations": [
+          {
+            "map": "new_wirral",
+            "x": 368,
+            "y": 176
+          }
+        ]
+      },
+      {
+        "name": "5,-2",
+        "access_rules": [],
+        "sections": [
+          {
+            "name": "Deadlands Ranger Trainee Battle (5,-2)",
+            "item_count": 1,
+            "access_rules": [],
+            "visibility_rules": [
+              "setting_trainers"
+            ],
+            "chest_unopened_img": "images/items/landkeeper_1.png",
+            "chest_opened_img": "images/items/landkeeper_1_gray.png"
+          }
+        ],
+        "map_locations": [
+          {
+            "map": "new_wirral",
+            "x": 400,
+            "y": 176
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "name": "Deadlands Coast",
+    "access_rules": ["@Deadlands"],
+    "children": [
+      {
+        "name": "5,-1",
+        "access_rules": [],
+        "sections": [
+          {
+            "name": "Deadlands Coast Button Chest (5,-1)",
+            "item_count": 1,
+            "access_rules": ["dash"],
+            "visibility_rules": []
+          },
+          {
+            "name": "Deadlands Coast Button Chest Loot (5,-1)",
+            "item_count": 1,
+            "access_rules": ["dash"],
+            "visibility_rules": [
+              "setting_loot"
+            ]
+          },
+          {
+            "name": "Deadlands Coast Treasure Seeker Battle (5,-1)",
+            "item_count": 1,
+            "access_rules": [],
+            "visibility_rules": [
+              "setting_trainers"
+            ],
+            "chest_unopened_img": "images/items/landkeeper_1.png",
+            "chest_opened_img": "images/items/landkeeper_1_gray.png"
+          }
+        ],
+        "map_locations": [
+          {
+            "map": "new_wirral",
+            "x": 400,
+            "y": 208
+          }
+        ]
+      },
+      {
+        "name": "6,-2",
+        "access_rules": [],
+        "sections": [
+          {
+            "name": "Beat Captain Penny Dreadful",
+            "item_count": 1,
+            "access_rules": [],
+            "visibility_rules": []//,
+            //"chest_unopened_img": "images/items/captains/dreadful.png",
+            //"chest_opened_img": "images/items/captains/dreadful.png",
+            //"hosted_item": "captain_dreadful"
+          },
+          {
+            "name": "Deadlands Coast Gust Chest (6,-2)",
+            "item_count": 1,
+            "access_rules": ["dash"],
+            "visibility_rules": []
+          },
+          {
+            "name": "Deadlands Cave Break Rock Chest (6,-2)",
+            "item_count": 1,
+            "access_rules": ["dash"],
+            "visibility_rules": []
+          },
+          {
+            "name": "Deadlands Coast Gust Chest Loot (6,-2)",
+            "item_count": 1,
+            "access_rules": ["dash"],
+            "visibility_rules": [
+              "setting_loot"
+            ]
+          },
+          {
+            "name": "Deadlands Cave Break Rock Chest Loot (6,-2)",
+            "item_count": 1,
+            "access_rules": ["dash"],
+            "visibility_rules": [
+              "setting_loot"
+            ]
+          }
+        ],
+        "map_locations": [
+          {
+            "map": "new_wirral",
+            "x": 432,
+            "y": 176
+          }
+        ]
+      },
+      {
+        "name": "7,-1",
+        "access_rules": [],
+        "sections": [
+          {
+            "name": "Deadlands Coast Lift Rock Chest (7,-1)",
+            "item_count": 1,
+            "access_rules": [],
+            "visibility_rules": []
+          },
+          {
+            "name": "Deadlands Coast Lift Rock Chest Loot (7,-1)",
+            "item_count": 1,
+            "access_rules": [],
+            "visibility_rules": [
+              "setting_loot"
+            ]
+          },
+          {
+            "name": "Nevermort Fan Battle (7,-1)",
+            "item_count": 1,
+            "access_rules": [],
+            "visibility_rules": [
+              "setting_trainers"
+            ],
+            "chest_unopened_img": "images/items/landkeeper_1.png",
+            "chest_opened_img": "images/items/landkeeper_1_gray.png"
+          }
+        ],
+        "map_locations": [
+          {
+            "map": "new_wirral",
+            "x": 464,
+            "y": 208
+          }
+        ]
+      },
+      {
+        "name": "8,-1",
+        "access_rules": [],
+        "sections": [
+          {
+            "name": "Deadlands Coast Chest Near Dino Quarry (8,-1)",
+            "item_count": 1,
+            "access_rules": [],
+            "visibility_rules": []
+          },
+          {
+            "name": "Deadlands Coast Place Two Rocks Chest (8,-1)",
+            "item_count": 1,
+            "access_rules": [],
+            "visibility_rules": []
+          },
+          {
+            "name": "Deadlands Coast Chest Loot Near Dino Quarry (8,-1)",
+            "item_count": 1,
+            "access_rules": [],
+            "visibility_rules": [
+              "setting_loot"
+            ]
+          },
+          {
+            "name": "Deadlands Coast Place Two Rocks Chest Loot (8,-1)",
+            "item_count": 1,
+            "access_rules": [],
+            "visibility_rules": [
+              "setting_loot"
+            ]
+          },
+          {
+            "name": "Epicurus Battle (8,-1)",
+            "item_count": 1,
+            "access_rules": [],
+            "visibility_rules": [
+              "setting_trainers"
+            ],
+            "chest_unopened_img": "images/items/landkeeper_1.png",
+            "chest_opened_img": "images/items/landkeeper_1_gray.png"
+          }
+        ],
+        "map_locations": [
+          {
+            "map": "new_wirral",
+            "x": 496,
+            "y": 208
+          }
+        ]
+      },
+      {
+        "name": "6,-1",
+        "access_rules": [],
+        "sections": [
+          {
+            "name": "Deadlands Cave Chest (6,-1)",
+            "item_count": 1,
+            "access_rules": [],
+            "visibility_rules": []
+          },
+          {
+            "name": "Deadlands Cave Chest Loot (6,-1)",
+            "item_count": 1,
+            "access_rules": [],
+            "visibility_rules": [
+              "setting_loot"
+            ]
+          },
+          {
+            "name": "Deadlands Coast Historian Battle 1 (6,-1)",
+            "item_count": 1,
+            "access_rules": [],
+            "visibility_rules": [
+              "setting_trainers"
+            ],
+            "chest_unopened_img": "images/items/landkeeper_1.png",
+            "chest_opened_img": "images/items/landkeeper_1_gray.png"
+          }
+        ],
+        "map_locations": [
+          {
+            "map": "new_wirral",
+            "x": 432,
+            "y": 208
+          }
+        ]
+      },
+      {
+        "name": "8,-2",
+        "access_rules": [],
+        "sections": [
+          {
+            "name": "Deadlands Coast Historian Battle 2 (8,-2)",
+            "item_count": 1,
+            "access_rules": [],
+            "visibility_rules": [
+              "setting_trainers"
+            ],
+            "chest_unopened_img": "images/items/landkeeper_1.png",
+            "chest_opened_img": "images/items/landkeeper_1_gray.png"
+          }
+        ],
+        "map_locations": [
+          {
+            "map": "new_wirral",
+            "x": 496,
+            "y": 176
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "name": "Dino Quarry",
+    "access_rules": [],
+    "children": []
+  },
+  {
+    "name": "New London",
+    "access_rules": ["@Harbourtown Outskirts,magnetism", "@Deadlands Coast,dash"],
+    "children": [
+      {
+        "name": "5,-2",
+        "access_rules": [],
+        "sections": [
+          {
+            "name": "New London Three Button Chest (5,-2)",
+            "item_count": 1,
+            "access_rules": [],
+            "visibility_rules": []
+          },
+          {
+            "name": "New London Three Button Chest Loot (5,-2)",
+            "item_count": 1,
+            "access_rules": [],
+            "visibility_rules": [
+              "setting_loot"
+            ]
+          }
+        ],
+        "map_locations": [
+          {
+            "map": "new_wirral",
+            "x": 400,
+            "y": 176
+          }
+        ]
+      },
+      {
+        "name": "6,-2",
+        "access_rules": [],
+        "sections": [
+          {
+            "name": "New London Chest in House (6,-2)",
+            "item_count": 1,
+            "access_rules": [],
+            "visibility_rules": []
+          },
+          {
+            "name": "New London Chest Loot in House (6,-2)",
+            "item_count": 1,
+            "access_rules": [],
+            "visibility_rules": [
+              "setting_loot"
+            ]
+          },
+          {
+            "name": "New London Landkeeper Battle (6,-2)",
+            "item_count": 1,
+            "access_rules": [],
+            "visibility_rules": [
+              "setting_trainers"
+            ],
+            "chest_unopened_img": "images/items/landkeeper_1.png",
+            "chest_opened_img": "images/items/landkeeper_1_gray.png"
+          },
+          {
+            "name": "New London Historian Battle (6,-2)",
+            "item_count": 1,
+            "access_rules": [],
+            "visibility_rules": [
+              "setting_trainers"
+            ],
+            "chest_unopened_img": "images/items/landkeeper_1.png",
+            "chest_opened_img": "images/items/landkeeper_1_gray.png"
+          }
+        ],
+        "map_locations": [
+          {
+            "map": "new_wirral",
+            "x": 432,
+            "y": 176
+          }
+        ]
+      },
+      {
+        "name": "7,-2",
+        "access_rules": [],
+        "sections": [
+          {
+            "name": "New London Statue Puzzle Chest (7,-2)",
+            "item_count": 1,
+            "access_rules": [],
+            "visibility_rules": []
+          },
+          {
+            "name": "New London 2 Button Chest (7,-2)",
+            "item_count": 1,
+            "access_rules": [],
+            "visibility_rules": []
+          },
+          {
+            "name": "New London Statue Puzzle Chest Loot (7,-2)",
+            "item_count": 1,
+            "access_rules": [],
+            "visibility_rules": [
+              "setting_loot"
+            ]
+          },
+          {
+            "name": "New London 2 Button Chest Loot (7,-2)",
+            "item_count": 1,
+            "access_rules": [],
+            "visibility_rules": [
+              "setting_loot"
+            ]
+          },
+          {
+            "name": "New London Ranger Battle (7,-2)",
+            "item_count": 1,
+            "access_rules": [],
+            "visibility_rules": [
+              "setting_trainers"
+            ],
+            "chest_unopened_img": "images/items/landkeeper_1.png",
+            "chest_opened_img": "images/items/landkeeper_1_gray.png"
+          }
+        ],
+        "map_locations": [
+          {
+            "map": "new_wirral",
+            "x": 464,
+            "y": 176
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "name": "NE Mire Sea",
+    "access_rules": ["@Autumn Hill"],
+    "children": [
+      {
+        "name": "8,-7",
+        "access_rules": [],
+        "sections": [
+          {
+            "name": "NE Mire Sea Chest (8,-7)",
+            "item_count": 1,
+            "access_rules": ["glide,magnetism"],
+            "visibility_rules": []
+          },
+          {
+            "name": "NE Mire Sea Chest Loot (8,-7)",
+            "item_count": 1,
+            "access_rules": ["glide,magnetism"],
+            "visibility_rules": [
+              "setting_loot"
+            ]
+          }
+        ],
+        "map_locations": [
+          {
+            "map": "new_wirral",
+            "x": 496,
+            "y": 16
+          }
+        ]
+      },
+      {
+        "name": "7,-7",
+        "access_rules": [],
+        "sections": [
+          {
+            "name": "Cleared Landkeeper Office 3",
+            "item_count": 1,
+            "access_rules": ["glide,magnetism,landkeeper_office_key"],
+            "visibility_rules": [],
+            "hosted_item": "office3"
+          },
+          {
+            "name": "Landkeeper Office 3 Cabinet (7,-7)",
+            "item_count": 1,
+            "access_rules": ["glide,magnetism,landkeeper_office_key"],
+            "visibility_rules": []
+          },
+          {
+            "name": "Landkeeper Office 3 Cabinet Loot (7,-7)",
+            "item_count": 1,
+            "access_rules": ["glide,magnetism,landkeeper_office_key"],
+            "visibility_rules": [
+              "setting_loot"
+            ]
+          },
+          {
+            "name": "NE Mire Sea Landkeeper Battle (7,-7)",
+            "item_count": 1,
+            "access_rules": ["glide,magnetism"],
+            "visibility_rules": [
+              "setting_trainers"
+            ],
+            "chest_unopened_img": "images/items/landkeeper_1.png",
+            "chest_opened_img": "images/items/landkeeper_1_gray.png"
+          },
+          {
+            "name": "Landkeeper Office 3 Battle (7,-7)",
+            "item_count": 1,
+            "access_rules": ["glide,magnetism,landkeeper_office_key"],
+            "visibility_rules": [
+              "setting_trainers"
+            ],
+            "chest_unopened_img": "images/items/landkeeper_1.png",
+            "chest_opened_img": "images/items/landkeeper_1_gray.png"
+          }
+        ],
+        "map_locations": [
+          {
+            "map": "new_wirral",
+            "x": 464,
+            "y": 16
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "name": "Southern Isles",
+    "access_rules": ["@Deadlands Coast"],
+    "children": [
+      {
+        "name": "6,0",
+        "access_rules": [],
+        "sections": [
+          {
+            "name": "Southern Isles Chest Washed Up on Island (6,0)",
+            "item_count": 1,
+            "access_rules": ["swim"],
+            "visibility_rules": []
+          },
+          {
+            "name": "Southern Isles Chest Loot Washed Up on Island (6,0)",
+            "item_count": 1,
+            "access_rules": ["swim"],
+            "visibility_rules": [
+              "setting_loot"
+            ]
+          },
+          {
+            "name": "Southern Isles Treasure Seeker Battle (6,0)",
+            "item_count": 1,
+            "access_rules": [],
+            "visibility_rules": [
+              "setting_trainers"
+            ],
+            "chest_unopened_img": "images/items/landkeeper_1.png",
+            "chest_opened_img": "images/items/landkeeper_1_gray.png"
+          }
+        ],
+        "map_locations": [
+          {
+            "map": "new_wirral",
+            "x": 432,
+            "y": 240
+          }
+        ]
+      },
+      {
+        "name": "7,0",
+        "access_rules": [],
+        "sections": [
+          {
+            "name": "Southern Isles Underwater Chest (7,0)",
+            "item_count": 1,
+            "access_rules": ["swim"],
+            "visibility_rules": []
+          },
+          {
+            "name": "Southern Isles Underwater Chest Loot (7,0)",
+            "item_count": 1,
+            "access_rules": ["swim"],
+            "visibility_rules": [
+              "setting_loot"
+            ]
+          }
+        ],
+        "map_locations": [
+          {
+            "map": "new_wirral",
+            "x": 464,
+            "y": 240
+          }
+        ]
+      },
+      {
+        "name": "5,0",
+        "access_rules": [],
+        "sections": [
+          {
+            "name": "Southern Isles Traveler Battle (5,0)",
+            "item_count": 1,
+            "access_rules": [],
+            "visibility_rules": [
+              "setting_trainers"
+            ],
+            "chest_unopened_img": "images/items/landkeeper_1.png",
+            "chest_opened_img": "images/items/landkeeper_1_gray.png"
+          }
+        ],
+        "map_locations": [
+          {
+            "map": "new_wirral",
+            "x": 400,
+            "y": 240
+          }
+        ]
+      },
+      {
+        "name": "8,0",
+        "access_rules": [],
+        "sections": [
+          {
+            "name": "Beat Captain Judas",
+            "item_count": 1,
+            "access_rules": [],
+            "visibility_rules": []//,
+            //"chest_unopened_img": "images/items/captains/judas.png",
+            //"chest_opened_img": "images/items/captains/judas.png",
+            //"hosted_item": "captain_judas"
+          },
+          {
+            "name": "Southern Isles Ranger Wannabe Battle (8,0)",
+            "item_count": 1,
+            "access_rules": [],
+            "visibility_rules": [
+              "setting_trainers"
+            ],
+            "chest_unopened_img": "images/items/landkeeper_1.png",
+            "chest_opened_img": "images/items/landkeeper_1_gray.png"
+          }
+        ],
+        "map_locations": [
+          {
+            "map": "new_wirral",
+            "x": 496,
+            "y": 240
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "name": "Lakeside",
+    "access_rules": ["@New Wirral Park"],
+    "children": [
+      {
+        "name": "-1,-6",
+        "access_rules": [],
+        "sections": [
+          {
+            "name": "Lakeside Chest by Waterfall (-1,-6)",
+            "item_count": 1,
+            "access_rules": [],
+            "visibility_rules": []
+          },
+          {
+            "name": "Lakeside Four Button Chest Near Ham (-1,-6)",
+            "item_count": 1,
+            "access_rules": ["dash"],
+            "visibility_rules": []
+          },
+          {
+            "name": "Lakeside Chest Loot by Waterfall (-1,-6)",
+            "item_count": 1,
+            "access_rules": [],
+            "visibility_rules": [
+              "setting_loot"
+            ]
+          },
+          {
+            "name": "Lakeside Four Button Chest Loot Near Ham (-1,-6)",
+            "item_count": 1,
+            "access_rules": ["dash"],
+            "visibility_rules": [
+              "setting_loot"
+            ]
+          },
+          {
+            "name": "Jackie Battle (-1,-6)",
+            "item_count": 1,
+            "access_rules": [],
+            "visibility_rules": [
+              "setting_trainers"
+            ],
+            "chest_unopened_img": "images/items/landkeeper_1.png",
+            "chest_opened_img": "images/items/landkeeper_1_gray.png"
+          },
+          {
+            "name": "Lakeside Researcher Battle (-1,-6)",
+            "item_count": 1,
+            "access_rules": [],
+            "visibility_rules": [
+              "setting_trainers"
+            ],
+            "chest_unopened_img": "images/items/landkeeper_1.png",
+            "chest_opened_img": "images/items/landkeeper_1_gray.png"
+          }
+        ],
+        "map_locations": [
+          {
+            "map": "new_wirral",
+            "x": 208,
+            "y": 48
+          }
+        ]
+      },
+      {
+        "name": "0,-5",
+        "access_rules": [],
+        "sections": [
+          {
+            "name": "Lakeside Camper Battle (0,-5)",
+            "item_count": 1,
+            "access_rules": [],
+            "visibility_rules": [
+              "setting_trainers"
+            ],
+            "chest_unopened_img": "images/items/landkeeper_1.png",
+            "chest_opened_img": "images/items/landkeeper_1_gray.png"
+          },
+          {
+            "name": "Diogenes Battle (0,-5)",
+            "item_count": 1,
+            "access_rules": [],
+            "visibility_rules": [
+              "setting_trainers"
+            ],
+            "chest_unopened_img": "images/items/landkeeper_1.png",
+            "chest_opened_img": "images/items/landkeeper_1_gray.png"
+          }
+        ],
+        "map_locations": [
+          {
+            "map": "new_wirral",
+            "x": 240,
+            "y": 80
+          }
+        ]
+      },
+      {
+        "name": "1,-5",
+        "access_rules": [],
+        "sections": [
+          {
+            "name": "Met Felix",
+            "item_count": 1,
+            "access_rules": [],
+            "visibility_rules": [],
+            "chest_unopened_img": "images/items/felix.png",
+            "chest_opened_img": "images/items/felix.png",
+            "hosted_item": "met_felix"
+          },
+          {
+            "name": "Lakeside Traveler Battle (1,-5)",
+            "item_count": 1,
+            "access_rules": [],
+            "visibility_rules": [
+              "setting_trainers"
+            ],
+            "chest_unopened_img": "images/items/landkeeper_1.png",
+            "chest_opened_img": "images/items/landkeeper_1_gray.png"
+          }
+        ],
+        "map_locations": [
+          {
+            "map": "new_wirral",
+            "x": 272,
+            "y": 80
+          }
+        ]
+      },
+      {
+        "name": "-2,-5",
+        "access_rules": [],
+        "sections": [
+          {
+            "name": "Zhuangzi Battle (-2,-5)",
+            "item_count": 1,
+            "access_rules": [],
+            "visibility_rules": [
+              "setting_trainers"
+            ],
+            "chest_unopened_img": "images/items/landkeeper_1.png",
+            "chest_opened_img": "images/items/landkeeper_1_gray.png"
+          }
+        ],
+        "map_locations": [
+          {
+            "map": "new_wirral",
+            "x": 176,
+            "y": 80
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "name": "Thirstaton Lake",
+    "access_rules": ["@Upper Path,swim"],
+    "children": [
+      {
+        "name": "0,-3",
+        "access_rules": [],
+        "sections": [
+          {
+            "name": "Thirstaton Lake Underwater Chest (0,-3)",
+            "item_count": 1,
+            "access_rules": ["dash"],
+            "visibility_rules": []
+          },
+          {
+            "name": "Thirstaton Lake Underwater Chest Loot (0,-3)",
+            "item_count": 1,
+            "access_rules": ["dash"],
+            "visibility_rules": [
+              "setting_loot"
+            ]
+          }
+        ],
+        "map_locations": [
+          {
+            "map": "new_wirral",
+            "x": 240,
+            "y": 144
+          }
+        ]
+      },
+      {
+        "name": "-2,-3",
+        "access_rules": [],
+        "sections": [
+          {
+            "name": "Thirstaton Lake Statue Puzzle Chest (-2,-3)",
+            "item_count": 1,
+            "access_rules": [],
+            "visibility_rules": []
+          },
+          {
+            "name": "Thirstaton Lake Statue Puzzle Chest Loot (-2,-3)",
+            "item_count": 1,
+            "access_rules": [],
+            "visibility_rules": [
+              "setting_loot"
+            ]
+          },
+          {
+            "name": "Thirstaton Historian Battle (-2,-3)",
+            "item_count": 1,
+            "access_rules": [],
+            "visibility_rules": [
+              "setting_trainers"
+            ],
+            "chest_unopened_img": "images/items/landkeeper_1.png",
+            "chest_opened_img": "images/items/landkeeper_1_gray.png"
+          }
+        ],
+        "map_locations": [
+          {
+            "map": "new_wirral",
+            "x": 176,
+            "y": 144
+          }
+        ]
+      },
+      {
+        "name": "-2,-5",
+        "access_rules": [],
+        "sections": [
+          {
+            "name": "Thirstaton Lake Chest in Wall (-2,-5)",
+            "item_count": 1,
+            "access_rules": [],
+            "visibility_rules": []
+          },
+          {
+            "name": "Thirstaton Lake Chest Loot in Wall (-2,-5)",
+            "item_count": 1,
+            "access_rules": [],
+            "visibility_rules": [
+              "setting_loot"
+            ]
+          }
+        ],
+        "map_locations": [
+          {
+            "map": "new_wirral",
+            "x": 176,
+            "y": 80
+          }
+        ]
+      },
+      {
+        "name": "-1,-2",
+        "access_rules": [],
+        "sections": [
+          {
+            "name": "Lake Cave Chest (-1,-2)",
+            "item_count": 1,
+            "access_rules": [],
+            "visibility_rules": []
+          },
+          {
+            "name": "Lake Cave Chest Loot (-1,-2)",
+            "item_count": 1,
+            "access_rules": [],
+            "visibility_rules": [
+              "setting_loot"
+            ]
+          }
+        ],
+        "map_locations": [
+          {
+            "map": "new_wirral",
+            "x": 208,
+            "y": 176
+          }
+        ]
+      },
+      {
+        "name": "-1,-5",
+        "access_rules": [],
+        "sections": [
+          {
+            "name": "Thirsaton Lake Waterfall Cave Chest (-1,-5)",
+            "item_count": 1,
+            "access_rules": [],
+            "visibility_rules": []
+          },
+          {
+            "name": "Thirsaton Lake Waterfall Cave Chest Loot (-1,-5)",
+            "item_count": 1,
+            "access_rules": [],
+            "visibility_rules": [
+              "setting_loot"
+            ]
+          }
+        ],
+        "map_locations": [
+          {
+            "map": "new_wirral",
+            "x": 208,
+            "y": 80
+          }
+        ]
+      },
+      {
+        "name": "0,-4",
+        "access_rules": [],
+        "sections": [
+          {
+            "name": "Thirstaton Lake Traveler Battle (0,-4)",
+            "item_count": 1,
+            "access_rules": [],
+            "visibility_rules": [
+              "setting_trainers"
+            ],
+            "chest_unopened_img": "images/items/landkeeper_1.png",
+            "chest_opened_img": "images/items/landkeeper_1_gray.png"
+          }
+        ],
+        "map_locations": [
+          {
+            "map": "new_wirral",
+            "x": 240,
+            "y": 112
+          }
+        ]
+      },
+      {
+        "name": "1,-4",
+        "access_rules": [],
+        "sections": [
+          {
+            "name": "Thirstaton Lake Researcher Battle (1,-4)",
+            "item_count": 1,
+            "access_rules": [],
+            "visibility_rules": [
+              "setting_trainers"
+            ],
+            "chest_unopened_img": "images/items/landkeeper_1.png",
+            "chest_opened_img": "images/items/landkeeper_1_gray.png"
+          }
+        ],
+        "map_locations": [
+          {
+            "map": "new_wirral",
+            "x": 272,
+            "y": 112
+          }
+        ]
+      },
+      {
+        "name": "-1,-3",
+        "access_rules": [],
+        "sections": [
+          {
+            "name": "Thirstaton Lake Landkeeper Battle (-1,-3)",
+            "item_count": 1,
+            "access_rules": [],
+            "visibility_rules": [
+              "setting_trainers"
+            ],
+            "chest_unopened_img": "images/items/landkeeper_1.png",
+            "chest_opened_img": "images/items/landkeeper_1_gray.png"
+          }
+        ],
+        "map_locations": [
+          {
+            "map": "new_wirral",
+            "x": 208,
+            "y": 144
+          }
+        ]
+      },
+      {
+        "name": "-2,-4",
+        "access_rules": [],
+        "sections": [
+          {
+            "name": "Diveana Battle (-2,-4)",
+            "item_count": 1,
+            "access_rules": [],
+            "visibility_rules": [
+              "setting_trainers"
+            ],
+            "chest_unopened_img": "images/items/landkeeper_1.png",
+            "chest_opened_img": "images/items/landkeeper_1_gray.png"
+          }
+        ],
+        "map_locations": [
+          {
+            "map": "new_wirral",
+            "x": 176,
+            "y": 112
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "name": "Cherry Meadow",
+    "access_rules": ["@Lakeside"],
+    "children": [
+      {
+        "name": "-2,-3",
+        "access_rules": [],
+        "sections": [
+          {
+            "name": "Cherry Meadow Chest Over Thirstaton Lake (-2,-3)",
+            "item_count": 1,
+            "access_rules": [],
+            "visibility_rules": []
+          },
+          {
+            "name": "Cherry Meadow Chest Loot Over Thirstaton Lake (-2,-3)",
+            "item_count": 1,
+            "access_rules": [],
+            "visibility_rules": [
+              "setting_loot"
+            ]
+          }
+        ],
+        "map_locations": [
+          {
+            "map": "new_wirral",
+            "x": 176,
+            "y": 144
+          }
+        ]
+      },
+      {
+        "name": "-3,-4",
+        "access_rules": [],
+        "sections": [
+          {
+            "name": "Beat Captain Buffy",
+            "item_count": 1,
+            "access_rules": ["dash", "magnetism"],
+            "visibility_rules": []//,
+            //"chest_unopened_img": "images/items/captains/buffy.png",
+            //"chest_opened_img": "images/items/captains/buffy.png",
+            //"hosted_item": "captain_buffy"
+          }
+        ],
+        "map_locations": [
+          {
+            "map": "new_wirral",
+            "x": 144,
+            "y": 112
+          }
+        ]
+      },
+      {
+        "name": "-3,-5",
+        "access_rules": [],
+        "sections": [
+          {
+            "name": "Recruit Barkley",
+            "item_count": 1,
+            "access_rules": ["climb"],
+            "visibility_rules": [],
+            "hosted_item": "recruited_barkley",
+            "chest_unopened_img": "images/items/barkley.png",
+            "chest_opened_img": "images/items/barkley.png"
+          },
+          {
+            "name": "Cherry Meadow Chest Near Captain Buffy (-3,-5)",
+            "item_count": 1,
+            "access_rules": ["dash", "magnetism"],
+            "visibility_rules": []
+          },
+          {
+            "name": "Cherry Meadow Chest Loot Near Captain Buffy (-3,-5)",
+            "item_count": 1,
+            "access_rules": ["dash", "magnetism"],
+            "visibility_rules": [
+              "setting_loot"
+            ]
+          }
+        ],
+        "map_locations": [
+          {
+            "map": "new_wirral",
+            "x": 144,
+            "y": 80
+          }
+        ]
+      },
+      {
+        "name": "-5,-4",
+        "access_rules": [],
+        "sections": [
+          {
+            "name": "Cherry Meadow Button Chest (-5,-4)",
+            "item_count": 1,
+            "access_rules": ["dash", "magnetism"],
+            "visibility_rules": []
+          },
+          {
+            "name": "Cherry Meadow Button Chest Loot (-5,-4)",
+            "item_count": 1,
+            "access_rules": ["dash", "magnetism"],
+            "visibility_rules": [
+              "setting_loot"
+            ]
+          }
+        ],
+        "map_locations": [
+          {
+            "map": "new_wirral",
+            "x": 80,
+            "y": 112
+          }
+        ]
+      },
+      {
+        "name": "-4,-6",
+        "access_rules": [],
+        "sections": [
+          {
+            "name": "Cherry Meadow Cave Chest (-4,-6)",
+            "item_count": 1,
+            "access_rules": [],
+            "visibility_rules": []
+          },
+          {
+            "name": "Cherry Meadow Cave Chest Loot (-4,-6)",
+            "item_count": 1,
+            "access_rules": [],
+            "visibility_rules": [
+              "setting_loot"
+            ]
+          }
+        ],
+        "map_locations": [
+          {
+            "map": "new_wirral",
+            "x": 112,
+            "y": 48
+          }
+        ]
+      },
+      {
+        "name": "-4,-3",
+        "access_rules": [],
+        "sections": [
+          {
+            "name": "Cherry Meadow Ranger Trainee Battle (-4,-3)",
+            "item_count": 1,
+            "access_rules": [],
+            "visibility_rules": [
+              "setting_trainers"
+            ],
+            "chest_unopened_img": "images/items/landkeeper_1.png",
+            "chest_opened_img": "images/items/landkeeper_1_gray.png"
+          }
+        ],
+        "map_locations": [
+          {
+            "map": "new_wirral",
+            "x": 112,
+            "y": 144
+          }
+        ]
+      },
+      {
+        "name": "-4,-4",
+        "access_rules": [],
+        "sections": [
+          {
+            "name": "Cherry Meadow Ranger Trainee Battle Near Buffy (-4,-4)",
+            "item_count": 1,
+            "access_rules": [],
+            "visibility_rules": [
+              "setting_trainers"
+            ],
+            "chest_unopened_img": "images/items/landkeeper_1.png",
+            "chest_opened_img": "images/items/landkeeper_1_gray.png"
+          }
+        ],
+        "map_locations": [
+          {
+            "map": "new_wirral",
+            "x": 112,
+            "y": 112
+          }
+        ]
+      },
+      {
+        "name": "-5,-5",
+        "access_rules": [],
+        "sections": [
+          {
+            "name": "Socrates and Plato Battle (-5,-5)",
+            "item_count": 1,
+            "access_rules": [],
+            "visibility_rules": [
+              "setting_trainers"
+            ],
+            "chest_unopened_img": "images/items/landkeeper_1.png",
+            "chest_opened_img": "images/items/landkeeper_1_gray.png"
+          }
+        ],
+        "map_locations": [
+          {
+            "map": "new_wirral",
+            "x": 80,
+            "y": 80
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "name": "Ham",
+    "access_rules": ["@Eastham Woods"],
+    "children": [
+      {
+        "name": "-1,-7",
+        "access_rules": [],
+        "sections": [
+          {
+            "name": "Beat Captain Lodestein",
+            "item_count": 1,
+            "access_rules": [],
+            "visibility_rules": []//,
+            //"chest_unopened_img": "images/items/captains/lodestein.png",
+            //"chest_opened_img": "images/items/captains/lodestein.png",
+            //"hosted_item": "captain_lodestein"
+          },
+          {
+            "name": "Ham Chest Near Mt Wirral (-1,-7)",
+            "item_count": 1,
+            "access_rules": ["glide"],
+            "visibility_rules": []
+          },
+          {
+            "name": "Ham Chest Fall from Mt Wirral (-1,-7)",
+            "item_count": 1,
+            "access_rules": ["@Mt Wirral"],
+            "visibility_rules": []
+          },
+          {
+            "name": "Ham Chest Loot Near Mt Wirral (-1,-7)",
+            "item_count": 1,
+            "access_rules": ["glide"],
+            "visibility_rules": [
+              "setting_loot"
+            ]
+          },
+          {
+            "name": "Ham Chest Loot Fall from Mt Wirral (-1,-7)",
+            "item_count": 1,
+            "access_rules": ["@Mt Wirral"],
+            "visibility_rules": [
+              "setting_loot"
+            ]
+          }
+        ],
+        "map_locations": [
+          {
+            "map": "new_wirral",
+            "x": 208,
+            "y": 16
+          }
+        ]
+      },
+      {
+        "name": "-2,-7",
+        "access_rules": [],
+        "sections": [
+          {
+            "name": "Behind Mt Wirral Chest (-2,-7)",
+            "item_count": 1,
+            "access_rules": [],
+            "visibility_rules": []
+          },
+          {
+            "name": "Behind Mt Wirral Chest Loot (-2,-7)",
+            "item_count": 1,
+            "access_rules": [],
+            "visibility_rules": [
+              "setting_loot"
+            ]
+          },
+          {
+            "name": "Mt Wirral Waterfall Cave Chest (-2,-7)",
+            "item_count": 1,
+            "access_rules": ["@Mt Wirral"],
+            "visibility_rules": []
+          },
+          {
+            "name": "Mt Wirral Waterfall Cave Chest Loot (-2,-7)",
+            "item_count": 1,
+            "access_rules": ["@Mt Wirral"],
+            "visibility_rules": [
+              "setting_loot"
+            ]
+          },
+          {
+            "name": "Mt Wirral Ranger Wannabe Battle Near Ham (-2,-7)",
+            "item_count": 1,
+            "access_rules": ["@Mt Wirral"],
+            "visibility_rules": [
+              "setting_trainers"
+            ],
+            "chest_unopened_img": "images/items/landkeeper_1.png",
+            "chest_opened_img": "images/items/landkeeper_1_gray.png"
+          }
+        ],
+        "map_locations": [
+          {
+            "map": "new_wirral",
+            "x": 176,
+            "y": 16
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "name": "The Marshes",
+    "access_rules": ["@Cherry Meadow"],
+    "children": [
+      {
+        "name": "-3,-3",
+        "access_rules": [],
+        "sections": [
+          {
+            "name": "Marshes Lift Crate in Cherry Meadow Chest (-3,-3)",
+            "item_count": 1,
+            "access_rules": [],
+            "visibility_rules": []
+          },
+          {
+            "name": "Marshes Lift Crate in Cherry Meadow Chest Loot (-3,-3)",
+            "item_count": 1,
+            "access_rules": [],
+            "visibility_rules": [
+              "setting_loot"
+            ]
+          }
+        ],
+        "map_locations": [
+          {
+            "map": "new_wirral",
+            "x": 144,
+            "y": 144
+          }
+        ]
+      },
+      {
+        "name": "-4,-2",
+        "access_rules": [],
+        "sections": [
+          {
+            "name": "Recruit Viola",
+            "item_count": 1,
+            "access_rules": [],
+            "visibility_rules": [],
+            "hosted_item": "recruited_viola",
+            "chest_unopened_img": "images/items/viola.png",
+            "chest_opened_img": "images/items/viola.png"
+          }
+        ],
+        "map_locations": [
+          {
+            "map": "new_wirral",
+            "x": 112,
+            "y": 176
+          }
+        ]
+      },
+      {
+        "name": "-4,-3",
+        "access_rules": [],
+        "sections": [
+          {
+            "name": "Marshes 4 Rocks in a Line Chest (-4,-3)",
+            "item_count": 1,
+            "access_rules": [],
+            "visibility_rules": []
+          },
+          {
+            "name": "Marshes 4 Rocks in a Line Chest Loot (-4,-3)",
+            "item_count": 1,
+            "access_rules": [],
+            "visibility_rules": [
+              "setting_loot"
+            ]
+          }
+        ],
+        "map_locations": [
+          {
+            "map": "new_wirral",
+            "x": 112,
+            "y": 144
+          }
+        ]
+      },
+      {
+        "name": "-5,-2",
+        "access_rules": [],
+        "sections": [
+          {
+            "name": "Beat Captain Cybil",
+            "item_count": 1,
+            "access_rules": [],
+            "visibility_rules": []//,
+            //"chest_unopened_img": "images/items/captains/cybil.png",
+            //"chest_opened_img": "images/items/captains/cybil.png",
+            //"hosted_item": "captain_cybil"
+          }
+        ],
+        "map_locations": [
+          {
+            "map": "new_wirral",
+            "x": 80,
+            "y": 176
+          }
+        ]
+      },
+      {
+        "name": "-5,-3",
+        "access_rules": [],
+        "sections": [
+          {
+            "name": "Marshes Chest Near Landkeeper Office (-5,-3)",
+            "item_count": 1,
+            "access_rules": [],
+            "visibility_rules": []
+          },
+          {
+            "name": "Marshes Chest Loot Near Landkeeper Office (-5,-3)",
+            "item_count": 1,
+            "access_rules": [],
+            "visibility_rules": [
+              "setting_loot"
+            ]
+          }
+        ],
+        "map_locations": [
+          {
+            "map": "new_wirral",
+            "x": 80,
+            "y": 144
+          }
+        ]
+      },
+      {
+        "name": "-6,-1",
+        "access_rules": [],
+        "sections": [
+          {
+            "name": "Marshes Coast Button Chest (-6,-1)",
+            "item_count": 1,
+            "access_rules": [],
+            "visibility_rules": []
+          },
+          {
+            "name": "Marshes Coast Button Chest Loot (-6,-1)",
+            "item_count": 1,
+            "access_rules": [],
+            "visibility_rules": [
+              "setting_loot"
+            ]
+          },
+          {
+            "name": "The Marshes Landkeeper Battle Near Spider Cave (-6,-1)",
+            "item_count": 1,
+            "access_rules": [],
+            "visibility_rules": [
+              "setting_trainers"
+            ],
+            "chest_unopened_img": "images/items/landkeeper_1.png",
+            "chest_opened_img": "images/items/landkeeper_1_gray.png"
+          }
+        ],
+        "map_locations": [
+          {
+            "map": "new_wirral",
+            "x": 48,
+            "y": 208
+          }
+        ]
+      },
+      {
+        "name": "-6,-2",
+        "access_rules": [],
+        "sections": [
+          {
+            "name": "Marshes Three Underwater Buttons Chest (-6,-2)",
+            "item_count": 1,
+            "access_rules": [],
+            "visibility_rules": []
+          },
+          {
+            "name": "Marshes Three Underwater Buttons Chest Loot (-6,-2)",
+            "item_count": 1,
+            "access_rules": [],
+            "visibility_rules": [
+              "setting_loot"
+            ]
+          }
+        ],
+        "map_locations": [
+          {
+            "map": "new_wirral",
+            "x": 48,
+            "y": 176
+          }
+        ]
+      },
+      {
+        "name": "-5,-1",
+        "access_rules": [],
+        "sections": [
+          {
+            "name": "Marsh Cave Chest (-5,-1)",
+            "item_count": 1,
+            "access_rules": [],
+            "visibility_rules": []
+          },
+          {
+            "name": "Marsh Cave Chest Loot (-5,-1)",
+            "item_count": 1,
+            "access_rules": [],
+            "visibility_rules": [
+              "setting_loot"
+            ]
+          }
+        ],
+        "map_locations": [
+          {
+            "map": "new_wirral",
+            "x": 80,
+            "y": 208
+          }
+        ]
+      },
+      {
+        "name": "-7,-1",
+        "access_rules": [],
+        "sections": [
+          {
+            "name": "Marsh Cave Chest (-7,-1)",
+            "item_count": 1,
+            "access_rules": [],
+            "visibility_rules": []
+          },
+          {
+            "name": "Marsh Cave Chest Loot (-7,-1)",
+            "item_count": 1,
+            "access_rules": [],
+            "visibility_rules": [
+              "setting_loot"
+            ]
+          }
+        ],
+        "map_locations": [
+          {
+            "map": "new_wirral",
+            "x": 16,
+            "y": 208
+          }
+        ]
+      },
+      {
+        "name": "-6,-3",
+        "access_rules": [],
+        "sections": [
+          {
+            "name": "Cleared Landkeeper Office 5",
+            "item_count": 1,
+            "access_rules": ["glide,landkeeper_office_key"],
+            "visibility_rules": [],
+            "hosted_item": "office5"
+          },
+          {
+            "name": "Landkeeper Office 5 Cabinet (-6,-3)",
+            "item_count": 1,
+            "access_rules": ["glide,landkeeper_office_key"],
+            "visibility_rules": []
+          },
+          {
+            "name": "Landkeeper Office 5 Cabinet Loot (-6,-3)",
+            "item_count": 1,
+            "access_rules": ["glide,landkeeper_office_key"],
+            "visibility_rules": [
+              "setting_loot"
+            ]
+          },
+          {
+            "name": "The Marshes Landkeeper Battle Near Office (-6,-3)",
+            "item_count": 1,
+            "access_rules": [],
+            "visibility_rules": [
+              "setting_trainers"
+            ],
+            "chest_unopened_img": "images/items/landkeeper_1.png",
+            "chest_opened_img": "images/items/landkeeper_1_gray.png"
+          },
+          {
+            "name": "Landkeeper Office 5 Battle (-6,-3)",
+            "item_count": 1,
+            "access_rules": ["glide,landkeeper_office_key"],
+            "visibility_rules": [
+              "setting_trainers"
+            ],
+            "chest_unopened_img": "images/items/landkeeper_1.png",
+            "chest_opened_img": "images/items/landkeeper_1_gray.png"
+          }
+        ],
+        "map_locations": [
+          {
+            "map": "new_wirral",
+            "x": 48,
+            "y": 144
+          }
+        ]
+      },
+      {
+        "name": "-7,-2",
+        "access_rules": [],
+        "sections": [
+          {
+            "name": "The Marshes Lankeeper Battle Near West Mire Sea (-7,-2)",
+            "item_count": 1,
+            "access_rules": [],
+            "visibility_rules": [
+              "setting_trainers"
+            ],
+            "chest_unopened_img": "images/items/landkeeper_1.png",
+            "chest_opened_img": "images/items/landkeeper_1_gray.png"
+          }
+        ],
+        "map_locations": [
+          {
+            "map": "new_wirral",
+            "x": 16,
+            "y": 176
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "name": "Spider Cave",
+    "access_rules": ["@The Marshes,dash"],
+    "children": [
+      {
+        "name": "-6,-1",
+        "access_rules": [],
+        "sections": [
+          {
+            "name": "Spider Cave Chest (-6,-1)",
+            "item_count": 1,
+            "access_rules": ["glide"],
+            "visibility_rules": []
+          },
+          {
+            "name": "Spider Cave Chest Loot (-6,-1)",
+            "item_count": 1,
+            "access_rules": ["glide"],
+            "visibility_rules": [
+              "setting_loot"
+            ]
+          }
+        ],
+        "map_locations": [
+          {
+            "map": "new_wirral",
+            "x": 48,
+            "y": 208
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "name": "Piper Farm",
+    "access_rules": ["@The Marshes"],
+    "children": [
+      {
+        "name": "-3,-1",
+        "access_rules": [],
+        "sections": [
+          {
+            "name": "Piper Farm Chest (-3,-1)",
+            "item_count": 1,
+            "access_rules": [],
+            "visibility_rules": []
+          },
+          {
+            "name": "Piper Farm Climb Chest (-3,-1)",
+            "item_count": 1,
+            "access_rules": ["Climb"],
+            "visibility_rules": []
+          },
+          {
+            "name": "Piper Farm Chest Loot (-3,-1)",
+            "item_count": 1,
+            "access_rules": [],
+            "visibility_rules": [
+              "setting_loot"
+            ]
+          },
+          {
+            "name": "Piper Farm Climb Chest Loot (-3,-1)",
+            "item_count": 1,
+            "access_rules": ["Climb"],
+            "visibility_rules": [
+              "setting_loot"
+            ]
+          }
+        ],
+        "map_locations": [
+          {
+            "map": "new_wirral",
+            "x": 144,
+            "y": 208
+          }
+        ]
+      },
+      {
+        "name": "-3,0",
+        "access_rules": [],
+        "sections": [
+          {
+            "name": "Creep Battle Below Piper Farm (-3,0)",
+            "item_count": 1,
+            "access_rules": [],
+            "visibility_rules": [
+              "setting_trainers"
+            ],
+            "chest_unopened_img": "images/items/landkeeper_1.png",
+            "chest_opened_img": "images/items/landkeeper_1_gray.png"
+          }
+        ],
+        "map_locations": [
+          {
+            "map": "new_wirral",
+            "x": 144,
+            "y": 240
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "name": "Lost Hearts Graveyard",
+    "access_rules": ["@The Marshes"],
+    "children": [
+      {
+        "name": "-3,0",
+        "access_rules": [],
+        "sections": [
+          {
+            "name": "East of Graveyard Lever Chest (-3,0)",
+            "item_count": 1,
+            "access_rules": [],
+            "visibility_rules": []
+          },
+          {
+            "name": "East of Graveyard Lever Chest Loot (-3,0)",
+            "item_count": 1,
+            "access_rules": [],
+            "visibility_rules": [
+              "setting_loot"
+            ]
+          }
+        ],
+        "map_locations": [
+          {
+            "map": "new_wirral",
+            "x": 144,
+            "y": 240
+          }
+        ]
+      },
+      {
+        "name": "-4,0",
+        "access_rules": [],
+        "sections": [
+          {
+            "name": "Graveyard Chest in Puddle (-4,0)",
+            "item_count": 1,
+            "access_rules": [],
+            "visibility_rules": []
+          },
+          {
+            "name": "Graveyard Chest Loot in Puddle (-4,0)",
+            "item_count": 1,
+            "access_rules": [],
+            "visibility_rules": [
+              "setting_loot"
+            ]
+          }
+        ],
+        "map_locations": [
+          {
+            "map": "new_wirral",
+            "x": 112,
+            "y": 240
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "name": "West Mire Sea",
+    "access_rules": ["@The Marshes,swim"],
+    "children": [
+      {
+        "name": "-7,0",
+        "access_rules": [],
+        "sections": [
+          {
+            "name": "Beat Captain Gladiola",
+            "item_count": 1,
+            "access_rules": [],
+            "visibility_rules": []//,
+            //"chest_unopened_img": "images/items/captains/gladiola.png",
+            //"chest_opened_img": "images/items/captains/gladiola.png",
+            //"hosted_item": "captain_gladiola"
+          },
+          {
+            "name": "West Mire Sea Chest Near Captain Gladiola (-7,0)",
+            "item_count": 1,
+            "access_rules": ["glide"],
+            "visibility_rules": []
+          },
+          {
+            "name": "West Mire Sea Chest Loot Near Captain Gladiola (-7,0)",
+            "item_count": 1,
+            "access_rules": ["glide"],
+            "visibility_rules": [
+              "setting_loot"
+            ]
+          }
+        ],
+        "map_locations": [
+          {
+            "map": "new_wirral",
+            "x": 16,
+            "y": 240
+          }
+        ]
+      },
+      {
+        "name": "-7,-3",
+        "access_rules": [],
+        "sections": [
+          {
+            "name": "West Mire Sea Button Chest on Pillar (-7,-3)",
+            "item_count": 1,
+            "access_rules": ["glide"],
+            "visibility_rules": []
+          },
+          {
+            "name": "West Mire Sea Button Chest Loot on Pillar (-7,-3)",
+            "item_count": 1,
+            "access_rules": ["glide"],
+            "visibility_rules": [
+              "setting_loot"
+            ]
+          }
+        ],
+        "map_locations": [
+          {
+            "map": "new_wirral",
+            "x": 16,
+            "y": 144
+          }
+        ]
+      },
+      {
+        "name": "-7,-5",
+        "access_rules": [],
+        "sections": [
+          {
+            "name": "Beat Captain Heather",
+            "item_count": 1,
+            "access_rules": [],
+            "visibility_rules": []//,
+            //"chest_unopened_img": "images/items/captains/heather.png",
+            //"chest_opened_img": "images/items/captains/heather.png",
+            //"hosted_item": "captain_heather"
+          }
+        ],
+        "map_locations": [
+          {
+            "map": "new_wirral",
+            "x": 16,
+            "y": 80
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "name": "Cast Iron Shore",
+    "access_rules": ["@The Marshes"],
+    "children": [
+      {
+        "name": "-6,-4",
+        "access_rules": [],
+        "sections": [
+          {
+            "name": "Cast Iron Shore Magnet Button Chest (-6,-4)",
+            "item_count": 1,
+            "access_rules": ["magnetism"],
+            "visibility_rules": []
+          },
+          {
+            "name": "Cast Iron Shore Magnet Button Chest Loot (-6,-4)",
+            "item_count": 1,
+            "access_rules": ["magnetism"],
+            "visibility_rules": [
+              "setting_loot"
+            ]
+          }
+        ],
+        "map_locations": [
+          {
+            "map": "new_wirral",
+            "x": 48,
+            "y": 112
+          }
+        ]
+      },
+      {
+        "name": "-6,-5",
+        "access_rules": [],
+        "sections": [
+          {
+            "name": "Cast Iron Shore Two Magnet Button Chest (-6,-5)",
+            "item_count": 1,
+            "access_rules": ["magnetism"],
+            "visibility_rules": []
+          },
+          {
+            "name": "Cast Iron Shore Two Magnet Button Chest Loot (-6,-5)",
+            "item_count": 1,
+            "access_rules": ["magnetism"],
+            "visibility_rules": [
+              "setting_loot"
+            ]
+          }
+        ],
+        "map_locations": [
+          {
+            "map": "new_wirral",
+            "x": 48,
+            "y": 80
+          }
+        ]
+      },
+      {
+        "name": "-6,-6",
+        "access_rules": [],
+        "sections": [
+          {
+            "name": "Titania Shipwreck Chest on Chimney (-6,-6)",
+            "item_count": 1,
+            "access_rules": ["climb"],
+            "visibility_rules": []
+          },
+          {
+            "name": "Titania Shipwreck Chest Loot on Chimney (-6,-6)",
+            "item_count": 1,
+            "access_rules": ["climb"],
+            "visibility_rules": [
+              "setting_loot"
+            ]
+          }
+        ],
+        "map_locations": [
+          {
+            "map": "new_wirral",
+            "x": 48,
+            "y": 48
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "name": "Mt Wirral",
+    "access_rules": ["@Cherry Meadow,glide,climb"],
+    "children": [
+      {
+        "name": "-2,-6",
+        "access_rules": [],
+        "sections": [
+          {
+            "name": "Beat Captain Codey",
+            "item_count": 1,
+            "access_rules": [],
+            "visibility_rules": []//,
+            //"chest_unopened_img": "images/items/captains/codey.png",
+            //"chest_opened_img": "images/items/captains/codey.png",
+            //"hosted_item": "captain_codey"
+          },
+          {
+            "name": "Mt Wirral Lower Platform with Button Chest (-2,-6)",
+            "item_count": 1,
+            "access_rules": [],
+            "visibility_rules": []
+          },
+          {
+            "name": "Mt Wirral Lower Platform with Button Chest Loot (-2,-6)",
+            "item_count": 1,
+            "access_rules": [],
+            "visibility_rules": [
+              "setting_loot"
+            ]
+          },
+          {
+            "name": "Mt Wirral Landkeeper Battle (-2,-6)",
+            "item_count": 1,
+            "access_rules": [],
+            "visibility_rules": [
+              "setting_trainers"
+            ],
+            "chest_unopened_img": "images/items/landkeeper_1.png",
+            "chest_opened_img": "images/items/landkeeper_1_gray.png"
+          }
+        ],
+        "map_locations": [
+          {
+            "map": "new_wirral",
+            "x": 176,
+            "y": 48
+          }
+        ]
+      },
+      {
+        "name": "-3,-6",
+        "access_rules": [],
+        "sections": [
+          {
+            "name": "Mt Wirral Chest Above Big Entrance (-3,-6)",
+            "item_count": 1,
+            "access_rules": [],
+            "visibility_rules": []
+          },
+          {
+            "name": "Averevoir Cave Chest (-3,-6)",
+            "item_count": 1,
+            "access_rules": [],
+            "visibility_rules": []
+          },
+          {
+            "name": "Mt Wirral Chest Loot Above Big Entrance (-3,-6)",
+            "item_count": 1,
+            "access_rules": [],
+            "visibility_rules": [
+              "setting_loot"
+            ]
+          },
+          {
+            "name": "Averevoir Cave Chest Loot (-3,-6)",
+            "item_count": 1,
+            "access_rules": [],
+            "visibility_rules": [
+              "setting_loot"
+            ]
+          }
+        ],
+        "map_locations": [
+          {
+            "map": "new_wirral",
+            "x": 144,
+            "y": 48
+          }
+        ]
+      },
+      {
+        "name": "-3,-7",
+        "access_rules": [],
+        "sections": [
+          {
+            "name": "Mt Wirral Chest at River Source (-3,-7)",
+            "item_count": 1,
+            "access_rules": [],
+            "visibility_rules": []
+          },
+          {
+            "name": "Mt Wirral Cave Bridge Chest (-3,-7)",
+            "item_count": 1,
+            "access_rules": [],
+            "visibility_rules": []
+          },
+          {
+            "name": "Mt Wirral Chest Loot at River Source (-3,-7)",
+            "item_count": 1,
+            "access_rules": [],
+            "visibility_rules": [
+              "setting_loot"
+            ]
+          },
+          {
+            "name": "Mt Wirral Cave Bridge Chest Loot (-3,-7)",
+            "item_count": 1,
+            "access_rules": [],
+            "visibility_rules": [
+              "setting_loot"
+            ]
+          }
+        ],
+        "map_locations": [
+          {
+            "map": "new_wirral",
+            "x": 144,
+            "y": 16
+          }
+        ]
+      },
+      {
+        "name": "-4,-6",
+        "access_rules": [],
+        "sections": [
+          {
+            "name": "Mt Wirral Elevator Chest (-4,-6)",
+            "item_count": 1,
+            "access_rules": [],
+            "visibility_rules": []
+          },
+          {
+            "name": "Mt Wirral Elevator Chest Loot (-4,-6)",
+            "item_count": 1,
+            "access_rules": [],
+            "visibility_rules": [
+              "setting_loot"
+            ]
+          }
+        ],
+        "map_locations": [
+          {
+            "map": "new_wirral",
+            "x": 112,
+            "y": 48
+          }
+        ]
+      },
+      {
+        "name": "-4,-7",
+        "access_rules": [],
+        "sections": [
+          {
+            "name": "Recruit Sunny",
+            "item_count": 1,
+            "access_rules": ["Defeated Aleph"],
+            "visibility_rules": [],
+            "hosted_item": "recruited_sunny",
+            "chest_unopened_img": "images/items/sunny.png",
+            "chest_opened_img": "images/items/sunny.png"
+          },
+          {
+            "name": "Mt Wirral Traveler Battle (-4,-7)",
+            "item_count": 1,
+            "access_rules": [],
+            "visibility_rules": [
+              "setting_trainers"
+            ],
+            "chest_unopened_img": "images/items/landkeeper_1.png",
+            "chest_opened_img": "images/items/landkeeper_1_gray.png"
+          }
+        ],
+        "map_locations": [
+          {
+            "map": "new_wirral",
+            "x": 112,
+            "y": 16
+          }
+        ]
+      },
+      {
+        "name": "-5,-6",
+        "access_rules": [],
+        "sections": [
+          {
+            "name": "Mt Wirral Base Chest Near Cast Iron Shore (-5,-6)",
+            "item_count": 1,
+            "access_rules": [],
+            "visibility_rules": []
+          },
+          {
+            "name": "Mt Wirral Button Chest (-5,-6)",
+            "item_count": 1,
+            "access_rules": [],
+            "visibility_rules": []
+          },
+          {
+            "name": "Mt Wirral Base Chest Loot Near Cast Iron Shore (-5,-6)",
+            "item_count": 1,
+            "access_rules": [],
+            "visibility_rules": [
+              "setting_loot"
+            ]
+          },
+          {
+            "name": "Mt Wirral Button Chest Loot (-5,-6)",
+            "item_count": 1,
+            "access_rules": [],
+            "visibility_rules": [
+              "setting_loot"
+            ]
+          },
+          {
+            "name": "Mt Wirral Traveler Battle Near Brokenhead (-5,-6)",
+            "item_count": 1,
+            "access_rules": [],
+            "visibility_rules": [
+              "setting_trainers"
+            ],
+            "chest_unopened_img": "images/items/landkeeper_1.png",
+            "chest_opened_img": "images/items/landkeeper_1_gray.png"
+          }
+        ],
+        "map_locations": [
+          {
+            "map": "new_wirral",
+            "x": 80,
+            "y": 48
+          }
+        ]
+      },
+      {
+        "name": "-5,-7",
+        "access_rules": [],
+        "sections": [
+          {
+            "name": "Mt Wirral Chest Near Brokenhead (-5,-7)",
+            "item_count": 1,
+            "access_rules": [],
+            "visibility_rules": []
+          },
+          {
+            "name": "Mt Wirral Chest Loot Near Brokenhead (-5,-7)",
+            "item_count": 1,
+            "access_rules": [],
+            "visibility_rules": [
+              "setting_loot"
+            ]
+          }
+        ],
+        "map_locations": [
+          {
+            "map": "new_wirral",
+            "x": 80,
+            "y": 16
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "name": "Brokenhead",
+    "access_rules": ["@Mt Wirral,flight"],
+    "children": [
+      {
+        "name": "-7,-7",
+        "access_rules": [],
+        "sections": [
+          {
+            "name": "Brokenhead Chest on Henge (-7,-7)",
+            "item_count": 1,
+            "access_rules": ["climb"],
+            "visibility_rules": []
+          },
+          {
+            "name": "Brokenhead Chest Under Henge (-7,-7)",
+            "item_count": 1,
+            "access_rules": [],
+            "visibility_rules": []
+          },
+          {
+            "name": "Brokenhead Chest Loot on Henge (-7,-7)",
+            "item_count": 1,
+            "access_rules": ["climb"],
+            "visibility_rules": [
+              "setting_loot"
+            ]
+          },
+          {
+            "name": "Brokenhead Chest Loot Under Henge (-7,-7)",
+            "item_count": 1,
+            "access_rules": [],
+            "visibility_rules": [
+              "setting_loot"
+            ]
+          },
+          {
+            "name": "Brokenhead Tamer Battle (-7,-7)",
+            "item_count": 1,
+            "access_rules": [],
+            "visibility_rules": [
+              "setting_trainers"
+            ],
+            "chest_unopened_img": "images/items/landkeeper_1.png",
+            "chest_opened_img": "images/items/landkeeper_1_gray.png"
+          }
+        ],
+        "map_locations": [
+          {
+            "map": "new_wirral",
+            "x": 16,
+            "y": 16
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "name": "Harbourtown Station",
+    "access_rules": ["@Upper Path,recruited_kayleigh"],
+    "children": [
+      {
+        "name": "1,-2",
+        "access_rules": [],
+        "sections": [
+          {
+            "name": "Harbourtown Station Chest (1,-2)",
+            "item_count": 1,
+            "access_rules": [],
+            "visibility_rules": []
+          },
+          {
+            "name": "Harbourtown Station Chest Loot (1,-2)",
+            "item_count": 1,
+            "access_rules": [],
+            "visibility_rules": [
+              "setting_loot"
+            ]
+          }
+        ],
+        "map_locations": [
+          {
+            "map": "new_wirral",
+            "x": 272,
+            "y": 168
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "name": "Glowcester Road Station",
+    "access_rules": ["@New Wirral Park"],
+    "children": [
+      {
+        "name": "Glowcester Road Station",
+        "access_rules": [],
+        "sections": [
+          {
+            "name": "Defeated Poppetox",
+            "item_count": 1,
+            "access_rules": ["trainticketGlow"],
+            "visibility_rules": [],
+            "hosted_item": "poppetox"
+          },
+          {
+            "name": "Train Ticket (Glowcester)",
+            "item_count": 1,
+            "access_rules": ["machinepart"],
+            "visibility_rules": []
+          },
+          {
+            "name": "Glowcester Road Station Cave Chest (5,-4)",
+            "item_count": 1,
+            "access_rules": [],
+            "visibility_rules": []
+          },
+          {
+            "name": "Glowcester Road Station Cave Chest Loot (5,-4)",
+            "item_count": 1,
+            "access_rules": [],
+            "visibility_rules": [
+              "setting_loot"
+            ]
+          }
+        ],
+        "map_locations": [
+          {
+            "map": "new_wirral",
+            "x": 400,
+            "y": 104
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "name": "Mourningtown",
+    "access_rules": ["@Autumn Hill"],
+    "children": [
+      {
+        "name": "Mourningtown",
+        "access_rules": [],
+        "sections": [
+          {
+            "name": "Mourningtown Chest (7,-5)",
+            "item_count": 1,
+            "access_rules": [],
+            "visibility_rules": []
+          },
+          {
+            "name": "Mourningtown Chest Loot (7,-5)",
+            "item_count": 1,
+            "access_rules": [],
+            "visibility_rules": [
+              "setting_loot"
+            ]
+          },
+          {
+            "name": "Mourningtown Cultist Battle 1 (7,-5)",
+            "item_count": 1,
+            "access_rules": [],
+            "visibility_rules": [
+              "setting_trainers"
+            ],
+            "chest_unopened_img": "images/items/landkeeper_1.png",
+            "chest_opened_img": "images/items/landkeeper_1_gray.png"
+          },
+          {
+            "name": "Mourningtown Cultist Battle 2 (7,-5)",
+            "item_count": 1,
+            "access_rules": [],
+            "visibility_rules": [
+              "setting_trainers"
+            ],
+            "chest_unopened_img": "images/items/landkeeper_1.png",
+            "chest_opened_img": "images/items/landkeeper_1_gray.png"
+          },
+          {
+            "name": "Mourningtown Cultist Battle 3 (7,-5)",
+            "item_count": 1,
+            "access_rules": [],
+            "visibility_rules": [
+              "setting_trainers"
+            ],
+            "chest_unopened_img": "images/items/landkeeper_1.png",
+            "chest_opened_img": "images/items/landkeeper_1_gray.png"
+          },
+          {
+            "name": "Mourningtown Cultist Battle 4 (7,-5)",
+            "item_count": 1,
+            "access_rules": [],
+            "visibility_rules": [
+              "setting_trainers"
+            ],
+            "chest_unopened_img": "images/items/landkeeper_1.png",
+            "chest_opened_img": "images/items/landkeeper_1_gray.png"
+          },
+          {
+            "name": "Mourningtown Cultist Battle 5 (7,-5)",
+            "item_count": 1,
+            "access_rules": [],
+            "visibility_rules": [
+              "setting_trainers"
+            ],
+            "chest_unopened_img": "images/items/landkeeper_1.png",
+            "chest_opened_img": "images/items/landkeeper_1_gray.png"
+          },
+          {
+            "name": "Mourningtown Cultist Battle 6 (7,-5)",
+            "item_count": 1,
+            "access_rules": [],
+            "visibility_rules": [
+              "setting_trainers"
+            ],
+            "chest_unopened_img": "images/items/landkeeper_1.png",
+            "chest_opened_img": "images/items/landkeeper_1_gray.png"
+          },
+          {
+            "name": "Mourningtown Cultist Battle 7 (7,-5)",
+            "item_count": 1,
+            "access_rules": [],
+            "visibility_rules": [
+              "setting_trainers"
+            ],
+            "chest_unopened_img": "images/items/landkeeper_1.png",
+            "chest_opened_img": "images/items/landkeeper_1_gray.png"
+          },
+          {
+            "name": "Mourningtown Cultist Battle 8 (7,-5)",
+            "item_count": 1,
+            "access_rules": [],
+            "visibility_rules": [
+              "setting_trainers"
+            ],
+            "chest_unopened_img": "images/items/landkeeper_1.png",
+            "chest_opened_img": "images/items/landkeeper_1_gray.png"
+          },
+          {
+            "name": "Mourningtown Cultist Battle 9 (7,-5)",
+            "item_count": 1,
+            "access_rules": [],
+            "visibility_rules": [
+              "setting_trainers"
+            ],
+            "chest_unopened_img": "images/items/landkeeper_1.png",
+            "chest_opened_img": "images/items/landkeeper_1_gray.png"
+          }
+        ],
+        "map_locations": [
+          {
+            "map": "new_wirral",
+            "x": 464,
+            "y": 80
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "name": "Mourningstar Crescent Station",
+    "access_rules": ["@Mourningtown,key_rusted"],
+    "children": [
+      {
+        "name": "Mourningstar Crescent Station",
+        "access_rules": [],
+        "sections": [
+          {
+            "name": "Defeated Mourningstar",
+            "item_count": 1,
+            "access_rules": [],
+            "visibility_rules": [],
+            "hosted_item": "mourningstar"
+          }
+        ],
+        "map_locations": [
+          {
+            "map": "new_wirral",
+            "x": 464,
+            "y": 72
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "name": "Falldown Mall",
+    "access_rules": ["@Eastham Woods Cliff,recruited_meredith"],
+    "children": [
+      {
+        "name": "Falldown Mall",
+        "access_rules": [],
+        "sections": [
+          {
+            "name": "Defeated Nowhere Monarch",
+            "item_count": 1,
+            "access_rules": [],
+            "visibility_rules": [],
+            "hosted_item": "monarch"
+          },
+          {
+            "name": "Falldown Mall Bookshop Chest (3,-7)",
+            "item_count": 1,
+            "access_rules": [],
+            "visibility_rules": []
+          },
+          {
+            "name": "Falldown Mall Empty Shop Chest (3,-7)",
+            "item_count": 1,
+            "access_rules": ["dash"],
+            "visibility_rules": []
+          },
+          {
+            "name": "Falldown Mall Crate Room Chest (3,-7)",
+            "item_count": 1,
+            "access_rules": ["dash"],
+            "visibility_rules": []
+          },
+          {
+            "name": "Falldown Mall Bookshop Chest Loot (3,-7)",
+            "item_count": 1,
+            "access_rules": [],
+            "visibility_rules": [
+              "setting_loot"
+            ]
+          },
+          {
+            "name": "Falldown Mall Empty Shop Chest Loot (3,-7)",
+            "item_count": 1,
+            "access_rules": ["dash"],
+            "visibility_rules": [
+              "setting_loot"
+            ]
+          },
+          {
+            "name": "Falldown Mall Crate Room Chest Loot (3,-7)",
+            "item_count": 1,
+            "access_rules": ["dash"],
+            "visibility_rules": [
+              "setting_loot"
+            ]
+          }
+        ],
+        "map_locations": [
+          {
+            "map": "new_wirral",
+            "x": 336,
+            "y": 8
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "name": "Waterloop Station",
+    "access_rules": ["@Thirstaton Lake"],
+    "children": [
+      {
+        "name": "Waterloop Station",
+        "access_rules": [],
+        "sections": [
+          {
+            "name": "Defeated Heckahedron",
+            "item_count": 1,
+            "access_rules": [],
+            "visibility_rules": [],
+            "hosted_item": "cube"
+          },
+          {
+            "name": "Waterloop Station Break Polyhedron Chest (1,-4)",
+            "item_count": 1,
+            "access_rules": ["dash"],
+            "visibility_rules": []
+          },
+          {
+            "name": "Waterloop Station Statues Off Chest (1,-4)",
+            "item_count": 1,
+            "access_rules": [],
+            "visibility_rules": []
+          },
+          {
+            "name": "Waterloop Station Statues On Chest (1,-4)",
+            "item_count": 1,
+            "access_rules": [],
+            "visibility_rules": []
+          },
+          {
+            "name": "Waterloop Station Lying Chest (1,-4)",
+            "item_count": 1,
+            "access_rules": [],
+            "visibility_rules": []
+          },
+          {
+            "name": "Waterloop Station Break Polyhedron Chest Loot (1,-4)",
+            "item_count": 1,
+            "access_rules": ["dash"],
+            "visibility_rules": [
+              "setting_loot"
+            ]
+          },
+          {
+            "name": "Waterloop Station Statues Off Chest Loot (1,-4)",
+            "item_count": 1,
+            "access_rules": [],
+            "visibility_rules": [
+              "setting_loot"
+            ]
+          },
+          {
+            "name": "Waterloop Station Statues On Chest Loot (1,-4)",
+            "item_count": 1,
+            "access_rules": [],
+            "visibility_rules": [
+              "setting_loot"
+            ]
+          },
+          {
+            "name": "Waterloop Station Lying Chest Loot (1,-4)",
+            "item_count": 1,
+            "access_rules": [],
+            "visibility_rules": [
+              "setting_loot"
+            ]
+          }
+        ],
+        "map_locations": [
+          {
+            "map": "new_wirral",
+            "x": 272,
+            "y": 104
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "name": "Cherry Cross Station",
+    "access_rules": ["@Cherry Meadow"],
+    "children": [
+      {
+        "name": "Cherry Cross Station",
+        "access_rules": [],
+        "sections": [
+          {
+            "name": "Defeated Alice",
+            "item_count": 1,
+            "access_rules": ["key_old_silver"],
+            "visibility_rules": [],
+            "hosted_item": "alice"
+          },
+          {
+            "name": "Cherry Cross Station Giant Chest (-4,-4)",
+            "item_count": 1,
+            "access_rules": [],
+            "visibility_rules": []
+          },
+          {
+            "name": "Cherry Cross Station Tiny Chest (-4,-4)",
+            "item_count": 1,
+            "access_rules": ["dash"],
+            "visibility_rules": []
+          },
+          {
+            "name": "Cherry Cross Station Giant Chest Loot (-4,-4)",
+            "item_count": 1,
+            "access_rules": [],
+            "visibility_rules": [
+              "setting_loot"
+            ]
+          },
+          {
+            "name": "Cherry Cross Station Tiny Chest Loot (-4,-4)",
+            "item_count": 1,
+            "access_rules": ["dash"],
+            "visibility_rules": [
+              "setting_loot"
+            ]
+          }
+        ],
+        "map_locations": [
+          {
+            "map": "new_wirral",
+            "x": 112,
+            "y": 104
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "name": "Glaistainbury Abbey",
+    "access_rules": ["@Cherry Meadow,magnetism"],
+    "children": []
+  },
+  {
+    "name": "Titania Shipwreck",
+    "access_rules": ["@Cast Iron Shore,recruited_viola"],
+    "children": [
+      {
+        "name": "Titania Shipwreck",
+        "access_rules": [],
+        "sections": [
+          {
+            "name": "Titania Shipwreck Valve 1 (-6,-6)",
+            "item_count": 1,
+            "access_rules": [],
+            "visibility_rules": []
+          },
+          {
+            "name": "Titania Shipwreck Valve 2 (-6,-6)",
+            "item_count": 1,
+            "access_rules": [],
+            "visibility_rules": []
+          },
+          {
+            "name": "Titania Shipwreck Chest (-6,-6)",
+            "item_count": 1,
+            "access_rules": [],
+            "visibility_rules": []
+          },
+          {
+            "name": "Titania Shipwreck Chest Loot (-6,-6)",
+            "item_count": 1,
+            "access_rules": [],
+            "visibility_rules": [
+              "setting_loot"
+            ]
+          }
+        ],
+        "map_locations": [
+          {
+            "map": "new_wirral",
+            "x": 48,
+            "y": 40
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "name": "Bard Street Station",
+    "access_rules": [],
+    "children": [
+      {
+        "name": "Bard Street Station",
+        "access_rules": ["valve"],
+        "sections": [
+          {
+            "name": "Defeated Robin Goodfellow",
+            "item_count": 1,
+            "access_rules": ["valve"],
+            "visibility_rules": [],
+            "hosted_item": "robin"
+          }
+        ],
+        "map_locations": [
+          {
+            "map": "new_wirral",
+            "x": 48,
+            "y": 32
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "name": "Landkeeper HQ",
+    "access_rules": ["@The Marshes,office1,office2,office3,office4,office5"],
+    "children": [
+      {
+        "name": "Landkeeper HQ",
+        "access_rules": [],
+        "sections": [
+          {
+            "name": "Defeated Mammon",
+            "item_count": 1,
+            "access_rules": [],
+            "visibility_rules": [],
+            "hosted_item": "mammon"
+          }
+        ],
+        "map_locations": [
+          {
+            "map": "new_wirral",
+            "x": 112,
+            "y": 200
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "name": "Aldgrave Tomb Station",
+    "access_rules": ["@Lost Hearts Graveyard"],
+    "children": [
+      {
+        "name": "-5,0",
+        "access_rules": [],
+        "sections": [
+          {
+            "name": "Defeated Lamento Mori",
+            "item_count": 1,
+            "access_rules": ["trainticketGrave"],
+            "visibility_rules": [],
+            "hosted_item": "lamento"
+          },
+          {
+            "name": "Train Ticket (Aldgrave)",
+            "item_count": 1,
+            "access_rules": ["glide"],
+            "visibility_rules": [],
+          },
+          {
+            "name": "Aldgrave Tomb Station Landkeeper Battle (-5,0)",
+            "item_count": 1,
+            "access_rules": [],
+            "visibility_rules": [
+              "setting_trainers"
+            ],
+            "chest_unopened_img": "images/items/landkeeper_1.png",
+            "chest_opened_img": "images/items/landkeeper_1_gray.png"
+          }
+        ],
+        "map_locations": [
+          {
+            "map": "new_wirral",
+            "x": 80,
+            "y": 240
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "name": "Icelington Station",
+    "access_rules": ["@Mt Wirral"],
+    "children": [
+      {
+        "name": "-3,-7",
+        "access_rules": [],
+        "sections": [
+          {
+            "name": "Defeated Babelith",
+            "item_count": 1,
+            "access_rules": [],
+            "visibility_rules": [],
+            "hosted_item": "babelith"
+          },
+          {
+            "name": "Icelington Station Chest (-3,-7)",
+            "item_count": 1,
+            "access_rules": [],
+            "visibility_rules": []
+          },
+          {
+            "name": "Icelington Station Chest Loot (-3,-7)",
+            "item_count": 1,
+            "access_rules": [],
+            "visibility_rules": [
+              "setting_loot"
+            ]
+          }
+        ],
+        "map_locations": [
+          {
+            "map": "new_wirral",
+            "x": 144,
+            "y": 8
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "name": "Night's Bridge Station",
+    "access_rules": [
+        "glide,swim,magnetism,$has_at_least_n|8|song_parts",
+        "glide,swim,magnetism,$has_at_least_n|4|song_parts,[$has_at_least_n|8|song_parts]"
+      ],
+      "children": [
+        {
+          "name": "Night's Bridge Station",
+          "access_rules": [],
+          "sections": [
+            {
+              "name": "Defeat Aleph",
+              "item_count": 1,
+              "access_rules": ["$has_at_least_n|2|keystone"],
+              "hosted_item": "aleph"
+            },
+            {
+              "name": "Night's Bridge Station Clockhands Chest (?,?)",
+              "item_count": 1,
+              "access_rules": ["glide,climb"]
+            },
+            {
+              "name": "Night's Bridge Station Right Azure Keystone Chest (?,?)",
+              "item_count": 1,
+              "access_rules": []
+            },
+            {
+              "name": "Night's Bridge Station Left Azure Keystone Chest (?,?)",
+              "item_count": 1,
+              "access_rules": []
+            },
+            {
+              "name": "Night's Bridge Station Clockhands Chest Loot (?,?)",
+              "item_count": 1,
+              "access_rules": ["glide,climb"]
+            },
+            {
+              "name": "Night's Bridge Station Right Azure Keystone Chest Loot (?,?)",
+              "item_count": 1,
+              "access_rules": []
+            },
+            {
+              "name": "Night's Bridge Station Left Azure Keystone Chest Loot (?,?)",
+              "item_count": 1,
+              "access_rules": []
+            }
+          ],
+          "map_locations": [
+            {
+              "map": "new_wirral",
+              "x": 0,
+              "y": 0
+            }
+          ]
+        }
+    ]
+  },
+  {
+    "name": "Postgame",
+    "access_rules": [],
+    "children": []
+  },
+  {
+    "name": "Brightside Pier",
+    "access_rules": [],
+    "children": []
+  },
+  {
+    "name": "The Witch House",
+    "access_rules": [],
+    "children": []
+  },
+  {
+    "name": "Funworld",
+    "access_rules": [],
+    "children": []
+  },
+  {
+    "name": "Cosmic Zone",
+    "access_rules": [],
+    "children": []
+  },
+  {
+    "name": "New Landkeeper Hideout",
+    "access_rules": ["recruited_sunny"],
+    "children": [
+      {
+        "name": "-4,-1",
+        "access_rules": [],
+        "sections": [
+          {
+            "name": "Landkeeper Secret Hideout Button Chest (-4,-1)",
+            "item_count": 1,
+            "access_rules": ["glide"],
+            "visibility_rules": []
+          },
+          {
+            "name": "Landkeeper Secret Hideout Pillar Chest (-4,-1)",
+            "item_count": 1,
+            "access_rules": [],
+            "visibility_rules": []
+          },
+          {
+            "name": "Landkeeper Secret Hideout Button Chest Loot (-4,-1)",
+            "item_count": 1,
+            "access_rules": ["glide"],
+            "visibility_rules": [
+              "setting_loot"
+            ]
+          },
+          {
+            "name": "Landkeeper Secret Hideout Pillar Chest Loot (-4,-1)",
+            "item_count": 1,
+            "access_rules": [],
+            "visibility_rules": [
+              "setting_loot"
+            ]
+          }
+        ],
+        "map_locations": [
+          {
+            "map": "new_wirral",
+            "x": 112,
+            "y": 208
+          }
+        ]
+      }
+    ]
+  }
+]
