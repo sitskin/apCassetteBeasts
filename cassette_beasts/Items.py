@@ -27,7 +27,7 @@ cb_abilities = {
 	"Progressive Glide": CassetteBeastsItemData("ap_progressive_glide", next(c), IC.progression, 1, 2),
 	"Progressive Dash": CassetteBeastsItemData("ap_progressive_dash", next(c), IC.progression, 1, 2),
 	"Progressive Magnetism": CassetteBeastsItemData("ap_progressive_magnet", next(c), IC.progression, 1, 2),
-	"Swim": CassetteBeastsItemData("ap_swim", next(c), IC.progression),
+	"Swim": CassetteBeastsItemData("swim", next(c), IC.progression),
 	"Progressive Climb": CassetteBeastsItemData("ap_progressive_climb", next(c), IC.progression, 1, 2),
 }
 
