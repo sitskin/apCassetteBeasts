@@ -262,9 +262,10 @@ func _init_client():
 	# Increase max buffer size to accommodate AP's larger payloads. The defaults are:
 	#   - Max in/out buffer = 64 KB
 	#   - Max in/out packets = 1024 
-	# We increase the in buffer to 256 KB because some messages we receive are too large
+	# We increase the in buffer to 20 MB because some messages we receive are too large
 	# for 64. The other defaults are fine though.
-	_result = _client.set_buffers(256, 1024, 64, 1024)
+	# Figuring out how to retrofit compressed websockets would allow us to reduce the buffer significantly
+	_result = _client.set_buffers(1024 * 20, 1024, 64, 1024)
 	
 	self._peer = null
 
