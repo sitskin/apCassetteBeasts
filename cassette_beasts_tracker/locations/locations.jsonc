@@ -1994,15 +1994,6 @@
         "access_rules": [],
         "sections": [
           {
-            "name": "Beat Captain Penny Dreadful",
-            "item_count": 1,
-            "access_rules": [],
-            "visibility_rules": []//,
-            //"chest_unopened_img": "images/items/captains/dreadful.png",
-            //"chest_opened_img": "images/items/captains/dreadful.png",
-            //"hosted_item": "captain_dreadful"
-          },
-          {
             "name": "Deadlands Coast Gust Chest (6,-2)",
             "item_count": 1,
             "access_rules": ["dash"],
@@ -2230,6 +2221,15 @@
         "access_rules": [],
         "sections": [
           {
+            "name": "Beat Captain Penny Dreadful",
+            "item_count": 1,
+            "access_rules": [],
+            "visibility_rules": []//,
+            //"chest_unopened_img": "images/items/captains/dreadful.png",
+            //"chest_opened_img": "images/items/captains/dreadful.png",
+            //"hosted_item": "captain_dreadful"
+          },
+          {
             "name": "New London Chest in House (6,-2)",
             "item_count": 1,
             "access_rules": [],
@@ -2268,7 +2268,7 @@
           {
             "map": "new_wirral",
             "x": 432,
-            "y": 176
+            "y": 166
           }
         ]
       },
