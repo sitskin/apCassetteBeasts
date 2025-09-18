@@ -134,7 +134,7 @@ base_locations = {
 			lambda state, player: state.has("Progressive Dash", player)),
 	"Upper Path Magnet Platform Chest (0,-2)": 
 		CassetteBeastsLocationData("overworld_0_-2_chest", "Upper Path", next(c),
-			lambda state, player: state.has("Progressive Magnetism", player)),
+			lambda state, player: state.has("Progressive Magnetism", player) and state.has("Progressive Glide", player, 1)),
 	"Thirstaton Lake Underwater Chest (0,-3)": 
 		CassetteBeastsLocationData("overworld_0_-3_chest", "Thirstaton Lake", next(c),
 			lambda state, player: state.has("Progressive Dash", player)),
