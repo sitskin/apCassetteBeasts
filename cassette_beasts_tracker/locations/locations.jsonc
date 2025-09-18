@@ -385,7 +385,7 @@
           {
             "name": "Upper Path Magnet Platform Chest (0,-2)",
             "item_count": 1,
-            "access_rules": ["magnetism"],
+            "access_rules": ["glide,magnetism"],
             "visibility_rules": []
           },
           {
