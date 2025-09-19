@@ -1744,13 +1744,13 @@
           {
             "name": "Eastham Woods Levitator Magnet Lever Chest (5,-7)",
             "item_count": 1,
-            "access_rules": ["magnetism"],
+            "access_rules": ["magnetism,glide"],
             "visibility_rules": []
           },
           {
             "name": "Eastham Woods Levitator Magnet Lever Chest Loot (5,-7)",
             "item_count": 1,
-            "access_rules": ["magnetism"],
+            "access_rules": ["magnetism,glide"],
             "visibility_rules": [
               "setting_loot"
             ]
