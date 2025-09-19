@@ -2125,13 +2125,13 @@
           {
             "name": "Deadlands Cave Chest (6,-1)",
             "item_count": 1,
-            "access_rules": [],
+            "access_rules": ["climb", "dash"],
             "visibility_rules": []
           },
           {
             "name": "Deadlands Cave Chest Loot (6,-1)",
             "item_count": 1,
-            "access_rules": [],
+            "access_rules": ["climb", "dash"],
             "visibility_rules": [
               "setting_loot"
             ]
