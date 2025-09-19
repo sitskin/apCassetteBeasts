@@ -315,7 +315,8 @@ base_locations = {
 	"Averevoir Cave Chest (-3,-6)": 
 		CassetteBeastsLocationData("chest_cave_averevoir", "Mt Wirral", next(c)),
 	"Deadlands Cave Chest (6,-1)": 
-		CassetteBeastsLocationData("cave_deadlands_1_chest", "Deadlands Coast", next(c)),
+		CassetteBeastsLocationData("cave_deadlands_1_chest", "Deadlands Coast", next(c),
+            lambda state, player: state.has("Progressive Dash", player) or state.has("Progressive Climb", player)),
 	"Deadlands Cave Break Rock Chest (6,-2)": 
 		CassetteBeastsLocationData("cave_deadlands_3_chest", "Deadlands Coast", next(c),
 			lambda state, player: state.has("Progressive Dash", player)),
