@@ -47,7 +47,7 @@ class FinalBattleFriendCount(Range):
 
 class ArchangelHuntCount(Range):
     """
-    How many Archangels must be defeated to achive the
+    How many Archangels must be defeated to achieve the
       Archangel Hunt goal
     Without the Pier of the Unknown DLC, the max number
       is 13

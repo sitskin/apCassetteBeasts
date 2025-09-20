@@ -44,7 +44,7 @@ cb_key_items = {
 	"Envelope for Meredith": CassetteBeastsItemData("meredith_envelope", next(c), IC.progression),
 	"Train Ticket (Glowcester)": CassetteBeastsItemData("trainticket_glowshroom", next(c), IC.progression),
 	"Train Ticket (Aldgrave Tomb)": CassetteBeastsItemData("trainticket_graveyard", next(c), IC.progression),
-	"Valve Handel": CassetteBeastsItemData("valve", next(c), IC.progression, 1, 2),
+	"Valve Handle": CassetteBeastsItemData("valve", next(c), IC.progression, 1, 2),
 	"Captain Wallace Stamp": CassetteBeastsItemData("ap_captain_wallace_stamp", next(c), IC.progression),
 	"Captain Skip Stamp": CassetteBeastsItemData("ap_captain_skip_stamp", next(c), IC.progression),
 	"Captain Zedd Stamp": CassetteBeastsItemData("ap_captain_zedd_stamp", next(c), IC.progression),
