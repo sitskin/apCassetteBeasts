@@ -379,9 +379,11 @@ base_locations = {
 	"Titania Shipwreck Valve 1 (-6,-6)": 
 		CassetteBeastsLocationData("shipwreck_valve_1", "Titania Shipwreck", next(c)),
 	"Titania Shipwreck Valve 2 (-6,-6)": 
-		CassetteBeastsLocationData("shipwreck_valve_2", "Titania Shipwreck", next(c)),
+		CassetteBeastsLocationData("shipwreck_valve_2", "Titania Shipwreck", next(c),
+			lambda state, player: state.has("Valve Handle", player)),
 	"Titania Shipwreck Chest (-6,-6)": 
-		CassetteBeastsLocationData("shipwreck_chest_1", "Titania Shipwreck", next(c)),
+		CassetteBeastsLocationData("shipwreck_chest_1", "Titania Shipwreck", next(c),
+			lambda state, player: state.has("Valve Handle", player)),
 	"Waterloop Station Break Polyhedron Chest (1,-4)": 
 		CassetteBeastsLocationData("chest_waterloop_optional_dash_reward", "Waterloop Station", next(c),
 			lambda state, player: state.has("Progressive Dash", player)),
@@ -707,7 +709,7 @@ event_data_table = {
 	"Recruited Kayleigh": CassetteBeastsEventData("Harbourtown Station", "Recruited Kayleigh"),
 	"Recruited Eugene": CassetteBeastsEventData("Harbourtown East", "Recruited Eugene"),
 	"Recruited Meredith": CassetteBeastsEventData("Harbourtown East", "Recruited Meredith",
-		lambda state, player: state.has("Met Meredith", player)),
+		lambda state, player: state.has("Met Meredith", player) and state.has("Envelope for Meredith", player)),
 	"Recruited Felix": CassetteBeastsEventData("Lakeside", "Recruited Felix"),
 	"Recruited Viola": CassetteBeastsEventData("The Marshes", "Recruited Viola"),
 	"Recruited Barkley": CassetteBeastsEventData("Mt Wirral", "Recruited Barkley",
