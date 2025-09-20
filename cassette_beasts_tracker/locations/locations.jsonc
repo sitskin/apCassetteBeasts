@@ -4711,7 +4711,7 @@
           {
             "name": "Titania Shipwreck Chest (-6,-6)",
             "item_count": 1,
-            "access_rules": [],
+            "access_rules": ["valve"],
             "visibility_rules": []
           },
           {

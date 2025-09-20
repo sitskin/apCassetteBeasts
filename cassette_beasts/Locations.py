@@ -380,7 +380,8 @@ base_locations = {
 	"Titania Shipwreck Valve 2 (-6,-6)": 
 		CassetteBeastsLocationData("shipwreck_valve_2", "Titania Shipwreck", next(c)),
 	"Titania Shipwreck Chest (-6,-6)": 
-		CassetteBeastsLocationData("shipwreck_chest_1", "Titania Shipwreck", next(c)),
+		CassetteBeastsLocationData("shipwreck_chest_1", "Titania Shipwreck", next(c),
+            lambda state, player: state.has("Valve Handel", player)),
 	"Waterloop Station Break Polyhedron Chest (1,-4)": 
 		CassetteBeastsLocationData("chest_waterloop_optional_dash_reward", "Waterloop Station", next(c),
 			lambda state, player: state.has("Progressive Dash", player)),
