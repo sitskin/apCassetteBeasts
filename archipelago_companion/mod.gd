@@ -71,7 +71,6 @@ func init_content() -> void:
 	callbacks.connect_scene_ready("res://world/core/ItemDrop.tscn", self, "_onItemDrop")
 	callbacks.connect_scene_ready("res://cutscenes/meredith_quest/MeredithIntro2_InteractionBehavior.tscn", self, "_patchMeredithQuest3")
 	callbacks.connect_scene_ready("res://cutscenes/captains/ianthe/Ianthe_InteractionBehavior.tscn", self, "_onIantheInteract")
-	callbacks.connect_scene_ready("res://cutscenes/end/End_Part7_Battle.tscn", self, "_onFinalBattle")
 
 func _onItemDrop(scene: Interaction):
 	var item = scene.item
@@ -127,12 +126,6 @@ func _onIantheInteract(scene):
 	for i in range(len(flags)):
 		flags[i] = flags[i].replace("encounter", "ap") + "_stamp"
 	action.require_flags = flags
-
-func _onFinalBattle(scene: BattleAction):
-	var encounter = scene.get_node("EncounterConfig")
-	encounter.stamina_increase_on_win = 0
-	#the final battle has a strange crash with stamina increase of 1 where
-	# other archanges with a stamina increase of 0.5 do not
 
 # disables tutorial railroading if AP Client is enabled
 func _onOutskirtsWrongWay(scene: CheckConditionAction):
