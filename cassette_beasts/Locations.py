@@ -437,7 +437,8 @@ base_locations = {
 	"Harbourtown Gate Key":
 		CassetteBeastsLocationData("Harbourtown Gate Key", "Harbourtown Beach", next(c)),
 	"Train Ticket (Glowcester)":
-		CassetteBeastsLocationData("Train Ticket (Glowcester)", "Glowcester Road Station", next(c)),
+		CassetteBeastsLocationData("Train Ticket (Glowcester)", "Glowcester Road Station", next(c),
+			lambda state, player: state.has("Machine Part", player)),
 	"Train Ticket (Aldgrave Tomb)":
 		CassetteBeastsLocationData("Train Ticket (Aldgrave Tomb)", "Aldgrave Tomb Station", next(c),
 			lambda state, player: state.has("Progressive Glide", player)),
