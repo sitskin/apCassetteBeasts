@@ -285,6 +285,9 @@ func check_locations(location_strings: PoolStringArray):
 	if not self.slot_data:
 		return
 	for location in location_strings:
+		if not self.slot_data["location_cbName_to_apName"].has(location):
+			print("Location id is not in the location_cbName_to_apName Dict.  Location id: " + location)
+			continue
 		var apLocationName = self.slot_data["location_cbName_to_apName"][location]
 		var location_id = self.data_package.location_name_to_id[apLocationName]
 		if not location_id:
