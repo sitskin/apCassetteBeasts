@@ -3299,6 +3299,20 @@
             "hosted_item": "recruited_viola",
             "chest_unopened_img": "images/items/viola.png",
             "chest_opened_img": "images/items/viola.png"
+          },
+          {
+            "name": "Viola Marshes Chest (-4,-2)",
+            "item_count": 1,
+            "access_rules": [],
+            "visibility_rules": []
+          },
+          {
+            "name": "Viola Marshes Chest Loot (-4,-2)",
+            "item_count": 1,
+            "access_rules": [],
+            "visibility_rules": [
+              "setting_loot"
+            ]
           }
         ],
         "map_locations": [
