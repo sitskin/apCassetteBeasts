@@ -186,7 +186,8 @@ base_locations = {
 	"New London Three Button Chest (5,-2)": 
 		CassetteBeastsLocationData("overworld_5_-2_chest", "New London", next(c)),
 	"New Wirral Park Lower Platform Chest (5,-3)": 
-		CassetteBeastsLocationData("chest_overworld_5_-3", "New Wirral Park", next(c)),
+		CassetteBeastsLocationData("chest_overworld_5_-3", "New Wirral Park", next(c),
+			lambda state, player: state.has("Progressive Glide", player) and state.has("Progressive Dash", player)),
 	"Eastham Woods Chest in Pond (5,-5)": 
 		CassetteBeastsLocationData("chest_overworld_5_-5", "Eastham Woods", next(c)),
 	"Eastham Woods Levitator Magnet Lever Chest (5,-7)": 
