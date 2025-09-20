@@ -455,6 +455,8 @@ base_locations = {
 		CassetteBeastsLocationData("dungeon_landkeeper_secret_chest_1", "New Landkeeper Hideout", next(c)),
 	"Landkeeper Secret Hideout Pillar Chest (-4,-1)":
 		CassetteBeastsLocationData("dungeon_landkeeper_secret_chest_2", "New Landkeeper Hideout", next(c)),
+	"Viola Marshes Chest (-4,-2)":
+		CassetteBeastsLocationData("chest_viola_intro", "The Marshes", next(c)),
 }
 
 pier_locations = {
