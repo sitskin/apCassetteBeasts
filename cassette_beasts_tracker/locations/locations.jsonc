@@ -3074,7 +3074,7 @@
           {
             "map": "new_wirral",
             "x": 112,
-            "y": 48
+            "y": 58
           }
         ]
       },
@@ -3623,7 +3623,7 @@
           {
             "map": "new_wirral",
             "x": 48,
-            "y": 208
+            "y": 198
           }
         ]
       }
@@ -4000,7 +4000,7 @@
           {
             "name": "Averevoir Cave Chest (-3,-6)",
             "item_count": 1,
-            "access_rules": [],
+            "access_rules": ["flight"],
             "visibility_rules": []
           },
           {
@@ -4014,7 +4014,7 @@
           {
             "name": "Averevoir Cave Chest Loot (-3,-6)",
             "item_count": 1,
-            "access_rules": [],
+            "access_rules": ["flight"],
             "visibility_rules": [
               "setting_loot"
             ]
