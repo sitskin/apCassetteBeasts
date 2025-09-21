@@ -314,7 +314,8 @@ base_locations = {
 	"Autumn Gate Cave Chest (6,-4)": 
 		CassetteBeastsLocationData("chest_autumn_hill_gate_autumn_cave_1", "Autumn Hill", next(c)),
 	"Averevoir Cave Chest (-3,-6)": 
-		CassetteBeastsLocationData("chest_cave_averevoir", "Mt Wirral", next(c)),
+		CassetteBeastsLocationData("chest_cave_averevoir", "Mt Wirral", next(c),
+			lambda state, player: state.has("Progressive Glide", player, 2)),
 	"Deadlands Cave Chest (6,-1)": 
 		CassetteBeastsLocationData("cave_deadlands_1_chest", "Deadlands Coast", next(c),
             lambda state, player: state.has("Progressive Dash", player) or state.has("Progressive Climb", player)),
