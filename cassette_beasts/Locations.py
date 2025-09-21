@@ -186,7 +186,8 @@ base_locations = {
 	"New London Three Button Chest (5,-2)": 
 		CassetteBeastsLocationData("overworld_5_-2_chest", "New London", next(c)),
 	"New Wirral Park Lower Platform Chest (5,-3)": 
-		CassetteBeastsLocationData("chest_overworld_5_-3", "New Wirral Park", next(c)),
+		CassetteBeastsLocationData("chest_overworld_5_-3", "New Wirral Park", next(c),
+			lambda state, player: state.has("Progressive Glide", player) and state.has("Progressive Dash", player)),
 	"Eastham Woods Chest in Pond (5,-5)": 
 		CassetteBeastsLocationData("chest_overworld_5_-5", "Eastham Woods", next(c)),
 	"Eastham Woods Levitator Magnet Lever Chest (5,-7)": 
@@ -313,7 +314,8 @@ base_locations = {
 	"Autumn Gate Cave Chest (6,-4)": 
 		CassetteBeastsLocationData("chest_autumn_hill_gate_autumn_cave_1", "Autumn Hill", next(c)),
 	"Averevoir Cave Chest (-3,-6)": 
-		CassetteBeastsLocationData("chest_cave_averevoir", "Mt Wirral", next(c)),
+		CassetteBeastsLocationData("chest_cave_averevoir", "Mt Wirral", next(c),
+			lambda state, player: state.has("Progressive Glide", player, 2)),
 	"Deadlands Cave Chest (6,-1)": 
 		CassetteBeastsLocationData("cave_deadlands_1_chest", "Deadlands Coast", next(c),
             lambda state, player: state.has("Progressive Dash", player) or state.has("Progressive Climb", player)),
@@ -379,9 +381,11 @@ base_locations = {
 	"Titania Shipwreck Valve 1 (-6,-6)": 
 		CassetteBeastsLocationData("shipwreck_valve_1", "Titania Shipwreck", next(c)),
 	"Titania Shipwreck Valve 2 (-6,-6)": 
-		CassetteBeastsLocationData("shipwreck_valve_2", "Titania Shipwreck", next(c)),
+		CassetteBeastsLocationData("shipwreck_valve_2", "Titania Shipwreck", next(c),
+			lambda state, player: state.has("Valve Handle", player)),
 	"Titania Shipwreck Chest (-6,-6)": 
-		CassetteBeastsLocationData("shipwreck_chest_1", "Titania Shipwreck", next(c)),
+		CassetteBeastsLocationData("shipwreck_chest_1", "Titania Shipwreck", next(c),
+			lambda state, player: state.has("Valve Handle", player)),
 	"Waterloop Station Break Polyhedron Chest (1,-4)": 
 		CassetteBeastsLocationData("chest_waterloop_optional_dash_reward", "Waterloop Station", next(c),
 			lambda state, player: state.has("Progressive Dash", player)),
@@ -435,7 +439,8 @@ base_locations = {
 	"Harbourtown Gate Key":
 		CassetteBeastsLocationData("Harbourtown Gate Key", "Harbourtown Beach", next(c)),
 	"Train Ticket (Glowcester)":
-		CassetteBeastsLocationData("Train Ticket (Glowcester)", "Glowcester Road Station", next(c)),
+		CassetteBeastsLocationData("Train Ticket (Glowcester)", "Glowcester Road Station", next(c),
+			lambda state, player: state.has("Machine Part", player)),
 	"Train Ticket (Aldgrave Tomb)":
 		CassetteBeastsLocationData("Train Ticket (Aldgrave Tomb)", "Aldgrave Tomb Station", next(c),
 			lambda state, player: state.has("Progressive Glide", player)),
@@ -451,6 +456,8 @@ base_locations = {
 		CassetteBeastsLocationData("dungeon_landkeeper_secret_chest_1", "New Landkeeper Hideout", next(c)),
 	"Landkeeper Secret Hideout Pillar Chest (-4,-1)":
 		CassetteBeastsLocationData("dungeon_landkeeper_secret_chest_2", "New Landkeeper Hideout", next(c)),
+	"Viola Marshes Chest (-4,-2)":
+		CassetteBeastsLocationData("chest_viola_intro", "The Marshes", next(c)),
 }
 
 pier_locations = {
@@ -707,7 +714,7 @@ event_data_table = {
 	"Recruited Kayleigh": CassetteBeastsEventData("Harbourtown Station", "Recruited Kayleigh"),
 	"Recruited Eugene": CassetteBeastsEventData("Harbourtown East", "Recruited Eugene"),
 	"Recruited Meredith": CassetteBeastsEventData("Harbourtown East", "Recruited Meredith",
-		lambda state, player: state.has("Met Meredith", player)),
+		lambda state, player: state.has("Met Meredith", player) and state.has("Envelope for Meredith", player)),
 	"Recruited Felix": CassetteBeastsEventData("Lakeside", "Recruited Felix"),
 	"Recruited Viola": CassetteBeastsEventData("The Marshes", "Recruited Viola"),
 	"Recruited Barkley": CassetteBeastsEventData("Mt Wirral", "Recruited Barkley",

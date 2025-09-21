@@ -153,6 +153,8 @@ func _onFileLoaded():
 		SaveState.other_data["ap_special_items"] = {"received":[],"to_ignore":[]}
 	if len(SaveState.other_data["ap_special_items"]["received"]) > 0:
 		SaveState.other_data["ap_special_items"]["to_ignore"] = SaveState.other_data["ap_special_items"]["received"]
+	if !SaveState.other_data.has("ap_species_log"):
+		SaveState.other_data["ap_species_log"] = {"species_count":0, "bootleg_count":0, "species":{}}
 	for data in _tempReceivedItems:
 		_onApItemReceived(data.itemData, data.networkItem)
 	_tempReceivedItems.clear()
@@ -354,6 +356,8 @@ func sendSpecies(species_key: String):
 	print("Recorded species: %s" % species_key)
 	if getSetting("tapesanity") == 1:# specific
 		_sendCheckLocation("record_%s" % species_key)
+	if getSetting("tapesanity") == 2:# percentage
+		_sendCheckLocation("record_%s" % SaveState.other_data["ap_species_log"]["species_count"])
 
 func sendBootlegSpecies(species_key: String, type: String):
 	print("Recorded bootleg: %s %s" % [type, species_key])
@@ -361,13 +365,24 @@ func sendBootlegSpecies(species_key: String, type: String):
 		_sendCheckLocation("record_bootleg_%s" % species_key)
 	elif getSetting("bootlegsanity") == 2:# specific
 		_sendCheckLocation("record_%s_%s" % [type, species_key])
+	elif getSetting("bootlegsanity") == 3:# percentage
+		_sendCheckLocation("record_bootleg_%s" % SaveState.other_data["ap_species_log"]["bootleg_count"])
 
 func checkRecorded(obtained: Dictionary):
 	for species_key in obtained.keys():
-		sendSpecies(species_key)
+		if !species_key in SaveState.other_data["ap_species_log"]["species"]:
+			SaveState.other_data["ap_species_log"]["species"][species_key] = []
+			SaveState.other_data["ap_species_log"]["species_count"] = len(SaveState.other_data["ap_species_log"]["species"])
+			sendSpecies(species_key)
 		for type in obtained[species_key]:
 			if type != "":
-				sendBootlegSpecies(species_key, type)
+				if !type in SaveState.other_data["ap_species_log"]["species"][species_key]:
+					SaveState.other_data["ap_species_log"]["species"][species_key].append(type)
+					var count = 0
+					for species in SaveState.other_data["ap_species_log"]["species"]:
+						count += len(species)
+					SaveState.other_data["ap_species_log"]["bootleg_count"] = count
+					sendBootlegSpecies(species_key, type)
 
 func checkItemDrop(itemName: String):
 	return itemName in _archipelagoClient.slot_data["itemDrop_to_location"]
