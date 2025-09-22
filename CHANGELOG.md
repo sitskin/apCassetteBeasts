@@ -14,6 +14,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Added
 - The viola intro chest
 - This changelog
+- A release doc explaining what to do during the release procedures
 
 ## [0.0.3] - 2025-09-17
 
