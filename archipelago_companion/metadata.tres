@@ -6,8 +6,8 @@
 script = ExtResource( 1 )
 id = "archipelago_companion"
 name = "Archipelago Companion"
-version_code = 1
-version_string = "0.0.1"
+version_code = 2
+version_string = "0.0.4"
 author = "sitskin"
 save_file_format_tag = "archipelago_companion"
 save_file_format_tag_version = 1
