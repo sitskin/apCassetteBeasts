@@ -9,7 +9,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - AP settings screen button controller navigation
 - Crash whenever AA Kuneko was defeated
 - Tracker box overlap issues for spider cave, and 2 cherry meadow boxes
-- Logical access changes for chests in (5,-7), (6,-1), (0,-2), shipwreck, and averevoir cave
+- Logical access changes for chests in (5,-3), (5,-7), (6,-1), (0,-2), shipwreck, and averevoir cave
+- Logical access changes for the Falldown Mall region and Nowhere Monarch location
+- Missing logic for Recruiting Meredith and Train Ticket (Glowcester) locations
+- Proper processing of Tapesanity Percentage locations
 
 ### Added
 - The viola intro chest

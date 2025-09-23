@@ -61,7 +61,7 @@ region_data = [
 		}),
 	CassetteBeastsRegionData("Eastham Woods Cliff",
 		{
-			"Falldown Mall": lambda state, player: state.has("Recruited Meredith", player),
+			"Falldown Mall": lambda state, player: True,
 		}),
 	CassetteBeastsRegionData("Deadlands",
 		{
