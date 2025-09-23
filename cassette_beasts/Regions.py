@@ -61,7 +61,7 @@ region_data = [
 		}),
 	CassetteBeastsRegionData("Eastham Woods Cliff",
 		{
-			"Falldown Mall": lambda state, player: state.has("Recruited Meredith", player),
+			"Falldown Mall": lambda state, player: True,
 		}),
 	CassetteBeastsRegionData("Deadlands",
 		{
@@ -182,7 +182,7 @@ region_data = [
 		}),
 	CassetteBeastsRegionData("Titania Shipwreck",
 		{
-			"Bard Street Station": lambda state, player: state.has("Valve Handel", player, 2),
+			"Bard Street Station": lambda state, player: state.has("Valve Handle", player, 2),
 		}),
 	CassetteBeastsRegionData("Bard Street Station",
 		{

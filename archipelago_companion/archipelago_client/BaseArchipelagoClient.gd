@@ -285,6 +285,9 @@ func check_locations(location_strings: PoolStringArray):
 	if not self.slot_data:
 		return
 	for location in location_strings:
+		if not self.slot_data["location_cbName_to_apName"].has(location):
+			print("Location id is not in the location_cbName_to_apName Dict.  Location id: " + location)
+			continue
 		var apLocationName = self.slot_data["location_cbName_to_apName"][location]
 		var location_id = self.data_package.location_name_to_id[apLocationName]
 		if not location_id:
@@ -301,6 +304,7 @@ func scout_locations(location_strings: PoolStringArray):
 		var location_id = data_package.location_name_to_id[apLocationName]
 		if not location_id:
 			print("Location id could not be found for: " + location)
+			showPassiveMessage("Location id could not be found for: " + location, "AP DEBUG")
 			continue
 		print("Sending location scout for " + location + " with id " + location_id)
 		websocket_client.send_location_scouts([location_id], false)
@@ -367,3 +371,12 @@ func _on_set_reply(command):
 		command["value"],
 		command["original_value"]
 	)
+
+func showPassiveMessage(message: String, speaker: String = "Archipelago"):
+	var msg = PassiveMessageAction.new()
+	msg.speaker_name = speaker
+	msg.message = message
+	msg.use_pawn_npc_name = false
+	WorldSystem.add_child(msg)
+	msg._run()
+	msg.queue_free()
