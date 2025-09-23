@@ -69,7 +69,8 @@ base_locations = {
 	"Defeat Mourningstar": 
 		CassetteBeastsLocationData("ap_encounter_aa_mourningstar", "Mourningstar Crescent Station", next(c)),
 	"Defeat Nowhere Monarch": 
-		CassetteBeastsLocationData("ap_encounter_aa_monarch", "Falldown Mall", next(c)),
+		CassetteBeastsLocationData("ap_encounter_aa_monarch", "Falldown Mall", next(c),
+			lambda state, player: state.has("Recruited Meredith", player)),
 	"Defeat Heckahedron": 
 		CassetteBeastsLocationData("ap_encounter_aa_cube", "Waterloop Station", next(c)),
 	"Defeat Alice": 

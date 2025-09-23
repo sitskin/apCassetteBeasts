@@ -4495,7 +4495,7 @@
   },
   {
     "name": "Falldown Mall",
-    "access_rules": ["@Eastham Woods Cliff,recruited_meredith"],
+    "access_rules": ["@Eastham Woods Cliff"],
     "children": [
       {
         "name": "Falldown Mall",
@@ -4504,7 +4504,7 @@
           {
             "name": "Defeated Nowhere Monarch",
             "item_count": 1,
-            "access_rules": [],
+            "access_rules": ["recruited_meredith"],
             "visibility_rules": [],
             "hosted_item": "monarch"
           },
