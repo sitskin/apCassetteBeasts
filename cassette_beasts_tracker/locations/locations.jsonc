@@ -4775,7 +4775,10 @@
   },
   {
     "name": "Landkeeper HQ",
-    "access_rules": ["@The Marshes,office1,office2,office3,office4,office5"],
+    "access_rules": [
+      "@The Marshes,office1,office2,office3,office4,office5",
+      "@The Marshes,cleared_landkeeper_offices"
+    ],
     "children": [
       {
         "name": "Landkeeper HQ",

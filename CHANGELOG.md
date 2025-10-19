@@ -8,6 +8,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Fixed
 - Post AA cutscene requires player to be in the cafe
+- Add event tracking for clearing all landkeeper offices
 
 ## [0.0.4] - 2025-09-23
 
