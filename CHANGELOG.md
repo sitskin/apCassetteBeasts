@@ -13,6 +13,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Heckahedron access now requires waterloop key
 - Add event tracking for clearing all landkeeper offices
 - Fix the tracker's landkeeper key id
+- Add flag mapping functionality to fix kuneko and averevoir locations
+
+### Added
+- Shining Kuneko tracker location
 
 ## [0.0.4] - 2025-09-23
 

@@ -53,6 +53,10 @@ const _AP_EVENT_FLAGS_TO_AP = {
 	"met_felix": "Met Felix",
 	"encounter_ianthe": "Bacame Captain"
 }
+const _AP_FLAG_CONVERSIONS = {
+	"encounter_kuneko": "encounter_aa_kuneko",
+	"encounter_averevoir": "encounter_aa_averevoir",
+}
 
 var _tempReceivedItems = []
 var randSeed: int
@@ -311,6 +315,8 @@ func _increaseStamina():
 	print("Stamina increased to %s" % SaveState.max_stamina)
 
 func _onFlagChanged(flag: String, value: bool):
+	if flag in _AP_FLAG_CONVERSIONS.keys():
+		flag = _AP_FLAG_CONVERSIONS[flag]
 	if "encounter_captain" in flag and value:
 		sendCaptainDefeated(flag)
 	if "encounter_aa" in flag and value:
@@ -481,6 +487,7 @@ func _checkForVictory():
 	# Pier - Complete Pier of the Unknown (Requires DLC)
 	# Archangel Hunt - Defeat a selection of Archangels
 	var passingChecks = 0
+	
 	var victoryConditions = _archipelagoClient.slot_data.settings.goal
 	if victoryConditions.has("Escape") && SaveState.has_flag("encounter_aa_aleph_null"):
 		passingChecks += 1
