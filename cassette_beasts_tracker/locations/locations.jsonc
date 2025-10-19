@@ -1402,6 +1402,39 @@
     ]
   },
   {
+    "name": "Kuneko Altars",
+    "access_rules": ["@New Wirral Park,@Autumn Hill,@Cherry Meadow,@Thirstaton Lake"],
+    "children": [
+      {
+        "name": "Shining Kuneko",
+	"access_rules": [],
+	"sections": [{"name": "Defeated Shining Kuneko", "item_count": 1, "access_rules": [], "visibility_rules": []}],
+	"map_locations": [
+          {
+            "map": "new_wirral",
+	    "x": 240,
+	    "y": 32
+	  },
+          {
+            "map": "new_wirral",
+	    "x": 456,
+	    "y": 124
+	  },
+          {
+            "map": "new_wirral",
+	    "x": 112,
+	    "y": 80
+	  },
+	  {
+            "map": "new_wirral",
+	    "x": 184,
+	    "y": 144
+	  }
+	]
+      }
+    ]
+  },
+  {
     "name": "Eastham Woods",
     "access_rules": ["@New Wirral Park"],
     "children": [
@@ -2755,7 +2788,7 @@
         "map_locations": [
           {
             "map": "new_wirral",
-            "x": 176,
+            "x": 174,
             "y": 144
           }
         ]
@@ -2961,7 +2994,7 @@
         "map_locations": [
           {
             "map": "new_wirral",
-            "x": 166,
+            "x": 162,
             "y": 144
           }
         ]
