@@ -8,6 +8,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Fixed
 - Post AA cutscene requires player to be in the cafe
+- Waterloop key id
+- Heckahedron access now requires waterloop key
 
 ## [0.0.4] - 2025-09-23
 
