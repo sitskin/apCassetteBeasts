@@ -330,7 +330,7 @@
     "name": "Landkeeper Office Key",
     "type": "toggle",
     "img": "images/items/key/key.png",
-    "codes": "key_landkeeper_office"
+    "codes": "key_landkeeper"
   },
   {
     "name": "Mourningtown Key",
