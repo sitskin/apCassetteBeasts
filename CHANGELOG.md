@@ -8,6 +8,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Fixed
 - Post AA cutscene requires player to be in the cafe
+- Spider Cave region and chest access logic
 
 ## [0.0.4] - 2025-09-23
 
