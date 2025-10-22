@@ -760,7 +760,7 @@ event_data_table = {
 	"Became Captain": CassetteBeastsEventData("Harbourtown East", "Became Captain",
 		lambda state, player: state.can_reach_location("Beat Ianthe", player)),
 	"Recruited Sunny": CassetteBeastsEventData("Mt Wirral", "Recruited Sunny",
-		lambda state, player: state.has("Defeated Aleph", player) and state.has("Defeated Mammon", player)),
+		lambda state, player: state.has("Defeated Aleph", player) and state.has("Defeated Mammon", player) and state.has("Became Captain", player)),
 	"Quest People are People": CassetteBeastsEventData("New Landkeeper Hideout", "Quest People are People"),
 }
 
