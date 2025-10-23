@@ -72,7 +72,8 @@ base_locations = {
 		CassetteBeastsLocationData("ap_encounter_aa_monarch", "Falldown Mall", next(c),
 			lambda state, player: state.has("Recruited Meredith", player)),
 	"Defeat Heckahedron": 
-		CassetteBeastsLocationData("ap_encounter_aa_cube", "Waterloop Station", next(c)),
+		CassetteBeastsLocationData("ap_encounter_aa_cube", "Waterloop Station", next(c),
+            lambda state, player: state.has("Waterloop Key", player)),
 	"Defeat Alice": 
 		CassetteBeastsLocationData("ap_encounter_aa_alice", "Cherry Cross Station", next(c),
 			lambda state, player: state.has("White Rabbit Key", player)),

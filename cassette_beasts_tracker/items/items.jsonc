@@ -330,7 +330,7 @@
     "name": "Landkeeper Office Key",
     "type": "toggle",
     "img": "images/items/key/key.png",
-    "codes": "key_landkeeper_office"
+    "codes": "key_landkeeper"
   },
   {
     "name": "Mourningtown Key",
@@ -348,7 +348,7 @@
     "name": "Waterloop Key",
     "type": "toggle",
     "img": "images/items/key/key_old_rusted.png",
-    "codes": "key_old_rusted"
+    "codes": "key_waterloop"
   },
   {
     "name": "Ranger Handbook",
