@@ -9,6 +9,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Fixed
 - Tutorial item not sending the location check for type chart
 - Post AA cutscene requires player to be in the cafe
+- Logic required in order to recruit sunny
 - Spider Cave region and chest access logic
 - Waterloop key id
 - Heckahedron access now requires waterloop key
