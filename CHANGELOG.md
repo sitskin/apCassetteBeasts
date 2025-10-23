@@ -7,6 +7,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## Unreleased
 
 ### Fixed
+- Tutorial item not sending the location check for type chart
 - Post AA cutscene requires player to be in the cafe
 
 ## [0.0.4] - 2025-09-23
