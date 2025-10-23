@@ -4572,7 +4572,7 @@
           {
             "name": "Defeated Heckahedron",
             "item_count": 1,
-            "access_rules": [],
+            "access_rules": ["key_waterloop"],
             "visibility_rules": [],
             "hosted_item": "cube"
           },
