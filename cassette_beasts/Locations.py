@@ -72,7 +72,8 @@ base_locations = {
 		CassetteBeastsLocationData("ap_encounter_aa_monarch", "Falldown Mall", next(c),
 			lambda state, player: state.has("Recruited Meredith", player)),
 	"Defeat Heckahedron": 
-		CassetteBeastsLocationData("ap_encounter_aa_cube", "Waterloop Station", next(c)),
+		CassetteBeastsLocationData("ap_encounter_aa_cube", "Waterloop Station", next(c),
+            lambda state, player: state.has("Waterloop Key", player)),
 	"Defeat Alice": 
 		CassetteBeastsLocationData("ap_encounter_aa_alice", "Cherry Cross Station", next(c),
 			lambda state, player: state.has("White Rabbit Key", player)),
@@ -357,7 +358,8 @@ base_locations = {
 		CassetteBeastsLocationData("cave_lakeside_2_chest", "Thirstaton Lake", next(c),
 			lambda state, player: state.has("Progressive Glide", player)),
 	"Spider Cave Chest (-6,-1)": 
-		CassetteBeastsLocationData("spider_cave_3_chest_1", "Spider Cave", next(c)),
+		CassetteBeastsLocationData("spider_cave_3_chest_1", "Spider Cave", next(c),
+            lambda state, player: state.has("Progressive Glide", player) and state.has("Progressive Magnetism", player)),
 	"Eastham Woods Cave Chest (2,-6)": 
 		CassetteBeastsLocationData("chest_woods_cave_1", "Eastham Woods", next(c),
 			lambda state, player: state.has("Progressive Magnetism", player)),

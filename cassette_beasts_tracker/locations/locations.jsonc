@@ -1077,14 +1077,14 @@
           {
             "name": "Cleared Landkeeper Office 2",
             "item_count": 1,
-            "access_rules": ["glide,landkeeper_office_key"],
+            "access_rules": ["glide,key_landkeeper"],
             "visibility_rules": [],
             "hosted_item": "office2"
           },
           {
             "name": "Landkeeper Office 2 Cabinet (7,-3)",
             "item_count": 1,
-            "access_rules": ["glide,landkeeper_office_key"],
+            "access_rules": ["glide,key_landkeeper"],
             "visibility_rules": []
           },
           {
@@ -1098,7 +1098,7 @@
           {
             "name": "Landkeeper Office 2 Cabinet Loot (7,-3)",
             "item_count": 1,
-            "access_rules": ["glide,landkeeper_office_key"],
+            "access_rules": ["glide,key_landkeeper"],
             "visibility_rules": [
               "setting_loot"
             ]
@@ -1116,7 +1116,7 @@
           {
             "name": "Landkeeper Office 2 Battle (7,-3)",
             "item_count": 1,
-            "access_rules": ["glide,landkeeper_office_key"],
+            "access_rules": ["glide,key_landkeeper"],
             "visibility_rules": [
               "setting_trainers"
             ],
@@ -1398,6 +1398,39 @@
             "y": 48
           }
         ]
+      }
+    ]
+  },
+  {
+    "name": "Kuneko Altars",
+    "access_rules": ["@New Wirral Park,@Autumn Hill,@Cherry Meadow,@Thirstaton Lake"],
+    "children": [
+      {
+        "name": "Shining Kuneko",
+	"access_rules": [],
+	"sections": [{"name": "Defeated Shining Kuneko", "item_count": 1, "access_rules": [], "visibility_rules": []}],
+	"map_locations": [
+          {
+            "map": "new_wirral",
+	    "x": 240,
+	    "y": 32
+	  },
+          {
+            "map": "new_wirral",
+	    "x": 456,
+	    "y": 124
+	  },
+          {
+            "map": "new_wirral",
+	    "x": 112,
+	    "y": 80
+	  },
+	  {
+            "map": "new_wirral",
+	    "x": 184,
+	    "y": 144
+	  }
+	]
       }
     ]
   },
@@ -1810,20 +1843,20 @@
           {
             "name": "Cleared Landkeeper Office 4",
             "item_count": 1,
-            "access_rules": ["glide,landkeeper_office_key"],
+            "access_rules": ["glide,key_landkeeper"],
             "visibility_rules": [],
             "hosted_item": "office4"
           },
           {
             "name": "Landkeeper Office 4 Cabinet (1,-7)",
             "item_count": 1,
-            "access_rules": ["glide,landkeeper_office_key"],
+            "access_rules": ["glide,key_landkeeper"],
             "visibility_rules": []
           },
           {
             "name": "Landkeeper Office 4 Cabinet Loot (1,-7)",
             "item_count": 1,
-            "access_rules": ["glide,landkeeper_office_key"],
+            "access_rules": ["glide,key_landkeeper"],
             "visibility_rules": [
               "setting_loot"
             ]
@@ -1851,7 +1884,7 @@
           {
             "name": "Landkeeper Office 4 Battle (1,-7)",
             "item_count": 1,
-            "access_rules": ["glide,landkeeper_office_key"],
+            "access_rules": ["glide,key_landkeeper"],
             "visibility_rules": [
               "setting_trainers"
             ],
@@ -2363,20 +2396,20 @@
           {
             "name": "Cleared Landkeeper Office 3",
             "item_count": 1,
-            "access_rules": ["glide,magnetism,landkeeper_office_key"],
+            "access_rules": ["glide,magnetism,key_landkeeper"],
             "visibility_rules": [],
             "hosted_item": "office3"
           },
           {
             "name": "Landkeeper Office 3 Cabinet (7,-7)",
             "item_count": 1,
-            "access_rules": ["glide,magnetism,landkeeper_office_key"],
+            "access_rules": ["glide,magnetism,key_landkeeper"],
             "visibility_rules": []
           },
           {
             "name": "Landkeeper Office 3 Cabinet Loot (7,-7)",
             "item_count": 1,
-            "access_rules": ["glide,magnetism,landkeeper_office_key"],
+            "access_rules": ["glide,magnetism,key_landkeeper"],
             "visibility_rules": [
               "setting_loot"
             ]
@@ -2394,7 +2427,7 @@
           {
             "name": "Landkeeper Office 3 Battle (7,-7)",
             "item_count": 1,
-            "access_rules": ["glide,magnetism,landkeeper_office_key"],
+            "access_rules": ["glide,magnetism,key_landkeeper"],
             "visibility_rules": [
               "setting_trainers"
             ],
@@ -2755,7 +2788,7 @@
         "map_locations": [
           {
             "map": "new_wirral",
-            "x": 176,
+            "x": 174,
             "y": 144
           }
         ]
@@ -2961,7 +2994,7 @@
         "map_locations": [
           {
             "map": "new_wirral",
-            "x": 166,
+            "x": 162,
             "y": 144
           }
         ]
@@ -3524,20 +3557,20 @@
           {
             "name": "Cleared Landkeeper Office 5",
             "item_count": 1,
-            "access_rules": ["glide,landkeeper_office_key"],
+            "access_rules": ["glide,key_landkeeper"],
             "visibility_rules": [],
             "hosted_item": "office5"
           },
           {
             "name": "Landkeeper Office 5 Cabinet (-6,-3)",
             "item_count": 1,
-            "access_rules": ["glide,landkeeper_office_key"],
+            "access_rules": ["glide,key_landkeeper"],
             "visibility_rules": []
           },
           {
             "name": "Landkeeper Office 5 Cabinet Loot (-6,-3)",
             "item_count": 1,
-            "access_rules": ["glide,landkeeper_office_key"],
+            "access_rules": ["glide,key_landkeeper"],
             "visibility_rules": [
               "setting_loot"
             ]
@@ -3555,7 +3588,7 @@
           {
             "name": "Landkeeper Office 5 Battle (-6,-3)",
             "item_count": 1,
-            "access_rules": ["glide,landkeeper_office_key"],
+            "access_rules": ["glide,key_landkeeper"],
             "visibility_rules": [
               "setting_trainers"
             ],
@@ -3607,13 +3640,13 @@
           {
             "name": "Spider Cave Chest (-6,-1)",
             "item_count": 1,
-            "access_rules": ["glide"],
+            "access_rules": ["glide,magnetism"],
             "visibility_rules": []
           },
           {
             "name": "Spider Cave Chest Loot (-6,-1)",
             "item_count": 1,
-            "access_rules": ["glide"],
+            "access_rules": ["glide,magnetism"],
             "visibility_rules": [
               "setting_loot"
             ]
@@ -4572,7 +4605,7 @@
           {
             "name": "Defeated Heckahedron",
             "item_count": 1,
-            "access_rules": [],
+            "access_rules": ["key_waterloop"],
             "visibility_rules": [],
             "hosted_item": "cube"
           },
@@ -4775,7 +4808,10 @@
   },
   {
     "name": "Landkeeper HQ",
-    "access_rules": ["@The Marshes,office1,office2,office3,office4,office5"],
+    "access_rules": [
+      "@The Marshes,office1,office2,office3,office4,office5",
+      "@The Marshes,cleared_landkeeper_offices"
+    ],
     "children": [
       {
         "name": "Landkeeper HQ",
