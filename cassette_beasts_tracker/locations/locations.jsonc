@@ -3640,13 +3640,13 @@
           {
             "name": "Spider Cave Chest (-6,-1)",
             "item_count": 1,
-            "access_rules": ["glide"],
+            "access_rules": ["glide,magnetism"],
             "visibility_rules": []
           },
           {
             "name": "Spider Cave Chest Loot (-6,-1)",
             "item_count": 1,
-            "access_rules": ["glide"],
+            "access_rules": ["glide,magnetism"],
             "visibility_rules": [
               "setting_loot"
             ]
