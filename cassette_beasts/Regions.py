@@ -115,7 +115,7 @@ region_data = [
 			"Piper Farm": lambda state, player: True,
 			"Lost Hearts Graveyard": lambda state, player: True,
 			"West Mire Sea": lambda state, player: True,
-			"Spider Cave": lambda state, player: True,
+			"Spider Cave": lambda state, player: state.has("Progressive Dash", player),
 			"Landkeeper HQ": lambda state, player: True,
 		}),
 	CassetteBeastsRegionData("Spider Cave",

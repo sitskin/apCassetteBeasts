@@ -6,6 +6,22 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## Unreleased
 
+## [0.0.5] - 2025-10-24
+
+### Fixed
+- Tutorial item not sending the location check for type chart
+- Post AA cutscene requires player to be in the cafe
+- Logic required in order to recruit sunny
+- Spider Cave region and chest access logic
+- Waterloop key id
+- Heckahedron access now requires waterloop key
+- Add event tracking for clearing all landkeeper offices
+- Fix the tracker's landkeeper key id
+- Add flag mapping functionality to fix kuneko and averevoir locations
+
+### Added
+- Shining Kuneko tracker location
+
 ## [0.0.4] - 2025-09-23
 
 ### Fixed

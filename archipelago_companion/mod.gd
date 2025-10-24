@@ -71,6 +71,7 @@ func init_content() -> void:
 	callbacks.connect_scene_ready("res://world/core/ItemDrop.tscn", self, "_onItemDrop")
 	callbacks.connect_scene_ready("res://cutscenes/meredith_quest/MeredithIntro2_InteractionBehavior.tscn", self, "_patchMeredithQuest3")
 	callbacks.connect_scene_ready("res://cutscenes/captains/ianthe/Ianthe_InteractionBehavior.tscn", self, "_onIantheInteract")
+	callbacks.connect_scene_ready("res://cutscenes/archangels/CafeRetrospective.tscn", self, "_cafeRetroFix")
 
 func _onItemDrop(scene: Interaction):
 	var item = scene.item
@@ -159,6 +160,13 @@ func _giveKayleighEarly(scene: Cutscene):
 	warpToCafeAction.warp_target_scene = "res://world/maps/interiors/GramophoneInterior.tscn"
 	warpToCafeAction.warp_target_name = "CafeTable"
 	scene.add_child(warpToCafeAction)
+
+# Normally beating an AA warps you back to the cafe, since our song fragments don't send the player
+# back to the cafe, we need to make sure the cafe retro cutscene doesn't run unless the player is 
+# in the cafe, otherwise one of the get nodes crashes the game.
+func _cafeRetroFix(scene: Cutscene):
+	scene.require_scene_path = "res://world/maps/interiors/GramophoneInterior.tscn"
+	scene.always_succeed = true
 
 func _unlockTapes(scene: Cutscene):
 	var exchange = scene.get_node("ExchangeMenuAction")
