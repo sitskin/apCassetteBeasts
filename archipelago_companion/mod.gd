@@ -58,6 +58,8 @@ func init_content() -> void:
 	apSaveDataContainer.take_over_path("res://menus/title/FileMenu_SaveDataContainer.gd")
 	var apLandkeeperOffice = preload("res://mods/archipelago_companion/extensions/LandkeeperOfficeAP.gd")
 	apLandkeeperOffice.take_over_path("res://world/objects/dungeons/LandkeeperOffice.gd")
+	var apTutorialItem = preload("res://mods/archipelago_companion/extensions/TutorialItemAP.gd")
+	apTutorialItem.take_over_path("res://data/item_scripts/TutorialItem.gd")
 	
 	# connect to any scenes that we need modified
 	var callbacks = DLC.mods_by_id.cat_modutils.callbacks

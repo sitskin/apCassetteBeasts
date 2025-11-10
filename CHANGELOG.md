@@ -6,6 +6,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## Unreleased
 
+### Fixed
+- AP Tutorial Item overriding
+
 ## [0.0.5] - 2025-10-24
 
 ### Fixed
