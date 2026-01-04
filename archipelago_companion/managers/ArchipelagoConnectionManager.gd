@@ -60,7 +60,6 @@ const _AP_FLAG_CONVERSIONS = {
 
 var _tempReceivedItems = []
 var randSeed: int
-var _locationsCheckedWithoutConnection = []
 
 signal connectionStateChanged(state, error)
 
@@ -119,8 +118,8 @@ func _roomInfoReceived(roomInfo: Dictionary):
 
 func _onConnectionChanged(newState: int, error: int = 0):
 	emit_signal("connectionStateChanged", newState, error)
-	if isConnected() && _locationsCheckedWithoutConnection.size() > 0:
-		_archipelagoClient.check_locations(_locationsCheckedWithoutConnection)
+	if isConnected() && SaveState.other_data.has("archipelago") && SaveState.other_data.archipelago.sentLocations.size() > 0:
+		_archipelagoClient.check_locations(SaveState.other_data.archipelago.sentLocations)
 
 # preload has finished, quests now exists
 func _onSingleSetupComplete():
@@ -147,6 +146,8 @@ func _onFileLoaded():
 	# if it doesn't exist create it
 	if !SaveState.other_data.has("archipelago") or !SaveState.other_data["archipelago"].has("receivedItems"):
 		SaveState.other_data["archipelago"] = {"receivedItems": []}
+	if !SaveState.other_data.archipelago.has("sentLocations"):
+		SaveState.other_data.archipelago["sentLocations"] = []
 	if !SaveState.other_data.has("ap_seed"):
 		SaveState.other_data["ap_seed"] = randSeed
 	if !SaveState.other_data.has("ap_player"):
@@ -162,6 +163,8 @@ func _onFileLoaded():
 	for data in _tempReceivedItems:
 		_onApItemReceived(data.itemData, data.networkItem)
 	_tempReceivedItems.clear()
+	if isConnected() && SaveState.other_data.archipelago.sentLocations.size() > 0:
+		_archipelagoClient.check_locations(SaveState.other_data.archipelago.sentLocations)
 
 func _onQuestCompleted(quest_res: Resource):
 	var quest = quest_res.instance()
@@ -329,11 +332,11 @@ func _onFlagChanged(flag: String, value: bool):
 
 # sending checks to server
 func _sendCheckLocation(location: String):
+	SaveState.other_data.archipelago.sentLocations.append(location)
+	SaveState.other_data.ap_locations_checked += 1
 	if !isConnected():
-		_locationsCheckedWithoutConnection.append(location)
 		return
 	_archipelagoClient.check_locations([location])
-	SaveState.other_data.ap_locations_checked += 1
 
 func sendChestOpened(chestFlag: String):
 	print("Opened chest: %s" % chestFlag)
