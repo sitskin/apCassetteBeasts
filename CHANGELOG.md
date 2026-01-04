@@ -9,6 +9,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Fixed
 - AP Tutorial Item overriding
 
+### Added
+- Tracking of all sent items and re-sending on connect
+
 ## [0.0.5] - 2025-10-24
 
 ### Fixed
