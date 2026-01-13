@@ -13,7 +13,8 @@ func _ready():
 		warpToEntranceButton.connect("pressed", self, "_warpToEntrance")
 		buttons.add_child_below_node(party_button, warpToEntranceButton)
 		buttons.setup_focus()
-	._ready()
+#	we specifically do not call the base here, for some reason the base function gets called before this one
+#	._ready()
 
 func _warpToEntrance():
 	WorldSystem.warp(SaveState.last_warp_scene, SaveState.last_warp_chunk, 
