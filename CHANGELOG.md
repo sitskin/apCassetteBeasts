@@ -9,6 +9,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Fixed
 - AP Tutorial Item overriding
 - Tracker logic for Lodstein and marsh cave chest
+- AP and Tracker valve handle logic
 
 ### Added
 - Warp to Entrance button when in an area that you cannot fast travel
