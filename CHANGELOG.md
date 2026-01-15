@@ -6,6 +6,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## Unreleased
 
+## [0.0.6] - 2026-01-15
+
 ### Fixed
 - AP Tutorial Item overriding
 - Tracker logic for Lodstein and marsh cave chest
