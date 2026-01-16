@@ -78,7 +78,8 @@ base_locations = {
 		CassetteBeastsLocationData("ap_encounter_aa_alice", "Cherry Cross Station", next(c),
 			lambda state, player: state.has("White Rabbit Key", player)),
 	"Defeat Robin Goodfellow": 
-		CassetteBeastsLocationData("ap_encounter_aa_robin", "Bard Street Station", next(c)),
+		CassetteBeastsLocationData("ap_encounter_aa_robin", "Bard Street Station", next(c),
+			lambda state, player: state.has("Valve Handle", player, 2)),
 	"Defeat Mammon": 
 		CassetteBeastsLocationData("ap_encounter_aa_mammon", "Landkeeper HQ", next(c),
 			lambda state, player: clearedOffices(state, player)),
@@ -388,7 +389,7 @@ base_locations = {
 			lambda state, player: state.has("Valve Handle", player)),
 	"Titania Shipwreck Chest (-6,-6)": 
 		CassetteBeastsLocationData("shipwreck_chest_1", "Titania Shipwreck", next(c),
-			lambda state, player: state.has("Valve Handle", player)),
+			lambda state, player: state.has("Valve Handle", player, 2)),
 	"Waterloop Station Break Polyhedron Chest (1,-4)": 
 		CassetteBeastsLocationData("chest_waterloop_optional_dash_reward", "Waterloop Station", next(c),
 			lambda state, player: state.has("Progressive Dash", player)),

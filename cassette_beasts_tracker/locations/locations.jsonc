@@ -3193,7 +3193,7 @@
           {
             "name": "Beat Captain Lodestein",
             "item_count": 1,
-            "access_rules": [],
+            "access_rules": ["@Mt Wirral", "dash,magnetism"],
             "visibility_rules": []//,
             //"chest_unopened_img": "images/items/captains/lodestein.png",
             //"chest_opened_img": "images/items/captains/lodestein.png",
@@ -3530,13 +3530,13 @@
           {
             "name": "Marsh Cave Chest (-7,-1)",
             "item_count": 1,
-            "access_rules": [],
+            "access_rules": ["dash"],
             "visibility_rules": []
           },
           {
             "name": "Marsh Cave Chest Loot (-7,-1)",
             "item_count": 1,
-            "access_rules": [],
+            "access_rules": ["dash"],
             "visibility_rules": [
               "setting_loot"
             ]
@@ -4752,19 +4752,19 @@
           {
             "name": "Titania Shipwreck Valve 2 (-6,-6)",
             "item_count": 1,
-            "access_rules": [],
+            "access_rules": ["valve"],
             "visibility_rules": []
           },
           {
             "name": "Titania Shipwreck Chest (-6,-6)",
             "item_count": 1,
-            "access_rules": [],
+            "access_rules": ["valve:2"],
             "visibility_rules": []
           },
           {
             "name": "Titania Shipwreck Chest Loot (-6,-6)",
             "item_count": 1,
-            "access_rules": [],
+            "access_rules": ["valve:2"],
             "visibility_rules": [
               "setting_loot"
             ]
@@ -4786,12 +4786,12 @@
     "children": [
       {
         "name": "Bard Street Station",
-        "access_rules": ["valve"],
+        "access_rules": ["valve:2"],
         "sections": [
           {
             "name": "Defeated Robin Goodfellow",
             "item_count": 1,
-            "access_rules": ["valve"],
+            "access_rules": ["valve:2"],
             "visibility_rules": [],
             "hosted_item": "robin"
           }
