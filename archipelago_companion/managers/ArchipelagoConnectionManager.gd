@@ -3,6 +3,7 @@ extends Node
 const ApWebSocketConnection = preload("res://mods/archipelago_companion/archipelago_client/ApWebsocketConnection.gd")
 const BaseArchipelagoClient = preload("res://mods/archipelago_companion/archipelago_client/BaseArchipelagoClient.gd")
 const ArchipelagoDataManager = preload("res://mods/archipelago_companion/managers/ArchipelagoDataManager.gd")
+const BeastRandomizerManager = preload("BeastRandomizerManager.gd")
 
 class GivenApItem:
 	var itemName: String
@@ -15,6 +16,8 @@ var archipelagoDataManager: ArchipelagoDataManager
 
 var _apWebSocketConnection: ApWebSocketConnection
 var _archipelagoClient: BaseArchipelagoClient
+
+var beastRandoManager: BeastRandomizerManager
 
 var _itemsReceivedFromServer = []
 var _itemGiveTimer = 0.0
@@ -65,6 +68,7 @@ signal connectionStateChanged(state, error)
 
 func _init():
 	archipelagoDataManager = ArchipelagoDataManager.new()
+	beastRandoManager = BeastRandomizerManager.new()
 	_apWebSocketConnection = ApWebSocketConnection.new()
 	_archipelagoClient = BaseArchipelagoClient.new(_apWebSocketConnection)
 	self.add_child(_apWebSocketConnection)
@@ -118,8 +122,21 @@ func _roomInfoReceived(roomInfo: Dictionary):
 
 func _onConnectionChanged(newState: int, error: int = 0):
 	emit_signal("connectionStateChanged", newState, error)
-	if isConnected() && SaveState.other_data.has("archipelago") && SaveState.other_data.archipelago.sentLocations.size() > 0:
-		_archipelagoClient.check_locations(SaveState.other_data.archipelago.sentLocations)
+	if isConnected():
+		if SaveState.other_data.has("archipelago") && SaveState.other_data.archipelago.sentLocations.size() > 0:
+			_archipelagoClient.check_locations(SaveState.other_data.archipelago.sentLocations)
+		# TODO: Get this data from slot data
+		beastRandoManager.randomizeSpawns([{
+			"location": "harbourtown_outskirts.tres",
+			"spawns": [
+				{ "beast": "busheye", "worldMonster": "Busheye.tscn" },
+				{ "beast": "elfless", "worldMonster": "Elfless.tscn" },
+				{ "beast": "diveal", "worldMonster": "Diveal.tscn" },
+				{ "beast": "frillypad" },
+				{ "beast": "puppercut" },
+				{ "beast": "khepri" },
+			],
+		}])
 
 # preload has finished, quests now exists
 func _onSingleSetupComplete():
