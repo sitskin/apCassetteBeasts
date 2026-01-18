@@ -9,7 +9,7 @@
 
 - You have pulled down the release branch and copied the entire archipelago\_client folder over to your testing cassette beasts instance
 - You have then exported the mod through Project > Tools > Export Mod...
-- You have zipped up the cassette\_beasts folder and renamed it from .zip to .apworld
+- You have run the archipelago launcher and built the apworlds, then grabbed the cassette\_beasts.apworld file
 - You have zipped up the cassette\_beasts\_tracker folder
 
 ## When creating the release in github
