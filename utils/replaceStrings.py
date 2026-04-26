@@ -3,7 +3,7 @@ import argparse
 from pathlib import Path
 
 # --- Config ---
-SKIP_FILES = {"extract_strings.py", "replace_strings.py"}
+SKIP_FILES = {"extractStrings.py", "replaceStrings.py"}
 
 
 def load_strings_file(strings_path: str) -> dict[str, str]:

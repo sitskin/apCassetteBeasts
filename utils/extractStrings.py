@@ -6,7 +6,7 @@ from pathlib import Path
 from collections import defaultdict
 
 # --- Config ---
-SKIP_FILES  = {"strings.py"}  # Don't process the output file itself
+SKIP_FILES  = {"__init__.py"}  # Don't extract from any init files
 
 def make_constant_name(s: str) -> str:
     """Turn a string value into a SCREAMING_SNAKE_CASE constant name."""
