@@ -58,10 +58,9 @@ func init_content() -> void:
 	apSaveDataContainer.take_over_path("res://menus/title/FileMenu_SaveDataContainer.gd")
 	var apLandkeeperOffice = preload("res://mods/archipelago_companion/extensions/LandkeeperOfficeAP.gd")
 	apLandkeeperOffice.take_over_path("res://world/objects/dungeons/LandkeeperOffice.gd")
-	var apTutorialItem = preload("res://mods/archipelago_companion/extensions/TutorialItemAP.gd")
-	apTutorialItem.take_over_path("res://data/item_scripts/TutorialItem.gd")
 	var apMapPauseMenu = preload("extensions/MapPauseMenuAp.gd")
 	apMapPauseMenu.take_over_path("res://menus/map_pause/MapPauseMenu.gd")
+	_rangerHandbookFix()
 	
 	# connect to any scenes that we need modified
 	var callbacks = DLC.mods_by_id.cat_modutils.callbacks
@@ -76,6 +75,27 @@ func init_content() -> void:
 	callbacks.connect_scene_ready("res://cutscenes/meredith_quest/MeredithIntro2_InteractionBehavior.tscn", self, "_patchMeredithQuest3")
 	callbacks.connect_scene_ready("res://cutscenes/captains/ianthe/Ianthe_InteractionBehavior.tscn", self, "_onIantheInteract")
 	callbacks.connect_scene_ready("res://cutscenes/archangels/CafeRetrospective.tscn", self, "_cafeRetroFix")
+
+func _rangerHandbookFix():
+	var apTutorialItem = preload("res://mods/archipelago_companion/extensions/TutorialItemAP.gd")
+	var rangerHandbook:BaseItem = load("res://data/items/tutorial.tres")
+	var name = rangerHandbook.name
+	var icon = rangerHandbook.icon
+	var description = rangerHandbook.description
+	var consume = rangerHandbook.consume_on_use
+	var discard = rangerHandbook.discardable
+	var usable = rangerHandbook.usable_contexts
+	var battle = rangerHandbook.battle_usage
+	var multi = rangerHandbook.skip_multiplayer_replication
+	rangerHandbook.set_script(apTutorialItem)
+	rangerHandbook.name = name
+	rangerHandbook.icon = icon
+	rangerHandbook.description = description
+	rangerHandbook.consume_on_use = consume
+	rangerHandbook.discardable = discard
+	rangerHandbook.usable_contexts = usable
+	rangerHandbook.battle_usage = battle
+	rangerHandbook.skip_multiplayer_replication = multi
 
 func _onItemDrop(scene: Interaction):
 	var item = scene.item
