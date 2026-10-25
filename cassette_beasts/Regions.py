@@ -1,232 +1,233 @@
 from typing import NamedTuple
+from .Strings import ALDGRAVE_TOMB_STATION, AUTUMN_HILL, BARD_STREET_STATION, BRIGHTSIDE_PIER, BROKENHEAD, CAST_IRON_SHORE, CHERRY_CROSS_STATION, CHERRY_MEADOW, COSMIC_ZONE, COSMIC_ZONE_PASS, DEADLANDS, DEADLANDS_COAST, DEFEATED_ALEPH, DINO_QUARRY, EASTHAM_WOODS, EASTHAM_WOODS_CLIFF, FALLDOWN_MALL, FUNWORLD, FUNWORLD_PASS, GLAISTAINBURY_ABBEY, GLOWCESTER_ROAD_STATION, HAM, HARBOURTOWN_BEACH, HARBOURTOWN_EAST, HARBOURTOWN_GATE_KEY, HARBOURTOWN_OUTSKIRTS, HARBOURTOWN_STATION, HARBOURTOWN_WEST, ICELINGTON_STATION, LAKESIDE, LANDKEEPER_HQ, LOST_HEARTS_GRAVEYARD, MENU, MOURNINGSTAR_CRESCENT_STATION, MOURNINGTOWN, MOURNINGTOWN_KEY, MT_WIRRAL, NEW_LANDKEEPER_HIDEOUT, NEW_LONDON, NEW_WIRRAL_PARK, NE_MIRE_SEA, NIGHT_S_BRIDGE_STATION, PIPER_FARM, POSTGAME, PROGRESSIVE_CLIMB, PROGRESSIVE_DASH, PROGRESSIVE_GLIDE, PROGRESSIVE_MAGNETISM, RECRUITED_SUNNY, RECRUITED_VIOLA, SONG_PART, SONG_PART_ALICE, SONG_PART_AVEREVOIR, SONG_PART_BABELITH, SONG_PART_FINALGANTE, SONG_PART_GWENIVAR, SONG_PART_HECKAHEDRON, SONG_PART_HELIA, SONG_PART_KUNEKO, SONG_PART_LAMENTO_MORI, SONG_PART_LENNA, SONG_PART_MAMMON, SONG_PART_MOURNINGSTAR, SONG_PART_NOWHERE_MONARCH, SONG_PART_OLDGANTE, SONG_PART_PUPPETOX, SONG_PART_ROBIN_GOODFELLOW, SOUTHERN_ISLES, SPIDER_CAVE, SWIM, THE_MARSHES, THE_WITCH_HOUSE, THE_WITCH_HOUSE_PASS, THIRSTATON_LAKE, TITANIA_SHIPWRECK, UPPER_PATH, VALVE_HANDLE, WATERLOOP_STATION, WEST_MIRE_SEA
 
 class CassetteBeastsRegionData(NamedTuple):
 	name: str
 	exit_rules: dict[str, callable] = {}
 
 region_data = [
-	CassetteBeastsRegionData("Menu",
+	CassetteBeastsRegionData(MENU,
 		{
-			"Harbourtown Beach": lambda state, player: True,
-			"Harbourtown East": lambda state, player: True,
-			"Night's Bridge Station": lambda state, player: songPartCount(state, player) >= 8 and \
-				state.has("Progressive Glide", player) and state.has("Swim", player) and \
-				state.has("Progressive Magnetism", player) and state.has("Progressive Dash", player),
+			HARBOURTOWN_BEACH: lambda state, player: True,
+			HARBOURTOWN_EAST: lambda state, player: True,
+			NIGHT_S_BRIDGE_STATION: lambda state, player: songPartCount(state, player) >= 8 and \
+				state.has(PROGRESSIVE_GLIDE, player) and state.has(SWIM, player) and \
+				state.has(PROGRESSIVE_MAGNETISM, player) and state.has(PROGRESSIVE_DASH, player),
 		}),
-	CassetteBeastsRegionData("Harbourtown Beach",
+	CassetteBeastsRegionData(HARBOURTOWN_BEACH,
 		{
-			"Harbourtown East": lambda state, player: True,
-			"Harbourtown Outskirts": lambda state, player: state.has("Harbourtown Gate Key", player),
-			"Brightside Pier": lambda state, player: state.has("Song Part", player, 4),
+			HARBOURTOWN_EAST: lambda state, player: True,
+			HARBOURTOWN_OUTSKIRTS: lambda state, player: state.has(HARBOURTOWN_GATE_KEY, player),
+			BRIGHTSIDE_PIER: lambda state, player: state.has(SONG_PART, player, 4),
 		}),
-	CassetteBeastsRegionData("Harbourtown East",
+	CassetteBeastsRegionData(HARBOURTOWN_EAST,
 		{
-			"Harbourtown Beach": lambda state, player: True,
-			"Upper Path": lambda state, player: True,
+			HARBOURTOWN_BEACH: lambda state, player: True,
+			UPPER_PATH: lambda state, player: True,
 		}),
-	CassetteBeastsRegionData("Harbourtown Outskirts",
+	CassetteBeastsRegionData(HARBOURTOWN_OUTSKIRTS,
 		{
-			"Upper Path": lambda state, player: state.has("Progressive Glide", player, 1),
-			"New Wirral Park": lambda state, player: True,
+			UPPER_PATH: lambda state, player: state.has(PROGRESSIVE_GLIDE, player, 1),
+			NEW_WIRRAL_PARK: lambda state, player: True,
 		}),
-	CassetteBeastsRegionData("Upper Path",
+	CassetteBeastsRegionData(UPPER_PATH,
 		{
-			"Harbourtown West": lambda state, player:
-				state.has("Progressive Dash", player, 1) or (state.has("Progressive Glide", player, 1) and state.has("Progressive Magnetism", player, 1)),
-			"Thirstaton Lake": lambda state, player: state.has("Swim", player),
-			"Harbourtown Station": lambda state, player: True,
+			HARBOURTOWN_WEST: lambda state, player:
+				state.has(PROGRESSIVE_DASH, player, 1) or (state.has(PROGRESSIVE_GLIDE, player, 1) and state.has(PROGRESSIVE_MAGNETISM, player, 1)),
+			THIRSTATON_LAKE: lambda state, player: state.has(SWIM, player),
+			HARBOURTOWN_STATION: lambda state, player: True,
 		}),
-	CassetteBeastsRegionData("Harbourtown West",
-		{
-
-		}),
-	CassetteBeastsRegionData("New Wirral Park",
-		{
-			"Autumn Hill": lambda state, player: True,
-			"Eastham Woods": lambda state, player: True,
-			"Deadlands": lambda state, player: True,
-			"Lakeside": lambda state, player: True,
-			"Glowcester Road Station": lambda state, player: True,
-		}),
-	CassetteBeastsRegionData("Autumn Hill",
-		{
-			"Mourningtown": lambda state, player: True,
-			"Dino Quarry": lambda state, player: True,
-		}),
-	CassetteBeastsRegionData("Eastham Woods",
-		{
-			"NE Mire Sea": lambda state, player: state.has("Progressive Glide", player, 1) and state.has("Progressive Magnetism", player, 1),
-			"Ham": lambda state, player: True,
-			"Eastham Woods Cliff": lambda state, player: state.has("Progressive Magnetism", player, 1),
-		}),
-	CassetteBeastsRegionData("Eastham Woods Cliff",
-		{
-			"Falldown Mall": lambda state, player: True,
-		}),
-	CassetteBeastsRegionData("Deadlands",
-		{
-			"Deadlands Coast": lambda state, player: True,
-			"New London": lambda state, player: state.has("Progressive Magnetism", player, 1) or state.has("Progressive Dash", player, 1),
-		}),
-	CassetteBeastsRegionData("Deadlands Coast",
-		{
-			"Southern Isles": lambda state, player: True,
-			"Dino Quarry": lambda state, player: True,
-		}),
-	CassetteBeastsRegionData("Dino Quarry",
+	CassetteBeastsRegionData(HARBOURTOWN_WEST,
 		{
 
 		}),
-	CassetteBeastsRegionData("New London",
+	CassetteBeastsRegionData(NEW_WIRRAL_PARK,
+		{
+			AUTUMN_HILL: lambda state, player: True,
+			EASTHAM_WOODS: lambda state, player: True,
+			DEADLANDS: lambda state, player: True,
+			LAKESIDE: lambda state, player: True,
+			GLOWCESTER_ROAD_STATION: lambda state, player: True,
+		}),
+	CassetteBeastsRegionData(AUTUMN_HILL,
+		{
+			MOURNINGTOWN: lambda state, player: True,
+			DINO_QUARRY: lambda state, player: True,
+		}),
+	CassetteBeastsRegionData(EASTHAM_WOODS,
+		{
+			NE_MIRE_SEA: lambda state, player: state.has(PROGRESSIVE_GLIDE, player, 1) and state.has(PROGRESSIVE_MAGNETISM, player, 1),
+			HAM: lambda state, player: True,
+			EASTHAM_WOODS_CLIFF: lambda state, player: state.has(PROGRESSIVE_MAGNETISM, player, 1),
+		}),
+	CassetteBeastsRegionData(EASTHAM_WOODS_CLIFF,
+		{
+			FALLDOWN_MALL: lambda state, player: True,
+		}),
+	CassetteBeastsRegionData(DEADLANDS,
+		{
+			DEADLANDS_COAST: lambda state, player: True,
+			NEW_LONDON: lambda state, player: state.has(PROGRESSIVE_MAGNETISM, player, 1) or state.has(PROGRESSIVE_DASH, player, 1),
+		}),
+	CassetteBeastsRegionData(DEADLANDS_COAST,
+		{
+			SOUTHERN_ISLES: lambda state, player: True,
+			DINO_QUARRY: lambda state, player: True,
+		}),
+	CassetteBeastsRegionData(DINO_QUARRY,
 		{
 
 		}),
-	CassetteBeastsRegionData("NE Mire Sea",
+	CassetteBeastsRegionData(NEW_LONDON,
 		{
 
 		}),
-	CassetteBeastsRegionData("Southern Isles",
+	CassetteBeastsRegionData(NE_MIRE_SEA,
 		{
 
 		}),
-	CassetteBeastsRegionData("Lakeside",
-		{
-			"Thirstaton Lake": lambda state, player: state.has("Swim", player),
-			"Cherry Meadow": lambda state, player: True,
-		}),
-	CassetteBeastsRegionData("Thirstaton Lake",
-		{
-			"Waterloop Station": lambda state, player: True,
-		}),
-	CassetteBeastsRegionData("Cherry Meadow",
-		{
-			"The Marshes": lambda state, player: True,
-			"Cast Iron Shore": lambda state, player: True,
-			"Mt Wirral": lambda state, player: state.has("Progressive Climb", player, 1),
-			"Cherry Cross Station": lambda state, player: state.has("Progressive Dash", player, 1) or state.has("Progressive Climb", player, 1),
-			"Glaistainbury Abbey": lambda state, player: state.has("Progressive Magnetism", player, 1),
-		}),
-	CassetteBeastsRegionData("Ham",
-		{
-			"Mt Wirral": lambda state, player: state.has("Progressive Climb", player, 1),
-		}),
-	CassetteBeastsRegionData("The Marshes",
-		{
-			"Piper Farm": lambda state, player: True,
-			"Lost Hearts Graveyard": lambda state, player: True,
-			"West Mire Sea": lambda state, player: True,
-			"Spider Cave": lambda state, player: state.has("Progressive Dash", player),
-			"Landkeeper HQ": lambda state, player: True,
-		}),
-	CassetteBeastsRegionData("Spider Cave",
+	CassetteBeastsRegionData(SOUTHERN_ISLES,
 		{
 
 		}),
-	CassetteBeastsRegionData("Piper Farm",
+	CassetteBeastsRegionData(LAKESIDE,
 		{
-			"Harbourtown West": lambda state, player: True,
+			THIRSTATON_LAKE: lambda state, player: state.has(SWIM, player),
+			CHERRY_MEADOW: lambda state, player: True,
 		}),
-	CassetteBeastsRegionData("Lost Hearts Graveyard",
+	CassetteBeastsRegionData(THIRSTATON_LAKE,
 		{
-			"Aldgrave Tomb Station": lambda state, player: True,
-			"New Landkeeper Hideout": lambda state, player: state.has("Recruited Sunny", player),
+			WATERLOOP_STATION: lambda state, player: True,
 		}),
-	CassetteBeastsRegionData("West Mire Sea",
+	CassetteBeastsRegionData(CHERRY_MEADOW,
 		{
-
+			THE_MARSHES: lambda state, player: True,
+			CAST_IRON_SHORE: lambda state, player: True,
+			MT_WIRRAL: lambda state, player: state.has(PROGRESSIVE_CLIMB, player, 1),
+			CHERRY_CROSS_STATION: lambda state, player: state.has(PROGRESSIVE_DASH, player, 1) or state.has(PROGRESSIVE_CLIMB, player, 1),
+			GLAISTAINBURY_ABBEY: lambda state, player: state.has(PROGRESSIVE_MAGNETISM, player, 1),
 		}),
-	CassetteBeastsRegionData("Cast Iron Shore",
+	CassetteBeastsRegionData(HAM,
 		{
-			"Titania Shipwreck": lambda state, player: state.has("Recruited Viola", player),
+			MT_WIRRAL: lambda state, player: state.has(PROGRESSIVE_CLIMB, player, 1),
 		}),
-	CassetteBeastsRegionData("Mt Wirral",
+	CassetteBeastsRegionData(THE_MARSHES,
 		{
-			"Brokenhead": lambda state, player: state.has("Progressive Glide", player, 2),
-			"Icelington Station": lambda state, player: True,
+			PIPER_FARM: lambda state, player: True,
+			LOST_HEARTS_GRAVEYARD: lambda state, player: True,
+			WEST_MIRE_SEA: lambda state, player: True,
+			SPIDER_CAVE: lambda state, player: state.has(PROGRESSIVE_DASH, player),
+			LANDKEEPER_HQ: lambda state, player: True,
 		}),
-	CassetteBeastsRegionData("Brokenhead",
-		{
-
-		}),
-	CassetteBeastsRegionData("Harbourtown Station",
-		{
-
-		}),
-	CassetteBeastsRegionData("Glowcester Road Station",
-		{
-
-		}),
-	CassetteBeastsRegionData("Mourningtown",
-		{
-			"Mourningstar Crescent Station": lambda state, player: state.has("Mourningtown Key", player),
-		}),
-	CassetteBeastsRegionData("Mourningstar Crescent Station",
+	CassetteBeastsRegionData(SPIDER_CAVE,
 		{
 
 		}),
-	CassetteBeastsRegionData("Falldown Mall",
+	CassetteBeastsRegionData(PIPER_FARM,
+		{
+			HARBOURTOWN_WEST: lambda state, player: True,
+		}),
+	CassetteBeastsRegionData(LOST_HEARTS_GRAVEYARD,
+		{
+			ALDGRAVE_TOMB_STATION: lambda state, player: True,
+			NEW_LANDKEEPER_HIDEOUT: lambda state, player: state.has(RECRUITED_SUNNY, player),
+		}),
+	CassetteBeastsRegionData(WEST_MIRE_SEA,
 		{
 
 		}),
-	CassetteBeastsRegionData("Waterloop Station",
+	CassetteBeastsRegionData(CAST_IRON_SHORE,
+		{
+			TITANIA_SHIPWRECK: lambda state, player: state.has(RECRUITED_VIOLA, player),
+		}),
+	CassetteBeastsRegionData(MT_WIRRAL,
+		{
+			BROKENHEAD: lambda state, player: state.has(PROGRESSIVE_GLIDE, player, 2),
+			ICELINGTON_STATION: lambda state, player: True,
+		}),
+	CassetteBeastsRegionData(BROKENHEAD,
 		{
 
 		}),
-	CassetteBeastsRegionData("Cherry Cross Station",
+	CassetteBeastsRegionData(HARBOURTOWN_STATION,
 		{
 
 		}),
-	CassetteBeastsRegionData("Glaistainbury Abbey",
+	CassetteBeastsRegionData(GLOWCESTER_ROAD_STATION,
 		{
 
 		}),
-	CassetteBeastsRegionData("Titania Shipwreck",
+	CassetteBeastsRegionData(MOURNINGTOWN,
 		{
-			"Bard Street Station": lambda state, player: state.has("Valve Handle", player, 2),
+			MOURNINGSTAR_CRESCENT_STATION: lambda state, player: state.has(MOURNINGTOWN_KEY, player),
 		}),
-	CassetteBeastsRegionData("Bard Street Station",
-		{
-
-		}),
-	CassetteBeastsRegionData("Landkeeper HQ",
+	CassetteBeastsRegionData(MOURNINGSTAR_CRESCENT_STATION,
 		{
 
 		}),
-	CassetteBeastsRegionData("Aldgrave Tomb Station",
+	CassetteBeastsRegionData(FALLDOWN_MALL,
 		{
 
 		}),
-	CassetteBeastsRegionData("Icelington Station",
+	CassetteBeastsRegionData(WATERLOOP_STATION,
 		{
 
 		}),
-	CassetteBeastsRegionData("Night's Bridge Station",
-		{
-			"Postgame": lambda state, player: state.has("Defeated Aleph", player),
-		}),
-	CassetteBeastsRegionData("Postgame",
+	CassetteBeastsRegionData(CHERRY_CROSS_STATION,
 		{
 
 		}),
-	CassetteBeastsRegionData("Brightside Pier",
-		{
-			"The Witch House": lambda state, player: state.has("The Witch House Pass", player),
-			"Funworld": lambda state, player: state.has("Funworld Pass", player),
-			"Cosmic Zone": lambda state, player: state.has("Cosmic Zone Pass", player),
-		}),
-	CassetteBeastsRegionData("The Witch House",
+	CassetteBeastsRegionData(GLAISTAINBURY_ABBEY,
 		{
 
 		}),
-	CassetteBeastsRegionData("Funworld",
+	CassetteBeastsRegionData(TITANIA_SHIPWRECK,
+		{
+			BARD_STREET_STATION: lambda state, player: state.has(VALVE_HANDLE, player, 2),
+		}),
+	CassetteBeastsRegionData(BARD_STREET_STATION,
 		{
 
 		}),
-	CassetteBeastsRegionData("Cosmic Zone",
+	CassetteBeastsRegionData(LANDKEEPER_HQ,
 		{
 
 		}),
-	CassetteBeastsRegionData("New Landkeeper Hideout",
+	CassetteBeastsRegionData(ALDGRAVE_TOMB_STATION,
+		{
+
+		}),
+	CassetteBeastsRegionData(ICELINGTON_STATION,
+		{
+
+		}),
+	CassetteBeastsRegionData(NIGHT_S_BRIDGE_STATION,
+		{
+			POSTGAME: lambda state, player: state.has(DEFEATED_ALEPH, player),
+		}),
+	CassetteBeastsRegionData(POSTGAME,
+		{
+
+		}),
+	CassetteBeastsRegionData(BRIGHTSIDE_PIER,
+		{
+			THE_WITCH_HOUSE: lambda state, player: state.has(THE_WITCH_HOUSE_PASS, player),
+			FUNWORLD: lambda state, player: state.has(FUNWORLD_PASS, player),
+			COSMIC_ZONE: lambda state, player: state.has(COSMIC_ZONE_PASS, player),
+		}),
+	CassetteBeastsRegionData(THE_WITCH_HOUSE,
+		{
+
+		}),
+	CassetteBeastsRegionData(FUNWORLD,
+		{
+
+		}),
+	CassetteBeastsRegionData(COSMIC_ZONE,
+		{
+
+		}),
+	CassetteBeastsRegionData(NEW_LANDKEEPER_HIDEOUT,
 		{
 
 		}),
@@ -237,20 +238,20 @@ region_data_table = {region.name: region for region in region_data}
 
 def songPartCount(state, player) -> int:
 	return sum([
-		state.has("Song Part (Oldgante)", player),
-		state.has("Song Part (Puppetox)", player),
-		state.has("Song Part (Mourningstar)", player),
-		state.has("Song Part (Nowhere Monarch)", player),
-		state.has("Song Part (Heckahedron)", player),
-		state.has("Song Part (Alice)", player),
-		state.has("Song Part (Robin Goodfellow)", player),
-		state.has("Song Part (Mammon)", player),
-		state.has("Song Part (Lamento Mori)", player),
-		state.has("Song Part (Babelith)", player),
-		state.has("Song Part (Kuneko)", player),
-		state.has("Song Part (Averevoir)", player),
-		state.has("Song Part (Helia)", player),
-		state.has("Song Part (Lenna)", player),
-		state.has("Song Part (Finalgante)", player),
-		state.has("Song Part (Gwenivar)", player)
+		state.has(SONG_PART_OLDGANTE, player),
+		state.has(SONG_PART_PUPPETOX, player),
+		state.has(SONG_PART_MOURNINGSTAR, player),
+		state.has(SONG_PART_NOWHERE_MONARCH, player),
+		state.has(SONG_PART_HECKAHEDRON, player),
+		state.has(SONG_PART_ALICE, player),
+		state.has(SONG_PART_ROBIN_GOODFELLOW, player),
+		state.has(SONG_PART_MAMMON, player),
+		state.has(SONG_PART_LAMENTO_MORI, player),
+		state.has(SONG_PART_BABELITH, player),
+		state.has(SONG_PART_KUNEKO, player),
+		state.has(SONG_PART_AVEREVOIR, player),
+		state.has(SONG_PART_HELIA, player),
+		state.has(SONG_PART_LENNA, player),
+		state.has(SONG_PART_FINALGANTE, player),
+		state.has(SONG_PART_GWENIVAR, player)
 		])
