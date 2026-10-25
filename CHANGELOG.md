@@ -6,6 +6,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## Unreleased
 
+## [0.0.7] - 2026-10-25
+
+### Fixed
+- Song parts and stamps skip location blocker and now check inventory before blocking
+- Tutorial item hard replace script
+- Damascus tape is now metal instead of astral
+
 ## [0.0.6] - 2026-01-15
 
 ### Fixed
