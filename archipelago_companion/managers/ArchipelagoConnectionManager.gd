@@ -191,7 +191,13 @@ func _onApItemReceived(itemData: Array, networkItem: Dictionary):
 	if !isInGame() || !SaveState.other_data.has("archipelago"):
 		_tempReceivedItems.append({"itemData": itemData, "networkItem": networkItem})
 		return
-	if networkItem.location in SaveState.other_data.archipelago.receivedItems:
+	# don't give the item if it was already given previously, except when it matches either
+	# a song or stamp, since both are just flags, and hard required for completion
+	# (really this is a work around because some times items are marked as received but
+	# not actually given to the player, I should find a better solution for this, probably
+	# waiting to add the location to receivedItems until it has actually been given
+	# instead of marking it at receive time)
+	if networkItem.location in SaveState.other_data.archipelago.receivedItems && !("aa_" in itemData[0]) && !("_stamp" in itemData[0]):
 		print("The location %d already exists" % networkItem.location)
 		return
 	if networkItem.location <= 0:# special archipelago items
@@ -299,11 +305,20 @@ func _onAbilityReceived(abilityName: String):
 	print("Ability %s given to player" % abilityName)
 
 func _onSongReceived(aaName: String):
-	SaveState.set_flag("ap_song_part_" + aaName, true)
+	var flagName = "ap_song_part_" + aaName
+	# don't try and give a song that is already true
+	if SaveState.has_flag(flagName):
+		print("Player already received song for archangel %s" % aaName)
+		return
+	SaveState.set_flag(flagName, true)
 	showPassiveMessage("Recieved Song Part")
 	print("Song for archangel %s given to player" % aaName)
 
 func _onStampReceived(stampFlag: String):
+	# don't try and give a stamp that is already true
+	if SaveState.has_flag(stampFlag):
+		print("Player already received stamp %s" % stampFlag)
+		return
 	SaveState.set_flag(stampFlag, true)
 	var msg_words = stampFlag.replace("ap_", "").split("_")
 	msg_words[1].replace("cleeo", "Clee-o").replace("dreadful", "Penny Dreadful")
