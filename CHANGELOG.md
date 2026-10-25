@@ -8,6 +8,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Fixed
 - Tutorial item hard replace script
+- Damascus tape is now metal instead of astral
 
 ## [0.0.6] - 2026-01-15
 
